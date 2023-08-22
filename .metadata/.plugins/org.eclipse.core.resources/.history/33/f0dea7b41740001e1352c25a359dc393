@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="heabom">
+        <property name="context-root" value="heabom"/>
+        <property name="java-output-path" value="/heabom/WebContent/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>
