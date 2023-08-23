@@ -17,10 +17,14 @@
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 			<item value="D:\kh_Class\SEMIPROJECT\KH_Project_Heabom"/>
 >>>>>>> wonjong
 			<item value="D:\kh_Class\SEMIPROJECT\KH_Project_Heabom\KH_Project_Heabom"/>
+=======
+			<item value="C:\KH_Project_Heabom\heabom\WebContent"/>
+>>>>>>> 5d4626d07048a020c47a8ea6369a862428379a88
 			<item value="C:\KH_Project_Heabom"/>
 			<item value="C:\KH_Project_Heabom\heabom\WebContent\WEB-INF"/>
 		</list>
