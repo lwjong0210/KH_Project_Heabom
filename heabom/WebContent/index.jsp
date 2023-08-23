@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="views/board/boardListView.jsp" %>
+	
+	<a href="<%= contextPath %>/list.bo">하이루</a>
+	
+	
 
 </body>
 </html>	
