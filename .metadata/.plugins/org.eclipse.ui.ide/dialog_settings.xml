@@ -16,6 +16,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\kh_Class\SEMIPROJECT\KH_Project_Heabom\KH_Project_Heabom"/>
 			<item value="C:\KH_Project_Heabom"/>
 			<item value="C:\KH_Project_Heabom\heabom\WebContent\WEB-INF"/>
 		</list>
