@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -75,6 +75,7 @@
     </style>
 </head> 
 <body>
+
     <div class="outer">
         <br>
         <h2 align="center">자유게시판</h2>
@@ -105,7 +106,7 @@
                 
             </thead>
             <tbody>
-                <!-- <tr>        
+                <tr>        
                     <td>
                         <div class="post-notice">
                             공지
@@ -115,7 +116,7 @@
                     <td>관리자</td>
                     <td>2000</td>
                     <td>2023.07.17</td>
-                </tr> -->
+                </tr>
                     <tr>        
                         <td>20</td>
                         <td>맛집추천이요</td>
@@ -123,7 +124,62 @@
                         <td>5</td>
                         <td>2023.08.19</td>
                     </tr>
-
+                    <tr>
+                        <td>19</td>
+                        <td>퇴근하고싶다.</td>
+                        <td>USER02</td>
+                        <td>40</td>
+                        <td>2023.08.11</td>
+                    </tr>
+                    <tr>        
+                        <td>18</td>
+                        <td>맛집추천이요</td>
+                        <td>USER01</td>
+                        <td>5</td>
+                        <td>2023.08.19</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>퇴근하고싶다.</td>
+                        <td>USER02</td>
+                        <td>40</td>
+                        <td>2023.08.11</td>
+                    </tr>
+                    <tr>        
+                        <td>16</td>
+                        <td>맛집추천이요</td>
+                        <td>USER01</td>
+                        <td>5</td>
+                        <td>2023.08.19</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>퇴근하고싶다.</td>
+                        <td>USER02</td>
+                        <td>40</td>
+                        <td>2023.08.11</td>
+                    </tr>
+                    <tr>        
+                        <td>14</td>
+                        <td>맛집추천이요</td>
+                        <td>USER01</td>
+                        <td>5</td>
+                        <td>2023.08.19</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>퇴근하고싶다.</td>
+                        <td>USER02</td>
+                        <td>40</td>
+                        <td>2023.08.11</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>퇴근하고싶다.</td>
+                        <td>USER02</td>
+                        <td>40</td>
+                        <td>2023.08.11</td>
+                    </tr>
 
             </tbody>
             <tfoot>
