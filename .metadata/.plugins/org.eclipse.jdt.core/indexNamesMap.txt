@@ -1,3 +1,0 @@
-INDEX VERSION 1.132
-file:/D:/kh_Class/SEMIPROJECT/KH_Project_Heabom/KH_Project_Heabom/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
-meta_index

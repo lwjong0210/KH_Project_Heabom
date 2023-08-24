@@ -1,5 +1,0 @@
-INDEX VERSION 1.132
-D:\kh_Class\SEMIPROJECT\KH_Project_Heabom\KH_Project_Heabom\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3757207331.index
-\heabom\src
-D:\kh_Class\SEMIPROJECT\KH_Project_Heabom\KH_Project_Heabom\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\829096584.index
-\heabom\src
