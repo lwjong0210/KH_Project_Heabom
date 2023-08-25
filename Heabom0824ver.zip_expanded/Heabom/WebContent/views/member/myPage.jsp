@@ -112,21 +112,21 @@
                                 <tr>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../resources/iconImg/방문게시물.png">
+                                            <img src="../../WEB-INF/resource/img/방문게시물.png">
                                             <p class="mypage-right-p"><strong>방문게시물</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../resources/iconImg/즐겨찾기.png">
+                                            <img src="../../WEB-INF/resource/img/즐겨찾기.png">
                                             <p class="mypage-right-p"><strong>즐겨찾기</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../resources/iconImg/리뷰관리.png">
+                                            <img src="../../WEB-INF/resource/img/리뷰관리.png">
                                             <p class="mypage-right-p"><strong>리뷰관리</strong></p>
                                         </div>
                                     </td>
