@@ -40,7 +40,7 @@
         }
 
 
-        img {
+        #box {
             height: 95%;
             width: 95%;
 
@@ -49,7 +49,8 @@
 
             border-radius: 20px;
             border: none;
-
+			
+			background-color: rgb(253, 241, 251);
             background-repeat: no-repeat;
             background-position: center;
             background-size: 100%;
@@ -73,23 +74,23 @@
 <body>
 <%@include file = "../common/header.jsp" %>
     <div class="wrap">
-        <div id="img">
-            <a href="#"><img src="../../resource/img/myPage/서치뷰.png"></a>
+        <div id="box">
+            <a href="#"><img src="../place/placeListView.jsp"></a>
         </div>
-        <div id="img">
-            <a href="#"><img src="../../resource/img/myPage/서치뷰.png"></a>
+        <div id="box">
+            <a href="#"><img src="#"></a>
         </div>
-        <div id="img">
-            <a href="#"><img src="../../resource/img/myPage/서치뷰.png"></a>
+        <div id="box">
+            <a href="#"><img src="#"></a>
         </div>
-        <div id="img">
-            <a href="#"><img src="../../resource/img/myPage/서치뷰.png"></a>
+        <div id="box">
+            <a href="#"><img src="#"></a>
         </div>
-        <div id="img">
-            <a href="#"><img src="../../resource/img/myPage/서치뷰.png"></a>
+        <div id="box">
+            <a href="#"><img src="#"></a>
         </div>
-        <div id="img">
-            <a href="#"><img src="../../resource/img/myPage/서치뷰.png"></a>
+        <div id="box">
+            <a href="#"><img src="#"></a>
         </div>
     </div>
 </body>
