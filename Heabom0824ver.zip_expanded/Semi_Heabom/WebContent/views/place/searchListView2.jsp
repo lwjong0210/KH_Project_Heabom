@@ -10,27 +10,37 @@
     <style>
 
         div {
+            /*
             box-sizing: border-box;
             border: 1px solid black;
+            */
+
+            position: relative;
         }
 
         .wrap {
+            position: absolute;
+
             width: 1000px;
             height:800px;
             margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+
+            grid-column-gap: 30px;
+            grid-row-gap: 30px;
+            padding: 5%;
+
         }
 
         .wrap>div {
             width: 100%;
         }
 
-        #header {
-            height: 33%;
-        }
 
-
-
-        .btn {
+        #box {
             height: 95%;
             width: 95%;
 
@@ -39,8 +49,8 @@
 
             border-radius: 20px;
             border: none;
-
-            background-image: url(../../WEB-INF/resource/img/서치뷰.png);
+			
+			background-color: rgb(253, 241, 251);
             background-repeat: no-repeat;
             background-position: center;
             background-size: 100%;
@@ -64,17 +74,23 @@
 <body>
 <%@include file = "../common/header.jsp" %>
     <div class="wrap">
-        <div id="header">
-            <div id="box_1"><input type="button" class="btn" value="강서구"></div>
-            <div id="box_2"><input type="button" class="btn" value="구로구"></div>
+        <div id="box">
+            <a href="<%=contextPath %>/resource/img/myPage"><img src="../place/placeListView.jsp"></a>
         </div>
-        <div id="content">
-            <div id="box_3"><input type="button" class="btn" value="양천구"></div>
-            <div id="box_4"><input type="button" class="btn" value="서초구"></div>
+        <div id="box">
+            <a href="#"><img src="#"></a>
         </div>
-        <div id="footer">
-            <div id="box_5"><input type="button" class="btn" value="마포구"></div>
-            <div id="box_6"><input type="button" class="btn" value="동대문구"></div>
+        <div id="box">
+            <a href="#"><img src="#"></a>
+        </div>
+        <div id="box">
+            <a href="#"><img src="#"></a>
+        </div>
+        <div id="box">
+            <a href="#"><img src="#"></a>
+        </div>
+        <div id="box">
+            <a href="#"><img src="#"></a>
         </div>
     </div>
 </body>
