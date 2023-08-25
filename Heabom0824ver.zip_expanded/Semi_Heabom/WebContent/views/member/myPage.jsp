@@ -174,6 +174,7 @@
         <br><br><br><br><br><br><br><br><br><br>
     </div>
     <script>
+ 		// 방문페이지 에이쟉
         function myVisit() {
             $.ajax({
             	url:"myVisitAjax.do",
@@ -186,6 +187,20 @@
             	}
             })
         }
+        // 리뷰 에이쟉
+        function myReivew() {
+            $.ajax({
+            	url:"myReviewAjax.do",
+            	datatype:"html",
+            	success:function(result){
+            		$("#test").html(result);
+            	},
+            	error:function(){
+            		console.log("ajax 통신실패");
+            	}
+            })
+        }
+        
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>

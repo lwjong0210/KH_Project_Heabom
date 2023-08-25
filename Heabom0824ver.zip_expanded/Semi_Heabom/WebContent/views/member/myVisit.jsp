@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
     .yj_myVisit_area{
         border: 0px solid;
@@ -25,6 +24,7 @@
     width: auto;
     border: 1px solid lightgray;
     padding: 10px;
+    margin-bottom: 5px;
     }
 
     .yj_myVisit_detail img{
@@ -44,6 +44,19 @@
         cursor: pointer;
     }
 
+    .text_limit a {
+        color: blue;
+        font-size: small;
+        font-weight: bolder;
+    }
+    .text_limit a:hover {
+        color: yellowgreen;
+    }
+    .text_limit:hover{
+        color: darkgray;
+    }
+
+
     </style>
 </head>
 <body>
@@ -51,19 +64,44 @@
         <div class="yj_myVisit_detail">
             <table border="0" class="detail_tb">
                 <tr>
-                    <td rowspan="3" width="300" height="150">
+                    <td rowspan="4" width="300" height="130">
                         <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
                     </td>
-                    <td rowspan="3" width="10"></td>
-                    <td height="50" width="350" colspan="4"><div class="text_limit"><strong>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, saepe quo. Expedita omnis rerum suscipit ullam minima exercitationem doloremque aut amet non deserunt voluptatum, nostrum atque iusto nisi aliquam autem!</strong></div></td>
-                </tr>
-
-                <tr>
-                    <td height="50" width="350" colspan="4"><div class="text_limit">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi totam aliquam consequatur ipsum rerum distinctio commodi odit eum sed nihil ducimus adipisci aliquid, magni quis iure, libero temporibus in ullam!</div></td>
+                    <td rowspan="4" width="10"></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>11월 최대 여의도 불꽃축제</strong></div></td>
                 </tr>
                 <tr>
-                    <td width="200" style="text-align: center;">작성일 : 23/08/25 11:45</td>
-                    <td width="150" style="text-align: center;">별점 : ★★★★★ </td>
+                    <td height="30" width="350" colspan="4"><div class="text_limit">2023년 국제 최대 규모의 불꽃 축제가 여의도에서 열린다.</div></td>
+                </tr>
+                <tr>
+                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
+                </tr>
+                <tr>
+                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
+                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
+                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
+                </tr>
+            </table>
+        </div>
+        <div class="yj_myVisit_detail">
+            <table border="0" class="detail_tb">
+                <tr>
+                    <td rowspan="4" width="300" height="130">
+                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
+                    </td>
+                    <td rowspan="4" width="10"></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
+                </tr>
+                <tr>
+                    <td height="30" width="350" colspan="4"><div class="text_limit">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt eos a maxime magnam quam laudantium, quas sint numquam, natus nam deleniti, at cum deserunt ducimus porro perspiciatis debitis quo vitae.</div></td>
+                </tr>
+                <tr>
+                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
+                </tr>
+                <tr>
+                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
+                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
+                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
                 </tr>
             </table>
         </div>
