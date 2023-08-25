@@ -11,8 +11,8 @@
             box-sizing: border-box;
         }
         .outer_yj{
-            width: 900px;
-            height: 800px;
+            width: 1900px;
+            height: auto;
             background-color: #fdeeee;
             margin: auto;
             margin-top: 50px;
@@ -52,7 +52,7 @@
         .mypage-nameTag{
             position: absolute;
             top: 80px;
-            left: 350px;
+            left: 850px;
             background-color: rgb(87, 86, 86);
             color: white;
             border-radius: 10px;
@@ -67,6 +67,7 @@
 </head>
 <body>
     <%@include file = "../common/header.jsp" %>
+    <%@include file = "../common/footer.jsp" %>
     <div class="outer_yj" align="center">
         <div class="mypage-nameTag"><strong>나의 정보</strong></div>
         <div class="mypage-area" >
