@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +63,7 @@
                 <li><a href="../member/myPage.jsp">마이페이지</a></li>
                 <li><a href="#">자유게시판</a></li>
                 <li><a href="#">고객센터</a></li>
-                <li><a href="#">장소</a></li>
+                <li><a href="<%= contextPath %>/list.pl">장소</a></li>
                 <li><a href="#">Q&A</a></li>
             </ul>
         </nav>
