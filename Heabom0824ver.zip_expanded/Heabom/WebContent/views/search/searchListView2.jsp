@@ -79,7 +79,7 @@
             border-radius: 20px;
             border: none;
 
-            background-image: url(img/1.jpg);
+            background-image: url(../../WEB-INF/resource/img/서치뷰.png);
             background-repeat: no-repeat;
             background-position: center;
             background-size: 100%;
