@@ -1,4 +1,4 @@
-package com.heabom.board.model.dao;
+package com.heabom.board.model.vo;
 
 import java.sql.Date;
 
