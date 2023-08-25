@@ -1,11 +1,16 @@
 package com.heabom.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.heabom.member.model.service.MemberService;
+import com.heabom.member.model.vo.Member;
 
 /**
  * Servlet implementation class CheckListController
@@ -26,6 +31,9 @@ public class CheckListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ArrayList<Member> list = new MemberService().selectAdminList();
+		
 		request.getRequestDispatcher("views/admin/checkListView.jsp").forward(request, response);
 	}
 

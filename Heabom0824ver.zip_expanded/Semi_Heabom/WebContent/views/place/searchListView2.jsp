@@ -75,7 +75,7 @@
 <%@include file = "../common/header.jsp" %>
     <div class="wrap">
         <div id="box">
-            <a href="#"><img src="../place/placeListView.jsp"></a>
+            <a href="<%=contextPath %>/resource/img/myPage"><img src="../place/placeListView.jsp"></a>
         </div>
         <div id="box">
             <a href="#"><img src="#"></a>
