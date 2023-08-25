@@ -46,13 +46,30 @@
         .mypage-detail img:hover {transform: scale(1.1, 1.1); transition-duration: 0.2s;}
         .mypage-detail img {transition-duration: 0.2s;}
         .myprofile:hover {color: lightgray;}
-   
-    </style>
+        .outer_yj{
+            position: relative;
+        }
+        .mypage-nameTag{
+            position: absolute;
+            top: 80px;
+            left: 350px;
+            background-color: rgb(87, 86, 86);
+            color: white;
+            border-radius: 10px;
+            width: 120px;
+            height: 50px;
+            line-height: 50px;
+            font-size: large;
+            box-shadow: 3px 3px 3px lightgray;
+        }
+
+        
+        </style>
 </head>
 <body>
-<%@include file = "../common/header.jsp" %>
+    <%@include file = "../common/header.jsp" %>
     <div class="outer_yj" align="center">
-        
+        <div class="mypage-nameTag"><strong>나의 정보</strong></div>
         <div class="mypage-area" >
             <table border="0">
                 <tr>
@@ -140,7 +157,6 @@
                                     </td>
                                 </tr>
                             </table>
-                      
                         </div>
                     </td>
                 </tr>
