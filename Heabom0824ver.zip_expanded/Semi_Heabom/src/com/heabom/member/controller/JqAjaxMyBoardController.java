@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class JqAjaxMyReviewController
+ * Servlet implementation class JqAjaxMyBoardController
  */
-@WebServlet("/myReivewAjax.do")
-public class JqAjaxMyReviewController extends HttpServlet {
+@WebServlet("/myBoardAjax.do")
+public class JqAjaxMyBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JqAjaxMyReviewController() {
+    public JqAjaxMyBoardController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class JqAjaxMyReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/member/myReview.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/myBoard.jsp").forward(request, response);
 	}
 
 	/**

@@ -20,26 +20,17 @@
     }
 
     .yj_myVisit_detail{
-    height: auto;
-    width: auto;
-    border: 1px solid lightgray;
-    padding: 10px;
-    margin-bottom: 5px;
-    }
-
-    .yj_myVisit_detail img{
-        height: 100%;
-        width: 100%;
+        border: 1px solid white;
+        padding: 10px;
     }
 
     .text_limit {
-        width: 300px;
+        width: 130px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;  /* 말줄임 적용 */
-        font-size: larger;
+        font-size: medium;
     }
-
     .detail_tb div, .detail_tb img{
         cursor: pointer;
     }
@@ -51,60 +42,67 @@
     }
     .text_limit a:hover {
         color: yellowgreen;
+
     }
     .text_limit:hover{
         color: darkgray;
+    }
+    .thumbnail{
+        border: 0px solid white;
+        width: 150px;
+        display: inline-block;
+        margin: 5px;
+    }
+    .thumbnail *:hover{
+    	cursor: pointer;
+    	opacity: 0.7;
+        color: gray;
+    }
+    .thumbnail p {
+        margin: 0;
+    }
+    .yj_location{
+        color: blue;
+        font-weight: bolder;
+        font-size: small;
     }
 
 
     </style>
 </head>
 <body>
-    <div class="yj_myVisit_area" align="cneter">
-        <div class="yj_myVisit_detail">
-            <table border="0" class="detail_tb">
-                <tr>
-                    <td rowspan="4" width="300" height="130">
-                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
-                    </td>
-                    <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>11월 최대 여의도 불꽃축제</strong></div></td>
-                </tr>
-                <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit">2023년 국제 최대 규모의 불꽃 축제가 여의도에서 열린다.</div></td>
-                </tr>
-                <tr>
-                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
-                </tr>
-                <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
-                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
-                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
-                </tr>
-            </table>
+    <div class="yj_myVisit_area" align="center">
+        <div class="thumbnail" align="center">
+            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
+            <div class="text_limit"><strong>경복궁야경투어</strong></div>
+            <div class="yj_location">지역 : 중구</div>
         </div>
-        <div class="yj_myVisit_detail">
-            <table border="0" class="detail_tb">
-                <tr>
-                    <td rowspan="4" width="300" height="130">
-                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
-                    </td>
-                    <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
-                </tr>
-                <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt eos a maxime magnam quam laudantium, quas sint numquam, natus nam deleniti, at cum deserunt ducimus porro perspiciatis debitis quo vitae.</div></td>
-                </tr>
-                <tr>
-                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
-                </tr>
-                <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
-                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
-                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
-                </tr>
-            </table>
+        <div class="thumbnail" align="center">
+            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
+            <div class="text_limit"><strong>경복궁야경투어</strong></div>
+            <div class="yj_location">지역 : 중구</div>
         </div>
+        <div class="thumbnail" align="center">
+            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
+            <div class="text_limit"><strong>경복궁야경투어</strong></div>
+            <div class="yj_location">지역 : 중구</div>
+        </div>
+        <div class="thumbnail" align="center">
+            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
+            <div class="text_limit"><strong>경복궁야경투어</strong></div>
+            <div class="yj_location">지역 : 중구</div>
+        </div>
+        <div class="thumbnail" align="center">
+            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
+            <div class="text_limit"><strong>경복궁야경투어</strong></div>
+            <div class="yj_location">지역 : 중구</div>
+        </div>
+
+
+
+
+
+
     </div>
 </body>
 </html>

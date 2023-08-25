@@ -187,12 +187,25 @@
             	}
             })
         }
+ 		
  		// 즐겨찾기 Ajax
+        function myFavorit() {
+            $.ajax({
+            	url:"myFavoritAjax.do",
+            	datatype:"html",
+            	success:function(result){
+            		$("#test").html(result);
+            	},
+            	error:function(){
+            		console.log("ajax 통신실패");
+            	}
+            })
+        }
  		
         // 리뷰 Ajax
         function myReivew() {
             $.ajax({
-            	url:"myReviewAjax.do",
+            	url:"myReivewAjax.do",
             	datatype:"html",
             	success:function(result){
             		$("#test").html(result);
@@ -204,10 +217,46 @@
         }
  		
      	// 게시물관리 Ajax
-		
+        function myPlace() {
+            $.ajax({
+            	url:"myPlaceAjax.do",
+            	datatype:"html",
+            	success:function(result){
+            		$("#test").html(result);
+            	},
+            	error:function(){
+            		console.log("ajax 통신실패");
+            	}
+            })
+        }
+     	
      	// 내 글관리 Ajax
+        function myBoard() {
+            $.ajax({
+            	url:"myBoardAjax.do",
+            	datatype:"html",
+            	success:function(result){
+            		$("#test").html(result);
+            	},
+            	error:function(){
+            		console.log("ajax 통신실패");
+            	}
+            })
+        }
      	
      	// Q&A Ajax
+        function myQna() {
+            $.ajax({
+            	url:"myQnaAjax.do",
+            	datatype:"html",
+            	success:function(result){
+            		$("#test").html(result);
+            	},
+            	error:function(){
+            		console.log("ajax 통신실패");
+            	}
+            })
+        }
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>

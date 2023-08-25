@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    .yj_myBoard_area{
+    .yj_myFavorit_area{
         border: 0px solid;
         height: auto;
         width: 532px;
@@ -19,7 +19,7 @@
         border-radius: 20px;
     }
 
-    .yj_myBoard_detail{
+    .yj_myFavorit_detail{
     height: auto;
     width: auto;
     border: 1px solid lightgray;
@@ -27,7 +27,7 @@
     margin-bottom: 5px;
     }
 
-    .yj_myBoard_detail img{
+    .yj_myFavorit_detail img{
         height: 100%;
         width: 100%;
     }
@@ -60,15 +60,15 @@
     </style>
 </head>
 <body>
-    <div class="yj_myBoard_area" align="cneter">
-        <div class="yj_myBoard_detail">
+    <div class="yj_myFavorit_area" align="cneter">
+        <div class="yj_myFavorit_detail">
             <table border="0" class="detail_tb">
                 <tr>
                     <td rowspan="4" width="300" height="130">
                         <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>11월 최대 여의도 불꽃축제</strong></div></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>여기는 즐겨찾기</strong></div></td>
                 </tr>
                 <tr>
                     <td height="30" width="350" colspan="4"><div class="text_limit">2023년 국제 최대 규모의 불꽃 축제가 여의도에서 열린다.</div></td>
@@ -83,14 +83,14 @@
                 </tr>
             </table>
         </div>
-        <div class="yj_myBoard_detail">
+        <div class="yj_myFavorit_detail">
             <table border="0" class="detail_tb">
                 <tr>
                     <td rowspan="4" width="300" height="130">
                         <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>여기는 방문게시물Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
                 </tr>
                 <tr>
                     <td height="30" width="350" colspan="4"><div class="text_limit">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt eos a maxime magnam quam laudantium, quas sint numquam, natus nam deleniti, at cum deserunt ducimus porro perspiciatis debitis quo vitae.</div></td>
