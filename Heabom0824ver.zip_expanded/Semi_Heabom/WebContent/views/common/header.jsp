@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <% 
+=======
+    
+<%
+>>>>>>> 5bee500a47caa4927f017883e2fa47ea7a31bc39
 	String contextPath = request.getContextPath();
 %>
 <!DOCTYPE html>
@@ -62,7 +67,7 @@
                 <li><a href="<%= contextPath%>/myPage.me">마이페이지</a></li>
                 <li><a href="#">자유게시판</a></li>
                 <li><a href="#">고객센터</a></li>
-                <li><a href="#">장소</a></li>
+                <li><a href="<%= contextPath %>/list.pl">장소</a></li>
                 <li><a href="#">Q&A</a></li>
             </ul>
         </nav>
