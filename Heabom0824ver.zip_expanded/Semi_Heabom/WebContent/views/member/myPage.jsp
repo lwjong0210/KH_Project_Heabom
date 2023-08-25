@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MyPage_Main</title>
     <style>
         table,div{
             box-sizing: border-box;
@@ -111,21 +111,21 @@
                                 <tr>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center" onclick="myBoard();">
-                                            <img src="../../WEB-INF/resource/img/방문게시물.png">
+                                            <img src="../../WEB-INF/resource/img/myPage/방문게시물.png">
                                             <p class="mypage-right-p"><strong>방문게시물</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../WEB-INF/resource/img/즐겨찾기.png">
+                                            <img src="../../WEB-INF/resource/img/myPage/즐겨찾기.png">
                                             <p class="mypage-right-p"><strong>즐겨찾기</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../WEB-INF/resource/img/리뷰관리.png">
+                                            <img src="../../WEB-INF/resource/img/myPage/리뷰관리.png">
                                             <p class="mypage-right-p"><strong>리뷰관리</strong></p>
                                         </div>
                                     </td>
@@ -136,21 +136,21 @@
                                 <tr>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../WEB-INF/resource/img/게시물관리.png">
+                                            <img src="../../WEB-INF/resource/img/myPage/게시물관리.png">
                                             <p class="mypage-right-p"><strong>게시물관리</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../WEB-INF/resource/img/내글관리.png">
+                                            <img src="../../WEB-INF/resource/img/myPage/내글관리.png">
                                             <p class="mypage-right-p"><strong>내글관리</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../WEB-INF/resource/img/QNA.png">
+                                            <img src="../../WEB-INF/resource/img/myPage/QNA.png">
                                             <p class="mypage-right-p"><strong>Q&A</strong></p>
                                         </div>
                                     </td>
