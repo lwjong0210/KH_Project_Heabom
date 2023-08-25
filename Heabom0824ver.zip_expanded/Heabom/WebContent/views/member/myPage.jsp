@@ -137,21 +137,21 @@
                                 <tr>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../resources/iconImg/게시물관리.png">
+                                            <img src="../../WEB-INF/resource/img/게시물관리.png">
                                             <p class="mypage-right-p"><strong>게시물관리</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../resources/iconImg/내글관리.png">
+                                            <img src="../../WEB-INF/resource/img/내글관리.png">
                                             <p class="mypage-right-p"><strong>내글관리</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
                                         <div class="mypage-detail" align="center">
-                                            <img src="../../resources/iconImg/QNA.png">
+                                            <img src="../../WEB-INF/resource/img/QNA.png">
                                             <p class="mypage-right-p"><strong>Q&A</strong></p>
                                         </div>
                                     </td>
