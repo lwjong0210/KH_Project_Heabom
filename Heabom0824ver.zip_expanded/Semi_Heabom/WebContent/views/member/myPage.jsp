@@ -174,7 +174,7 @@
         <br><br><br><br><br><br><br><br><br><br>
     </div>
     <script>
- 		// 방문페이지 에이쟉
+ 		// 방문페이지 Ajax
         function myVisit() {
             $.ajax({
             	url:"myVisitAjax.do",
@@ -187,7 +187,9 @@
             	}
             })
         }
-        // 리뷰 에이쟉
+ 		// 즐겨찾기 Ajax
+ 		
+        // 리뷰 Ajax
         function myReivew() {
             $.ajax({
             	url:"myReviewAjax.do",
@@ -200,7 +202,12 @@
             	}
             })
         }
-        
+ 		
+     	// 게시물관리 Ajax
+		
+     	// 내 글관리 Ajax
+     	
+     	// Q&A Ajax
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>
