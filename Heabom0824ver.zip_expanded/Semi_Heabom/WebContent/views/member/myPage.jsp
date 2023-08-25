@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPage_Main</title>
@@ -46,6 +48,11 @@
         .mypage-detail img:hover {transform: scale(1.1, 1.1); transition-duration: 0.2s;}
         .mypage-detail img {transition-duration: 0.2s;}
         .myprofile:hover {color: lightgray;}
+        .myprofile{
+            font-size: medium;
+            font-weight: bolder;
+            color: white;
+        }
         .outer_yj{
             position: relative;
         }
@@ -67,7 +74,7 @@
 </head>
 <body>
     <%@include file = "../common/header.jsp" %>
-    <%@include file = "../common/footer.jsp" %>
+    
     <div class="outer_yj" align="center">
         <div class="mypage-nameTag"><strong>나의 정보</strong></div>
         <div class="mypage-area" >
@@ -97,7 +104,7 @@
                                     <td height="50" style="font-size: medium;"><strong>새싹등급</strong><img src="" alt=""></td>
                                 </tr>
                                 <tr>
-                                    <td height="40" style="font-size: medium;"><a href="#" style="text-decoration: none;" class="myprofile"><strong>개인정보(프로필사진)설정</strong></a></td>
+                                    <td height="40" style="font-size: medium;"><a href="#" style="text-decoration: none;" class="myprofile">개인정보(프로필사진)설정</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -111,21 +118,21 @@
                             <table border="0" align="center">
                                 <tr>
                                     <td width="110" height="110">
-                                        <div class="mypage-detail" align="center" onclick="myBoard();">
+                                        <div class="mypage-detail" align="center" onclick="myVisit();">
                                             <img src="<%=contextPath %>/resource/img/myPage/방문게시물.png">
                                             <p class="mypage-right-p"><strong>방문게시물</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
-                                        <div class="mypage-detail" align="center">
+                                        <div class="mypage-detail" align="center" onclick="myFavorit();">
                                             <img src="<%=contextPath %>/resource/img/myPage/즐겨찾기.png">
                                             <p class="mypage-right-p"><strong>즐겨찾기</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
-                                        <div class="mypage-detail" align="center">
+                                        <div class="mypage-detail" align="center" onclick="myReivew();">
                                             <img src="<%=contextPath %>/resource/img/myPage/리뷰관리.png">
                                             <p class="mypage-right-p"><strong>리뷰관리</strong></p>
                                         </div>
@@ -136,21 +143,21 @@
                                 </tr>
                                 <tr>
                                     <td width="110" height="110">
-                                        <div class="mypage-detail" align="center">
+                                        <div class="mypage-detail" align="center" onclick="myPlace();">
                                             <img src="<%=contextPath %>/resource/img/myPage/게시물관리.png">
                                             <p class="mypage-right-p"><strong>게시물관리</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
-                                        <div class="mypage-detail" align="center">
+                                        <div class="mypage-detail" align="center" onclick="myBoard();">
                                             <img src="<%=contextPath %>/resource/img/myPage/내글관리.png">
                                             <p class="mypage-right-p"><strong>내글관리</strong></p>
                                         </div>
                                     </td>
                                     <td width="30"></td>
                                     <td width="110" height="110">
-                                        <div class="mypage-detail" align="center">
+                                        <div class="mypage-detail" align="center" onclick="myQna();">
                                             <img src="<%=contextPath %>/resource/img/myPage/QNA.png">
                                             <p class="mypage-right-p"><strong>Q&A</strong></p>
                                         </div>
@@ -161,8 +168,25 @@
                     </td>
                 </tr>
             </table>
+            <div id="test">
+            </div>
         </div>
-
+        <br><br><br><br><br><br><br><br><br><br>
     </div>
+    <script>
+        function myVisit() {
+            $.ajax({
+            	url:"myVisitAjax.do",
+            	datatype:"html",
+            	success:function(result){
+            		$("#test").html(result);
+            	},
+            	error:function(){
+            		console.log("ajax 통신실패");
+            	}
+            })
+        }
+    </script>
+    <%@include file = "../common/footer.jsp" %>
 </body>
 </html>
