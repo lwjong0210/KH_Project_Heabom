@@ -35,7 +35,7 @@
             color: white;
         }
         .mypage-right-p{margin: 0;}
-        .mypage-detail img{
+        .mypage-detail img, .mypage-detail{
             border-radius: 20px; box-shadow: 2px 2px 1px gray;
             width: 100px;
             height: 90px;
@@ -63,7 +63,6 @@
             box-shadow: 3px 3px 3px lightgray;
         }
 
-        
         </style>
 </head>
 <body>
@@ -80,7 +79,7 @@
                                 <tr>
                                     <td height="120" width="200">
                                         <div style="width: 100px; height: 100px; margin: auto;">
-                                            <img src="https://tse1.mm.bing.net/th?id=OIP.bcPW77h3l7ZG8_rqFbsIKwHaHj&pid=Api&P=0&h=220" alt="" style="width: 100px; height: 100px; border-radius: 50px;">
+                                            <img src="https://tse1.mm.bing.net/th?id=OIP.bcPW77h3l7ZG8_rqFbsIKwHaHj&pid=Api&P=0&h=220" alt="" style="width: 100px; height: 100px; border-radius: 50px; cursor: pointer;">
                                         </div>
                                     </td>
                                 </tr>
@@ -111,7 +110,7 @@
                             <table border="0" align="center">
                                 <tr>
                                     <td width="110" height="110">
-                                        <div class="mypage-detail" align="center">
+                                        <div class="mypage-detail" align="center" onclick="myBoard();">
                                             <img src="../../WEB-INF/resource/img/방문게시물.png">
                                             <p class="mypage-right-p"><strong>방문게시물</strong></p>
                                         </div>
