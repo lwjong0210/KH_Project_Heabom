@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h2>안녕</h2>
 	<%@include file = "views/search/searchListView2.jsp" %>
 	<%@include file = "views/search/searchListView1.jsp" %>
 	<%@include file = "views/admin/reportListView.jsp" %>
