@@ -90,7 +90,7 @@
                         <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>여기는 방문게시물Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>여기는 내글관리Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
                 </tr>
                 <tr>
                     <td height="30" width="350" colspan="4"><div class="text_limit">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt eos a maxime magnam quam laudantium, quas sint numquam, natus nam deleniti, at cum deserunt ducimus porro perspiciatis debitis quo vitae.</div></td>
