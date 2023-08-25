@@ -9,8 +9,6 @@ public class BoardDao {
 	
 	public BoardDao() {
 		String filePath = BoardDao.class.getResource("/db/sql/board-mapper.xml").getPath();
-		// 기본생성자이기 때문에 무조건 호출이 된다.
-		// 호출이 되고 /db/sql/member-mapper.xml를 계속 불러온다.
 		
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));

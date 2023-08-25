@@ -32,7 +32,7 @@
             width: 97%;
             border-radius: 20px;
         }
-        .left-table, a {
+        .left-table, .outer_yj a {
             text-align: center;
             color: white;
         }
