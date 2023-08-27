@@ -24,6 +24,7 @@ public class MemberDao {
 		}
 	}
 	
+	/*
 	public ArrayList<Member> selectAdminList(Connection conn) {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
@@ -43,4 +44,5 @@ public class MemberDao {
 		}
 		
 	}
+	*/
 }

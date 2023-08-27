@@ -32,7 +32,7 @@ public class CheckListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Member> list = new MemberService().selectAdminList();
+		/* ArrayList<Member> list = new MemberService().selectAdminList(); */
 		
 		request.getRequestDispatcher("views/admin/checkListView.jsp").forward(request, response);
 	}

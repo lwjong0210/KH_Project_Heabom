@@ -59,7 +59,7 @@
         <nav>
             <ul class="nav__links">
                 <li><a href="#">검색</a></li>
-                <li><a href="<%= contextPath%>/myPage.me">마이페이지</a></li>
+                <li><a href="<%= contextPath %>/myPage.me">마이페이지</a></li>
                 <li><a href="<%= contextPath %>/check.ad">관리자페이지</a></li>
                 <li><a href="#">자유게시판</a></li>
                 <li><a href="#">고객센터</a></li>
