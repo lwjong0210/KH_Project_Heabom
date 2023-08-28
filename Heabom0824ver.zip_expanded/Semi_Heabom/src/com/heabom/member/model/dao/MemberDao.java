@@ -72,8 +72,7 @@ public class MemberDao {
 			pstmt.setString(4, m.getNickname());
 			pstmt.setString(5, m.getEmail());
 			pstmt.setString(6, m.getMbit());
-			pstmt.setString(6, m.getMemPhone());
-			System.out.println(pstmt);
+			pstmt.setString(7, m.getMemPhone());
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
