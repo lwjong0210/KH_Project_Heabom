@@ -363,7 +363,7 @@
                 <div id="header_4">
                     <form action="" id="search_form">
                         <div id="search_text">
-                            <input type="text" name="keyword">
+                            <input type="text" id="keyword" name="keyword" onkeyup="filter()">
                         </div>
                         <div id="search_btn">
                             <input type="submit" value="검색">
@@ -391,7 +391,7 @@
                             <th width="160">등급 변경</th>
                             <th width="160"><button type="button" style="width: 75px; height: 50px; font-size: 20px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                         </thead>
-                        <tbody>
+                        <tbody class="listInner">
                             <% for(Member m : list) { %>
                             	<tr>
                             		<td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
@@ -470,8 +470,28 @@
     <script>
         function changeFn() {
             var search_date = document.getElementById("search_date");
-            var value = 
+            var value = (search_date.options[search_date.selectedIndex].value);
+            alert("value = "+value);
         }        
+    </script>
+
+    <script>
+        function filter() {
+            let keyword = document.getElementById("keyword").value.toLowerCase();
+            let listInner = document.getElementsByClassName("listInner");
+           
+            for (let i = 0; i < listInner.length; i++) {
+                city = listInner[i].getElementsByClassName("city");
+                country = listInner[i].getElementsByClassName("country");
+                if (city[0].innerHTML.toLowerCase().includes(keyword) ||
+                   country[0].innerHTML.toLowerCase().includes(keyword)
+                   ) {
+                    listInner[i].style.display = "flex"
+                } else {
+                    listInner[i].style.display = "none"
+                }
+            }
+        }
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>
