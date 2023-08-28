@@ -13,11 +13,11 @@
         margin: auto;
         margin-top: 10px;
         margin-left: 817px;
-        background-color: skyblue;
+        background-color: white;
         padding: 20px;
         border-radius: 20px;
         }
-        .yj_myQnA_detail{
+    .yj_myQnA_detail{
         height: auto;
         width: auto;
         border: 1px solid white;
@@ -66,7 +66,7 @@
     }
 
     .text_limit {
-        width: 450px;
+        width: 400px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;  /* 말줄임 적용 */
@@ -161,7 +161,7 @@
                         <tr>
                             <td colspan="5" width="450">
                                 <div class="text_limit">
-                                    <strong>고객님은 어제 만취상태로 인사불성이 의심됨으로 가까운 병원을 내방하셔서 알콜중독증 해결 후 질문 바랍니다.</strong>
+                                    고객님은 어제 만취상태로 인사불성이 의심됨으로 가까운 병원을 내방하셔서 알콜중독증 해결 후 질문 바랍니다.
                                 </div>
                             </td>
                         </tr>
