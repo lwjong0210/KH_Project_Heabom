@@ -1,7 +1,11 @@
+<%@page import="com.heabom.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
 	String contextPath = request.getContextPath();
+	Member loginMember =  (Member)session.getAttribute("loginMember");
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +58,13 @@
     </style>
 </head>
 <body>
+	<%if (alertMsg != null){  %>
+		
+		<script>
+		alert("<%=alertMsg%>");
+		</script>
+		<%session.removeAttribute("alertMsg"); // invalidate 쓰면 session 이 다 날아간다 따라서 이 세션만 지울수 있게 removeattribute 를 쓴다%>
+	<%} %>
     <header>
         <img class="logo" src="img/KakaoTalk_20230814_140248577_04.png" alt="logo">
         <nav>
@@ -65,6 +76,7 @@
                 <li><a href="#">고객센터</a></li>
                 <li><a href="<%= contextPath %>/list.pl">장소</a></li>
                 <li><a href="#">Q&A</a></li>
+            
             </ul>
         </nav>
     </header>
