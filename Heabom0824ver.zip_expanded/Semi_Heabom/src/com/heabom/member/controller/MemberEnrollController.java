@@ -32,7 +32,8 @@ public class MemberEnrollController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String memId = request.getParameter("userId");
 		String memPwd = request.getParameter("userPwd");
-		String memName = request.getParameter("nickName");
+		String memName = request.getParameter("userName");
+		String nickName = request.getParameter("nickName");
 		String email = request.getParameter("email");
 		String mbti = request.getParameter("mbti");
 		String memphone = request.getParameter("phone");
@@ -44,8 +45,14 @@ public class MemberEnrollController extends HttpServlet {
 		m.setEmail(email);
 		m.setMbit(mbti);
 		m.setMemPhone(memphone);
+		m.setNickname(nickName);
 		
 		int result = new MemberService().insertMember(m);
+		if (result>0) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
 		
 	}
 

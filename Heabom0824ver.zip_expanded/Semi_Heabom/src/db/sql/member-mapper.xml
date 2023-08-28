@@ -15,5 +15,31 @@
 
 <entry key="insertMember">
 	
+	
+INSERT INTO TB_MEMBER (
+    MEM_NO
+    ,GRADE
+    ,MEM_ID
+    ,MEM_PWD
+    ,MEM_NAME
+    ,NICKNAME
+    ,EMAIL
+    ,MBTI
+    ,MEM_PHONE
+    ,MEM_BIRTHDAY,MEM_POINT
+)
+VALUES (
+    'M'||(SEQ_MNO.NEXTVAL)
+    ,DEFAULT
+    ,?  
+    ,? 
+    ,? 
+    ,? 
+    ,?
+    ,? 
+    ,? 
+    ,'1988-01-09' 
+    ,DEFAULT
+)
 </entry>
 </properties>
