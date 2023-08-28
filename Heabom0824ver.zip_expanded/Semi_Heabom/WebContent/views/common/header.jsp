@@ -115,7 +115,7 @@
               
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form action="/action_page.php">
+                        <form action="<%=contextPath%>/login.me">
                             <div class="form-group">
                              
                               <input type="text" class="form-control" placeholder="아이디" name = "memId">
@@ -124,7 +124,7 @@
                               <label for="pwd">Password:</label>
                               <input type="password" class="form-control" placeholder="Enter password" name="memPwd">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">로그인</button>
                           </form>
                         
                     </div>
