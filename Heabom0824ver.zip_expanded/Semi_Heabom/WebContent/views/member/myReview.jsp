@@ -9,7 +9,7 @@
     <title>Document</title>
     <style>
         .yj_myReview_area{
-            border: 0px solid;
+        border: 0px solid;
         height: auto;
         width: 532px;
         margin: auto;
