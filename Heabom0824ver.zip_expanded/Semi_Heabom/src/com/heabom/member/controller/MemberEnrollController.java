@@ -13,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.heabom.common.MyFileRenamePolicy;
 import com.heabom.member.model.service.MemberService;
 import com.heabom.member.model.vo.Member;
+import com.heabom.member.model.vo.MemberAttachment;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -35,15 +36,24 @@ public class MemberEnrollController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//request.setCharacterEncoding("UTF-8");
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
-			
+			System.out.println("이건되냐?");
 			int maxSize = 10*1024*1024;
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/board_upfiles/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/profile/");
 		
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",new MyFileRenamePolicy());		
 			
-			
+			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
+			//첨부파일이 있는지 없는지 보자
+			//multiRequest.getOriginalFileName("키")
+			if(multiRequest.getOriginalFileName("upfile") != null) {//넘어온게 있어.
+				at = new MemberAttachment();
+				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+				at.setFilePath("resources/board_upfiles");
+			}
 			
 			String memId = multiRequest.getParameter("userId");
 			String memPwd = multiRequest.getParameter("userPwd");
@@ -62,6 +72,9 @@ public class MemberEnrollController extends HttpServlet {
 			m.setMemPhone(memphone);
 			m.setNickname(nickName);
 			
+			
+			
+			
 			int result = new MemberService().insertMember(m);
 			if (result>0) {
 				HttpSession session = request.getSession();
@@ -70,7 +83,6 @@ public class MemberEnrollController extends HttpServlet {
 			}else {
 				System.out.println("실패");
 			}
-			
 		}
 	}
 
