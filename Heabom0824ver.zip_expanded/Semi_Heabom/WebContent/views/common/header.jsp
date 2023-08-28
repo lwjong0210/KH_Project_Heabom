@@ -90,9 +90,9 @@
                 <li><a href="#">검색</a></li>
                 <li><a href="<%= contextPath %>/myPage.me">마이페이지</a></li>
                 <%if (loginMember != null ){ %>
-                <%if (loginMember.getMemId().equals("admin")){%>
-                <li><a href="<%= contextPath %>/check.ad">관리자페이지</a></li>
-                <%}%>
+	                <%if (loginMember.getMemId().equals("admin")){%>
+	                <li><a href="<%= contextPath %>/check.ad">관리자페이지</a></li>
+	                <%}%>
                 <%}%>
                 <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
                 <li><a href="#">고객센터</a></li>
