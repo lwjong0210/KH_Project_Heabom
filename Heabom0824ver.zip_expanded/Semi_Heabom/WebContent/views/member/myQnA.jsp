@@ -56,7 +56,7 @@
         content:"";
         position: absolute; 
         left: 30px; 
-        bottom: 105px ; 
+        bottom: 100px ; 
         border-left: 20px solid transparent; 
         border-right: 20px solid transparent; 
         border-bottom: 20px solid rgb(223, 188, 223);}

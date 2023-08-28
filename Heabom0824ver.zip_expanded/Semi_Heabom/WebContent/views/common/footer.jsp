@@ -8,8 +8,9 @@
     <title>Document</title>
     <style>
         .footer{
-            background-color: rgb(240, 240, 240);
+            /* background-color: rgb(240, 240, 240); */
             /* background-color: #ffebeb; */
+            /* background-color: rgb(248, 238, 226); */
             width: 1900px;
             height: auto;
             margin: auto;
