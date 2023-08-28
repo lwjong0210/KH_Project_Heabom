@@ -343,7 +343,7 @@ table, div {
             })
         }
      	
-     	/*
+     	
      	function myQna(){
      		myQna1();
      		myQna2();
@@ -356,7 +356,7 @@ table, div {
      			},
      			type:"post",
      			success:function(result){
-     				
+     				console.log("ajax 성공");
      			},
      			error:function(){
      				console.log("ajax 통신실패");
@@ -375,7 +375,7 @@ table, div {
             	}
             })
         }
-        */
+        
     </script>
 	<%@include file="../common/footer.jsp"%>
 </body>
