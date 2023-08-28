@@ -378,7 +378,7 @@
                     <table border="1">
                         <thead>
                             <th width="130">
-                                <input type="checkbox" style="width:30px;height:30px;border:none;">
+                                <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
                             </th>
                             <th width="180">회원 아이디</th>
                             <th width="120">이름</th>
@@ -394,7 +394,7 @@
                         <tbody>
                             <% for(Member m : list) { %>
                             	<tr>
-                            		<td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
+                            		<td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
                             		<td><%= m.getMemId() %></td>
                             		<td><%= m.getMemName() %></td>
                             		<td><%= m.getNickname() %></td>
@@ -450,6 +450,14 @@
             <div id="footer"></div>
         </div>
     </div>
+    <script>
+        function selectAll(selectAll) {
+            const check = document.getElementsByName('check');
 
+            check.forEach((check) => {
+                check.checked = selectAll.checked;
+            })
+        }
+    </script>
 </body>
 </html>
