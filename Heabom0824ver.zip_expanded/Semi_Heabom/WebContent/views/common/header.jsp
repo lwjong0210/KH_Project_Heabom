@@ -92,6 +92,9 @@
                 <%if (loginMember != null ){ %>
 	                <%if (loginMember.getMemId().equals("admin")){%>
 	                <li><a href="<%= contextPath %>/check.ad">관리자페이지</a></li>
+                    <ul>
+                        <li><a href="배너 관리"></a></li>
+                    </ul>
 	                <%}%>
                 <%}%>
                 <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
