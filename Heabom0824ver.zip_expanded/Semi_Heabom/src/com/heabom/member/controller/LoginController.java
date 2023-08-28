@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.heabom.member.model.service.MemberService;
 import com.heabom.member.model.vo.Member;
@@ -33,7 +34,16 @@ public class LoginController extends HttpServlet {
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
 		
-		Member m = new MemberService().loginMember(memId , memPwd);
+		Member loginMember = new MemberService().loginMember(memId , memPwd);
+		System.out.println(loginMember);
+		if(loginMember != null) {
+			
+		}else {
+			System.out.println("허허허");
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "회원정보가 없습니다");
+			response.sendRedirect(request.getContextPath());
+		}
 	}
 
 	/**

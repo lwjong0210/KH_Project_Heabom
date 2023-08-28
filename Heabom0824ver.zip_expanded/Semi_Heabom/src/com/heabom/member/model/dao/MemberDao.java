@@ -122,9 +122,7 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
-		
+
 		return m ;
 	}
 	
