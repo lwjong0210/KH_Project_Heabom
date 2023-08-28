@@ -17,7 +17,7 @@
             height: auto;
             background-color: #fdeeee;
             margin: auto;
-            margin-top: 50px;
+            /* margin-top: 50px; */
         }
         .mypage-left{
             background-color: rgb(223, 188, 223);
@@ -171,7 +171,7 @@
             <div id="test">
             </div>
         </div>
-        <br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
     </div>
     <script>
  		// 방문페이지 Ajax
