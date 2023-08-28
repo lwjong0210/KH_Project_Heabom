@@ -355,8 +355,8 @@
                 <div id="header_3">
                     <select id="search_date" name="search_date" fw-filter="" fw-label="" fw-msg="">
                         <option value="week" selected="selected">회원 아이디</option>
-                        <option value="month">.</option>
-                        <option value="month3">.</option>
+                        <option value="month">이름</option>
+                        <option value="month3">별명</option>
                         <option value="all">.</option>
                     </select>
                 </div>
@@ -450,6 +450,6 @@
             <div id="footer"></div>
         </div>
     </div>
-    <%@include file = "../common/footer.jsp" %>
+
 </body>
 </html>
