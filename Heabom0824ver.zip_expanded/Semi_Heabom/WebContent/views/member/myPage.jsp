@@ -325,16 +325,11 @@ table, div {
         }
      	
      	// Q&A Ajax
+     	/*
         function myQna() {
-			myQna1();
-			myQna2();
-        }
-        function myQna1() {
             $.ajax({
-            	url:"myQnaDetailAjax.do",
-            	data:{
-            		user
-            	}
+            	url:"myQnaAjax.do",
+            	datatype:"html",
             	success:function(result){
             		$("#test").html(result);
             	},
@@ -343,6 +338,26 @@ table, div {
             	}
             })
         }
+     	*/
+     	
+     	function myQna(){
+     		//myQna1();
+     		myQna2();
+     	}
+     	function myQna1() {
+     		$.ajax({
+     			url:"myQnaDetailAjax.do",
+     			data:{
+     				
+     			},
+     			success:function(result){
+     				
+     			},
+     			error:function(){
+     				console.log("ajax 통신실패");
+     			}
+     		})
+     	}
         function myQna2() {
             $.ajax({
             	url:"myQnaAjax.do",
