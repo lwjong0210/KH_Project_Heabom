@@ -88,7 +88,8 @@ public class MemberDao {
 	public Member loginMember(Connection conn , String memId , String memPwd) {
 		ResultSet rset = null ;
 		PreparedStatement pstmt = null;
-		Member m = new Member();
+		Member m = null ;
+		
 		
 		String sql = prop.getProperty("loginMember");
 		try {
@@ -99,7 +100,7 @@ public class MemberDao {
 			
 			
 			if(rset.next()) {
-				m = new Member(rset.getString("MEM_NO")
+				 m  = new Member(rset.getString("MEM_NO")
 						  ,rset.getString("GRADE")
 						  ,rset.getString("MEM_ID")
 						  ,rset.getString("MEM_PWD")

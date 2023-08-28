@@ -35,11 +35,14 @@ public class LoginController extends HttpServlet {
 		String memPwd = request.getParameter("memPwd");
 		
 		Member loginMember = new MemberService().loginMember(memId , memPwd);
-		System.out.println(loginMember);
+		
 		if(loginMember != null) {
-			
+			HttpSession session = request.getSession();
+			session.setAttribute("loginMember", loginMember);
+			session.setAttribute("alertMsg", "어서오십시오");
+			response.sendRedirect(request.getContextPath());
 		}else {
-			System.out.println("허허허");
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "회원정보가 없습니다");
 			response.sendRedirect(request.getContextPath());

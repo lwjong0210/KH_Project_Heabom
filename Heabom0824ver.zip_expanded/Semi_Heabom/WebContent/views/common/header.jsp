@@ -97,6 +97,8 @@
             </ul>
         </nav>
         <div>
+        <%if (loginMember == null ){ %>
+        
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                 로그인하기
               </button>
@@ -138,6 +140,13 @@
                   </div>
                 </div>
               </div>
+        <%}else{%>
+            <h3><%=loginMember.getNickname()%>님</h3>
+            <br>
+            
+        
+        <%}%>
+
         </div>
 
     </header>
