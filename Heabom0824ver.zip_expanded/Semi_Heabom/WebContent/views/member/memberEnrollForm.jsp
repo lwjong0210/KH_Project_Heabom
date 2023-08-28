@@ -187,7 +187,7 @@
                     <div id ="div2-2">
                         <form id = "enroll-form" action="<%=contextPath%>/insert.me" method="post" enctype="multipart/form-data">
             
-                            <table border="0">
+                            <table border="1">
                                 <tr>
                                     
                                     <td><input type="text" name="userId" maxlength="12" placeholder="아이디"  size = 40  required ></td>
@@ -229,6 +229,10 @@
                                 <td><input type="text" size = 40  placeholder="닉네임" name="nickName"></td>
                                 <td></td>
                             </tr>
+                            <tr>
+                                <td><input type="file" name = "upfile">프사</td>
+                            </tr>
+                            
                                 <tr>
                                     <th> <button id="hi" type="submit" disabled>회원가입</button><button type="reset" >초기화</button></th>
                                    
