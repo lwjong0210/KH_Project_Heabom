@@ -22,6 +22,7 @@
         width: auto;
         border: 1px solid white;
         padding: 10px;
+        margin-bottom: 10px;
     }
     .pull {
         position:relative;
@@ -135,6 +136,38 @@
                     </table>
                 </div>
             </div> -->
+        </div>
+        <div class="yj_myQnA_detail">
+            <div class="pull gr">
+                <div class="text_limit gr">
+                    <strong>KH 1관앞 CU에 먹태깡 2개 있다고 보고 갔는데 안파는건 어떻게 해야할까요?</strong>
+                </div>
+            </div>
+            <!-- 답변 전 -->
+            <!-- <div class="pull pk_unComplete">
+                <div class="text_limit"><strong>관리자가 성실한 답변 작성중에 있습니다. 빠른시일내에 답변 드리겠습니다.</strong></div>
+            </div> -->
+
+            <!-- 답변완료시 -->
+            <div class="pull pk_complete">
+                    <table border="0">
+                        <tr>
+                            <td width="60">답변자 :</td>
+                            <td><strong>원종매니저</strong></td>
+                            <td width="20"></td>
+                            <td width="70">답변일자:</td>
+                            <td><strong>23/08/28 10:13</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" width="450">
+                                <div class="text_limit">
+                                    <strong>고객님은 어제 만취상태로 인사불성이 의심됨으로 가까운 병원을 내방하셔서 알콜중독증 해결 후 질문 바랍니다.</strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </body>
