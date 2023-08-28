@@ -49,6 +49,7 @@ SELECT
    ,GRADE
    ,MEM_ID
    ,MEM_PWD
+   ,NICKNAME
    ,MEM_NAME
    ,EMAIL
    ,MBTI

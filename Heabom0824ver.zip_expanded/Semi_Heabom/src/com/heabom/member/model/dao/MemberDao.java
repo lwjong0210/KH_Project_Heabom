@@ -85,8 +85,47 @@ public class MemberDao {
 		
 	}
 	
-	public Member loginMember() {
+	public Member loginMember(Connection conn , String memId , String memPwd) {
+		ResultSet rset = null ;
+		PreparedStatement pstmt = null;
+		Member m = new Member();
 		
+		String sql = prop.getProperty("loginMember");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPwd);
+			rset = pstmt.executeQuery();
+			
+			
+			if(rset.next()) {
+				m = new Member(rset.getString("MEM_NO")
+						  ,rset.getString("GRADE")
+						  ,rset.getString("MEM_ID")
+						  ,rset.getString("MEM_PWD")
+						  ,rset.getString("MEM_NAME")
+						  ,rset.getString("NICKNAME")
+						  ,rset.getString("EMAIL")
+						  ,rset.getString("MBTI")
+						  ,rset.getString("MEM_PHONE")
+						  ,rset.getDate("ENROLL_DATE")
+						  ,rset.getString("MEM_STATUS")
+						  ,rset.getDate("MEM_VISIT")
+						  ,rset.getDate("MEM_BIRTHDAY")
+						  ,rset.getInt("MEM_POINT"));
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		
+		return m ;
 	}
 	
 	
