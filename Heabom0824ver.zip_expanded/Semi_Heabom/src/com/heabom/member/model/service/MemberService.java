@@ -21,6 +21,11 @@ public class MemberService {
 		
 	}
 	
+	
+	/**
+	 * 조준하
+	 *회원가입
+	 */
 	public int insertMember(Member m) {
 		Connection conn = getConnection();
 		int result = new MemberDao().insertMember(conn , m);
@@ -30,5 +35,15 @@ public class MemberService {
 			rollback(conn);
 		}
 		return result; 
+	}
+	
+	/**
+	 * 로그인 조준하
+	 */
+	public Member loginMember(String memId , String memPwd) {
+		Connection conn = getConnection();
+		Member m = new MemberDao().loginMember(conn, memId, memPwd);
+		close(conn);
+		return m; 
 	}
 }
