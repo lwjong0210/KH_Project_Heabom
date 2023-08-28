@@ -27,7 +27,14 @@ public class MemberEnrollController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("ㅎㅇ");
+		String memId = request.getParameter("userId");
+		String memPwd = request.getParameter("userPwd");
+		String memName = request.getParameter("nickName");
+		String email = request.getParameter("email");
+		String mbti = request.getParameter("mbti");
+		String phone = request.getParameter("phone");
+		
+		
 	}
 
 	/**
