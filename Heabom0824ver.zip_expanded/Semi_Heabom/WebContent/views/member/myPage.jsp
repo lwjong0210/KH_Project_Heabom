@@ -158,7 +158,7 @@ table, div {
 							<table border="0" align="center">
 								<tr>
 									<td width="110" height="110">
-										<div class="mypage-detail" align="center" onclick="myVisit();">
+										<div class="mypage-detail" align="center" onclick="myVisit2();">
 											<img src="<%=contextPath %>/resource/img/myPage/방문게시물.png">
 											<p class="mypage-right-p">
 												<strong>방문게시물</strong>
@@ -224,7 +224,9 @@ table, div {
 			</table>
 			<div id="test"></div>
 		</div>
+		<% if(loginMember != null){ %>
 		<input id="memNo" type="hidden" value="<%=loginMember.getMemNo() %>">
+		<% } %>
 		<br>
 		<br>
 		<br>
@@ -327,7 +329,7 @@ table, div {
         }
      	
      	// Q&A Ajax
-     	/*
+     	
         function myQna() {
             $.ajax({
             	url:"myQnaAjax.do",
@@ -340,10 +342,10 @@ table, div {
             	}
             })
         }
-     	*/
      	
+     	/*
      	function myQna(){
-     		//myQna1();
+     		myQna1();
      		myQna2();
      	}
      	function myQna1() {
@@ -373,6 +375,7 @@ table, div {
             	}
             })
         }
+        */
     </script>
 	<%@include file="../common/footer.jsp"%>
 </body>
