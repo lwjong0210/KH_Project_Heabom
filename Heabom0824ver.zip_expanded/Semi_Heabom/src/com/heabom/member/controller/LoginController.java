@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.member.model.service.MemberService;
+import com.heabom.member.model.vo.Member;
+
 /**
  * Servlet implementation class LoginController
  */
@@ -30,6 +33,7 @@ public class LoginController extends HttpServlet {
 		String memId = request.getParameter("memId");
 		String memPwd = request.getParameter("memPwd");
 		
+		Member m = new MemberService().loginMember(memId , memPwd);
 	}
 
 	/**

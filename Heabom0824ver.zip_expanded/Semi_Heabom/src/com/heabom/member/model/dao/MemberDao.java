@@ -84,6 +84,12 @@ public class MemberDao {
 		return result ; 
 		
 	}
+	
+	public Member loginMember() {
+		
+	}
+	
+	
 }
 
 
