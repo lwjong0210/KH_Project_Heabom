@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import static com.heabom.common.JDBCTemplate.*;
 import com.heabom.member.model.vo.Member;
 
 public class MemberDao {
@@ -24,7 +25,6 @@ public class MemberDao {
 		}
 	}
 	
-	/*
 	public ArrayList<Member> selectAdminList(Connection conn) {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
@@ -39,10 +39,23 @@ public class MemberDao {
 			
 			rset = pstmt.executeQuery();
 			
+			while(rset.next()) {
+				list.add(new Member(rset.getString("mem_id"),
+									rset.getString("mem_name"),
+									rset.getString("nickname"),
+									rset.getString("grade"),
+									rset.getInt("mem_point"),
+									rset.getDate("mem_visit"),
+									rset.getString("email")
+									));
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
 		}
-		
+		return list;
 	}
-	*/
 }
