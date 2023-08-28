@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         div, input {
-            /*border: 1px solid red;*/
+            border: 1px solid red;
             box-sizing: border-box;
         }
 
@@ -47,11 +48,10 @@
         .wrap {
             width: 1900px;
             height: 800px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
             margin-top: 30px;
-            overflow: auto;
 
             background-color: #FDEEEE;
         }
@@ -466,6 +466,7 @@
             })
         }
     </script>
+    
     <%@include file = "../common/footer.jsp" %>
 </body>
 </html>
