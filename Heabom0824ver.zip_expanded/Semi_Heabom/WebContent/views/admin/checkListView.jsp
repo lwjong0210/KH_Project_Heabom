@@ -353,10 +353,10 @@
                     <p id="p3"> 탈퇴 : </p>
                 </div>
                 <div id="header_3">
-                    <select id="search_date" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                        <option value="week" selected="selected">회원 아이디</option>
-                        <option value="month">이름</option>
-                        <option value="month3">별명</option>
+                    <select id="search_date" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="changeFn()">
+                        <option value="memberId" selected="selected">회원 아이디</option>
+                        <option value="memberName">이름</option>
+                        <option value="nickname">별명</option>
                         <option value="all">.</option>
                     </select>
                 </div>
@@ -388,7 +388,7 @@
                             <th width="160">최종 접속</th>
                             <th width="120">이메일</th>
                             <th width="120">차단</th>
-                            <th width="160">그룹</th>
+                            <th width="160">등급 변경</th>
                             <th width="160"><button type="button" style="width: 75px; height: 50px; font-size: 20px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                         </thead>
                         <tbody>
@@ -404,10 +404,12 @@
                             		<td><%= m.getEmail() %></td>
                             		<td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                 	<td>
-                                        <select id="search_date3" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                                            <option value="week" selected="selected">수정</option>
-                                            <option value="month">삭제</option>
-                                            <option value="month3">그룹</option>
+                                        <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="">
+                                            <option value="week" selected="selected">씨앗</option>
+                                            <option value="month1">잔디</option>
+                                            <option value="month2">새싹</option>
+                                            <option value="month3">벚꽃</option>
+                                            <option value="month4">무궁화</option>
                                         </select>
                                     </td>
                                 	<td>
@@ -464,5 +466,13 @@
             })
         }
     </script>
+
+    <script>
+        function changeFn() {
+            var search_date = document.getElementById("search_date");
+            var value = 
+        }        
+    </script>
+    <%@include file = "../common/footer.jsp" %>
 </body>
 </html>
