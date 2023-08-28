@@ -58,4 +58,11 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	
+	public int insertMember(Connection conn , Member m) {
+		int result =0; 
+		PreparedStatement pstmt = null ; 
+		String sql = prop.getProperty("")
+	}
 }

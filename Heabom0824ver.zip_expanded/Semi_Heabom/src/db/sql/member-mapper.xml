@@ -12,4 +12,8 @@
     ,	EMAIL
   FROM  TB_MEMBER
 </entry>
+
+<entry key="insertMember">
+	
+</entry>
 </properties>

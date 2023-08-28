@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.member.model.service.MemberService;
+import com.heabom.member.model.vo.Member;
+
 /**
  * Servlet implementation class MemberEnrollController
  */
@@ -32,8 +35,17 @@ public class MemberEnrollController extends HttpServlet {
 		String memName = request.getParameter("nickName");
 		String email = request.getParameter("email");
 		String mbti = request.getParameter("mbti");
-		String phone = request.getParameter("phone");
+		String memphone = request.getParameter("phone");
 		
+		Member m = new Member();
+		m.setMemId(memId);
+		m.setMemPwd(memPwd);
+		m.setMemName(memName);
+		m.setEmail(email);
+		m.setMbit(mbti);
+		m.setMemPhone(memphone);
+		
+		int result = new MemberService().insertMember(m);
 		
 	}
 
