@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.heabom.member.model.service.MemberService;
 import com.heabom.member.model.vo.Member;
@@ -49,7 +50,9 @@ public class MemberEnrollController extends HttpServlet {
 		
 		int result = new MemberService().insertMember(m);
 		if (result>0) {
-			System.out.println("성공");
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "회원가입성공");
+			response.sendRedirect(request.getContextPath());
 		}else {
 			System.out.println("실패");
 		}
