@@ -226,7 +226,7 @@
         #search_date3 {
             width: 50%;
 
-            font-size: 30px;
+            font-size: 20px;
 
             background-color: #8dc7ee;
             border-radius: 5px;
@@ -380,15 +380,15 @@
                             <th width="130">
                                 <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
                             </th>
-                            <th width="180">회원 아이디</th>
-                            <th width="120">이름</th>
-                            <th width="120">별명</th>
+                            <th width="130">회원 아이디</th>
+                            <th width="130">이름</th>
+                            <th width="130">별명</th>
                             <th width="120">등급</th>
                             <th width="120">포인트</th>
                             <th width="160">최종 접속</th>
                             <th width="120">이메일</th>
                             <th width="120">차단</th>
-                            <th width="100">그룹</th>
+                            <th width="160">그룹</th>
                             <th width="160"><button type="button" style="width: 75px; height: 50px; font-size: 20px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                         </thead>
                         <tbody>
@@ -403,13 +403,18 @@
                             		<td><%= m.getMemVisit() %></td>
                             		<td><%= m.getEmail() %></td>
                             		<td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                	<td>.</td>
+                                	<td>
+                                        <select id="search_date3" name="search_date" fw-filter="" fw-label="" fw-msg="">
+                                            <option value="week" selected="selected">수정</option>
+                                            <option value="month">삭제</option>
+                                            <option value="month3">그룹</option>
+                                        </select>
+                                    </td>
                                 	<td>
                                     <select id="search_date3" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                                        <option value="week" selected="selected">+</option>
-                                        <option value="month">.</option>
-                                        <option value="month3">.</option>
-                                        <option value="all">.</option>
+                                        <option value="week" selected="selected">수정</option>
+                                        <option value="month">삭제</option>
+                                        <option value="month3">그룹</option>
                                     </select>
                                 </td>
                             	</tr>
