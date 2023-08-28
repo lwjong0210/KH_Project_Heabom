@@ -12,7 +12,7 @@
             box-sizing: border-box;
             background-color: #f9f9f9;
             padding: 20px 0;
-            position: fixed;
+            /* position: fixed; */
             bottom: 0;
             width: 1900px;
             border-top: 1px solid #e5e5e5;
