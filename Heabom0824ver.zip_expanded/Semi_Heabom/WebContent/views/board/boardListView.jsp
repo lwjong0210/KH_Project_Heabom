@@ -1,5 +1,19 @@
+<%@page import="com.heabom.board.model.service.BoardService"%>
+<%@page import="com.heabom.board.model.vo.Board"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.heabom.common.model.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
+	
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,21 +31,24 @@
             height: auto;
             border: 1px solid black;
             margin: auto;
-            background-color: rgb(249, 238, 238);
+            background-color: white; 
         }
         div{
             box-sizing: border-box;
             /*border: 1px solid black;*/
         }
         .table-header>td button{
-            height: 100%;
+            height: 35px;
             width: 70px;
             font-size: 14px;
             line-height: 10px;
-            margin-left: 680px;
+            margin-left: 540px;
         }
         .table-header>td div{
             display: inline-block
+        }
+        .table-header>td div *{
+			width: auto;
         }
         .table-header a{
             color: #000;
@@ -49,6 +66,14 @@
         }
         tbody>tr:hover{
             cursor: pointer;
+        }
+        .post-notice-area{
+            background-color: rgb(249, 238, 238);
+        }
+        
+        .post-notice-title{
+            color:  #ff4e59;
+            font-weight: 600;
         }
 
         /* 페이지네이션 관련 */
@@ -75,7 +100,7 @@
     </style>
 </head> 
 <body>
-
+<%@ include file ="../common/header.jsp" %>
     <div class="outer">
         <br>
         <h2 align="center">자유게시판</h2>
@@ -86,111 +111,112 @@
                     <td colspan="5" style="border-bottom: 1px solid gray; border-top: 0px; text-align: left;">
                         <div style="width: 100%; height: 30px;">
                             <div style="height: 100%; width: 100px; font-size: 14px;">
-                                1,500개의 글
+                                총 <%= pi.getListCount() %>개의 글
                             </div>
                             <div style="font-size: 14px;"><a href="">최신순</a> |</div>
                             <div style="font-size: 14px;"><a href="">조회순</a></div>
                             <div>
-                                <button class="btn btn-secondary">글쓰기</button>
+                                <select name="display" class="listCountCtrl" onchange="a();">
+                                    <option value="10">10개씩보기</option>
+                                    <option value="15">15개씩보기</option>
+                                    <option value="20">20개씩보기</option>
+                                    <option value="25">25개씩보기</option>
+                                    <option value="30">30개씩보기</option>
+                                </select>
                             </div>
+                            <div>
+                                <button class="btn btn-secondary" onclick="location.href='<%=contextPath%>/enrollForm.bo'">글쓰기</button>
+                            </div>
+                            <script>
+                            console.log($(".listCountCtrl").val())
+                           		function a (){
+                           		
+									$.ajax({
+										url:"list.bo?cpage=1",
+										data:{
+											pageLimit:$(".listCountCtrl").val()
+										},
+										type:"post",
+										success:function(){
+											console.log("ajax 통신 성공!")
+									
+										},error:function(){
+											console.log("ajax 통신 실패!")
+										}
+										
+									})
+                           		}
+                            </script>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <th style="width: 10%;">글번호</th>
+                    <th style="width: 5%;">글번호</th>
                     <th style="width: 60%;">제목</th>
                     <th style="width: 10%;">작성자</th>
                     <th style="width: 10%;">조회수</th>
-                    <th style="width: 10%;">작성일</th>
+                    <th style="width: 15%;">작성일</th>
                 </tr>
                 
             </thead>
             <tbody>
-                <tr>        
-                    <td>
-                        <div class="post-notice">
-                            공지
-                        </div>
-                    </td>
-                    <td>게시물 작성 관련</td>
-                    <td>관리자</td>
-                    <td>2000</td>
-                    <td>2023.07.17</td>
-                </tr>
-                    <tr>        
-                        <td>20</td>
-                        <td>맛집추천이요</td>
-                        <td>USER01</td>
-                        <td>5</td>
-                        <td>2023.08.19</td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td>퇴근하고싶다.</td>
-                        <td>USER02</td>
-                        <td>40</td>
-                        <td>2023.08.11</td>
-                    </tr>
-                    <tr>        
-                        <td>18</td>
-                        <td>맛집추천이요</td>
-                        <td>USER01</td>
-                        <td>5</td>
-                        <td>2023.08.19</td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td>퇴근하고싶다.</td>
-                        <td>USER02</td>
-                        <td>40</td>
-                        <td>2023.08.11</td>
-                    </tr>
-                    <tr>        
-                        <td>16</td>
-                        <td>맛집추천이요</td>
-                        <td>USER01</td>
-                        <td>5</td>
-                        <td>2023.08.19</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>퇴근하고싶다.</td>
-                        <td>USER02</td>
-                        <td>40</td>
-                        <td>2023.08.11</td>
-                    </tr>
-                    <tr>        
-                        <td>14</td>
-                        <td>맛집추천이요</td>
-                        <td>USER01</td>
-                        <td>5</td>
-                        <td>2023.08.19</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>퇴근하고싶다.</td>
-                        <td>USER02</td>
-                        <td>40</td>
-                        <td>2023.08.11</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>퇴근하고싶다.</td>
-                        <td>USER02</td>
-                        <td>40</td>
-                        <td>2023.08.11</td>
-                    </tr>
+                <% if(list.isEmpty()){ %>
+	                <tr>
+						<td colspan="5">아직 게시글이 존재하지 않습니다.</td>
+	                </tr>
+                <% }else{ %>
+                
+                	<% for(Board b : list){ %>
+                		<% if(b.getBoardCategory().equals("N")){ %>
+                	<% System.out.println("하이룽" + pi.getBoardLimit()); %>
+					         <tr class="post-notice-area">        
+					             <td><div class="post-notice">공지</div></td>
+					             <td class="post-notice-title"><%= b.getBoardTitle() %>
+					             <% if(b.getCountReply() != 0){ %>
+					             	<b style="color: red"> [<%= b.getCountReply() %>]</b>
+					             <% }else{ %>
+					             <% } %>
+					             </td>
+                		<% }else{ %>
+			                <tr>        
+			                    <td><%= b.getBoardNo() %></td>
+			                    <td><%= b.getBoardTitle()%>
+								<% if( b.getCountReply() != 0){ %>
+					             	<b style="color: red"> [<%= b.getCountReply() %>]</b>
+					             <% }else{ %>
+					             <% } %>
+					             </td>
+
+                		
+                		<% } %>
+		                    <td><%= b.getWriter() %></td>
+		                    <td><%= b.getBoardCount() %></td>
+		                    <td><%= b.getCreateDate() %></td>
+		                </tr>
+	                <% } %>
+                
+	            <% } %>
 
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="5" style="border-top: 1px solid gray;">
                         <ul class="pagination justify-content-center" style="margin: 0;">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+	                        <% if(pi.getCurrentPage() != 1){ %>
+                            	<li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage -1 %>'">Previous</button></li>
+	                        <% } %>
+	                        <% for(int i = startPage; i <= endPage; i++ ){ %>
+		                        <% if(i == currentPage){ %>
+			                        <li class="page-item"><button class="page-link btn active" disabled><%= i %></button></li>
+		                        <% }else{ %>
+			                        <li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= i %>'"><%= i %></button></li>
+		                        
+                        		<% } %>
+                        	<% } %>
+	                        
+	                        <% if(currentPage != maxPage){ %>
+	                            <li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage +1 %>'">Next</button></li>
+	                      	<% } %>
                         </ul>
                     </td>
                 </tr>

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -85,62 +83,62 @@
 
         /* 글쓰기 폼 */
 
-        .write_post_area {
+        .write-post-area {
             width: auto;
             height: auto;
         }
 
-        #write_post_header {
+        #write-post-header {
             width: 100%;
             height: 50px;
         }
 
-        #write_post_header>div {
+        #write-post-header>div {
             float: left;
             height: 100%;
             text-align: center;
             padding-bottom: 10px;
         }
 
-        #write_post_header>div>* {
+        #write-post-header>div>* {
             height: 100%;
             width: 100%;
         }
 
-        #write_post_title_area {
+        #write-post-title-area {
             width: 70%;
             padding-right: 10px;
         }
 
-        #select_notice_area {
+        #select-notice-area {
             width: 30%;
         }
 
-        #write_poster_footer {
+        #write-poster-footer {
             height: 35px;
             width: 100%;
         }
 
-        #write_poster_footer>div {
+        #write-poster-footer>div {
             float: right;
         }
 
-        #writer_poster_submit {
+        #writer-poster-submit {
             height: 100%;
         }
 
-        #admin_private {
+        #admin-private {
             height: 100%;
             margin-right: 10px;
         }
 
-        #notice_check {
+        #notice-check {
             position: relative;
             top: 2px;
 
         }
 
-        #notice_check_text {
+        #notice-check-text {
             position: relative;
 
         }
@@ -160,42 +158,46 @@
             float: left;
         }
 
-        #input_tag {
+        #input-tag {
             height: auto;
             overflow: auto;
         }
 
-        #input_tag>span {
+        #input-tag>span {
             height: 100%;
             width: auto;
         }
 
-        #input_tag>span>* {
+        #input-tag>span>* {
             float: left;
             line-height: 22px;
         }
 
-        #input_tag>span>span {
+        #input-tag>span>span {
             font-size: 14px;
             height: 100%;
             margin-left: 5px;
         }
 
-        #input_tag>span>div input {
+        #input-tag>span>div input {
             height: 20px;
             border: 0px;
             width: 70px;
 
         }
 
-        #input_tag>span>div input:focus {
+        #input-tag>span>div input:focus {
             outline: none;
         }
 
-        .tag_input_area button {
+        .tag-input-area button {
             background-color: white;
             border: 0px;
 
+        }
+        .parent-span{
+        	padding-right: 10px;
+            border: 1px solid black;
         }
 
         /* 해시태그 관련 끝 */
@@ -205,7 +207,8 @@
 </head>
 
 <body>
-<%@include file = "../common/header.jsp" %>
+<%@ include file ="../common/header.jsp" %>
+
     <div class="wrap">
 
         <div id="demo" class="carousel slide" data-ride="carousel" style="padding: 20px 10px ;">
@@ -254,19 +257,18 @@
 
 
 
-        <div id="write-text"z style="padding: 10px;">
+        <div id="write-text" style="padding: 10px;">
             <div>
                 글쓰기
             </div>
         </div>
-        <div class="write_post_area" style="padding: 10px;">
-            <form action="https://naver.com" method="post">
-                <div id="write_post_header">
-                    <div id="write_post_title_area">
-                        <input type="text" id="write_post_title" placeholder="제목을 입력하세요." required>
+        <div class="write-post-area" style="padding: 10px;">
+                <div id="write-post-header">
+                    <div id="write-post-title-area">
+                        <input type="text" id="write-post-title" placeholder="제목을 입력하세요." required>
                     </div>
-                    <div id="select_notice_area">
-                        <select name="" id="select_notice">
+                    <div id="select-notice-area">
+                        <select name="" id="select-notice">
                             <option value="">자유게시판</option>
                             <option value="">공지사항</option>
                             <option value="">Q & A</option>
@@ -274,88 +276,99 @@
                         </select>
                     </div>
                 </div>
-                <textarea id="summernote" name="editordata"></textarea>
-                <div id="input_tag" style="margin-top: 10px;">
-                    <span class="parent_span">
+
+
+                <textarea name="" id="write-post" style="width: 100%; height: 500px; resize: none;"></textarea>
+
+
+                <div id="input-tag" style="margin-top: 10px;">
+                    <span class="parent-span">
                         <span>#</span>
-                        <div class="tag_input_area">
-                            <input class="tag_input" type="text" maxlength="50" placeholder="태그입력">
-                            <button type="button" class='delete_tag'>x</button>
+                        <div class="tag-input-area">
+                            <input class="tag-input" type="text" maxlength="50" placeholder="태그입력">
+                            <button type="button" class='delete-tag'>x</button>
                         </div>
                     </span>
                 </div>
-                <div id="write_poster_footer" style="margin-top: 10px;">
-                    <div id="writer_poster_submit">
-                        <input type="button" value="등록" onclick="$(this).attr('type','submit')">
+                <div id="write-poster-footer" style="margin-top: 10px;">
+                    <div id="writer-poster-submit">
+                        <input type="button" value="등록" onclick="postSubmit();">
                     </div>
-                    <div id="admin_private">
-                        <input type="checkbox" id="notice_check">
-                        <label for="notice_check" id="notice_check_text" style="font-size: 11px;">상단고정</label>
+                    <div id="admin-private">
+                        <input type="checkbox" id="notice-check">
+                        <label for="notice-check" id="notice-check-text" style="font-size: 11px;">상단고정</label>
                     </div>
                 </div>
-            </form>
         </div>
         <script>
             /* 해시태그 스크립트 */
             $(function () { 
             
-                $(document).on('keydown', '.tag_input', function () {
+                $(document).on('keydown', '.tag-input', function () {
                     $(this).css('width', 20);
                     let value = $(this).val();
-                    $('.tag_input_area').append('<div class="virtual">' + value + '</div>')
+                    $('.tag-input-area').append('<div class="virtual">' + value + '</div>')
     
                     let inputWidth = $(this).siblings('.virtual').width()
-                    $(this).css('width', inputWidth + 15);
+                    $(this).css('width', inputWidth + 20);
                     $('.virtual').remove();
     
                 })
-                $(document).on('click', '.delete_tag', function () {
-                    let tagLength = $('.tag_input').length;
-                    let ti = $('.tag_input').get()  
+                $(document).on('click', '.delete-tag', function () {
+                    let tagLength = $('.tag-input').length;
+                    let ti = $('.tag-input').get()  
                     console.log($(this).prev().val())
                     console.log(ti[tagLength-1].value)
                     console.log($("button").index(this))
                     console.log(tagLength-1)
-                    if(($(".delete_tag").index(this)==tagLength-1) && (ti[tagLength-1]).value==''){    // 지금누른 버튼이 마지막 인덱스의 버튼일떄
+                    if(($(".delete-tag").index(this)==tagLength-1) && (ti[tagLength-1]).value==''){    // 지금누른 버튼이 마지막 인덱스의 버튼일떄
                         $(this).prev().val('');
                     }else{
                         $(this).parent().parent().remove();
                     }
                 })
                 
-                $(document).on('change', '.tag_input', function () {
+                $(document).on('change', '.tag-input', function () {
                         
-                        let tagLength = $('.tag_input').length;
-                        let ti = $('.tag_input').get()  
+                        let tagLength = $('.tag-input').length;
+                        let ti = $('.tag-input').get()  
                         if(ti[tagLength-1].value != ''){
-                            $(document).on('click', '.delete_tag', function () {
+                            $(document).on('click', '.delete-tag', function () {
                                 return;
                             })
     
-                            $('#input_tag').append("<span class='parent_span'><span>#</span><div class='tag_input_area'><input class='tag_input' type='text' maxlength='50' placeholder='태그입력'><button type='button' class='delete_tag'>x</button></div></span>");
-                            $('.tag_input')[tagLength].focus();
+                            $('#input-tag').append("<span class='parent-span'><span>#</span><div class='tag-input-area'><input class='tag-input' type='text' maxlength='50' placeholder='태그입력'><button type='button' class='delete-tag'>x</button></div></span>");
+                            $('.tag-input')[tagLength].focus();
                         }
                 })
                 
+                
             })
+            function postSubmit(){
+            	
+            	let hashtag = $(".parent-span input");
+            	let hashlist = [];
+            	for(i = 0 ; i < hashtag.length-1; i++){
+            		
+            		console.log(hashtag[i].value)
+					hashlist.push(hashtag[i].value)
+					console.log(hashlist)
+            	}
+            		
+    //        	$.ajax({
+      //      		url:"insert.bo",
+        //    		data:{boardTitle:$("#write-post-title").val(),
+            //			  boardCategory:$("#select-notice").val(),
+          //  			  boardContent:$("$write-post").val(),
+            			  
+            			
+            	//		  }
+           // 	})
+            }
+            
         </script>
-
-
-        <script>
-            /* 글쓰기 폼 스크립트 */
-            $(function () {
-
-                $('#summernote').summernote({
-                    minHeight: '500px',
-                    placeholder: '내용을 입력하세요.',
-                    tabsize: 2,
-                });
-            })
-        </script>
-
 
     </div>
 
 </body>
-
 </html>
