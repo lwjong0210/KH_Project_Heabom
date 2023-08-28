@@ -57,6 +57,7 @@
                 <td colspan="3" height="40"><label for=""><strong>COPYRIGHT © 2023 HeaBom ALL RIGHT RESERVED</strong></label></td>
             </tr>
         </table>
-    </div>    
+    </div>
+    <%@include file = "sidebar.jsp" %>    
 </body>
 </html>
