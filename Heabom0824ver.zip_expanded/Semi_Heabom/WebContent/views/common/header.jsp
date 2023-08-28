@@ -109,7 +109,7 @@
               
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h4 class="modal-title">헤딩</h4>
+                      <h4 class="modal-title">로그인</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
               
@@ -117,21 +117,19 @@
                     <div class="modal-body">
                         <form action="/action_page.php">
                             <div class="form-group">
-                              <label for="email">Email address:</label>
-                              <input type="email" class="form-control" placeholder="Enter email" id="email">
+                             
+                              <input type="text" class="form-control" placeholder="아이디" name = "memId">
                             </div>
                             <div class="form-group">
                               <label for="pwd">Password:</label>
-                              <input type="password" class="form-control" placeholder="Enter password" id="pwd">
-                            </div>
-                            <div class="form-group form-check">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox"> Remember me
-                              </label>
+                              <input type="password" class="form-control" placeholder="Enter password" name="memPwd">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </form>
+                        
                     </div>
+                    <br>
+                    <button type="button" class="btn btn-primary" onclick="enroll();">회원가입하기</button>
               
                     <!-- Modal footer -->
                     <div class="modal-footer">
@@ -144,5 +142,15 @@
         </div>
 
     </header>
+
+        <script>
+            function enroll(){
+                location.href =  "<%=contextPath%>/enrollForm.me";
+            }
+
+        </script>
 </body>
+
+
+
 </html>
