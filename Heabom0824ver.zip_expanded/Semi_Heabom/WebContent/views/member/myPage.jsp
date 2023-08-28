@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,6 +224,7 @@ table, div {
 			</table>
 			<div id="test"></div>
 		</div>
+		<input id="memNo" type="hidden" value="<%=loginMember.getMemNo() %>">
 		<br>
 		<br>
 		<br>
@@ -348,8 +350,9 @@ table, div {
      		$.ajax({
      			url:"myQnaDetailAjax.do",
      			data:{
-     				
+     				memNo:$("#memNo").val()
      			},
+     			type:"post",
      			success:function(result){
      				
      			},
