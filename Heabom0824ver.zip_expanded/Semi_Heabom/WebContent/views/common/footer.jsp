@@ -58,6 +58,6 @@
             </tr>
         </table>
     </div>
-    <!-- <%@include file = "sidebar.jsp" %>     -->
+    <%@include file = "sidebar.jsp" %>    
 </body>
 </html>
