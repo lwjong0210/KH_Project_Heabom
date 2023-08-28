@@ -185,8 +185,9 @@
                     </div>
                   
                     <div id ="div2-2">
-                        <form id = "enroll-form" action="<%=contextPath%>/insert.me" method="post" enctype="multipart/form-data">
+                        <form id = "enroll-form" action="<%=contextPath%>/insert.me" method="post"  enctype="multipart/form-data">
             
+           <!-- enctype="multipart/form-data" -->  
                             <table border="1">
                                 <tr>
                                     
