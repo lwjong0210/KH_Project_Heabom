@@ -12,7 +12,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="wWidth=device-width, initial-scale=1.0">
+    
     <title>Document</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
     li,a {
@@ -72,13 +91,66 @@
                 <li><a href="#">검색</a></li>
                 <li><a href="<%= contextPath %>/myPage.me">마이페이지</a></li>
                 <li><a href="<%= contextPath %>/check.ad">관리자페이지</a></li>
-                <li><a href="#">자유게시판</a></li>
+                <li><a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a></li>
                 <li><a href="#">고객센터</a></li>
                 <li><a href="<%= contextPath %>/list.pl">장소</a></li>
                 <li><a href="#">Q&A</a></li>
-            
             </ul>
         </nav>
+        <div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                로그인하기
+              </button>
+              
+              <!-- The Modal -->
+              <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">로그인</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="/action_page.php">
+                            <div class="form-group">
+                             
+                              <input type="text" class="form-control" placeholder="아이디" name = "memId">
+                            </div>
+                            <div class="form-group">
+                              <label for="pwd">Password:</label>
+                              <input type="password" class="form-control" placeholder="Enter password" name="memPwd">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                        
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-primary" onclick="enroll();">회원가입하기</button>
+              
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+        </div>
+
     </header>
+
+        <script>
+            function enroll(){
+                location.href =  "<%=contextPath%>/enrollForm.me";
+            }
+
+        </script>
 </body>
+
+
+
 </html>

@@ -1,20 +1,19 @@
 package com.heabom.board.model.vo;
 
-import java.sql.Date;
-
 public class Board {
+
 	private String boardNo;
 	private String boardTitle;
 	private String writer;
 	private String boardContent;
 	private int boardCount;
-	private Date createDate;
+	private String createDate;
 	private String boardStatus;
 	private String boardCategory;
 	
-	public Board () {}
+	public Board() {}
 
-	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount, Date createDate,
+	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount, String createDate,
 			String boardStatus, String boardCategory) {
 		super();
 		this.boardNo = boardNo;
@@ -25,6 +24,28 @@ public class Board {
 		this.createDate = createDate;
 		this.boardStatus = boardStatus;
 		this.boardCategory = boardCategory;
+	}
+	
+	public Board(String boardNo, String boardTitle, String writer, int boardCount, String createDate,
+			String boardCategory, int countReply) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.writer = writer;
+		this.boardCount = boardCount;
+		this.createDate = createDate;
+		this.boardCategory = boardCategory;
+		this.countReply = countReply;
+	}
+	
+	private int countReply;
+
+	public int getCountReply() {
+		return countReply;
+	}
+
+	public void setCountReply(int countReply) {
+		this.countReply = countReply;
 	}
 
 	public String getBoardNo() {
@@ -67,11 +88,11 @@ public class Board {
 		this.boardCount = boardCount;
 	}
 
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
@@ -96,7 +117,7 @@ public class Board {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", writer=" + writer + ", boardContent="
 				+ boardContent + ", boardCount=" + boardCount + ", createDate=" + createDate + ", boardStatus="
 				+ boardStatus + ", boardCategory=" + boardCategory + "]";
-	}
+	};
 	
 	
 }
