@@ -23,6 +23,15 @@ public class Question {
 		this.questionWriter = questionWriter;
 	}
 
+	
+	
+	public Question(int questionNo, String questionComment, Date questionDate) {
+		super();
+		this.questionNo = questionNo;
+		this.questionComment = questionComment;
+		this.questionDate = questionDate;
+	}
+
 	public int getQuestionNo() {
 		return questionNo;
 	}

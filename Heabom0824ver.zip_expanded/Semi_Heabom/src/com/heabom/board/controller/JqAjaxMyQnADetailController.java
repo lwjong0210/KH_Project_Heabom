@@ -1,6 +1,8 @@
 package com.heabom.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.heabom.board.model.dao.AnswerDao;
+import com.heabom.board.model.service.AnswerService;
+import com.heabom.board.model.service.QuestionService;
 import com.heabom.board.model.vo.Answer;
 import com.heabom.board.model.vo.Question;
 
@@ -31,9 +35,16 @@ public class JqAjaxMyQnADetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memNo = request.getParameter("memNo");
+//		System.out.println(memNo);
+		ArrayList<Answer> anArr = new AnswerService().selectAnswer(memNo);
+		ArrayList<Question> quArr = new QuestionService().selectQuestion(memNo);
+//		for(Question q:quArr) {
+//			System.out.println(q);
+//		}
+		request.setAttribute("anArr", anArr);
+		request.setAttribute("quArr", quArr);
 		
-		Answer an = new AnswerService().selectAnswer(memNo);
-		Question qu = new QuestionService().selectQuestion(memNo);
+		request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
 	
 	}
 

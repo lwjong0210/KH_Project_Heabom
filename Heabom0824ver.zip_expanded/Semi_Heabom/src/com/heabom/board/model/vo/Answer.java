@@ -10,6 +10,7 @@ public class Answer {
 	private String answerContent;
 	private Date answerDate;
 	private String status;
+	private String nickname;
 	
 	public Answer() {}
 
@@ -23,6 +24,26 @@ public class Answer {
 		this.answerContent = answerContent;
 		this.answerDate = answerDate;
 		this.status = status;
+	}
+	
+	
+
+	public Answer(int questionNo, String answerWriter, String answerOrNot, String answerContent, Date answerDate, String nickname) {
+		super();
+		this.questionNo = questionNo;
+		this.answerWriter = answerWriter;
+		this.answerOrNot = answerOrNot;
+		this.answerContent = answerContent;
+		this.answerDate = answerDate;
+		this.nickname = nickname;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public int getAnswerNo() {
