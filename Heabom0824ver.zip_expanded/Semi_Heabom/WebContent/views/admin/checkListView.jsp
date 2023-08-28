@@ -1,5 +1,10 @@
+<%@page import="com.heabom.member.model.vo.Member"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,6 +177,8 @@
         th, td {
             padding-top: 10px;
             padding-bottom: 10px;
+
+            font-size: 20px;
         }
 
         /*---------------------------- 아코디언 ----------------------------------*/
@@ -348,8 +355,8 @@
                 <div id="header_3">
                     <select id="search_date" name="search_date" fw-filter="" fw-label="" fw-msg="">
                         <option value="week" selected="selected">회원 아이디</option>
-                        <option value="month">.</option>
-                        <option value="month3">.</option>
+                        <option value="month">이름</option>
+                        <option value="month3">별명</option>
                         <option value="all">.</option>
                     </select>
                 </div>
@@ -371,12 +378,12 @@
                     <table border="1">
                         <thead>
                             <th width="130">
-                                <input type="checkbox" style="width:30px;height:30px;border:none;">
+                                <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
                             </th>
                             <th width="180">회원 아이디</th>
                             <th width="120">이름</th>
                             <th width="120">별명</th>
-                            <th width="120">권한</th>
+                            <th width="120">등급</th>
                             <th width="120">포인트</th>
                             <th width="160">최종 접속</th>
                             <th width="120">이메일</th>
@@ -385,25 +392,19 @@
                             <th width="160"><button type="button" style="width: 75px; height: 50px; font-size: 20px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                <td>admin</td>
-                                <td>ddd</td>
-                                <td>sss</td>
-                                <td>
-                                    <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                                        <option value="week" selected="selected">1</option>
-                                        <option value="month">.</option>
-                                        <option value="month3">.</option>
-                                        <option value="all">.</option>
-                                    </select>
-                                </td>
-                                <td>400</td>
-                                <td>23.08.11</td>
-                                <td>@</td>
-                                <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                <td>.</td>
-                                <td>
+                            <% for(Member m : list) { %>
+                            	<tr>
+                            		<td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
+                            		<td><%= m.getMemId() %></td>
+                            		<td><%= m.getMemName() %></td>
+                            		<td><%= m.getNickname() %></td>
+                            		<td><%= m.getGrade() %></td>
+                            		<td><%= m.getMemPoint() %></td>
+                            		<td><%= m.getMemVisit() %></td>
+                            		<td><%= m.getEmail() %></td>
+                            		<td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
+                                	<td>.</td>
+                                	<td>
                                     <select id="search_date3" name="search_date" fw-filter="" fw-label="" fw-msg="">
                                         <option value="week" selected="selected">+</option>
                                         <option value="month">.</option>
@@ -411,7 +412,8 @@
                                         <option value="all">.</option>
                                     </select>
                                 </td>
-                             </tr>
+                            	</tr>
+                            	<% } %>
                         </tbody>
                     </table>
                 </div>
@@ -448,6 +450,14 @@
             <div id="footer"></div>
         </div>
     </div>
-    <%@include file = "../common/footer.jsp" %>
+    <script>
+        function selectAll(selectAll) {
+            const check = document.getElementsByName('check');
+
+            check.forEach((check) => {
+                check.checked = selectAll.checked;
+            })
+        }
+    </script>
 </body>
 </html>

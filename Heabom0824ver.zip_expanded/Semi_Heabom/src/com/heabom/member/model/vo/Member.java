@@ -39,6 +39,20 @@ public class Member {
 		this.memBirthday = memBirthday;
 		this.memPoint = memPoint;
 	}
+	
+
+	public Member(String memId, String memName, String nickname, String grade, int memPoint, Date memVisit, String email) {
+		super();
+		this.memId = memId;
+		this.memName = memName;
+		this.nickname = nickname;
+		this.grade = grade;
+		this.memPoint = memPoint;
+		this.memVisit = memVisit;
+		this.email = email;
+	}
+	
+	
 
 	public String getMemNo() {
 		return memNo;

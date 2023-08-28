@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+<entry key="selectAdminList">
+	SELECT
+        MEM_ID
+    ,   MEM_NAME
+    ,   NICKNAME
+    ,	GRADE
+    ,   MEM_POINT
+    ,	MEM_VISIT
+    ,	EMAIL
+  FROM  TB_MEMBER
+</entry>
 </properties>
