@@ -143,6 +143,7 @@
         <%}else{%>
             <h3><%=loginMember.getNickname()%>님</h3>
             <br>
+            <button  class="btn btn-danger" onclick="location.href = '<%=contextPath%>/logout.me'">로그아웃</button>
             
         
         <%}%>
