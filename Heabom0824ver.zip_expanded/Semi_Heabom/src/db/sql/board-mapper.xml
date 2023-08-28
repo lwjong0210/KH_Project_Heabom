@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+	
+	<entry key='selectListCount'>
+		SELECT 
+		 COUNT(*) "count"
+		  FROM TB_BOARD
+		 WHERE ((BOARD_CATEGORY = 'F')
+		   OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+		   AND BOARD_STATUS = 'Y'
+	</entry>
+	<entry key='selectList'>
+SELECT * 
+  FROM(
+        SELECT 
+        ROWNUM RNUM
+        , A.*
+        FROM(SELECT 
+             BOARD_NO
+             , BOARD_CATEGORY
+             , BOARD_TITLE
+             , MEM_ID
+             , BOARD_COUNT
+             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MM') "CREATE_DATE"
+             , COUNT(REPLY_NO) "COUNT"
+             FROM TB_BOARD
+             JOIN TB_MEMBER ON(WRITER = MEM_NO)
+             LEFT JOIN TB_REPLY USING(BOARD_NO)
+             WHERE ((BOARD_CATEGORY = 'F')
+                OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+               AND BOARD_STATUS = 'Y'
+             GROUP BY BOARD_NO, BOARD_CATEGORY, BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
+             ORDER BY BOARD_CATEGORY DESC, CREATE_DATE DESC
+             ) A
+             )
+             WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key='countReply'>
+		SELECT COUNT(*) "count"
+		  FROM TB_REPLY
+		 WHERE BOARD_NO = ?
+		   AND REPLY_STATUS = 'Y'
+	</entry>
+	
+	
 </properties>
