@@ -15,8 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         div, input {
-            border: 1px solid red;
-            box-sizing: border-box;
+            /* border: 1px solid red;
+            box-sizing: border-box; */
         }
 
         p {
@@ -54,12 +54,15 @@
             margin-top: 30px;
 
             background-color: #FDEEEE;
+
+            padding-top: 1%;
+            padding-bottom: 1%;
         }
 
         .background {
             box-sizing: border-box;
             width: 70%;
-            height: 900px;
+            height: 1000px;
             margin: auto;
             margin-top: 4%;
             margin-bottom: 4%;
@@ -72,15 +75,15 @@
         }
 
         #header {
-            height: 15%;
+            height: 12%;
         }
 
         #content1 {
-            height: 65%;
+            height: 70%;
         }
 
         #content2 {
-            height: 10%;
+            height: 8%;
         }
 
         #footer {
@@ -174,7 +177,14 @@
             
         }
 
-        th, td {
+        th {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            font-size: 17px;
+        }
+
+        td {
             padding-top: 10px;
             padding-bottom: 10px;
 
@@ -193,10 +203,10 @@
             position: absolute;
             margin: auto;
 
-            width: 50%;
+            width: 40%;
             height: 30%;
 
-            top: 70px;
+            top: 50px;
             bottom: 0px;
             left: 170px;
             right: 0px;
@@ -216,6 +226,7 @@
             background-color: white;
             border-width: 3px;
             border-radius: 5px;
+
             border-color: lightgray;
         }
 
@@ -224,14 +235,12 @@
         }
 
         #search_date3 {
-            width: 50%;
 
-            font-size: 20px;
-
-            background-color: #8dc7ee;
+            background-color: white;
+            border-width: 3px;
             border-radius: 5px;
-            border: none;
-            color: black;
+
+            border-color: lightgray;
 
         }
 
@@ -251,14 +260,14 @@
             width: 90%;
             height: 30%;
 
-            font-size: 20px;
+            font-size: 15px;
         }
 
         #search_form {
 
             margin: auto;
             position: absolute;
-            top: 70px;
+            top: 50px;
             bottom: 0px;
             left: 200;
             right: 0px;
@@ -388,7 +397,7 @@
                             <th width="120">이메일</th>
                             <th width="120">차단</th>
                             <th width="160">등급 변경</th>
-                            <th width="160"><button type="button" style="width: 75px; height: 50px; font-size: 20px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
+                            <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                         </thead>
                         <tbody class="listInner">
                             <% for(Member m : list) { %>
@@ -465,7 +474,6 @@
             })
         }
     </script>
-    
     <%@include file = "../common/footer.jsp" %>
 </body>
 </html>
