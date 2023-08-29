@@ -42,7 +42,6 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("alertMsg", "어서오십시오");
 			response.sendRedirect(request.getContextPath());
 		}else {
-			
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "회원정보가 없습니다");
 			response.sendRedirect(request.getContextPath());
