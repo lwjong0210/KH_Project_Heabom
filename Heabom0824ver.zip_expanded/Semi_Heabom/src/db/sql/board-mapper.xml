@@ -10,6 +10,15 @@
 		   OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
 		   AND BOARD_STATUS = 'Y'
 	</entry>
+	<entry key='selectKeyWordCount'>
+	SELECT 
+	 COUNT(*) "COUNT"
+	  FROM TB_BOARD
+	 WHERE ((BOARD_CATEGORY = 'F')
+	    OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+	   AND BOARD_STATUS = 'Y'
+	   AND BOARD_TITLE LIKE ?
+	</entry>
 	<entry key='selectList'>
 SELECT * 
   FROM(
@@ -22,7 +31,7 @@ SELECT *
              , BOARD_TITLE
              , MEM_ID
              , BOARD_COUNT
-             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MM') "CREATE_DATE"
+             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
              , COUNT(REPLY_NO) "COUNT"
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
@@ -31,8 +40,35 @@ SELECT *
                 OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
              GROUP BY BOARD_NO, BOARD_CATEGORY, BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
-             ORDER BY BOARD_CATEGORY DESC, CREATE_DATE DESC
+             ORDER BY BOARD_CATEGORY DESC, CREATE_DATE DESC, BOARD_NO DESC
              ) A
+             )
+             WHERE RNUM BETWEEN ? AND ?
+	</entry>
+		<entry key='selectKeyWord'>
+SELECT * 
+  FROM(
+        SELECT 
+        ROWNUM RNUM
+        , A.*
+        FROM(SELECT 
+             BOARD_NO
+             , BOARD_CATEGORY
+             , BOARD_TITLE
+             , MEM_ID
+             , BOARD_COUNT
+             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
+             , COUNT(REPLY_NO) "COUNT"
+             FROM TB_BOARD
+             JOIN TB_MEMBER ON(WRITER = MEM_NO)
+             LEFT JOIN TB_REPLY USING(BOARD_NO)
+             WHERE ((BOARD_CATEGORY = 'F')
+                OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+               AND BOARD_STATUS = 'Y'
+             GROUP BY BOARD_NO, BOARD_CATEGORY, BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
+             ORDER BY BOARD_CATEGORY DESC, CREATE_DATE DESC, BOARD_NO DESC
+             ) A
+             WHERE BOARD_TITLE LIKE ?
              )
              WHERE RNUM BETWEEN ? AND ?
 	</entry>
@@ -43,35 +79,63 @@ SELECT *
 		 WHERE BOARD_NO = ?
 		   AND REPLY_STATUS = 'Y'
 	</entry>
+
+	<entry key='insertBoard'>
+		INSERT
+  		  INTO TB_BOARD
+               (
+                 BOARD_NO
+               , BOARD_TITLE
+               , WRITER
+               , BOARD_CONTENT
+               , BOARD_CATEGORY
+               , BOARD_UP
+              
+               )
+               VALUES
+               (
+                 'F'||SEQ_BNO.NEXTVAL
+               , ?
+               , ?
+               , ?
+               , ?
+               , ?
+               )
+	</entry>
+		<entry key="insertAttachment">
+		INSERT
+		INTO TB_FILE
+		(
+		FILE_NO
+		, ORIGIN_NAME
+		, CHANGE_NAME
+		, FILE_PATH
+		, UPLOAD_DATE
+		, REF_NO
+		)
+		VALUES
+		(
+		SEQ_FILE.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, SYSDATE
+		, SEQ_BNO.CURRVAL
+		)
+	</entry>
+	<entry key='insertHash'>
+		INSERT
+	  	  INTO TB_HASHTAG 
+	           (
+	             PLACE_NO
+	           , HASHTAG_NAME
+	           )
+	           VALUES
+	           (
+	             ?
+	           , ?
+	           )
+	</entry>
 	
-<entry key="selectAnswer">
-	SELECT 
-	    ANSWER_WRITER
-	  , QUESTION_NO
-	  , ANSWER_OR_NOT
-	  , ANSWER_CONTENT
-	  , ANSWER_DATE
-	  , NICKNAME
-	FROM TB_ANSWER A
-	JOIN TB_QUESTION Q USING (QUESTION_NO)
-	JOIN TB_MEMBER M ON (QUESTION_WRITER = MEM_NO)
-	WHERE QUESTION_WRITER = ?
-	AND A.STATUS ='Y'
-</entry>
-
-<entry key="selectQuestion">
-	SELECT
-	       QUESTION_NO
-	     , QUESTION_COMMENT
-	     , QUESTION_DATE
-	FROM TB_QUESTION
-	WHERE QUESTION_WRITER = ?
-	AND STATUS = 'Y'
-	ORDER
-	   BY QUESTION_DATE DESC
-</entry>
-
-
-
 	
 </properties>

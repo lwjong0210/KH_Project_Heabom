@@ -10,11 +10,12 @@ public class Board {
 	private String createDate;
 	private String boardStatus;
 	private String boardCategory;
+	private String boardup;
 	
 	public Board() {}
-
-	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount, String createDate,
-			String boardStatus, String boardCategory) {
+	
+	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount,
+			String createDate, String boardStatus, String boardCategory, String boardup, int countReply) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -24,8 +25,11 @@ public class Board {
 		this.createDate = createDate;
 		this.boardStatus = boardStatus;
 		this.boardCategory = boardCategory;
+		this.boardup = boardup;
+		this.countReply = countReply;
 	}
-	
+
+
 	public Board(String boardNo, String boardTitle, String writer, int boardCount, String createDate,
 			String boardCategory, int countReply) {
 		super();
@@ -112,12 +116,20 @@ public class Board {
 		this.boardCategory = boardCategory;
 	}
 
+	public String getBoardup() {
+		return boardup;
+	}
+
+	public void setBoardup(String boardup) {
+		this.boardup = boardup;
+	}
+
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", writer=" + writer + ", boardContent="
 				+ boardContent + ", boardCount=" + boardCount + ", createDate=" + createDate + ", boardStatus="
-				+ boardStatus + ", boardCategory=" + boardCategory + "]";
-	};
-	
-	
+				+ boardStatus + ", boardCategory=" + boardCategory + ", boardup=" + boardup + ", countReply="
+				+ countReply + "]";
+	}
+
 }

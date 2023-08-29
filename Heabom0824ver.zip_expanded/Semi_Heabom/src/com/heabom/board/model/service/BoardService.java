@@ -1,12 +1,17 @@
 package com.heabom.board.model.service;
 
-import static com.heabom.common.JDBCTemplate.*;
+import static com.heabom.common.JDBCTemplate.close;
+import static com.heabom.common.JDBCTemplate.commit;
+import static com.heabom.common.JDBCTemplate.getConnection;
+import static com.heabom.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.heabom.board.model.dao.BoardDao;
 import com.heabom.board.model.vo.Board;
+import com.heabom.common.model.vo.File;
+import com.heabom.common.model.vo.HashTag;
 import com.heabom.common.model.vo.PageInfo;
 
 public class BoardService {
@@ -20,14 +25,31 @@ public class BoardService {
 		close(conn);
 		return listCount;
 	}
+	public int selectKeyWordCount(String keyWord) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new BoardDao().selectKeyWordCount(conn, keyWord);
+		close(conn);
+		return listCount;
+	}
 	
 	public ArrayList<Board> selectList(PageInfo pi){
 		
-		System.out.println("여기까지오나");
 		System.out.println(pi.getBoardLimit());
 		Connection conn = getConnection();
 		
 		ArrayList<Board> list = new BoardDao().selectList(conn, pi);
+		
+		close(conn);
+		return list;
+	}
+	public ArrayList<Board> selectList(PageInfo pi,String keyWord){
+		
+		System.out.println(pi.getBoardLimit());
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectList(conn, pi, keyWord);
 		
 		close(conn);
 		return list;
@@ -41,4 +63,51 @@ public class BoardService {
 //		return countReply;
 //		
 //	}
+	
+	public int insertBoard(Board b) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertBoard(conn, b);
+	
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	public int insertBoard(Board b, ArrayList<File> list) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().insertBoard(conn, b);
+		int result2 = new BoardDao().insertAttachment(conn, list);
+		
+		if(result1 > 0 && result2>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result1 * result2;
+	}
+	
+	public int insertHash(HashTag ht) {
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertHash(conn, ht);
+		
+		if(result >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	}
+	
 }
