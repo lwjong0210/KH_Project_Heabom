@@ -25,7 +25,6 @@
         height: 2.5rem;
         cursor: pointer;
     }
-<<<<<<< HEAD
     .login_btn{
         position: fixed;
         /* position: absolute; */
@@ -34,12 +33,9 @@
         width: 2.5rem;
         height: 2.5rem;
         /* top: auto;
-        left: 1850px; */
+        left: 1850px; */ 
 
     }
-=======
-    
->>>>>>> 99e1512bdae2c4f272249c1550823d6bb3ec918e
     .loginBtn>svg, .moveTopBtn>svg {
         width: 40px;
         height: 40px;
