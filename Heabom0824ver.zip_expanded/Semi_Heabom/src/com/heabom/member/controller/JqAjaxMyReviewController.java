@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.member.model.service.ReviewReplyService;
+import com.heabom.member.model.vo.ReviewReply;
+
 /**
  * Servlet implementation class JqAjaxMyReviewController
  */
@@ -26,6 +29,10 @@ public class JqAjaxMyReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String memNo = request.getParameter("memNo");
+		
+		ReviewReply re = new ReviewReplyService().selectReviewReply(memNo);
+		
 		request.getRequestDispatcher("views/member/myReview.jsp").forward(request, response);
 	}
 
