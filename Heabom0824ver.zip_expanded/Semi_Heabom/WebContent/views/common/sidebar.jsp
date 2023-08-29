@@ -26,7 +26,7 @@
         cursor: pointer;
     }
     .login_btn{
-        /* position: fixed; */
+        position: fixed;
         /* position: absolute; */
         bottom: 3.7rem;
         right: 1rem;
