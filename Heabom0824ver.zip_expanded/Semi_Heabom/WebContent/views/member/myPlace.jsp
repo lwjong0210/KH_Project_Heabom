@@ -48,8 +48,12 @@
         font-size: larger;
     }
 
-    .detail_tb div, .detail_tb img{
+    .detail_tb div {
         cursor: pointer;
+    }
+    .detail_tb img:hover{
+        cursor: pointer;
+        opacity: 0.7;
     }
 
     .text_limit a {

@@ -136,10 +136,10 @@ table, div {
 									<td height="20" style="font-size: large;"><strong>반가워요!</strong></td>
 								</tr>
 								<tr>
-									<td height="65" style="font-size: xx-large;"><strong>홍*동님</strong></td>
+									<td height="65" style="font-size: xx-large;"><strong><%=loginMember.getMemName() %>님</strong></td>
 								</tr>
 								<tr>
-									<td height="50" style="font-size: medium;"><strong>새싹등급</strong><img
+									<td height="50" style="font-size: medium;"><strong><%=loginMember.getGrade() %> 등급</strong><img
 										src="" alt=""></td>
 								</tr>
 								<tr>
