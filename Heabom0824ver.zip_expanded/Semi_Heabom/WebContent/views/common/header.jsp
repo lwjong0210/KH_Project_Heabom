@@ -127,11 +127,11 @@
                         <form action="<%=contextPath%>/login.me">
                             <div class="form-group">
                              
-                              <input type="text" class="form-control" placeholder="아이디" name = "memId">
+                              <input type="text" class="form-control" placeholder="아이디" name = "memId" value="admin">
                             </div>
                             <div class="form-group">
                               <label for="pwd">Password:</label>
-                              <input type="password" class="form-control" placeholder="Enter password" name="memPwd">
+                              <input type="password" class="form-control" placeholder="Enter password" name="memPwd" value="admin">
                             </div>
                             <button type="submit" class="btn btn-primary">로그인</button>
                           </form>

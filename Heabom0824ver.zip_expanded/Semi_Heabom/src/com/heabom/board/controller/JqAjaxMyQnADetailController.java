@@ -2,6 +2,7 @@ package com.heabom.board.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.heabom.board.model.dao.AnswerDao;
 import com.heabom.board.model.service.AnswerService;
 import com.heabom.board.model.service.QuestionService;
@@ -35,16 +37,26 @@ public class JqAjaxMyQnADetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memNo = request.getParameter("memNo");
+		System.out.println("dlrjxksk");
 //		System.out.println(memNo);
 		ArrayList<Answer> anArr = new AnswerService().selectAnswer(memNo);
 		ArrayList<Question> quArr = new QuestionService().selectQuestion(memNo);
-//		for(Question q:quArr) {
-//			System.out.println(q);
-//		}
+		for(Question q:quArr) {
+			System.out.println(q);
+			System.out.println("여기는 컨트롤러");
+		}
 		request.setAttribute("anArr", anArr);
 		request.setAttribute("quArr", quArr);
 		
-		request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
+		ArrayList list = new ArrayList();
+		list.add(anArr);
+		list.add(quArr);
+		
+		response.setCharacterEncoding("UTF-8");
+		Gson gson = new Gson();
+		gson.toJson(list, response.getWriter());
+		
+		//request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
 	
 	}
 

@@ -5,11 +5,9 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	ArrayList<Answer> alist = (ArrayList<Answer>)request.getAttribute("alist");
+	ArrayList<Answer> alist = (ArrayList<Answer>)request.getAttribute("anArr");
 	// 질문번호, 답변자, 답변여부, 답변내용, 답변일자
-	ArrayList<Question> qlist = (ArrayList<Question>)request.getAttribute("qlist");
-	// 질문번호, 질문내용, 질문날짜
-	//System.out.println("잘나오나");
+	ArrayList<Question> qlist = (ArrayList<Question>)request.getAttribute("quArr");
 %>
 <!DOCTYPE html>
 <html>
@@ -131,7 +129,7 @@
 </style>
 </head>
 <body>
-	<div class="yj_myQnA_area" align="cneter">
+	<div class="yj_myQnA_area" align="center">
 		<div class="yj_myQnA_detail">
 			<% if(qlist.isEmpty()) { %>
 			<!-- 질문이 없을경우 -->

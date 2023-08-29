@@ -1,6 +1,5 @@
 package com.heabom.board.model.service;
 
-import java.net.ConnectException;
 import java.sql.Connection;
 import java.util.ArrayList;
 

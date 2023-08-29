@@ -1,6 +1,8 @@
 package com.heabom.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +28,10 @@ public class JqAjaxMyQnAController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
+		
+		System.out.println(request.getParameter("item"));
+		ArrayList list = ;
+		//request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
 	}
 
 	/**

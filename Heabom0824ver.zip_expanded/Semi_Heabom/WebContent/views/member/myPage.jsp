@@ -101,9 +101,14 @@ table, div {
 }
 </style>
 </head>
-<body>
-	<%@include file="../common/header.jsp"%>
 
+<body>
+
+	<%@include file="../common/header.jsp"%>
+<script>
+
+	
+</script>
 	<div class="outer_yj" align="center">
 		<div class="mypage-nameTag">
 			<strong>나의 정보</strong>
@@ -329,11 +334,13 @@ table, div {
      	
      	// Q&A Ajax
      	
-        function myQna() {
+     	function myQna2(a) {
             $.ajax({
             	url:"myQnaAjax.do",
+            	data:{item:a},
             	datatype:"html",
             	success:function(result){
+            		console.log("qna2 ajax 통신실패");
             		$("#test").html(result);
             	},
             	error:function(){
@@ -341,39 +348,32 @@ table, div {
             	}
             })
         }
-     	
      	
      	function myQna(){
-     		myQna1();
-     		myQna2();
-     	}
-     	function myQna1() {
-     		$.ajax({
-     			url:"myQnaDetailAjax.do",
-     			data:{
-     				memNo:$("#memNo").val()
-     			},
-     			type:"post",
-     			success:function(result){
-     				console.log("ajax 성공");
-     			},
-     			error:function(){
-     				console.log("ajax 통신실패");
-     			}
-     		})
-     	}
-        function myQna2() {
-            $.ajax({
-            	url:"myQnaAjax.do",
-            	datatype:"html",
-            	success:function(result){
-            		$("#test").html(result);
-            	},
-            	error:function(){
-            		console.log("ajax 통신실패");
-            	}
-            })
-        }
+			myQna1();
+		}
+	
+	function myQna1() {
+		$.ajax({
+ 			url:"myQnaDetailAjax.do",
+ 			data:{
+ 				memNo:$("#memNo").val()
+ 			},
+ 			type:"post",
+ 			success:function(result){
+ 				console.log("ajax 성공");
+ 				console.log(result);
+ 				myQna2(result);
+ 			},
+ 			error:function(){
+ 				console.log("ajax 통신실패");
+ 			}
+ 		})
+	}
+     	
+      
+     	
+        
         
     </script>
 	<%@include file="../common/footer.jsp"%>
