@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+<entry key="selectPlace">
+	SELECT
+	    PLACE_NO
+	  , PLACE_TITLE
+	  , PLACE_CONTENT
+	  , MAKE_DATE
+	  , VIEW_COUNT
+	  , STAR_POINT
+	  , HASHTAG_NAME
+	FROM TB_PLACE
+	JOIN TB_HASHTAG USING (PLACE_NO)
+	WHERE WRITER = ?
+	AND STATUS = 'Y'
+	ORDER
+	   BY MAKE_DATE DESC
+</entry>
 </properties>

@@ -105,10 +105,9 @@ table, div {
 <body>
 
 	<%@include file="../common/header.jsp"%>
-<script>
-
-	
-</script>
+	<script>
+		
+	</script>
 	<div class="outer_yj" align="center">
 		<div class="mypage-nameTag">
 			<strong>나의 정보</strong>
@@ -118,9 +117,7 @@ table, div {
 				<tr>
 					<td rowspan="2" width="250" height="420">
 						<div class="mypage-left">
-							<br>
-							<br>
-							<br>
+							<br> <br> <br>
 							<table border="0" align="center" class="left-table">
 								<tr>
 									<td height="120" width="200">
@@ -157,13 +154,13 @@ table, div {
 				<tr>
 					<td width="550" height="320">
 						<div class="mypage-right">
-							<br>
-							<br>
+							<br> <br>
 							<table border="0" align="center">
 								<tr>
 									<td width="110" height="110">
-										<div class="mypage-detail" align="center" onclick="myVisit2();">
-											<img src="<%=contextPath %>/resource/img/myPage/방문게시물.png">
+										<div class="mypage-detail" align="center"
+											onclick="myVisit2();">
+											<img src="<%=contextPath%>/resource/img/myPage/방문게시물.png">
 											<p class="mypage-right-p">
 												<strong>방문게시물</strong>
 											</p>
@@ -173,7 +170,7 @@ table, div {
 									<td width="110" height="110">
 										<div class="mypage-detail" align="center"
 											onclick="myFavorit();">
-											<img src="<%=contextPath %>/resource/img/myPage/즐겨찾기.png">
+											<img src="<%=contextPath%>/resource/img/myPage/즐겨찾기.png">
 											<p class="mypage-right-p">
 												<strong>즐겨찾기</strong>
 											</p>
@@ -183,7 +180,7 @@ table, div {
 									<td width="110" height="110">
 										<div class="mypage-detail" align="center"
 											onclick="myReivew();">
-											<img src="<%=contextPath %>/resource/img/myPage/리뷰관리.png">
+											<img src="<%=contextPath%>/resource/img/myPage/리뷰관리.png">
 											<p class="mypage-right-p">
 												<strong>리뷰관리</strong>
 											</p>
@@ -196,7 +193,7 @@ table, div {
 								<tr>
 									<td width="110" height="110">
 										<div class="mypage-detail" align="center" onclick="myPlace();">
-											<img src="<%=contextPath %>/resource/img/myPage/게시물관리.png">
+											<img src="<%=contextPath%>/resource/img/myPage/게시물관리.png">
 											<p class="mypage-right-p">
 												<strong>게시물관리</strong>
 											</p>
@@ -205,7 +202,7 @@ table, div {
 									<td width="30"></td>
 									<td width="110" height="110">
 										<div class="mypage-detail" align="center" onclick="myBoard();">
-											<img src="<%=contextPath %>/resource/img/myPage/내글관리.png">
+											<img src="<%=contextPath%>/resource/img/myPage/내글관리.png">
 											<p class="mypage-right-p">
 												<strong>내글관리</strong>
 											</p>
@@ -214,7 +211,7 @@ table, div {
 									<td width="30"></td>
 									<td width="110" height="110">
 										<div class="mypage-detail" align="center" onclick="myQna();">
-											<img src="<%=contextPath %>/resource/img/myPage/QNA.png">
+											<img src="<%=contextPath%>/resource/img/myPage/QNA.png">
 											<p class="mypage-right-p">
 												<strong>Q&A</strong>
 											</p>
@@ -228,133 +225,131 @@ table, div {
 			</table>
 			<div id="test"></div>
 		</div>
-		<% if(loginMember != null){ %>
-		<input id="memNo" type="hidden" value="<%=loginMember.getMemNo() %>">
-		<% } %>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
+		<%
+		if (loginMember != null) {
+		%>
+		<input id="memNo" type="hidden" value="<%=loginMember.getMemNo()%>">
+		<%
+		}
+		%>
+		<br> <br> <br> <br> <br> <br> <br>
+		<br> <br> <br>
 	</div>
 	<script>
-    	// 방문페이지 Ajax
-		function myVisit(){
+		// 방문페이지 Ajax
+		function myVisit() {
 			myVisit1();
 			myVisit2();
-	       
+
 		}
-		
+
 		function myVisit1() {
 			$.ajax({
-				url:"myVisitDetailAjax.do",
-				success:function(result){
+				url : "myVisitDetailAjax.do",
+				success : function(result) {
 					console.log("무슨 말이라도 해봐");
 				},
-				error:function(){
+				error : function() {
 					console.log("ajax통신 실패 (방문페이지)");
 				}
 			})
 		}
-		
-		 function myVisit2() {
-	            $.ajax({
-	            	url:"myVisitAjax.do",
-	            	datatype:"html",
-	            	success:function(result){
-	            		$("#test").html(result);
-	            	},
-	            	error:function(){
-	            		console.log("ajax 통신실패");
-	            	}
-	            })
-         }
 
- 		
- 		// 즐겨찾기 Ajax
-        function myFavorit() {
-            $.ajax({
-            	url:"myFavoritAjax.do",
-            	datatype:"html",
-            	success:function(result){
-            		$("#test").html(result);
-            	},
-            	error:function(){
-            		console.log("ajax 통신실패");
-            	}
-            })
-        }
- 		
-        // 리뷰 Ajax
-        function myReivew() {
-            $.ajax({
-            	url:"myReivewAjax.do",
-            	datatype:"html",
-            	success:function(result){
-            		$("#test").html(result);
-            	},
-            	error:function(){
-            		console.log("ajax 통신실패");
-            	}
-            })
-        }
- 		
-     	// 게시물관리 Ajax
-        function myPlace() {
-            $.ajax({
-            	url:"myPlaceAjax.do",
-            	datatype:"html",
-            	success:function(result){
-            		$("#test").html(result);
-            	},
-            	error:function(){
-            		console.log("ajax 통신실패");
-            	}
-            })
-        }
-     	
-     	// 내 글관리 Ajax
-        function myBoard() {
-            $.ajax({
-            	url:"myBoardAjax.do",
-            	datatype:"html",
-            	success:function(result){
-            		$("#test").html(result);
-            	},
-            	error:function(){
-            		console.log("ajax 통신실패");
-            	}
-            })
-        }
-     	
-     	// Q&A Ajax
-	function myQna() {
-		$.ajax({
- 			url:"myQnaDetailAjax.do",
- 			data:{
- 				memNo:$("#memNo").val()
- 			},
- 			datatype:"html",
- 			success:function(result){
- 				console.log("ajax 성공");
- 				$("#test").html(result);
- 			},
- 			error:function(){
- 				console.log("ajax 통신실패");
- 			}
- 		})
-	}
-     	
-      
-     	
-        
-        
-    </script>
+		function myVisit2() {
+			$.ajax({
+				url : "myVisitAjax.do",
+				datatype : "html",
+				success : function(result) {
+					$("#test").html(result);
+				},
+				error : function() {
+					console.log("ajax 통신실패");
+				}
+			})
+		}
+
+		// 즐겨찾기 Ajax
+		function myFavorit() {
+			$.ajax({
+				url : "myFavoritAjax.do",
+				datatype : "html",
+				success : function(result) {
+					$("#test").html(result);
+				},
+				error : function() {
+					console.log("ajax 통신실패");
+				}
+			})
+		}
+
+		// 리뷰 Ajax
+		function myReivew() {
+			$.ajax({
+				url : "myReivewAjax.do",
+				datatype : "html",
+				success : function(result) {
+					$("#test").html(result);
+				},
+				error : function() {
+					console.log("ajax 통신실패");
+				}
+			})
+		}
+
+		// 게시물관리 Ajax
+		function myPlace() {
+			$.ajax({
+				url : "myPlaceAjax.do",
+				data : {
+					memNo : $("#memNo").val()
+				},
+				datatype : "html",
+				success : function(result) {
+					console.log("ajax 성공");
+					$("#test").html(result);
+				},
+				error : function() {
+					console.log("ajax 통신실패");
+				}
+			})
+		}
+
+		// 내 글관리 Ajax
+		function myBoard() {
+			$.ajax({
+				url : "myBoardAjax.do",
+				data : {
+					memNo : $("#memNo").val()
+				},
+				datatype : "html",
+				success : function(result) {
+					console.log("ajax 성공");
+					$("#test").html(result);
+				},
+				error : function() {
+					console.log("ajax 통신실패");
+				}
+			})
+		}
+
+		// Q&A Ajax
+		function myQna() {
+			$.ajax({
+				url : "myQnaDetailAjax.do",
+				data : {
+					memNo : $("#memNo").val()
+				},
+				datatype : "html",
+				success : function(result) {
+					console.log("ajax 성공");
+					$("#test").html(result);
+				},
+				error : function() {
+					console.log("ajax 통신실패");
+				}
+			})
+		}
+	</script>
 	<%@include file="../common/footer.jsp"%>
 </body>
 </html>

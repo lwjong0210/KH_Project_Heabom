@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Place {
 	private String placeNo;
+	private String placeTitle;
 	private int categoryNo;
 	private String writer;
 	private int locationNo;
@@ -20,14 +21,16 @@ public class Place {
 	private int useTime;
 	private int usePrice;
 	private String bestStatus;
+	private String hashtagName;
 	
 	public Place() {}
 
-	public Place(String placeNo, int categoryNo, String writer, int locationNo, Date makeDate, String status,
-			String phone, String address, String placeContent, String startTime, String endTime, int starPoint,
-			String placeUrl, int viewCount, int useTime, int usePrice, String bestStatus) {
+	public Place(String placeNo, String placeTitle, int categoryNo, String writer, int locationNo, Date makeDate,
+			String status, String phone, String address, String placeContent, String startTime, String endTime,
+			int starPoint, String placeUrl, int viewCount, int useTime, int usePrice, String bestStatus) {
 		super();
 		this.placeNo = placeNo;
+		this.placeTitle = placeTitle;
 		this.categoryNo = categoryNo;
 		this.writer = writer;
 		this.locationNo = locationNo;
@@ -45,6 +48,19 @@ public class Place {
 		this.usePrice = usePrice;
 		this.bestStatus = bestStatus;
 	}
+	
+
+	public Place(String placeNo, String placeTitle, Date makeDate, String placeContent, int starPoint, int viewCount,
+			String hashtagName) {
+		super();
+		this.placeNo = placeNo;
+		this.placeTitle = placeTitle;
+		this.makeDate = makeDate;
+		this.placeContent = placeContent;
+		this.starPoint = starPoint;
+		this.viewCount = viewCount;
+		this.hashtagName = hashtagName;
+	}
 
 	public String getPlaceNo() {
 		return placeNo;
@@ -52,6 +68,14 @@ public class Place {
 
 	public void setPlaceNo(String placeNo) {
 		this.placeNo = placeNo;
+	}
+
+	public String getPlaceTitle() {
+		return placeTitle;
+	}
+
+	public void setPlaceTitle(String placeTitle) {
+		this.placeTitle = placeTitle;
 	}
 
 	public int getCategoryNo() {
@@ -182,14 +206,14 @@ public class Place {
 		this.bestStatus = bestStatus;
 	}
 
-	@Override
-	public String toString() {
-		return "Place [placeNo=" + placeNo + ", categoryNo=" + categoryNo + ", writer=" + writer + ", locationNo="
-				+ locationNo + ", makeDate=" + makeDate + ", status=" + status + ", phone=" + phone + ", address="
-				+ address + ", placeContent=" + placeContent + ", startTime=" + startTime + ", endTime=" + endTime
-				+ ", starPoint=" + starPoint + ", placeUrl=" + placeUrl + ", viewCount=" + viewCount + ", useTime="
-				+ useTime + ", usePrice=" + usePrice + ", bestStatus=" + bestStatus + "]";
+	public String getHashtagName() {
+		return hashtagName;
 	}
+
+	public void setHashtagName(String hashtagName) {
+		this.hashtagName = hashtagName;
+	}
+	
 	
 	
 }
