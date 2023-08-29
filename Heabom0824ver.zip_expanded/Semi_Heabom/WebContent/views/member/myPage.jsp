@@ -182,7 +182,7 @@ table, div {
 											onclick="myReivew();">
 											<img src="<%=contextPath%>/resource/img/myPage/리뷰관리.png">
 											<p class="mypage-right-p">
-												<strong>리뷰관리</strong>
+												<strong>리뷰/댓글</strong>
 											</p>
 										</div>
 									</td>
@@ -278,12 +278,16 @@ table, div {
 			})
 		}
 
-		// 리뷰 Ajax
+		// 리뷰/댓글 Ajax
 		function myReivew() {
 			$.ajax({
 				url : "myReivewAjax.do",
+				data : {
+					memNo : $("#memNo").val()
+				},
 				datatype : "html",
 				success : function(result) {
+					console.log("ajax 성공");
 					$("#test").html(result);
 				},
 				error : function() {
