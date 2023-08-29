@@ -25,29 +25,29 @@
             /*border: 1px solid black;*/
 
             margin-left: 5%;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: 900;
         }
 
         #p1 {
-            margin-top: 25%;
+            margin-top: 20%;
         }
 
         #p2 {
-            margin-top: 25%;
+            margin-top: 20%;
 
             color: orange;
         }
 
         #p3 {
-            margin-top: 25%;
+            margin-top: 20%;
 
             color: red;
         }
 
         .wrap {
             width: 1900px;
-            height: 800px;
+            height: auto;
             /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
@@ -58,8 +58,8 @@
 
         .background {
             box-sizing: border-box;
-            width: 90%;
-            height: 150%;
+            width: 70%;
+            height: 900px;
             margin: auto;
             margin-top: 4%;
             margin-bottom: 4%;
@@ -149,7 +149,7 @@
         #content_2>table {
             width: 100%;
 
-            margin-top: 5%;
+            margin-top: 3%;
         }
 
         table>thead {
@@ -178,7 +178,7 @@
             padding-top: 10px;
             padding-bottom: 10px;
 
-            font-size: 20px;
+            font-size: 15px;
         }
 
         /*---------------------------- 아코디언 ----------------------------------*/
@@ -301,19 +301,18 @@
         }
 
         .page-link {
-            font-size: 30px;
+            font-size: 20px;
         }
 
         /*--------------------------선택 수정, 삭제---------------------------------*/
         
         #content_5>button {
-            font-size: 25px;
 
-            width: 40%;
+            width: 30%;
 
             margin-top: 4%;
 
-            font-size: 25px;
+            font-size: 15px;
 
             color: white;
             font-weight: 900;
