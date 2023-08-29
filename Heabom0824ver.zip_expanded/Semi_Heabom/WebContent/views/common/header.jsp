@@ -52,13 +52,14 @@
     }
 
     .logo {
-        width: 211px;
-        height: 67px;
+        width: 265px;
+        height: 100px;
         margin-right: auto;
     }
 
     .nav__links {
         list-style: none;
+        margin-bottom: 0px;
     }
 
     .nav__links li {
@@ -85,7 +86,7 @@
 		<%session.removeAttribute("alertMsg"); // invalidate 쓰면 session 이 다 날아간다 따라서 이 세션만 지울수 있게 removeattribute 를 쓴다%>
 	<%} %>
     <header>
-        <img class="logo" src="img/KakaoTalk_20230814_140248577_04.png" alt="logo">
+        <img class="logo" src="<%=contextPath%>/resource/img/mainLogo/1번로고.png">
         <nav>
             <ul class="nav__links">
                 <li><a href="#">검색</a></li>

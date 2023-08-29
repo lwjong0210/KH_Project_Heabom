@@ -28,6 +28,9 @@
             cursor: pointer;
             color: pink;
         }
+        .footer label{
+        	margin: 0px;
+        }
     </style>
 </head>
 <body>

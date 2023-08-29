@@ -1,6 +1,8 @@
 package com.heabom.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +33,9 @@ public class JqAjaxMyReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memNo = request.getParameter("memNo");
 		
-		ReviewReply re = new ReviewReplyService().selectReviewReply(memNo);
+		ArrayList<ReviewReply> relist = new ReviewReplyService().selectReviewReply(memNo);
+		
+		request.setAttribute("relist", relist);
 		
 		request.getRequestDispatcher("views/member/myReview.jsp").forward(request, response);
 	}
