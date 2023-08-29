@@ -105,6 +105,64 @@
                 <li><a href="#">Q&A</a></li>
             </ul>
         </nav>
+        <div>
+            <!-- 로그인 및 버튼 -->
+    <div class="login_btn">
+        <%if (loginMember == null ){ %>
+        
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                로그인합시다
+            </button>
+            
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                <div class="modal-content">
+            
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                    <h4 class="modal-title">로그인</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+            
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="<%=contextPath%>/login.me">
+                            <div class="form-group">
+                            
+                            <input type="text" class="form-control" placeholder="아이디" name = "memId" value="admin">
+                            </div>
+                            <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" placeholder="Enter password" name="memPwd" value="admin">
+                            </div>
+                            <button type="submit" class="btn btn-primary">로그인</button>
+                        </form>
+                        
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-primary" onclick="enroll();">회원가입하기</button>
+            
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+            
+                </div>
+                </div>
+            </div>
+        <%}else{%>
+            <h3><%=loginMember.getNickname()%>님</h3>
+            <br>
+            <button  class="btn btn-danger" onclick="location.href = '<%=contextPath%>/logout.me'">로그아웃</button>
+            
+        
+        <%}%>
+
+    </div>
+
+
+        </div>
 
     </header>
 
