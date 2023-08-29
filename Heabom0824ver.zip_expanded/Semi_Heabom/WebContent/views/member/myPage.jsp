@@ -265,6 +265,7 @@ table, div {
 		 function myVisit2() {
 	            $.ajax({
 	            	url:"myVisitAjax.do",
+	            	data:
 	            	datatype:"html",
 	            	success:function(result){
 	            		$("#test").html(result);
