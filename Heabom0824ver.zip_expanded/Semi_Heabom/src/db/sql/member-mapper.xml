@@ -14,8 +14,6 @@
 </entry>
 
 <entry key="insertMember">
-	
-	
 INSERT INTO TB_MEMBER (
     MEM_NO
     ,GRADE
@@ -63,4 +61,23 @@ FROM TB_MEMBER
 WHERE MEM_ID = ?
 AND MEM_PWD = ?
 </entry>
+
+<entry key="selectReviewReply">
+	SELECT
+	   RE_NO
+	 , RE_REF_NO
+	 , RE_WRITER
+	 , NICKNAME
+	 , RE_CONTENT
+	 , RE_LIKE_STAR
+	 , RE_DATE
+	 , RE_LEVEL
+	FROM TB_REVIEW_REPLY
+	JOIN TB_MEMBER ON (MEM_NO = RE_WRITER)
+	WHERE RE_ORIGIN_WRITER = ?
+	  AND RE_STATUS = 'N'
+	ORDER
+	   BY RE_DATE DESC
+</entry>
+
 </properties>
