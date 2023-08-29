@@ -76,7 +76,7 @@
     </style>
 </head>
 <body>
-<%@ include file="sidebar.jsp" %>
+
 	<%if (alertMsg != null){  %>
 		
 		<script>
@@ -91,8 +91,8 @@
                 <li><a href="#">검색</a></li>
                 
                 <%if (loginMember != null ){ %>
-	                <%if (loginMember.getMemId().equals("admin")){%>
                         <li><a href="<%= contextPath %>/myPage.me">마이페이지</a></li>
+	                <%if (loginMember.getMemId().equals("admin")){%>
 	                <li><a href="<%= contextPath %>/check.ad">관리자페이지</a></li>
                     <ul>
                         <li><a href="배너 관리"></a></li>

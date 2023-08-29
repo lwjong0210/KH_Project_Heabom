@@ -265,7 +265,6 @@ table, div {
 		 function myVisit2() {
 	            $.ajax({
 	            	url:"myVisitAjax.do",
-	            	data:
 	            	datatype:"html",
 	            	success:function(result){
 	            		$("#test").html(result);
@@ -334,37 +333,16 @@ table, div {
         }
      	
      	// Q&A Ajax
-     	
-     	function myQna2(a) {
-            $.ajax({
-            	url:"myQnaAjax.do",
-            	data:{item:a},
-            	datatype:"html",
-            	success:function(result){
-            		console.log("qna2 ajax 통신실패");
-            		$("#test").html(result);
-            	},
-            	error:function(){
-            		console.log("ajax 통신실패");
-            	}
-            })
-        }
-     	
-     	function myQna(){
-			myQna1();
-		}
-	
-	function myQna1() {
+	function myQna() {
 		$.ajax({
  			url:"myQnaDetailAjax.do",
  			data:{
  				memNo:$("#memNo").val()
  			},
- 			type:"post",
+ 			datatype:"html",
  			success:function(result){
  				console.log("ajax 성공");
- 				console.log(result);
- 				myQna2(result);
+ 				$("#test").html(result);
  			},
  			error:function(){
  				console.log("ajax 통신실패");

@@ -29,8 +29,6 @@ public class JqAjaxMyQnAController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println(request.getParameter("item"));
-		ArrayList list = ;
 		//request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
 	}
 

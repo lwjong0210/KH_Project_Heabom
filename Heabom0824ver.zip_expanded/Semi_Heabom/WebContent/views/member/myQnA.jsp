@@ -129,61 +129,55 @@
 </style>
 </head>
 <body>
-	<div class="yj_myQnA_area" align="center">
-		<div class="yj_myQnA_detail">
-			<% if(qlist.isEmpty()) { %>
-			<!-- 질문이 없을경우 -->
-	            <div class="pull gr">
+  <div class="yj_myQnA_area" align="center">
+	  <% if(qlist.isEmpty()) { %>
+			<div class="yj_myQnA_detail">
+				<div class="pull gr">
 					<div class="text_limit gr">
-						<strong>질문이 없습니다. 해봄은 고객의 소리를 기다립니다.</strong>
+						<strong>해봄은 고객의 소리를 기다립니다.</strong>
 					</div>
 				</div>
-			<% }else{ %>
-			<!-- 질문이 있을경우 -->
-				<% for(Question q : qlist) { %>
-					<div class="pull gr">
-						<div class="text_limit gr">
-							<strong><%=q.getQuestionComment() %></strong>
+			</div>        
+        	<% } else { %>
+        	<% for(Question q : qlist) { %>
+				<% for(Answer a : alist) { %>
+					<div class="yj_myQnA_detail">
+						<div class="pull gr">
+							<div class="text_limit gr">
+								<strong><%=q.getQuestionComment() %></strong>
+							</div>
 						</div>
-					</div>
-				<% } %>
-				<% if(alist.isEmpty()) { %>
-				<!-- 답변 전 -->
-				<div class="pull pk_unComplete">
-					<div class="text_limit">
-						<strong>관리자가 성실한 답변 작성중에 있습니다. 빠른시일내에 답변 드리겠습니다.</strong>
-					</div>
-				</div>
-				<% } else { %>
-					<% for(Answer a : alist) { %>
-						<% for(Question q : qlist) { %>
-							<% if(a.getAnswerNo() == q.getQuestionNo()) {%>
-								<!-- 답변완료시 -->
+						<% if(q.getQuestionNo() == a.getQuestionNo()) { %>
+						<!-- 답변완료시 -->
 								<div class="pull pk_complete">
-					                    <table border="0">
-					                        <tr>
-					                            <td width="60">답변자 :</td>
-					                            <td><strong><%=a.getNickname() %></strong></td>
-					                            <td width="20"></td>
-					                            <td width="70">답변일자:</td>
-					                            <td><strong><%=a.getAnswerDate() %></strong></td>
-					                        </tr>
-					                        <tr>
-					                            <td colspan="5" width="450">
-					                                <div class="text_limit">
-					                                    <strong><%=a.getAnswerContent() %></strong>
-					                                </div>
-					                            </td>
-					                        </tr>
-					                    </table>
-					                </div>
-		                		<% } %>
-                        	<% } %>
-                        <% } %>
-		            </div>
-	            <% } %>
-            <% } %>
-		</div>
-	</div>
+									<table border="0">
+										<tr>
+											<td width="60">답변자 :</td>
+											<td><strong><%=a.getNickname() %></strong></td>
+											<td width="20"></td>
+											<td width="70">답변일자:</td>
+											<td><strong><%=a.getAnswerDate() %></strong></td>
+										</tr>
+										<tr>
+											<td colspan="5" width="450">
+												<div class="text_limit">
+													<strong><%=a.getAnswerContent() %></strong>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+		        	<% } else { %>
+			        <!-- 답변 전 -->
+			            <div class="pull pk_unComplete">
+			                <div class="text_limit"><strong>관리자가 성실한 답변 작성중에 있습니다. 빠른시일내에 답변 드리겠습니다.</strong></div>
+			            </div>	
+		        	<% } %>	
+				</div>    
+				<% } %>        
+        	<% } %>
+       	<% } %>
+       	</div>
+        
 </body>
 </html>

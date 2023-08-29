@@ -37,26 +37,14 @@ public class JqAjaxMyQnADetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memNo = request.getParameter("memNo");
-		System.out.println("dlrjxksk");
-//		System.out.println(memNo);
+
 		ArrayList<Answer> anArr = new AnswerService().selectAnswer(memNo);
 		ArrayList<Question> quArr = new QuestionService().selectQuestion(memNo);
-		for(Question q:quArr) {
-			System.out.println(q);
-			System.out.println("여기는 컨트롤러");
-		}
+
 		request.setAttribute("anArr", anArr);
 		request.setAttribute("quArr", quArr);
 		
-		ArrayList list = new ArrayList();
-		list.add(anArr);
-		list.add(quArr);
-		
-		response.setCharacterEncoding("UTF-8");
-		Gson gson = new Gson();
-		gson.toJson(list, response.getWriter());
-		
-		//request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
 	
 	}
 
