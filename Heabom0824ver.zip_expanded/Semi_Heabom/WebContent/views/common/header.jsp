@@ -36,7 +36,7 @@
     li,a {
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
-        font-size: 30px;
+        font-size: 25px;
         color: #627e87;
         text-decoration: none;
     }
@@ -46,6 +46,7 @@
        margin: 20px 3px;
        padding: 0 20px;
        width: 1900px;
+       height: 90px;
        display: flex; 
        justify-content: flex-end;
        align-items: center;
@@ -85,7 +86,7 @@
 		</script>
 		<%session.removeAttribute("alertMsg"); // invalidate 쓰면 session 이 다 날아간다 따라서 이 세션만 지울수 있게 removeattribute 를 쓴다%>
 	<%} %>
-    <header>
+    <header align="center">
         <img class="logo" src="<%=contextPath%>/resource/img/mainLogo/1번로고.png">
         <nav>
             <ul class="nav__links">
