@@ -110,7 +110,7 @@
             padding-right: 10px;
         }
 
-        #select-notice-area {
+        #select-category-area {
             width: 30%;
         }
 
@@ -197,54 +197,62 @@
         }
         .parent-span{
         	padding-right: 10px;
-            border: 1px solid black;
+            border: 0px;
+
         }
 
         /* 해시태그 관련 끝 */
 
         /* 글쓰기 폼 끝 */
+        /* 파일 테이블 */
+        #fileTable{
+            width: 100%;
+            margin-top: 10px;
+            /* border: 1px solid red */ 
+        }
+
     </style>
 </head>
 
 <body>
-<%@ include file ="../common/header.jsp" %>
-
+    <%@ include file ="../common/header.jsp" %>
+    <% System.out.println(loginMember); %>
     <div class="wrap">
-
+        
         <div id="demo" class="carousel slide" data-ride="carousel" style="padding: 20px 10px ;">
-
+            
             <!-- Indicators -->
             <ul class="carousel-indicators">
                 <li data-target="#demo" data-slide-to="0" class="active"></li>
                 <li data-target="#demo" data-slide-to="1"></li>
                 <li data-target="#demo" data-slide-to="2"></li>
             </ul>
-
+            
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="resources/img/1mj3112000b8kyfpd5FC3_Z_640_10000_R5.png_.webp" alt="Los Angeles">
+                    <img src="resource/img/1mj3112000b8kyfpd5FC3_Z_640_10000_R5.png_.webp" alt="Los Angeles">
                     <div class="carousel-caption">
                         <h3>워터밤</h3>
                         <p>놀러와~~~~~</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="resources/img/285632_356327_475.jpg" alt="Chicago">
+                    <img src="resource/img/285632_356327_475.jpg" alt="Chicago">
                     <div class="carousel-caption">
                         <h3>화로축제</h3>
                         <p>흠냐링~</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="resources/img/5n90r48nlara9vx.png" alt="New York">
+                    <img src="resource/img/5n90r48nlara9vx.png" alt="New York">
                     <div class="carousel-caption">
                         <h3>뮤직축제</h3>
                         <p></p>
                     </div>
                 </div>
             </div>
-
+            
             <!-- Left and right controls -->
             <a class="carousel-control-prev" href="#demo" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
@@ -252,35 +260,38 @@
             <a class="carousel-control-next" href="#demo" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
-
+            
         </div>
-
-
-
+        
+        
+        
         <div id="write-text" style="padding: 10px;">
             <div>
                 글쓰기
             </div>
         </div>
-        <div class="write-post-area" style="padding: 10px;">
+        <form action="insert.bo" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="userNo" value="<%= loginMember.getMemNo()%>">
+            <div class="write-post-area" style="padding: 10px;">
                 <div id="write-post-header">
                     <div id="write-post-title-area">
-                        <input type="text" id="write-post-title" placeholder="제목을 입력하세요." required>
+                        <input type="text" id="write-post-title" name="title" placeholder="제목을 입력하세요." required>
                     </div>
-                    <div id="select-notice-area">
-                        <select name="" id="select-notice">
-                            <option value="">자유게시판</option>
-                            <option value="">공지사항</option>
-                            <option value="">Q & A</option>
-                            <option value="">...</option>
-                        </select>
+                    <div id="select-category-area">
+                        <select name="category" id="select-category" onchange="clickNoticeOption(this.value);">
+                            <option value="F">자유게시판</option>
+                            <% if(loginMember.getGrade().equals("무궁화")){ %>
+                                <option value="N">공지사항</option>
+                                <% } %>
+                                <option value="Q&A">Q & A</option>
+                                <option value="...">...</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-
-
-                <textarea name="" id="write-post" style="width: 100%; height: 500px; resize: none;"></textarea>
-
-
+                    
+                    <textarea name="content" id="write-post" style="width: 100%; height: 500px; resize: none;" required></textarea>
+                    
+                    
                 <div id="input-tag" style="margin-top: 10px;">
                     <span class="parent-span">
                         <span>#</span>
@@ -290,29 +301,49 @@
                         </div>
                     </span>
                 </div>
+                <div>
+                    <table align="center" id="fileTable">
+                        <tr>
+                            <td width="20%" height="120" style="border: 1px solid gray;"><img src="" id="contentImg1" width="100%" height="100%" onclick="chooseFile(1)"></td>
+                            <td width="20%" height="120" style="border: 1px solid gray;"><img src="" id="contentImg2" width="100%" height="100%" onclick="chooseFile(2)"></td>
+                            <td width="20%" height="120" style="border: 1px solid gray;"><img src="" id="contentImg3" width="100%" height="100%" onclick="chooseFile(3)"></td>
+                            <td width="20%" height="120" style="border: 1px solid gray;"><img src="" id="contentImg4" width="100%" height="100%" onclick="chooseFile(4)"></td>
+                            <td width="20%" height="120" style="border: 1px solid gray;"><img src="" id="contentImg5" width="100%" height="100%" onclick="chooseFile(5)"></td>
+                        </tr>
+                    </table>
+                    <div id="file-area" style="display:none;">
+                        <input type="file" name="file1" id="file1" onchange="loadImg(this, 1);">
+                        <input type="file" name="file2" id="file2" onchange="loadImg(this, 2);">
+                        <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
+                        <input type="file" name="file4" id="file4" onchange="loadImg(this, 4);">
+                        <input type="file" name="file5" id="file5" onchange="loadImg(this, 5);">
+                    </div>
+                </div>
                 <div id="write-poster-footer" style="margin-top: 10px;">
                     <div id="writer-poster-submit">
                         <input type="button" value="등록" onclick="postSubmit();">
                     </div>
-                    <div id="admin-private">
-                        <input type="checkbox" id="notice-check">
+                    <div id="admin-private" style="display: none;">
+                        <input type="checkbox" id="notice-check" name="noticeUp" value="Y">
                         <label for="notice-check" id="notice-check-text" style="font-size: 11px;">상단고정</label>
                     </div>
                 </div>
-        </div>
+            </div>
+            <input type="hidden" id="hiddenTag" name="tag">
+        </form>
         <script>
             /* 해시태그 스크립트 */
             $(function () { 
-            
+                
                 $(document).on('keydown', '.tag-input', function () {
                     $(this).css('width', 20);
                     let value = $(this).val();
                     $('.tag-input-area').append('<div class="virtual">' + value + '</div>')
-    
+                    
                     let inputWidth = $(this).siblings('.virtual').width()
                     $(this).css('width', inputWidth + 20);
                     $('.virtual').remove();
-    
+                    
                 })
                 $(document).on('click', '.delete-tag', function () {
                     let tagLength = $('.tag-input').length;
@@ -344,6 +375,7 @@
                 
                 
             })
+            // 등록하기 버튼 클릭시 폼 전송하는 함수
             function postSubmit(){
             	
             	let hashtag = $(".parent-span input");
@@ -354,18 +386,68 @@
 					hashlist.push(hashtag[i].value)
 					console.log(hashlist)
             	}
-            		
-    //        	$.ajax({
-      //      		url:"insert.bo",
-        //    		data:{boardTitle:$("#write-post-title").val(),
-            //			  boardCategory:$("#select-notice").val(),
-          //  			  boardContent:$("$write-post").val(),
-            			  
-            			
-            	//		  }
-           // 	})
+                $("#hiddenTag").val(hashlist)
+                console.log($("#hiddenTag").val())
+                let formSelect = $("form").submit();
             }
-            
+            /*	$.ajax({
+            		url:"insert.bo",
+            		data:{boardTitle:$("#write-post-title").val(),
+            			  boardCategory:$("#select-category").val(),
+            			  boardContent:$("#write-post").val(),
+            			  hashList:$("#hiddenTag").val(),
+            			  type:"post",
+            			  success:function(){
+            				  console.log("성공");
+            			  },
+            			  error:function(){
+            				  console.log("실패");
+            			  }
+            			  }
+            	})
+            }*/
+    
+            // select option에서 공지사항을 클릭했을때 상단게시체크박스가 나타나는 함수
+            function clickNoticeOption(str){
+				if(str=='N'){
+					console.log("되나")
+					document.getElementById("admin-private").style.display='';
+                }else{
+					document.getElementById("admin-private").style.display='none';
+                    
+                }
+            }
+
+            function chooseFile(i){
+                $("#file" + i).click(); 
+            }
+            function loadImg(inputFile,i){
+            	if(inputFile.files.length == 1){
+            		const reader = new FileReader();
+
+                    reader.readAsDataURL(inputFile.files[0]);
+
+                    reader.onload = function(e){
+                        switch(i){
+                            case 1: $("#contentImg1").attr("src", e.target.result); break;
+                            case 2: $("#contentImg2").attr("src", e.target.result); break;
+                            case 3: $("#contentImg3").attr("src", e.target.result); break;
+                            case 4: $("#contentImg4").attr("src", e.target.result); break;
+                            case 5: $("#contentImg5").attr("src", e.target.result); break;
+                        }
+                    }
+                }else{	
+                    switch(i){
+                    case 1: $("#contentImg1").attr("src", null); break;
+                    case 2: $("#contentImg2").attr("src", null); break;
+                    case 3: $("#contentImg3").attr("src", null); break;
+                    case 4: $("#contentImg4").attr("src", null); break;
+                    case 5: $("#contentImg5").attr("src", null); break;
+                    
+                    }
+            	}
+            }
+
         </script>
 
     </div>

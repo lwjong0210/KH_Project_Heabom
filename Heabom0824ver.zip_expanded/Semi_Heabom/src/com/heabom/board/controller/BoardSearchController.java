@@ -14,16 +14,16 @@ import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.PageInfo;
 
 /**
- * Servlet implementation class BoardListView
+ * Servlet implementation class BoardSearchController
  */
-@WebServlet("/list.bo")
-public class BoardListController extends HttpServlet {
+@WebServlet("/search.bo")
+public class BoardSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListController() {
+    public BoardSearchController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,29 +41,35 @@ public class BoardListController extends HttpServlet {
 		int startPage; // 페이징바의 시작수
 		int endPage; // 페이징바의 끝 수
 		
+		String keyWord = request.getParameter("keyword");
 	
-		listCount = new BoardService().selectListCount();
+		listCount = new BoardService().selectKeyWordCount(keyWord);
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 	
 			boardLimit= 10;
 
 		pageLimit = 10;
+		System.out.println(boardLimit);
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 		endPage = startPage + pageLimit - 1;
-		
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
+		 if(endPage > maxPage) { 
+			 endPage = maxPage;
+		 }
+		 
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		ArrayList<Board> list = new BoardService().selectList(pi);
-		request.setAttribute("pi", pi);
-		request.setAttribute("list", list);
+		ArrayList<Board> list = new BoardService().selectList(pi,keyWord);
 		
-		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
-	
+		request.setAttribute("pi", pi);	
+		request.setAttribute("list", list);
+		request.setAttribute("keyWord", keyWord);
+		
+		request.getRequestDispatcher("views/board/boardSearchView.jsp").forward(request, response);
+
+		
+		
 	}
 
 	/**
