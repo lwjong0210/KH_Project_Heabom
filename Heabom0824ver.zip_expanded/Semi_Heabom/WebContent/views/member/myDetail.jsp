@@ -1,5 +1,9 @@
+<%@page import="com.heabom.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	Member loginMember =  (Member)session.getAttribute("loginMember");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +32,7 @@
 
         .prop_detail input {
             border-radius: 5px;
+            width: 230px;
             
         } 
 
@@ -45,13 +50,13 @@
                     <tr>
                         <td class="detail_title" width="100">아이디<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
                         <td width="245">
-                            <input type="text" readonly style="background-color: lightgray;">
+                            <input type="text" readonly style="background-color: lightgray;" value="<%=loginMember.getMemId()%>">
                             <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
                         <td rowspan="2" width="120">사진미리보기</td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td><input type="password"></td>
+                        <td><input type="password" value="<%=loginMember.getMemPwd()%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호확인&nbsp</td>

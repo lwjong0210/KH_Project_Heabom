@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.member.model.service.MemberService;
+import com.heabom.member.model.vo.Member;
+
 /**
  * Servlet implementation class JqAjaxMyDetailController
  */
