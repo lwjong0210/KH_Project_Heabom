@@ -180,7 +180,7 @@ SELECT *
 	</entry>
 	<entry key='selectAnswer'>
 		SELECT
-		    ANSWER_NO
+			QUESTION_NO
 		  , ANSWER_WRITER
 		  , ANSWER_OR_NOT
 		  , ANSWER_CONTENT

@@ -131,14 +131,14 @@
 <body>
   <div class="yj_myQnA_area" align="center">
 	  <% if(qlist.isEmpty()) { %>
-			<div class="yj_myQnA_detail">
-				<div class="pull gr">
-					<div class="text_limit gr">
-						<strong>해봄은 고객의 소리를 기다립니다.</strong>
-					</div>
+		<div class="yj_myQnA_detail">
+			<div class="pull gr">
+				<div class="text_limit gr">
+					<strong>해봄은 고객의 소리를 기다립니다.</strong>
 				</div>
-			</div>        
-        	<% } else { %>
+			</div>
+		</div>        
+       	<% } else { %>
         	<% for(Question q : qlist) { %>
 				<% for(Answer a : alist) { %>
 					<div class="yj_myQnA_detail">
@@ -178,6 +178,5 @@
         	<% } %>
        	<% } %>
        	</div>
-        
 </body>
 </html>
