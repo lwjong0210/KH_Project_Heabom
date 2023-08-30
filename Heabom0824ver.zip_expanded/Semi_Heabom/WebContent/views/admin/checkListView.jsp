@@ -1,9 +1,16 @@
+<%@page import="com.heabom.common.model.vo.PageInfo"%>
 <%@page import="com.heabom.member.model.vo.Member"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 	
 %>
 <!DOCTYPE html>
@@ -397,7 +404,7 @@
                                 <th width="120">포인트</th>
                                 <th width="160">최종 접속</th>
                                 <th width="120">이메일</th>
-                                <th width="120">등급 수정</th>
+                                <th width="120">회원 상태</th>
                                 <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                             </thead>
                             <tbody class="listInner">
@@ -409,19 +416,19 @@
                                         <td><%= m.getMemName() %></td>
                                         <td><%= m.getNickname() %></td>
                                         <td><%= m.getGrade() %></td>
-                                        <td><%= m.getMemPoint() %></td>
+                                        <td><input type="text" style="width: 50%;"></td>
                                         <td><%= m.getMemVisit() %></td>
                                         <td><%= m.getEmail() %></td>
                                         <td>
                                             <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="chageLangSelect()">
-                                                <option value="memberId" selected="selected">씨앗</option>
-                                                <option value="memberName">잔디</option>
-                                                <option value="nickname">새싹</option>
-                                                <option value="all">벚꽃</option>
+                                                <option value="차단" selected="selected">차단</option>
+                                                <option value="잔디">잔디</option>
+                                                <option value="새싹">새싹</option>
+                                                <option value="벚꽃">벚꽃</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="submit" onclick="changeFn()" value="변경">
+                                            <input type="submit" value="변경" onclick="changeFn()">
                                         </td>
                                     </tr>
                                     <% } %>
@@ -438,23 +445,21 @@
                     <button type="button" id="button2" class="btn btn-danger">선택 삭제</button>
                 </div>
                 <div id="content_6">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                    <% if(currentPage != 1) { %>
+                        <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage -1 %>'">&lt;</button>
+                        <% } %>
+                        
+                        <% for(int p=startPage; p<=endPage; p++){ %>
+                            <% if(p == currentPage) { %>
+                            <button disabled><%= p %></button>
+                            <% } else { %>
+                            <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= p %>';"><%= p %></button>
+                               <% } %>
+                        <% } %> 
+                        
+                        <% if(currentPage != maxPage) { %>
+                        <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage +1 %>'">&gt;</button>
+                        <% } %>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>
@@ -476,7 +481,6 @@
 
     <!-- 회원 등급 수정 -->
     <script>
-        
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>
