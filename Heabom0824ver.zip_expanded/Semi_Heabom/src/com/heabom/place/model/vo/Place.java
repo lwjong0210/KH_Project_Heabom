@@ -13,8 +13,8 @@ public class Place {
 	private String phone;
 	private String address;
 	private String placeContent;
-	private String startTime;
-	private String endTime;
+	private int startTime;
+	private int endTime;
 	private int starPoint;
 	private String placeUrl;
 	private int viewCount;
@@ -25,9 +25,26 @@ public class Place {
 	
 	public Place() {}
 
+	
+	
+	public Place(String placeNo, String placeTitle, Date makeDate ,String placeContent, int starPoint, int viewCount,
+			String hashtagName) {
+		super();
+	
+		this.placeNo = placeNo;
+		this.placeTitle = placeTitle;
+		this.makeDate = makeDate ;
+		this.placeContent = placeContent;
+		this.starPoint = starPoint;
+		this.viewCount = viewCount;
+		this.hashtagName = hashtagName;
+	}
+
+
+
 	public Place(String placeNo, String placeTitle, int categoryNo, String writer, int locationNo, Date makeDate,
-			String status, String phone, String address, String placeContent, String startTime, String endTime,
-			int starPoint, String placeUrl, int viewCount, int useTime, int usePrice, String bestStatus) {
+			String status, String phone, String address, String placeContent, int startTime, int endTime, int starPoint,
+			String placeUrl, int viewCount, int useTime, int usePrice, String bestStatus, String hashtagName) {
 		super();
 		this.placeNo = placeNo;
 		this.placeTitle = placeTitle;
@@ -47,18 +64,6 @@ public class Place {
 		this.useTime = useTime;
 		this.usePrice = usePrice;
 		this.bestStatus = bestStatus;
-	}
-	
-
-	public Place(String placeNo, String placeTitle, Date makeDate, String placeContent, int starPoint, int viewCount,
-			String hashtagName) {
-		super();
-		this.placeNo = placeNo;
-		this.placeTitle = placeTitle;
-		this.makeDate = makeDate;
-		this.placeContent = placeContent;
-		this.starPoint = starPoint;
-		this.viewCount = viewCount;
 		this.hashtagName = hashtagName;
 	}
 
@@ -142,19 +147,19 @@ public class Place {
 		this.placeContent = placeContent;
 	}
 
-	public String getStartTime() {
+	public int getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(String startTime) {
+	public void setStartTime(int startTime) {
 		this.startTime = startTime;
 	}
 
-	public String getEndTime() {
+	public int getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(String endTime) {
+	public void setEndTime(int endTime) {
 		this.endTime = endTime;
 	}
 
@@ -213,6 +218,18 @@ public class Place {
 	public void setHashtagName(String hashtagName) {
 		this.hashtagName = hashtagName;
 	}
+
+	@Override
+	public String toString() {
+		return "Place [placeNo=" + placeNo + ", placeTitle=" + placeTitle + ", categoryNo=" + categoryNo + ", writer="
+				+ writer + ", locationNo=" + locationNo + ", makeDate=" + makeDate + ", status=" + status + ", phone="
+				+ phone + ", address=" + address + ", placeContent=" + placeContent + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", starPoint=" + starPoint + ", placeUrl=" + placeUrl + ", viewCount="
+				+ viewCount + ", useTime=" + useTime + ", usePrice=" + usePrice + ", bestStatus=" + bestStatus
+				+ ", hashtagName=" + hashtagName + "]";
+	}
+
+	
 	
 	
 	
