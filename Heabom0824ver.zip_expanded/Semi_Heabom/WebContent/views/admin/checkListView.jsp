@@ -152,7 +152,7 @@
         #content_2>table {
             width: 100%;
 
-            margin-top: 3%;
+            margin-top: 4%;
         }
 
         table>thead {
@@ -388,6 +388,7 @@
                             <th width="130">
                                 <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
                             </th>
+                            <th width="130">번호</th>
                             <th width="130">회원 아이디</th>
                             <th width="130">이름</th>
                             <th width="130">별명</th>
@@ -396,37 +397,24 @@
                             <th width="160">최종 접속</th>
                             <th width="120">이메일</th>
                             <th width="120">차단</th>
-                            <th width="160">등급 변경</th>
                             <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                         </thead>
                         <tbody class="listInner">
                             <% for(Member m : list) { %>
                             	<tr>
                             		<td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
-                            		<td class="getMemId"><%= m.getMemId() %></td>
+                            		<td class="getMemId"><%= m.getMemNo() %></td>
+                            		<td><%= m.getMemId() %></td>
                             		<td><%= m.getMemName() %></td>
                             		<td><%= m.getNickname() %></td>
                             		<td><%= m.getGrade() %></td>
                             		<td><%= m.getMemPoint() %></td>
                             		<td><%= m.getMemVisit() %></td>
                             		<td><%= m.getEmail() %></td>
-                            		<td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
+                                	<td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                 	<td>
-                                        <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                                            <option value="week" selected="selected">씨앗</option>
-                                            <option value="month1">잔디</option>
-                                            <option value="month2">새싹</option>
-                                            <option value="month3">벚꽃</option>
-                                            <option value="month4">무궁화</option>
-                                        </select>
+                                        <button onclick="updateRole()">정보 수정</button>
                                     </td>
-                                	<td>
-                                    <select id="search_date3" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                                        <option value="week" selected="selected">수정</option>
-                                        <option value="month">삭제</option>
-                                        <option value="month3">그룹</option>
-                                    </select>
-                                </td>
                             	</tr>
                             	<% } %>
                         </tbody>
@@ -465,6 +453,8 @@
             <div id="footer"></div>
         </div>
     </div>
+
+    <!-- 전체 클릭 -->
     <script>
         function selectAll(selectAll) {
             const check = document.getElementsByName('check');
@@ -472,6 +462,13 @@
             check.forEach((check) => {
                 check.checked = selectAll.checked;
             })
+        }
+    </script>
+
+    <!-- 회원 정보 수정 -->
+    <script>
+        function updateRole() {
+            location.href="MemberDao.java?command=editView&mem_no="+mem_no;
         }
     </script>
     <%@include file = "../common/footer.jsp" %>
