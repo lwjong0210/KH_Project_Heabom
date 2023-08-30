@@ -9,13 +9,13 @@ public class Board {
 	private int boardCount;
 	private String createDate;
 	private String boardStatus;
-	private String boardCategory;
 	private String boardup;
+	private int countReply;
 	
 	public Board() {}
 	
 	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount,
-			String createDate, String boardStatus, String boardCategory, String boardup, int countReply) {
+			String createDate, String boardStatus, String boardup, int countReply) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -24,25 +24,30 @@ public class Board {
 		this.boardCount = boardCount;
 		this.createDate = createDate;
 		this.boardStatus = boardStatus;
-		this.boardCategory = boardCategory;
 		this.boardup = boardup;
 		this.countReply = countReply;
 	}
 
 
 	public Board(String boardNo, String boardTitle, String writer, int boardCount, String createDate,
-			String boardCategory, int countReply) {
+			int countReply) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
 		this.writer = writer;
 		this.boardCount = boardCount;
 		this.createDate = createDate;
-		this.boardCategory = boardCategory;
 		this.countReply = countReply;
 	}
+	private String hashTagName;
 	
-	private int countReply;
+	public String getHashTagName() {
+		return hashTagName;
+	}
+
+	public void setHashTagName(String hashTagName) {
+		this.hashTagName = hashTagName;
+	}
 
 	public int getCountReply() {
 		return countReply;
@@ -108,14 +113,6 @@ public class Board {
 		this.boardStatus = boardStatus;
 	}
 
-	public String getBoardCategory() {
-		return boardCategory;
-	}
-
-	public void setBoardCategory(String boardCategory) {
-		this.boardCategory = boardCategory;
-	}
-
 	public String getBoardup() {
 		return boardup;
 	}
@@ -128,7 +125,7 @@ public class Board {
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", writer=" + writer + ", boardContent="
 				+ boardContent + ", boardCount=" + boardCount + ", createDate=" + createDate + ", boardStatus="
-				+ boardStatus + ", boardCategory=" + boardCategory + ", boardup=" + boardup + ", countReply="
+				+ boardStatus + ", boardup=" + boardup + ", countReply="
 				+ countReply + "]";
 	}
 

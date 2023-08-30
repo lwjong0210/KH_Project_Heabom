@@ -112,7 +112,6 @@ public class BoardDao {
 								 , rset.getString("mem_id")
 								 , rset.getInt("board_count")
 								 , rset.getString("create_date")
-								 , rset.getString("board_category")
 								 , rset.getInt("count")
 								 ));
 			}
@@ -160,7 +159,6 @@ public class BoardDao {
 						, rset.getString("mem_id")
 						, rset.getInt("board_count")
 						, rset.getString("create_date")
-						, rset.getString("board_category")
 						, rset.getInt("count")
 						));
 			}
@@ -214,11 +212,19 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-//			pstmt.setString(1, "'F'||SEQ_BNO.NEXTVAL");
-			pstmt.setString(1, b.getBoardTitle());
-			pstmt.setString(2, b.getWriter());
-			pstmt.setString(3, b.getBoardContent());
-			pstmt.setString(4, b.getBoardCategory());
+//			b.getBoardNo().substring(0, 1);
+//			if(b.getBoardCategory().equals("F")) {
+			if(b.getBoardNo().equals("F")) {
+				pstmt.setString(1, "F");
+				
+			}else {
+				pstmt.setString(1, "N");
+				
+			}
+			pstmt.setString(2, b.getBoardTitle());
+			pstmt.setString(3, b.getWriter());
+			pstmt.setString(4, b.getBoardContent());
+//			pstmt.setString(5, b.getBoardCategory());
 			pstmt.setString(5, b.getBoardup());
 			
 			result=pstmt.executeUpdate();
@@ -263,6 +269,33 @@ public class BoardDao {
 	
 	}
 	
+	public String returnBoardNo(Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		String boardNo = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("returnBoardNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			System.out.println(rset);
+			if(rset.next()) {
+				boardNo = rset.getString("board_no");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return boardNo;
+		
+	}
+	
 	public int insertHash(Connection conn, HashTag ht) {
 		
 		PreparedStatement pstmt = null;
@@ -283,6 +316,64 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return result;
+		
+	}
+	
+	public int increaseCount(Connection conn, String bno) {
+		
+		PreparedStatement pstmt = null;
+		
+		int result = 0;
+		
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bno);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	public Board selectBoard(Connection conn, String bno) {
+		
+		PreparedStatement pstmt = null;
+		Board b = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b.setBoardNo(rset.getString("board_no"));
+				b.setBoardTitle(rset.getString("board_title"));
+				b.setWriter(rset.getString("mem_id"));
+				b.setBoardContent(rset.getString("board_content"));
+				b.setBoardCount(rset.getInt("board_count"));
+				b.setCreateDate(rset.getString("create_date"));
+				b.setHashTagName(rset.getString("hashtag_name"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return b;
+		
+		
+		
 		
 	}
 
