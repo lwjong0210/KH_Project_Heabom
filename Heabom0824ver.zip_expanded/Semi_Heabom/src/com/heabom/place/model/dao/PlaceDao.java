@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.heabom.common.JDBCTemplate.*;
+
+import com.heabom.common.model.vo.File;
 import com.heabom.place.model.vo.Place;
 
 public class PlaceDao {
@@ -86,6 +88,39 @@ public class PlaceDao {
 			close(pstmt);
 		}
 		return result ; 
+	}
+	
+	/**
+	 * 조준하
+	 * 장소 사진 리스트 tb_file 에 저장
+	 * @param conn
+	 * @param list
+	 * @return
+	 */
+	public int insertFileList(Connection conn , ArrayList<File> list) {
+		//insert 문
+		int result = 0 ;
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("insertFileList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			for(int i = 0 ; i< list.size() ; i ++) {
+				pstmt.setString(1, list.get(i).getOriginName());
+				pstmt.setString(2, list.get(i).getChangeName());
+				pstmt.setString(3, list.get(i).getFilePath());
+				pstmt.setInt(4, list.get(i).getFileLevel());
+				result = pstmt.executeUpdate();
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ; 
+		
 	}
 	
 	

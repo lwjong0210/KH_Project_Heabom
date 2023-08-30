@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.File;
 import com.heabom.common.model.vo.HashTag;
@@ -247,8 +249,9 @@ public class BoardDao {
 		String sql = prop.getProperty("insertAttachment");
 		
 		try {
-			for(File f:list) { // at = list.get(0), at = lsit.get(1)
-				// 미완성 
+			for(File f:list) {
+				System.out.println(f+"제발제발제발");
+			
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, f.getOriginName());
 				pstmt.setString(2, f.getChangeName());
@@ -345,11 +348,11 @@ public class BoardDao {
 	public Board selectBoard(Connection conn, String bno) {
 		
 		PreparedStatement pstmt = null;
-		Board b = null;
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("selectBoard");
 		
+		Board b = new Board();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, bno);
@@ -363,6 +366,7 @@ public class BoardDao {
 				b.setBoardCount(rset.getInt("board_count"));
 				b.setCreateDate(rset.getString("create_date"));
 				b.setHashTagName(rset.getString("hashtag_name"));
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -371,10 +375,37 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return b;
+	}
+	
+	public ArrayList<File> selectFileList(Connection conn, String bno) {
 		
+		ArrayList<File> list = new ArrayList<File>();
+		PreparedStatement pstmt = null;
 		
+		ResultSet rset = null;
+				
+		String sql = prop.getProperty("selectFileList");
 		
-		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bno);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				File f = new File();
+				f.setChangeName(rset.getString("change_name"));
+				f.setFilePath(rset.getString("file_path"));
+				list.add(f);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 
 }

@@ -52,7 +52,7 @@ public class MemberEnrollController extends HttpServlet {
 				at = new MemberAttachment();
 				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
 				at.setChangeName(multiRequest.getFilesystemName("upfile"));
-				at.setFilePath("resources/board_upfiles");
+				at.setFilePath("resources/img/profile");
 			}
 			
 			String memId = multiRequest.getParameter("userId");

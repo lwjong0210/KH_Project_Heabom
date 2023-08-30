@@ -144,4 +144,14 @@ public class BoardService {
 		return b;
 	}
 	
+	public ArrayList<File> selectFileList(String bno) {
+		Connection conn = getConnection();
+	 	ArrayList<File> list = new BoardDao().selectFileList(conn, bno);
+	 	
+	 	close(conn);
+	 	
+	 	return list;
+		
+	}
+	
 }

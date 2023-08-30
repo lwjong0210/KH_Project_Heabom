@@ -41,6 +41,7 @@ public class MemberService {
 	public int insertMember(MemberAttachment at , Member m) {
 		Connection conn = getConnection();
 		int result1 = new MemberDao().insertMember(conn , m);
+		
 	
 		int result2 = 1; 
 		
@@ -67,6 +68,7 @@ public class MemberService {
 	 */
 	public Member loginMember(String memId , String memPwd) {
 		Connection conn = getConnection();
+		
 		Member m = new MemberDao().loginMember(conn, memId, memPwd);
 		close(conn);
 		return m; 

@@ -63,4 +63,31 @@ INSERT INTO
        )
 </entry>
 
+
+<entry key="insertFileList">
+INSERT 
+INTO TB_FILE
+(
+    FILE_NO
+   ,ORIGIN_NAME
+   ,CHANGE_NAME 
+   ,FILE_PATH
+   ,UPLOAD_DATE
+   ,REF_NO
+   ,STATUS
+   ,FILE_LEVEL
+)
+VALUES
+(
+    SEQ_FILE.NEXTVAL
+   ,? --ORIGIN_NAME
+   ,? --CHANGE_NAME
+   ,? --FILE_PATH
+   , SYSDATE
+   ,'PL'||SEQ_PNO.CURRVAL 
+   ,DEFAULT
+   ,? --FILE_LEVEL
+)
+</entry>
+
 </properties>

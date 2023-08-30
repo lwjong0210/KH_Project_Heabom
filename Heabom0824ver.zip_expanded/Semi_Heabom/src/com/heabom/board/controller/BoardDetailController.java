@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.heabom.board.model.service.BoardService;
 import com.heabom.board.model.vo.Board;
+import com.heabom.common.model.vo.File;
 
 /**
  * Servlet implementation class BoardDetailController
@@ -33,15 +34,27 @@ public class BoardDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String bno = (String)request.getParameter("bno");
-		System.out.println(bno);
+		System.out.println(bno + "잘나오는지 체크");
 		
 		BoardService bService = new BoardService();
 		
 		int result = bService.increaseCount(bno);
+		System.out.println(result + "잘나오는지 체크2");
+		System.out.println(bno + "잘나오는지 체크3");
 		
-		Board b = new BoardService().selectBoard(bno);
 		
-		System.out.println(b);
+		if(result>0) {
+			Board b = bService.selectBoard(bno);
+			ArrayList<File> list = bService.selectFileList(bno);
+			
+			request.setAttribute("b", b);
+			request.setAttribute("list", list);
+			
+			System.out.println(b);
+			System.out.println(list);
+			
+			request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
+		}
 		
 		
 		

@@ -73,6 +73,7 @@ table, div {
 }
 
 .myprofile:hover {
+	cursor: pointer;
 	color: lightgray;
 }
 
@@ -143,8 +144,7 @@ table, div {
 											등급</strong><img src="" alt=""></td>
 								</tr>
 								<tr>
-									<td height="40" style="font-size: medium;"><a href="#"
-										style="text-decoration: none;" class="myprofile">개인정보(프로필사진)설정</a></td>
+									<td height="40" style="font-size: medium;"><div class="myprofile" onclick="myDetail();">개인정보(프로필사진)설정</div></td>
 								</tr>
 							</table>
 						</div>
@@ -232,6 +232,24 @@ table, div {
 		<br> <br> <br>
 	</div>
 	<script>
+		// 개인정보 수정
+		function myDetail() {
+			$.ajax({
+				url : "myDetailAjax.do",
+				data : {
+					memNo : $("#memNo").val()
+				},
+				datatype : "html",
+				success : function(result) {
+					console.log("ajax 성공");
+					$("#test").html(result);
+				},
+				error : function() {
+					console.log("ajax 통신실패");
+				}
+			})
+		}
+
 		// 방문페이지 Ajax
 		function myVisit() {
 			myVisit1();
