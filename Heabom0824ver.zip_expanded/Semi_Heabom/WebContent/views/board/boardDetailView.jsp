@@ -1,5 +1,22 @@
+<%@page import="java.lang.reflect.Field"%>
+<%@page import="com.heabom.common.model.vo.File"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.heabom.board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	Board b = (Board)request.getAttribute("b");
+	ArrayList<File> list = (ArrayList<File>)request.getAttribute("list");
+	
+	String boardNo = b.getBoardNo();
+	String boardTitle = b.getBoardTitle();
+	String writer = b.getWriter();
+	String boardContent = b.getBoardContent();
+	int boardCount = b.getBoardCount();
+	String createDate = b.getCreateDate();
+	String hashTag = b.getHashTagName();
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -536,21 +553,28 @@
     </style>
 </head>
 <body>
+	<%@ include file= "../common/header.jsp" %>
+	
     <div class="wrap">
         <div id="post_header">
             <div id="post_header">
                 <div id="notice_category">
-                    <a href="#">자유게시판</a>
+                <% System.out.println(boardNo.substring(0,1)+"ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"); %>
+               		<% if(boardNo.substring(0,1).equals("F")){ %>
+                    	<a href="<%= contextPath %>/list.bo?cpage=1">자유게시판</a>
+                    <% }else{ %>                    	
+                    	<a href="#">공지사항</a>
+                    <% } %>
                 </div>
                 <div id="post_title">
-                    <span>유채꽃 축제 다녀왔어요.</span>
+                    <span><%= b.getBoardTitle() %></span>
                 </div>
                 <div id="user_info">
                     <div id="user_profile_img">
                         <img src="resources/img/free-icon-login-310869.png" alt="">
                     </div>
                     <div id="user_id">
-                        <span>USER01</span>
+                        <span><%= b.getWriter() %></span>
                     </div>
                     <div id="user_grade">
                         <img src="resources/img/free-icon-benefit-6000574.png" alt="">
@@ -558,7 +582,7 @@
                 </div>
                 <div id="post_header_footer">
                     <div id="post_date">
-                        <span>2023.08.09. 07:35</span>
+                        <span><%= b.getCreateDate() %></span>
                     </div>
                     <div class="post_comment">
                         <div class="post_comment_text">
@@ -574,23 +598,14 @@
         <div id="post_content">
             <div id="post_main">
                 <div>
-                    <img src="resources/img/20200102112319284_oen.jpeg" alt="">
-                    위하여, 아니더면, 고동을 행복스럽고 가치를 예수는 아니한 우리 우리 그리하였는가? 피어나는 그들은 가는 꽃이 수 인생의 노년에게서 말이다. 스며들어 들어 있는 두기 힘있다. 위하여서, 봄날의 이것은 같지 청춘의 보는 것이다. 이상 같이 위하여 방황하였으며, 두손을 전인 기관과 이는 사막이다. 밝은 것이 무한한 붙잡아 있는 있을 그들의 내려온 칼이다. 보배를 같이, 새 말이다. 원질이 원대하고, 되는 타오르고 못할 것이다. 밝은 인생의 가진 그들은 듣기만 방황하여도, 힘있다.
-    
-                    그러므로 이상은 위하여, 이것이다. 위하여 그것을 같은 커다란 너의 원대하고, 봄바람이다. 가치를 평화스러운 인류의 그들에게 말이다. 얼마나 끓는 아니더면, 얼마나 옷을 사는가 사람은 청춘의 운다. 거선의 이것은 가는 구하지 이상의 예수는 뜨거운지라, 위하여, 이상의 이것이다. 열락의 속에 못하다 주는 인간은 찾아 것이다. 인간이 수 돋고, 그들을 철환하였는가? 노래하며 반짝이는 할지니, 예수는 인생의 바이며, 주는 부패뿐이다. 것은 자신과 피부가 끓는다.
-                    
-                    품으며, 피어나기 부패를 별과 설산에서 관현악이며, 하는 꽃이 전인 운다. 뼈 가지에 밥을 오직 힘있다. 목숨을 동산에는 이 그들은 이것을 생의 것이다. 얼음이 스며들어 날카로우나 때문이다. 더운지라 그들의 발휘하기 그리하였는가? 그들의 주는 공자는 생명을 인간의 굳세게 않는 이것이다. 밥을 인생에 청춘의 생의 방황하여도, 인생의 그들은 어디 구하지 사막이다. 간에 길을 많이 얼음과 하는 생생하며, 공자는 이상의 쓸쓸하랴? 관현악이며, 풀이 피고 위하여 듣는다.
-                    
-                    이것은 그들의 오직 뿐이다. 방황하여도, 것은 그것은 황금시대다. 청춘의 바이며, 황금시대를 고동을 못할 것이다. 날카로우나 사라지지 용기가 구하지 보이는 같은 천자만홍이 갑 것이다. 별과 희망의 인간이 아니한 보내는 이성은 그들을 길지 되려니와, 것이다. 없는 하는 그들에게 예수는 방지하는 오직 힘차게 장식하는 두손을 쓸쓸하랴? 뭇 그림자는 넣는 몸이 살았으며, 대중을 천지는 것이다. 가치를 영락과 것은 무엇을 있는 것이다. 무엇을 뜨고, 이것을 열락의 얼마나 것이다. 되는 이상 구하기 얼마나 새가 설산에서 그들은 피다. 생의 이 가는 보는 그들은 같은 이것은 그러므로 얼음에 아름다우냐?
-                    
-                    것은 아름답고 창공에 곳으로 있는 원질이 같이, 것이다. 만천하의 불어 피어나기 뛰노는 것이다. 찾아다녀도, 인생을 무엇을 것이 이상은 교향악이다. 동산에는 있는 이상의 우리의 인간의 목숨을 듣기만 위하여서. 봄바람을 우리의 되는 것은 놀이 날카로우나 쓸쓸하랴? 사라지지 때까지 용기가 인간의 뼈 같이 크고 힘있다. 가슴에 그들은 트고, 작고 피어나기 새가 능히 길지 때문이다. 가슴에 이 구하기 아니다. 피어나는 찾아 실현에 힘차게 그러므로 피다. 그들은 기쁘며, 속에 창공에 청춘 같으며, 소금이라 끓는다.
+                    <%= b.getBoardContent() %>
                 </div>
             </div>
             <div id="post_hashtag">
-                <a href="#">#여행</a>&nbsp;&nbsp;
-                <a href="#">#축제</a>&nbsp;&nbsp;
-                <a href="#">#강원도</a>&nbsp;&nbsp;
-                <a href="#">#데이트</a>&nbsp;&nbsp;
+            <% String[] tagList = hashTag.split(","); %>
+            <% for(String s : tagList){ %>
+                <a href="#">#<%= s %></a>&nbsp;&nbsp;
+            <% } %>
             </div>
             <div id="post_content_footer">
                 <div id="post_wish">
