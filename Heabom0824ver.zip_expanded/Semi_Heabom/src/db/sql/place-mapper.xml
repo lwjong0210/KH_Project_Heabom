@@ -17,4 +17,50 @@
 	ORDER
 	   BY MAKE_DATE DESC
 </entry>
+
+<entry key="insertPlace">
+INSERT INTO
+    TB_PLACE(
+        PLACE_NO
+       ,PLACE_TITLE
+       ,CATEGORY_NO
+       ,WRITER
+       ,LOCATION_NO
+       ,MAKE_DATE
+       ,STATUS
+       ,PHONE
+       ,ADDRESS
+       ,PLACE_CONTENT
+       ,START_TIME
+       ,END_TIME
+       ,STAR_POINT
+       ,PLACE_URL
+       ,VIEW_COUNT
+       ,USE_TIME
+       ,USE_PRICE
+       ,BEST_STATUS
+    )
+    VALUES
+    (
+        'PL'||SEQ_PNO.NEXTVAL
+       ,? --PLACE_TITLE
+       ,? --CATEGORY_NO
+       ,? -- WRITER
+       ,? --LOCATION_NO
+       ,SYSDATE
+       ,DEFAULT
+       ,? --PHONE
+       ,? -- ADDRESS
+       ,? --PLACE_CONTENT
+       ,? --START_TIME
+       ,?  -- END_TIME
+       ,? --STAR_POINT
+       ,? --PLACE_URL
+       ,DEFAULT --VIEW_COUNT
+       ,? --USE_TIME
+       ,? --USE_PRICE
+       ,DEFAULT
+       )
+</entry>
+
 </properties>

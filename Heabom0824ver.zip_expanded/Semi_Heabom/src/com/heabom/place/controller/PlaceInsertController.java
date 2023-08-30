@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.heabom.member.model.vo.Member;
 import com.heabom.place.model.service.PlaceService;
 import com.heabom.place.model.vo.Place;
 
@@ -29,6 +31,12 @@ public class PlaceInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+			HttpSession session = request.getSession();
+			Member m  = (Member)session.getAttribute("loginMember");
+			String writer = m.getMemNo();
+			
+			
 			String placeTitle = request.getParameter("placeTitle");
 			
 			int categoryNo = 0 ; 
@@ -132,7 +140,7 @@ public class PlaceInsertController extends HttpServlet {
 			int usePrice =  Integer.parseInt(request.getParameter("usePrice"));
 			
 			Place p = new Place();
-			
+			p.setWriter(writer);
 			p.setPlaceTitle(placeTitle);
 			p.setCategoryNo(categoryNo);
 			p.setLocationNo(locationNo);
@@ -147,9 +155,18 @@ public class PlaceInsertController extends HttpServlet {
 			p.setUseTime(useTime);
 			p.setUsePrice(usePrice);
 			
-			System.out.println(p);
+			
 			
 			int result = new PlaceService().insertPlace(p);
+			
+			if (result > 0 ) {
+				session.setAttribute("alertMsg", "등록성공");
+				response.sendRedirect(request.getContextPath());
+			}else {
+			
+				session.setAttribute("alertMsg", "등록실패 (아마 장소 제약조건 위배했을꺼에요 강남 서초 동작 중에 하나 선택하세요)");
+				response.sendRedirect(request.getContextPath());
+			}
 			
 			
 			

@@ -60,7 +60,32 @@ public class PlaceDao {
 		//insert 문 이니까 result 있어야 함
 		int result = 0 ; 
 		PreparedStatement pstmt = null ;
-		String sql = prop.getProperty("");
+		String sql = prop.getProperty("insertPlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,p.getPlaceTitle());
+			pstmt.setInt(2, p.getCategoryNo());
+			pstmt.setString(3, p.getWriter());
+			pstmt.setInt(4, p.getLocationNo());
+			pstmt.setString(5, p.getPhone());
+			pstmt.setString(6, p.getAddress());
+			pstmt.setString(7, p.getPlaceContent());
+			pstmt.setInt(8, p.getStartTime());
+			pstmt.setInt(9, p.getEndTime());
+			pstmt.setInt(10, p.getStarPoint());
+			pstmt.setString(11, p.getPlaceUrl());
+			pstmt.setInt(12, p.getUseTime());
+			pstmt.setInt(13, p.getUsePrice());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ; 
 	}
 	
 	
