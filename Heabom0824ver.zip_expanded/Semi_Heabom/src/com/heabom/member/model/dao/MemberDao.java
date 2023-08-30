@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.heabom.common.JDBCTemplate.*;
+
+import com.heabom.common.model.vo.PageInfo;
 import com.heabom.member.model.vo.Member;
 import com.heabom.member.model.vo.MemberAttachment;
 
@@ -26,7 +28,34 @@ public class MemberDao {
 		}
 	}
 	
-	public ArrayList<Member> selectAdminList(Connection conn) {
+	public int selectListCount(Connection conn) {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+	
+	public ArrayList<Member> selectAdminList(Connection conn, PageInfo pi) {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
 		
@@ -35,8 +64,14 @@ public class MemberDao {
 		
 		String sql = prop.getProperty("selectAdminList");
 		
+		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() - 1;
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -59,6 +94,9 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	
+	
 	
 	
 	public int insertMember(Connection conn , Member m) {
