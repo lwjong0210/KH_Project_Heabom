@@ -5,13 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=], initial-scale=1.0">
-    <title>2번째 화면</title>
+    <title>검색화면</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <style>
 
-        div {
-
-        }
+     
 
         .wrap {
 
@@ -69,7 +67,11 @@
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
+
+<button  class="btn btn-primary" onclick="location.href ='<%=contextPath%>/enroll.pl'">장소 새로 등록하기</button>
+   
     <div class="wrap">
+       
         <div id="box">
             <a href="<%=contextPath %>/resource/img/myPage"><img src="../../resource/img/place/서치뷰.png"></a>
         </div>

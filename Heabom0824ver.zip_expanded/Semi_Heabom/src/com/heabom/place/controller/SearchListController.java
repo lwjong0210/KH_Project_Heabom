@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class SearchListController
  */
-@WebServlet("/list.pl")
+@WebServlet("/search.pl")
 public class SearchListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,8 +28,8 @@ public class SearchListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setCharacterEncoding("UTF-8");
-		request.getRequestDispatcher("views/place/placeListView.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("views/place/searchListView2.jsp").forward(request, response);
 	}
 
 	/**
