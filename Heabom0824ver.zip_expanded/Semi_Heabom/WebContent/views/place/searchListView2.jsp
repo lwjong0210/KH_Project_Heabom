@@ -53,7 +53,7 @@
             cursor: pointer;
         }
 
-        .btn:hover {
+        img:hover {
             background-repeat: no-repeat;
             background-position: center;
             background-size: 100%;
@@ -70,64 +70,64 @@
     <div class="wrap">
        
         <div id="box">
-            <a href="<%=contextPath %>"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href=""><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="<%=contextPath %>"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href=""><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="<%=contextPath %>"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href=""><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="<%=contextPath%>/resource/img/place/서치뷰.png"></a>
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
         </div>
     </div>
     <%@include file = "../common/footer.jsp" %>
