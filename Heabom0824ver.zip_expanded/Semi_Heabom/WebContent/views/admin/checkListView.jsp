@@ -166,7 +166,7 @@
             
         }
 
-        table>tbody {
+        table>.listInner {
             text-align: center;
             font-size: 25px;
 
@@ -383,42 +383,49 @@
             <div id="content1">
                 <div id="content_1"></div>
                 <div id="content_2">
-                    <table border="1">
-                        <thead>
-                            <th width="130">
-                                <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
-                            </th>
-                            <th width="130">번호</th>
-                            <th width="130">회원 아이디</th>
-                            <th width="130">이름</th>
-                            <th width="130">별명</th>
-                            <th width="120">등급</th>
-                            <th width="120">포인트</th>
-                            <th width="160">최종 접속</th>
-                            <th width="120">이메일</th>
-                            <th width="120">차단</th>
-                            <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
-                        </thead>
-                        <tbody class="listInner">
-                            <% for(Member m : list) { %>
-                            	<tr>
-                            		<td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
-                            		<td class="getMemId"><%= m.getMemNo() %></td>
-                            		<td><%= m.getMemId() %></td>
-                            		<td><%= m.getMemName() %></td>
-                            		<td><%= m.getNickname() %></td>
-                            		<td><%= m.getGrade() %></td>
-                            		<td><%= m.getMemPoint() %></td>
-                            		<td><%= m.getMemVisit() %></td>
-                            		<td><%= m.getEmail() %></td>
-                                	<td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                	<td>
-                                        <button onclick="updateRole()">정보 수정</button>
-                                    </td>
-                            	</tr>
-                            	<% } %>
-                        </tbody>
-                    </table>
+                        <table border="1">
+                            <thead>
+                                <th width="130">
+                                    <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
+                                </th>
+                                <th width="130">번호</th>
+                                <th width="130">회원 아이디</th>
+                                <th width="130">이름</th>
+                                <th width="130">별명</th>
+                                <th width="120">등급</th>
+                                <th width="120">포인트</th>
+                                <th width="160">최종 접속</th>
+                                <th width="120">이메일</th>
+                                <th width="120">등급 수정</th>
+                                <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
+                            </thead>
+                            <tbody class="listInner">
+                                <% for(Member m : list) { %>
+                                    <tr>
+                                        <td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
+                                        <td class="getMemId"><%= m.getMemNo() %></td>
+                                        <td><%= m.getMemId() %></td>
+                                        <td><%= m.getMemName() %></td>
+                                        <td><%= m.getNickname() %></td>
+                                        <td><%= m.getGrade() %></td>
+                                        <td><%= m.getMemPoint() %></td>
+                                        <td><%= m.getMemVisit() %></td>
+                                        <td><%= m.getEmail() %></td>
+                                        <td>
+                                            <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="changeFn()">
+                                                <option value="memberId" selected="selected">씨앗</option>
+                                                <option value="memberName">잔디</option>
+                                                <option value="nickname">새싹</option>
+                                                <option value="all">벚꽃</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button type="submit">변경</button>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
                 </div>
                 <div id="content_3"></div>
             </div>
@@ -467,9 +474,7 @@
 
     <!-- 회원 정보 수정 -->
     <script>
-        function updateRole() {
-            location.href="MemberDao.java?command=editView&mem_no="+mem_no;
-        }
+
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>

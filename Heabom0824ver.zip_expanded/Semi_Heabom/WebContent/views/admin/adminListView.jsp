@@ -103,14 +103,14 @@
                         <tr>
                             <td width="150" height="110" align="center">
                                 <div class="adminpage-detail" align="center">
-                                    <a href="#"><img src="<%=contextPath%>/resource/img/admin/배너.png"></a>
+                                    <a href="<%= contextPath %>/banner.ad"><img src="<%=contextPath%>/resource/img/admin/배너.png"></a>
                                     <p class="adminpage-right-p"><strong>배너수정</strong></p>
                                 </div>
                             </td>
                             <td width="30"></td>
                             <td width="150" height="110" align="center">
                                 <div class="adminpage-detail" align="center">
-                                    <a href="#"><img src="<%=contextPath%>/resource/img/admin/로고.png"></a>
+                                    <a href="<%= contextPath %>/logo.ad"><img src="<%=contextPath%>/resource/img/admin/로고.png"></a>
                                     <p class="adminpage-right-p"><strong>로고수정</strong></p>
                                 </div>
                             </td>
@@ -121,14 +121,14 @@
                         <tr>
                             <td width="150" height="110" align="center">
                                 <div class="adminpage-detail" align="center">
-                                    <a href="#"><img src="<%=contextPath%>/resource/img/admin/신고.png"></a>
+                                    <a href="<%= contextPath %>/report.ad"><img src="<%=contextPath%>/resource/img/admin/신고.png"></a>
                                     <p class="adminpage-right-p"><strong>신고관리</strong></p>
                                 </div>
                             </td>
                             <td width="30"></td>
                             <td width="150" height="110" align="center">
                                 <div class="adminpage-detail" align="center">
-                                    <a href="#"><img src="<%=contextPath%>/resource/img/admin/회원.png"></a>
+                                    <a href="<%= contextPath %>/check.ad"><img src="<%=contextPath%>/resource/img/admin/회원.png"></a>
                                     <p class="adminpage-right-p"><strong>회원조회</strong></p>
                                 </div>
                             </td>

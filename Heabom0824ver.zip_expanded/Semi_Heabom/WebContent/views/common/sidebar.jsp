@@ -13,6 +13,7 @@
         width: 2.5rem;
         height: 2.5rem;
         cursor: pointer;
+        z-index: 9999;
     }
     .loginBtn {
         position: fixed;
@@ -21,6 +22,7 @@
         width: 2.5rem;
         height: 2.5rem;
         cursor: pointer;
+        z-index: 9999;
     }
     .loginBtn>svg, .moveTopBtn>svg{
         width: 40px;

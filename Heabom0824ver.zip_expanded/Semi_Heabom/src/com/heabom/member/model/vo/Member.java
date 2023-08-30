@@ -53,6 +53,8 @@ public class Member {
 	}
 	
 	
+	
+	
 
 	public String getMemNo() {
 		return memNo;
