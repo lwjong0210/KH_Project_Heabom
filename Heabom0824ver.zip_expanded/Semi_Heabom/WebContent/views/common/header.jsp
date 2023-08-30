@@ -113,6 +113,7 @@
     </style>
 </head>
 <body>
+   <%@ include file="sidebar.jsp" %>
     <%if (alertMsg != null){  %>
         <script>
         alert("<%=alertMsg%>");
@@ -201,7 +202,7 @@
             }
 
         </script>
-        <%@ include file="sidebar.jsp" %>
+
 </body>
 
 
