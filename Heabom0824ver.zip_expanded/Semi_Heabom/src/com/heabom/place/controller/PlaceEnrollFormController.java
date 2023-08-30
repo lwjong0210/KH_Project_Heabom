@@ -26,7 +26,7 @@ public class PlaceEnrollFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("안뇽");
+		request.getRequestDispatcher("views/place/placeEnrollForm.jsp").forward(request, response);
 	}
 
 	/**
