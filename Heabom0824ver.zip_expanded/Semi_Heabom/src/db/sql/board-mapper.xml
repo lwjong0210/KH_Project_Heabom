@@ -178,7 +178,29 @@ SELECT *
 			WHERE REF_NO = ?
 			AND STATUS = 'Y'
 	</entry>
+	<entry key='selectAnswer'>
+		SELECT
+		    ANSWER_NO
+		  , ANSWER_WRITER
+		  , ANSWER_OR_NOT
+		  , ANSWER_CONTENT
+		  , ANSWER_DATE
+		  , NICKNAME
+		FROM TB_ANSWER
+		JOIN TB_MEMBER ON (ANSWER_WRITER = MEM_NO)
+		WHERE ANSWER_WRITER = 'SEQ_MNO.NEXTVAL1'
+		ORDER BY ANSWER_DATE DESC
+	</entry>
 	
+	<entry key='selectQuestion'>
+		SELECT
+		    QUESTION_NO
+		  , QUESTION_COMMENT
+		  , QUESTION_DATE
+		FROM TB_QUESTION
+		WHERE QUESTION_WRITER = ?
+		ORDER BY QUESTION_DATE DESC
+	</entry>
 	
 	
 </properties>

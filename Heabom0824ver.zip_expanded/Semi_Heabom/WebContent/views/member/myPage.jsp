@@ -4,7 +4,8 @@
 <html lang="en">
 <head>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -288,6 +289,7 @@ table, div {
 				url : "myFavoritAjax.do",
 				datatype : "html",
 				success : function(result) {
+					console.log("ajax 성공");
 					$("#test").html(result);
 				},
 				error : function() {
@@ -317,7 +319,7 @@ table, div {
 		// 게시물관리 Ajax
 		function myPlace() {
 			$.ajax({
-				url : "myPlaceAjax.do",
+				url :"myPlaceAjax.do",
 				data : {
 					memNo : $("#memNo").val()
 				},

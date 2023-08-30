@@ -31,10 +31,10 @@ public class JqAjaxMyPlaceController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("여기는 place 컨트롤러");
 		String memNo = request.getParameter("memNo");
 		
 		ArrayList<Place> plist = new PlaceService().selectPlace(memNo);
-		
 		request.setAttribute("plist", plist);
 		
 		request.getRequestDispatcher("views/member/myPlace.jsp").forward(request, response);

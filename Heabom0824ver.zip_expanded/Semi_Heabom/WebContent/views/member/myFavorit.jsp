@@ -60,7 +60,7 @@
     </style>
 </head>
 <body>
-    <div class="yj_myFavorit_area" align="cneter">
+    <div class="yj_myFavorit_area" align="center">
         <div class="yj_myFavorit_detail">
             <table border="0" class="detail_tb">
                 <tr>
