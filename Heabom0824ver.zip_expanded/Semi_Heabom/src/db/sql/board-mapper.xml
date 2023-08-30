@@ -152,7 +152,7 @@ SELECT *
 		   SET
 		       BOARD_COUNT = BOARD_COUNT + 1
 		 WHERE 
-		       BOARD_NO = ?
+		       SUBSTR(BOARD_NO,2) = ?
 	</entry>
 	<entry key="selectBoard">
 		SELECT
@@ -168,6 +168,17 @@ SELECT *
 		  LEFT JOIN TB_HASHTAG ON(PLACE_NO = BOARD_NO)
 		 WHERE SUBSTR(BOARD_NO,2) = ?
 	</entry>
+	<entry key='selectFileList'>
+		SELECT
+			FILE_NO
+			, ORIGIN_NAME
+			, CHANGE_NAME
+			, FILE_PATH
+			FROM TB_FILE
+			WHERE REF_NO = ?
+			AND STATUS = 'Y'
+	</entry>
+	
 	
 	
 </properties>
