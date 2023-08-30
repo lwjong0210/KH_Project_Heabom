@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import static com.heabom.common.JDBCTemplate.*;
 
+import com.heabom.common.model.vo.File;
 import com.heabom.place.model.dao.PlaceDao;
 import com.heabom.place.model.vo.Place;
 
@@ -27,17 +28,21 @@ import com.heabom.place.model.vo.Place;
 		 * @param p
 		 * @return
 		 */
-		public int insertPlace(Place p) {
+		public int insertPlace(Place p , ArrayList<File> list ) {
 			Connection conn = getConnection();
-			int result = 0 ; 
-			result = new PlaceDao().insertPlace(conn,p);
-			if (result > 0 ) {
+			int result1 = 0 ; 
+			result1 = new PlaceDao().insertPlace(conn,p);
+			int result2= new PlaceDao().insertFileList(conn, list);
+			
+			
+			if (result1 > 0 && result2 > 0) {
 				commit(conn);
 			}else {
 				rollback(conn);
 			}
 			close(conn);
-			return result;
+			return result1*result2 ;
+			
 		}
 	
 	

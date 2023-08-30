@@ -44,7 +44,7 @@ public class PlaceInsertController extends HttpServlet {
 			
 			int maxSize = 10 *1024 * 1024;
 			//저장시킬 폴더의 물리적인 경로
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/place_upfiles/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/place_upfiles/");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath ,maxSize, "utf-8", new MyFileRenamePolicy());
 			
@@ -57,7 +57,7 @@ public class PlaceInsertController extends HttpServlet {
 					File at = new File();
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key)); //이게뭐지?
-					at.setFilePath("resources/place_upfiles");
+					at.setFilePath("resource/img/place_upfiles");
 					if (i == 1 ) {//대표 이미지 일경우 
 						at.setFileLevel(1);
 					}else {
@@ -76,10 +76,10 @@ public class PlaceInsertController extends HttpServlet {
 			String writer = m.getMemNo();
 			
 			
-			String placeTitle = request.getParameter("placeTitle");
+			String placeTitle = multiRequest.getParameter("placeTitle");
 			
 			int categoryNo = 0 ; 
-			String category = request.getParameter("category");
+			String category = multiRequest.getParameter("category");
 			if(category.equals("호프")) {
 				categoryNo = 1 ;
 			}else if (category.equals("카페")) {
@@ -89,7 +89,7 @@ public class PlaceInsertController extends HttpServlet {
 			}
 			
 			int locationNo = 0 ;
-			String location = request.getParameter("location");
+			String location = multiRequest.getParameter("location");
 			
 			switch (location) {
 			case "강남구" : 
@@ -168,15 +168,15 @@ public class PlaceInsertController extends HttpServlet {
 			}
 			
 			
-			String phone = request.getParameter("phone");
-			String address = request.getParameter("address");
-			String placeContent = request.getParameter("content");
-			int startTime = Integer.parseInt(request.getParameter("startTime"));
-			int endTime = Integer.parseInt(request.getParameter("endTime"));
-			int starPoint =  Integer.parseInt(request.getParameter("starPoint"));
-			String placeUrl = request.getParameter("placeUrl");
-			int useTime =  Integer.parseInt(request.getParameter("useTime"));
-			int usePrice =  Integer.parseInt(request.getParameter("usePrice"));
+			String phone = multiRequest.getParameter("phone");
+			String address = multiRequest.getParameter("address");
+			String placeContent = multiRequest.getParameter("content");
+			int startTime = Integer.parseInt(multiRequest.getParameter("startTime"));
+			int endTime = Integer.parseInt(multiRequest.getParameter("endTime"));
+			int starPoint =  Integer.parseInt(multiRequest.getParameter("starPoint"));
+			String placeUrl = multiRequest.getParameter("placeUrl");
+			int useTime =  Integer.parseInt(multiRequest.getParameter("useTime"));
+			int usePrice =  Integer.parseInt(multiRequest.getParameter("usePrice"));
 			
 			Place p = new Place();
 			p.setWriter(writer);
@@ -196,7 +196,7 @@ public class PlaceInsertController extends HttpServlet {
 			
 			
 			
-			int result = new PlaceService().insertPlace(p);
+			int result = new PlaceService().insertPlace(p , list);
 			
 			if (result > 0 ) {
 				session.setAttribute("alertMsg", "등록성공");
