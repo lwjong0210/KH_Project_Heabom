@@ -9,10 +9,13 @@ public class File {
 	private String filePath;
 	private Date uploadDate;
 	private String refNo;
+	private int fileLevel;
+	private String status;
 	
 	public File () {}
-	
-	public File(String fileNo, String originName, String changeName, String filePath, Date uploadDate, String refNo) {
+
+	public File(String fileNo, String originName, String changeName, String filePath, Date uploadDate, String refNo,
+			int fileLevel, String status) {
 		super();
 		this.fileNo = fileNo;
 		this.originName = originName;
@@ -20,6 +23,8 @@ public class File {
 		this.filePath = filePath;
 		this.uploadDate = uploadDate;
 		this.refNo = refNo;
+		this.fileLevel = fileLevel;
+		this.status = status;
 	}
 
 	public String getFileNo() {
@@ -70,11 +75,29 @@ public class File {
 		this.refNo = refNo;
 	}
 
+	public int getFileLevel() {
+		return fileLevel;
+	}
+
+	public void setFileLevel(int fileLevel) {
+		this.fileLevel = fileLevel;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "File [fileNo=" + fileNo + ", originName=" + originName + ", changeName=" + changeName + ", filePath="
-				+ filePath + ", uploadDate=" + uploadDate + ", refNo=" + refNo + "]";
+				+ filePath + ", uploadDate=" + uploadDate + ", refNo=" + refNo + ", fileLevel=" + fileLevel
+				+ ", status=" + status + "]";
 	}
+	
 	
 	
 	

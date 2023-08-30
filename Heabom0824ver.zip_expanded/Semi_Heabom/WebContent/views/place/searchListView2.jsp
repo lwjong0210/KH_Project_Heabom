@@ -5,24 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=], initial-scale=1.0">
-    <title>2번째 화면</title>
+    <title>검색화면</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <style>
 
-        div {
-            /*
-            box-sizing: border-box;
-            border: 1px solid black;
-            */
-
-            position: relative;
-        }
+     
 
         .wrap {
-            position: absolute;
 
-            width: 1000px;
-            height:800px;
+            width: 1900px;
+            height: 1500px;
+            
             margin: auto;
 
             display: grid;
@@ -37,6 +30,7 @@
 
         .wrap>div {
             width: 100%;
+
         }
 
 
@@ -50,7 +44,7 @@
             border-radius: 20px;
             border: none;
 			
-			background-color: rgb(253, 241, 251);
+			background-color: rgb(253, 241, 251); 
             background-repeat: no-repeat;
             background-position: center;
             background-size: 100%;
@@ -73,25 +67,30 @@
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
+
+<button  class="btn btn-primary" onclick="location.href ='<%=contextPath%>/enrollForm.pl'">장소 새로 등록하기</button>
+   
     <div class="wrap">
+       
         <div id="box">
-            <a href="<%=contextPath %>/resource/img/myPage"><img src="../place/placeListView.jsp"></a>
+            <a href="<%=contextPath %>/resource/img/myPage"><img src="../../resource/img/place/서치뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="#"></a>
+            <a href="#"><img src="../../resource/img/place/서치뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="#"></a>
+            <a href="#"><img src="../../resource/img/place/서치뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="#"></a>
+            <a href="#"><img src="../../resource/img/place/서치뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="#"></a>
+            <a href="#"><img src="../../resource/img/place/서치뷰.png"></a>
         </div>
         <div id="box">
-            <a href="#"><img src="#"></a>
+            <a href="#"><img src="../../resource/img/place/서치뷰.png"></a>
         </div>
     </div>
+    <%@include file = "../common/footer.jsp" %>
 </body>
 </html>

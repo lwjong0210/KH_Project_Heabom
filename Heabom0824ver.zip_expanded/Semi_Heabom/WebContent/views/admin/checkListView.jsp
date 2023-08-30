@@ -1,5 +1,18 @@
+<%@page import="com.heabom.common.model.vo.PageInfo"%>
+<%@page import="com.heabom.member.model.vo.Member"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +22,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         div, input {
-            /*border: 1px solid red;*/
-            box-sizing: border-box;
+            /* border: 1px solid red;
+            box-sizing: border-box; */
         }
 
         p {
@@ -19,42 +32,44 @@
             /*border: 1px solid black;*/
 
             margin-left: 5%;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: 900;
         }
 
         #p1 {
-            margin-top: 25%;
+            margin-top: 20%;
         }
 
         #p2 {
-            margin-top: 25%;
+            margin-top: 20%;
 
             color: orange;
         }
 
         #p3 {
-            margin-top: 25%;
+            margin-top: 20%;
 
             color: red;
         }
 
         .wrap {
             width: 1900px;
-            height: 800px;
-            border: 1px solid black;
+            height: auto;
+            /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
             margin-top: 30px;
-            overflow: auto;
 
             background-color: #FDEEEE;
+
+            padding-top: 1%;
+            padding-bottom: 1%;
         }
 
         .background {
             box-sizing: border-box;
-            width: 90%;
-            height: 150%;
+            width: 70%;
+            height: 1000px;
             margin: auto;
             margin-top: 4%;
             margin-bottom: 4%;
@@ -67,15 +82,15 @@
         }
 
         #header {
-            height: 15%;
+            height: 12%;
         }
 
         #content1 {
-            height: 65%;
+            height: 70%;
         }
 
         #content2 {
-            height: 10%;
+            height: 8%;
         }
 
         #footer {
@@ -141,10 +156,10 @@
 
         /*-------------------테이블---------------------------------*/
 
-        #content_2>table {
+        #content_2>form {
             width: 100%;
 
-            margin-top: 5%;
+            margin-top: 4%;
         }
 
         table>thead {
@@ -158,7 +173,7 @@
             
         }
 
-        table>tbody {
+        table>.listInner {
             text-align: center;
             font-size: 25px;
 
@@ -169,9 +184,18 @@
             
         }
 
-        th, td {
+        th {
             padding-top: 10px;
             padding-bottom: 10px;
+
+            font-size: 17px;
+        }
+
+        td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            font-size: 15px;
         }
 
         /*---------------------------- 아코디언 ----------------------------------*/
@@ -186,10 +210,10 @@
             position: absolute;
             margin: auto;
 
-            width: 50%;
+            width: 40%;
             height: 30%;
 
-            top: 70px;
+            top: 50px;
             bottom: 0px;
             left: 170px;
             right: 0px;
@@ -209,6 +233,7 @@
             background-color: white;
             border-width: 3px;
             border-radius: 5px;
+
             border-color: lightgray;
         }
 
@@ -217,14 +242,12 @@
         }
 
         #search_date3 {
-            width: 50%;
 
-            font-size: 30px;
-
-            background-color: #8dc7ee;
+            background-color: white;
+            border-width: 3px;
             border-radius: 5px;
-            border: none;
-            color: black;
+
+            border-color: lightgray;
 
         }
 
@@ -244,14 +267,14 @@
             width: 90%;
             height: 30%;
 
-            font-size: 20px;
+            font-size: 15px;
         }
 
         #search_form {
 
             margin: auto;
             position: absolute;
-            top: 70px;
+            top: 50px;
             bottom: 0px;
             left: 200;
             right: 0px;
@@ -294,19 +317,18 @@
         }
 
         .page-link {
-            font-size: 30px;
+            font-size: 20px;
         }
 
         /*--------------------------선택 수정, 삭제---------------------------------*/
         
         #content_5>button {
-            font-size: 25px;
 
-            width: 40%;
+            width: 30%;
 
             margin-top: 4%;
 
-            font-size: 25px;
+            font-size: 15px;
 
             color: white;
             font-weight: 900;
@@ -346,17 +368,17 @@
                     <p id="p3"> 탈퇴 : </p>
                 </div>
                 <div id="header_3">
-                    <select id="search_date" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                        <option value="week" selected="selected">회원 아이디</option>
-                        <option value="month">.</option>
-                        <option value="month3">.</option>
+                    <select id="search_date" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="changeFn()">
+                        <option value="memberId" selected="selected">회원 아이디</option>
+                        <option value="memberName">이름</option>
+                        <option value="nickname">별명</option>
                         <option value="all">.</option>
                     </select>
                 </div>
                 <div id="header_4">
                     <form action="" id="search_form">
                         <div id="search_text">
-                            <input type="text" name="keyword">
+                            <input type="text" id="keyword" name="keyword">
                         </div>
                         <div id="search_btn">
                             <input type="submit" value="검색">
@@ -368,52 +390,51 @@
             <div id="content1">
                 <div id="content_1"></div>
                 <div id="content_2">
-                    <table border="1">
-                        <thead>
-                            <th width="130">
-                                <input type="checkbox" style="width:30px;height:30px;border:none;">
-                            </th>
-                            <th width="180">회원 아이디</th>
-                            <th width="120">이름</th>
-                            <th width="120">별명</th>
-                            <th width="120">권한</th>
-                            <th width="120">포인트</th>
-                            <th width="160">최종 접속</th>
-                            <th width="120">이메일</th>
-                            <th width="120">차단</th>
-                            <th width="100">그룹</th>
-                            <th width="160"><button type="button" style="width: 75px; height: 50px; font-size: 20px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                <td>admin</td>
-                                <td>ddd</td>
-                                <td>sss</td>
-                                <td>
-                                    <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                                        <option value="week" selected="selected">1</option>
-                                        <option value="month">.</option>
-                                        <option value="month3">.</option>
-                                        <option value="all">.</option>
-                                    </select>
-                                </td>
-                                <td>400</td>
-                                <td>23.08.11</td>
-                                <td>@</td>
-                                <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                <td>.</td>
-                                <td>
-                                    <select id="search_date3" name="search_date" fw-filter="" fw-label="" fw-msg="">
-                                        <option value="week" selected="selected">+</option>
-                                        <option value="month">.</option>
-                                        <option value="month3">.</option>
-                                        <option value="all">.</option>
-                                    </select>
-                                </td>
-                             </tr>
-                        </tbody>
-                    </table>
+                    <form action="<%= contextPath %>/update.ad" method="post">
+                        <table border="1">
+                            <thead>
+                                <th width="130">
+                                    <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
+                                </th>
+                                <th width="130">번호</th>
+                                <th width="130">회원 아이디</th>
+                                <th width="130">이름</th>
+                                <th width="130">별명</th>
+                                <th width="120">등급</th>
+                                <th width="120">포인트</th>
+                                <th width="160">최종 접속</th>
+                                <th width="120">이메일</th>
+                                <th width="120">회원 상태</th>
+                                <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
+                            </thead>
+                            <tbody class="listInner">
+                                <% for(Member m : list) { %>
+                                    <tr>
+                                        <td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
+                                        <td class="getMemId"><%= m.getMemNo() %></td>
+                                        <td><%= m.getMemId() %></td>
+                                        <td><%= m.getMemName() %></td>
+                                        <td><%= m.getNickname() %></td>
+                                        <td><%= m.getGrade() %></td>
+                                        <td><input type="text" style="width: 50%;"></td>
+                                        <td><%= m.getMemVisit() %></td>
+                                        <td><%= m.getEmail() %></td>
+                                        <td>
+                                            <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="chageLangSelect()">
+                                                <option value="차단" selected="selected">차단</option>
+                                                <option value="잔디">잔디</option>
+                                                <option value="새싹">새싹</option>
+                                                <option value="벚꽃">벚꽃</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="submit" value="변경" onclick="changeFn()">
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
                 <div id="content_3"></div>
             </div>
@@ -424,23 +445,21 @@
                     <button type="button" id="button2" class="btn btn-danger">선택 삭제</button>
                 </div>
                 <div id="content_6">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                    <% if(currentPage != 1) { %>
+                        <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage -1 %>'">&lt;</button>
+                        <% } %>
+                        
+                        <% for(int p=startPage; p<=endPage; p++){ %>
+                            <% if(p == currentPage) { %>
+                            <button disabled><%= p %></button>
+                            <% } else { %>
+                            <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= p %>';"><%= p %></button>
+                               <% } %>
+                        <% } %> 
+                        
+                        <% if(currentPage != maxPage) { %>
+                        <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage +1 %>'">&gt;</button>
+                        <% } %>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>
@@ -448,5 +467,21 @@
             <div id="footer"></div>
         </div>
     </div>
+
+    <!-- 전체 클릭 -->
+    <script>
+        function selectAll(selectAll) {
+            const check = document.getElementsByName('check');
+
+            check.forEach((check) => {
+                check.checked = selectAll.checked;
+            })
+        }
+    </script>
+
+    <!-- 회원 등급 수정 -->
+    <script>
+    </script>
+    <%@include file = "../common/footer.jsp" %>
 </body>
 </html>

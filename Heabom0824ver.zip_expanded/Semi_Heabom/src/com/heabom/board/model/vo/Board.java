@@ -1,21 +1,21 @@
 package com.heabom.board.model.vo;
 
-import java.sql.Date;
-
 public class Board {
+
 	private String boardNo;
 	private String boardTitle;
 	private String writer;
 	private String boardContent;
 	private int boardCount;
-	private Date createDate;
+	private String createDate;
 	private String boardStatus;
-	private String boardCategory;
+	private String boardup;
+	private int countReply;
 	
-	public Board () {}
-
-	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount, Date createDate,
-			String boardStatus, String boardCategory) {
+	public Board() {}
+	
+	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount,
+			String createDate, String boardStatus, String boardup, int countReply) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -24,7 +24,37 @@ public class Board {
 		this.boardCount = boardCount;
 		this.createDate = createDate;
 		this.boardStatus = boardStatus;
-		this.boardCategory = boardCategory;
+		this.boardup = boardup;
+		this.countReply = countReply;
+	}
+
+
+	public Board(String boardNo, String boardTitle, String writer, int boardCount, String createDate,
+			int countReply) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.writer = writer;
+		this.boardCount = boardCount;
+		this.createDate = createDate;
+		this.countReply = countReply;
+	}
+	private String hashTagName;
+	
+	public String getHashTagName() {
+		return hashTagName;
+	}
+
+	public void setHashTagName(String hashTagName) {
+		this.hashTagName = hashTagName;
+	}
+
+	public int getCountReply() {
+		return countReply;
+	}
+
+	public void setCountReply(int countReply) {
+		this.countReply = countReply;
 	}
 
 	public String getBoardNo() {
@@ -67,11 +97,11 @@ public class Board {
 		this.boardCount = boardCount;
 	}
 
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
@@ -83,20 +113,20 @@ public class Board {
 		this.boardStatus = boardStatus;
 	}
 
-	public String getBoardCategory() {
-		return boardCategory;
+	public String getBoardup() {
+		return boardup;
 	}
 
-	public void setBoardCategory(String boardCategory) {
-		this.boardCategory = boardCategory;
+	public void setBoardup(String boardup) {
+		this.boardup = boardup;
 	}
 
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", writer=" + writer + ", boardContent="
 				+ boardContent + ", boardCount=" + boardCount + ", createDate=" + createDate + ", boardStatus="
-				+ boardStatus + ", boardCategory=" + boardCategory + "]";
+				+ boardStatus + ", boardup=" + boardup + ", countReply="
+				+ countReply + "]";
 	}
-	
-	
+
 }

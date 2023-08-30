@@ -1,5 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+<entry key="selectPlace">
+	SELECT
+	    PLACE_NO
+	  , PLACE_TITLE
+	  , PLACE_CONTENT
+	  , MAKE_DATE
+	  , VIEW_COUNT
+	  , STAR_POINT
+	  , HASHTAG_NAME
+	FROM TB_PLACE
+	JOIN TB_HASHTAG USING (PLACE_NO)
+	WHERE WRITER = ?
+	AND STATUS = 'Y'
+	ORDER
+	   BY MAKE_DATE DESC
+</entry>
+
+<entry key="insertPlace">
+INSERT INTO
+    TB_PLACE(
+        PLACE_NO
+       ,PLACE_TITLE
+       ,CATEGORY_NO
+       ,WRITER
+       ,LOCATION_NO
+       ,MAKE_DATE
+       ,STATUS
+       ,PHONE
+       ,ADDRESS
+       ,PLACE_CONTENT
+       ,START_TIME
+       ,END_TIME
+       ,STAR_POINT
+       ,PLACE_URL
+       ,VIEW_COUNT
+       ,USE_TIME
+       ,USE_PRICE
+       ,BEST_STATUS
+    )
+    VALUES
+    (
+        'PL'||SEQ_PNO.NEXTVAL
+       ,? --PLACE_TITLE
+       ,? --CATEGORY_NO
+       ,? -- WRITER
+       ,? --LOCATION_NO
+       ,SYSDATE
+       ,DEFAULT
+       ,? --PHONE
+       ,? -- ADDRESS
+       ,? --PLACE_CONTENT
+       ,? --START_TIME
+       ,?  -- END_TIME
+       ,? --STAR_POINT
+       ,? --PLACE_URL
+       ,DEFAULT --VIEW_COUNT
+       ,? --USE_TIME
+       ,? --USE_PRICE
+       ,DEFAULT
+       )
+</entry>
+
+
+<entry key="insertFileList">
+INSERT 
+INTO TB_FILE
+(
+    FILE_NO
+   ,ORIGIN_NAME
+   ,CHANGE_NAME 
+   ,FILE_PATH
+   ,UPLOAD_DATE
+   ,REF_NO
+   ,STATUS
+   ,FILE_LEVEL
+)
+VALUES
+(
+    SEQ_FILE.NEXTVAL
+   ,? --ORIGIN_NAME
+   ,? --CHANGE_NAME
+   ,? --FILE_PATH
+   , SYSDATE
+   ,'PL'||SEQ_PNO.CURRVAL 
+   ,DEFAULT
+   ,? --FILE_LEVEL
+)
+</entry>
 
 </properties>

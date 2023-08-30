@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class SearchListController
  */
-@WebServlet("/list.pl")
+@WebServlet("/search.pl")
 public class SearchListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

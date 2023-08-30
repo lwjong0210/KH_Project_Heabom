@@ -1,11 +1,16 @@
 package com.heabom.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.heabom.place.model.service.PlaceService;
+import com.heabom.place.model.vo.Place;
 
 /**
  * Servlet implementation class JqAjaxMyPlaceController
@@ -26,6 +31,12 @@ public class JqAjaxMyPlaceController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("여기는 place 컨트롤러");
+		String memNo = request.getParameter("memNo");
+		
+		ArrayList<Place> plist = new PlaceService().selectPlace(memNo);
+		request.setAttribute("plist", plist);
+		
 		request.getRequestDispatcher("views/member/myPlace.jsp").forward(request, response);
 	}
 

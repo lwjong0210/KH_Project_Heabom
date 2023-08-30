@@ -1,5 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+	
+	<entry key='selectListCount'>
+		SELECT 
+		 COUNT(*) "count"
+		  FROM TB_BOARD
+		 WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+		   OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+		   AND BOARD_STATUS = 'Y'
+	</entry>
+	<entry key='selectKeyWordCount'>
+	SELECT 
+	 COUNT(*) "COUNT"
+	  FROM TB_BOARD
+	 WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+	    OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+	   AND BOARD_STATUS = 'Y'
+	   AND BOARD_TITLE LIKE ?
+	</entry>
+	<entry key='selectList'>
+SELECT * 
+  FROM(
+        SELECT 
+        ROWNUM RNUM
+        , A.*
+        FROM(SELECT 
+             BOARD_NO
+             , SUBSTR(BOARD_NO,1,1)
+             , BOARD_TITLE
+             , MEM_ID
+             , BOARD_COUNT
+             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
+             , COUNT(REPLY_NO) "COUNT"
+             FROM TB_BOARD
+             JOIN TB_MEMBER ON(WRITER = MEM_NO)
+             LEFT JOIN TB_REPLY USING(BOARD_NO)
+             WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+                OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+               AND BOARD_STATUS = 'Y'
+             GROUP BY BOARD_NO, SUBSTR(BOARD_NO,1,1), BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC, BOARD_NO DESC
+             ) A
+             )
+             WHERE RNUM BETWEEN ? AND ?
+	</entry>
+		<entry key='selectKeyWord'>
+SELECT * 
+  FROM(
+        SELECT 
+        ROWNUM RNUM
+        , A.*
+        FROM(SELECT 
+             BOARD_NO
+             , SUBSTR(BOARD_NO,1,1)
+             , BOARD_TITLE
+             , MEM_ID
+             , BOARD_COUNT
+             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
+             , COUNT(REPLY_NO) "COUNT"
+             FROM TB_BOARD
+             JOIN TB_MEMBER ON(WRITER = MEM_NO)
+             LEFT JOIN TB_REPLY USING(BOARD_NO)
+             WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+                OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+               AND BOARD_STATUS = 'Y'
+             GROUP BY BOARD_NO, SUBSTR(BOARD_NO,1,1), BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC, BOARD_NO DESC
+             ) A
+             WHERE BOARD_TITLE LIKE ?
+             )
+             WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key='countReply'>
+		SELECT COUNT(*) "count"
+		  FROM TB_REPLY
+		 WHERE BOARD_NO = ?
+		   AND REPLY_STATUS = 'Y'
+	</entry>
 
+	<entry key='insertBoard'>
+		INSERT
+  		  INTO TB_BOARD
+               (
+                 BOARD_NO
+               , BOARD_TITLE
+               , WRITER
+               , BOARD_CONTENT
+               , BOARD_UP
+              
+               )
+               VALUES
+               (
+                 ? ||SEQ_BNO.NEXTVAL
+               , ?
+               , ?
+               , ?
+               , ?
+               )
+	</entry>
+		<entry key="insertAttachment">
+		INSERT
+		INTO TB_FILE
+		(
+		FILE_NO
+		, ORIGIN_NAME
+		, CHANGE_NAME
+		, FILE_PATH
+		, UPLOAD_DATE
+		, REF_NO
+		)
+		VALUES
+		(
+		SEQ_FILE.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, SYSDATE
+		, SEQ_BNO.CURRVAL
+		)
+	</entry>
+	<entry key='returnBoardNo'>
+			SELECT BOARD_NO
+			  FROM
+			     (
+			       SELECT 
+			              BOARD_NO
+			         FROM TB_BOARD
+			        ORDER 
+			           BY 
+			              TO_CHAR(CREATE_DATE,'YY/MM/DD HH24:MI') DESC) A
+			        WHERE ROWNUM = 1
+	</entry>
+	<entry key='insertHash'>
+		INSERT
+	  	  INTO TB_HASHTAG 
+	           (
+	             PLACE_NO
+	           , HASHTAG_NAME
+	           )
+	           VALUES
+	           (
+	             ?
+	           , ?
+	           )
+	</entry>
+	<entry key="increaseCount">
+		UPDATE 
+		       TB_BOARD
+		   SET
+		       BOARD_COUNT = BOARD_COUNT + 1
+		 WHERE 
+		       SUBSTR(BOARD_NO,2) = ?
+	</entry>
+	<entry key="selectBoard">
+		SELECT
+		       BOARD_NO
+		     , BOARD_TITLE
+		     , MEM_ID
+		     , BOARD_CONTENT
+		     , BOARD_COUNT
+		     , TO_CHAR(CREATE_DATE,'YY/MM/DD HH24:MI') AS "CREATE_DATE"
+		     , HASHTAG_NAME
+		  FROM TB_BOARD
+		  JOIN TB_MEMBER ON(WRITER = MEM_NO)
+		  LEFT JOIN TB_HASHTAG ON(PLACE_NO = BOARD_NO)
+		 WHERE SUBSTR(BOARD_NO,2) = ?
+	</entry>
+	<entry key='selectFileList'>
+		SELECT
+			FILE_NO
+			, ORIGIN_NAME
+			, CHANGE_NAME
+			, FILE_PATH
+			FROM TB_FILE
+			WHERE REF_NO = ?
+			AND STATUS = 'Y'
+	</entry>
+	<entry key='selectAnswer'>
+		SELECT
+			QUESTION_NO
+		  , ANSWER_WRITER
+		  , ANSWER_OR_NOT
+		  , ANSWER_CONTENT
+		  , ANSWER_DATE
+		  , NICKNAME
+		FROM TB_ANSWER
+		JOIN TB_MEMBER ON (ANSWER_WRITER = MEM_NO)
+		WHERE ANSWER_WRITER = ?
+		ORDER BY ANSWER_DATE DESC
+	</entry>
+	
+	<entry key='selectQuestion'>
+		SELECT
+		    QUESTION_NO
+		  , QUESTION_COMMENT
+		  , QUESTION_DATE
+		FROM TB_QUESTION
+		WHERE QUESTION_WRITER = ?
+		ORDER BY QUESTION_DATE DESC
+	</entry>
+	
+	
 </properties>
