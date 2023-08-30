@@ -14,7 +14,6 @@
         height: 800px;
         background-color: #fdeeee;
         margin: auto;
-        margin-top: 50px;
     }
     .adminpage-left{
         background-color: gray;
@@ -141,5 +140,6 @@
         </table>
     </div>
 </div>
+<%@include file="../common/footer.jsp"%>
 </body>
 </html>
