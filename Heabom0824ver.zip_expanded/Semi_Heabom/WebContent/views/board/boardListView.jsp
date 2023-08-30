@@ -186,7 +186,7 @@ tbody>tr:hover {
 				</tr>
 
 			</thead>
-			<tbody>
+			<tbody id="list-area">
 				<% if(list.isEmpty()){ %>
 				<tr>
 					<td colspan="5">아직 게시글이 존재하지 않습니다.</td>
@@ -194,9 +194,10 @@ tbody>tr:hover {
 				<% }else{ %>
 
 				<% for(Board b : list){ %>
-				<% if(b.getBoardCategory().equals("N")){ %>
-				<% System.out.println("하이룽" + pi.getBoardLimit()); %>
-				<tr class="post-notice-area">
+				<% if(b.getBoardNo().substring(0, 1).equals("N")){ %>
+				<tr class="post-notice-area"></tr>
+				
+					<td hidden><%= b.getBoardNo().substring(1) %></td>
 					<td><div class="post-notice">공지</div></td>
 					<td class="post-notice-title"><%= b.getBoardTitle() %> <% if(b.getCountReply() != 0){ %>
 						<b style="color: red"> [<%= b.getCountReply() %>]
@@ -204,7 +205,7 @@ tbody>tr:hover {
 					<% }else{ %>
 				
 				<tr>
-					<td><%= b.getBoardNo() %></td>
+					<td><%= b.getBoardNo().substring(1) %></td>
 					<td><%= b.getBoardTitle()%> <% if( b.getCountReply() != 0){ %> <b
 						style="color: red"> [<%= b.getCountReply() %>]
 					</b> <% }else{ %> <% } %></td>
@@ -249,5 +250,14 @@ tbody>tr:hover {
 			</tfoot>
 		</table>
 	</div>
+	<script>
+		$(function(){
+			$("#list-area>tr").click(function(){
+				console.log($(this).children().eq(0).text())
+				location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text()
+			})
+		})
+
+	</script>
 </body>
 </html>

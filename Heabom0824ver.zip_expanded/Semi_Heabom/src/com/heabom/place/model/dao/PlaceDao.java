@@ -55,4 +55,13 @@ public class PlaceDao {
 		}
 		return plist;
 	}
+	
+	public int insertPlace(Connection conn , Place p ) {
+		//insert 문 이니까 result 있어야 함
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("");
+	}
+	
+	
 }

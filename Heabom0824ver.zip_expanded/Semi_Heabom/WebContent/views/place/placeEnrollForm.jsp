@@ -10,7 +10,7 @@
 <%@ include file="../common/header.jsp" %>
 	<h2>장소 추가화면</h2>
     <form action="<%=contextPath%>/insert.pl">
-        이름<input type="text"><br>
+        이름<input type="text" name = "placeTitle"><br>
         <select name="category" id="">
             <option value="호프">술집</option>
             <option value="카페">카페</option>
@@ -35,7 +35,7 @@
             <option value="서대문구">서대문</option>
             <option value="중구">중구</option>
             <option value="동대문구">동대문구</option>
-            <option value="중량구">중량</option>
+            <option value="중랑구">중랑</option>
             <option value="종로구">종로</option>
             <option value="성북구">성북</option>
             <option value="은평구">은평</option>
@@ -62,7 +62,7 @@
             <option value="18">18</option>
         </select>
         시부터
-        <select name="" id="">
+        <select name="endTime" id="">
             <option value="19">19</option>
             <option value="20">20</option>
             <option value="22">21</option>
@@ -82,7 +82,7 @@
         별점 <input type="range" value="5" min="0" max="5" name = "starPoint"> <br>
         홈페이지 <input type="text" name = "placeUrl"><br>
         예상소요시간 <input type="number" name = "useTime"> <br>
-        예상소요비용 <input type="number" name = "userPrice">
+        예상소요비용 <input type="number" name = "usePrice">
 
         <button type="submit">등록</button>
 

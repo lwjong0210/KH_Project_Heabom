@@ -6,16 +6,16 @@
 		SELECT 
 		 COUNT(*) "count"
 		  FROM TB_BOARD
-		 WHERE ((BOARD_CATEGORY = 'F')
-		   OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+		 WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+		   OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
 		   AND BOARD_STATUS = 'Y'
 	</entry>
 	<entry key='selectKeyWordCount'>
 	SELECT 
 	 COUNT(*) "COUNT"
 	  FROM TB_BOARD
-	 WHERE ((BOARD_CATEGORY = 'F')
-	    OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+	 WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+	    OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
 	   AND BOARD_STATUS = 'Y'
 	   AND BOARD_TITLE LIKE ?
 	</entry>
@@ -27,7 +27,7 @@ SELECT *
         , A.*
         FROM(SELECT 
              BOARD_NO
-             , BOARD_CATEGORY
+             , SUBSTR(BOARD_NO,1,1)
              , BOARD_TITLE
              , MEM_ID
              , BOARD_COUNT
@@ -36,11 +36,11 @@ SELECT *
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
              LEFT JOIN TB_REPLY USING(BOARD_NO)
-             WHERE ((BOARD_CATEGORY = 'F')
-                OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+             WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+                OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
-             GROUP BY BOARD_NO, BOARD_CATEGORY, BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
-             ORDER BY BOARD_CATEGORY DESC, CREATE_DATE DESC, BOARD_NO DESC
+             GROUP BY BOARD_NO, SUBSTR(BOARD_NO,1,1), BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC, BOARD_NO DESC
              ) A
              )
              WHERE RNUM BETWEEN ? AND ?
@@ -53,7 +53,7 @@ SELECT *
         , A.*
         FROM(SELECT 
              BOARD_NO
-             , BOARD_CATEGORY
+             , SUBSTR(BOARD_NO,1,1)
              , BOARD_TITLE
              , MEM_ID
              , BOARD_COUNT
@@ -62,11 +62,11 @@ SELECT *
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
              LEFT JOIN TB_REPLY USING(BOARD_NO)
-             WHERE ((BOARD_CATEGORY = 'F')
-                OR (BOARD_CATEGORY ='N' AND BOARD_UP = 'Y'))
+             WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+                OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
-             GROUP BY BOARD_NO, BOARD_CATEGORY, BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
-             ORDER BY BOARD_CATEGORY DESC, CREATE_DATE DESC, BOARD_NO DESC
+             GROUP BY BOARD_NO, SUBSTR(BOARD_NO,1,1), BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC, BOARD_NO DESC
              ) A
              WHERE BOARD_TITLE LIKE ?
              )
@@ -88,14 +88,12 @@ SELECT *
                , BOARD_TITLE
                , WRITER
                , BOARD_CONTENT
-               , BOARD_CATEGORY
                , BOARD_UP
               
                )
                VALUES
                (
-                 'F'||SEQ_BNO.NEXTVAL
-               , ?
+                 ? ||SEQ_BNO.NEXTVAL
                , ?
                , ?
                , ?
@@ -123,6 +121,18 @@ SELECT *
 		, SEQ_BNO.CURRVAL
 		)
 	</entry>
+	<entry key='returnBoardNo'>
+			SELECT BOARD_NO
+			  FROM
+			     (
+			       SELECT 
+			              BOARD_NO
+			         FROM TB_BOARD
+			        ORDER 
+			           BY 
+			              TO_CHAR(CREATE_DATE,'YY/MM/DD HH24:MI') DESC) A
+			        WHERE ROWNUM = 1
+	</entry>
 	<entry key='insertHash'>
 		INSERT
 	  	  INTO TB_HASHTAG 
@@ -135,6 +145,28 @@ SELECT *
 	             ?
 	           , ?
 	           )
+	</entry>
+	<entry key="increaseCount">
+		UPDATE 
+		       TB_BOARD
+		   SET
+		       BOARD_COUNT = BOARD_COUNT + 1
+		 WHERE 
+		       BOARD_NO = ?
+	</entry>
+	<entry key="selectBoard">
+		SELECT
+		       BOARD_NO
+		     , BOARD_TITLE
+		     , MEM_ID
+		     , BOARD_CONTENT
+		     , BOARD_COUNT
+		     , TO_CHAR(CREATE_DATE,'YY/MM/DD HH24:MI') AS "CREATE_DATE"
+		     , HASHTAG_NAME
+		  FROM TB_BOARD
+		  JOIN TB_MEMBER ON(WRITER = MEM_NO)
+		  LEFT JOIN TB_HASHTAG ON(PLACE_NO = BOARD_NO)
+		 WHERE SUBSTR(BOARD_NO,2) = ?
 	</entry>
 	
 	

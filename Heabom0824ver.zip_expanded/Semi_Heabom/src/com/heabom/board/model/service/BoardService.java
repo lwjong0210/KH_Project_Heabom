@@ -95,6 +95,16 @@ public class BoardService {
 		return result1 * result2;
 	}
 	
+	public String returnBoardNo() {
+		Connection conn = getConnection();
+		
+		String returnBoardNo = new BoardDao().returnBoardNo(conn);
+		
+		close(conn);
+		
+		return returnBoardNo;
+	}
+	
 	public int insertHash(HashTag ht) {
 		Connection conn = getConnection();
 		
@@ -108,6 +118,30 @@ public class BoardService {
 		close(conn);
 		return result;
 		
+	}
+	
+	public int increaseCount(String bno) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().increaseCount(conn, bno);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public Board selectBoard(String bno) {
+		Connection conn = getConnection();
+		
+		Board b = new BoardDao().selectBoard(conn, bno);
+		
+		close(conn);
+		return b;
 	}
 	
 }

@@ -177,7 +177,7 @@
                 <% }else{ %>
                 
                 	<% for(Board b : list){ %>
-                		<% if(b.getBoardCategory().equals("N")){ %>
+                		<% if(b.getBoardNo().substring(0, 1).equals("N")){ %>
                 	<% System.out.println("하이룽" + pi.getBoardLimit()); %>
 					         <tr class="post-notice-area">        
 					             <td><div class="post-notice">공지</div></td>

@@ -60,7 +60,8 @@ public class BoardInsertController extends HttpServlet {
 			Board b = new Board();
 			
 			b.setBoardTitle(boardTitle);
-			b.setBoardCategory(boardCategory);
+//			b.setBoardCategory(boardCategory);
+			b.setBoardNo(boardCategory);
 			b.setBoardContent(boardContent);
 			if(noticeUp == null) {
 				noticeUp = "N";
@@ -94,13 +95,14 @@ public class BoardInsertController extends HttpServlet {
 				
 			}
 			
+			String boardNo = new BoardService().returnBoardNo();
 			
 			String hashList = multiRequest.getParameter("tag");
 			int result2 = 1;
 			if(hashList.isEmpty()) {
 			}else {
 				HashTag ht = new HashTag();
-				ht.setCategoryNo(boardCategory);
+				ht.setCategoryNo(boardNo);
 				ht.setHashTagName(hashList);
 				
 				result2 = new BoardService().insertHash(ht);
