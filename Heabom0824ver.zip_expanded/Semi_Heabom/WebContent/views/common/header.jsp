@@ -183,7 +183,7 @@
                     <td><a href="#"><div>해봄의소리</div></a></td>
                     <%if (loginMember != null && loginMember.getMemId().equals("admin")){ %>
                         <!-- 관리자로 로그인하면 -->
-                        <td><a href=""><div>관리자페이지</div></a></td>
+                        <td><a href="<%= contextPath %>/myAdmin.ad"><div>관리자페이지</div></a></td>
                     <%} else {%>
                         <%  if(loginMember != null) { %>
                         <!-- 로그인하면 -->
