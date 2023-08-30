@@ -80,4 +80,24 @@ AND MEM_PWD = ?
 	   BY RE_DATE DESC
 </entry>
 
+<entry key="insertAttachment">
+INSERT INTO TB_FILE(
+    FILE_NO
+   ,ORIGIN_NAME
+   ,CHANGE_NAME
+   ,FILE_PATH
+   ,UPLOAD_DATE
+   ,REF_NO
+   )
+   VALUES(
+   SEQ_FILE.NEXTVAL
+   ,?
+   ,?
+   ,?
+   ,SYSDATE
+   ,'M' || SEQ_MNO.CURRVAL 
+)
+</entry>
+
+
 </properties>

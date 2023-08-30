@@ -8,6 +8,7 @@ import static com.heabom.common.JDBCTemplate.*;
 import com.heabom.admin.model.dao.AdminDao;
 import com.heabom.member.model.dao.MemberDao;
 import com.heabom.member.model.vo.Member;
+import com.heabom.member.model.vo.MemberAttachment;
 
 public class MemberService {
 
@@ -27,15 +28,28 @@ public class MemberService {
 	 * 조준하
 	 *회원가입
 	 */
-	public int insertMember(Member m) {
+	public int insertMember(MemberAttachment at , Member m) {
 		Connection conn = getConnection();
-		int result = new MemberDao().insertMember(conn , m);
-		if (result >0) {
+		int result1 = new MemberDao().insertMember(conn , m);
+	
+		int result2 = 1; 
+		
+		if (at != null) {
+			result2 = new MemberDao().insertAttachment(conn, at);
+		}
+		System.out.println("여긴 service");
+		System.out.println(result1 + " "  +result2 );
+		
+		if (result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
-		return result; 
+		close(conn);
+		System.out.println("controller 로 가는 리턴값 : " + (result1 * result2));
+		return result1*result2 ; 
+		
+		
 	}
 	
 	/**

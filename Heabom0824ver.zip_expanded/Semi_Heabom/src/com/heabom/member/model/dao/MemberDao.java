@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import static com.heabom.common.JDBCTemplate.*;
 import com.heabom.member.model.vo.Member;
+import com.heabom.member.model.vo.MemberAttachment;
 
 public class MemberDao {
 	private Properties prop = new Properties();
@@ -125,6 +126,34 @@ public class MemberDao {
 		}
 
 		return m ;
+	}
+	
+	
+	/**
+	 * 프사 첨부 
+	 * 조준하
+	 * @return
+	 */
+	public int insertAttachment(Connection conn , MemberAttachment at) {
+		int result = 0 ; 
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ; 
+		
 	}
 	
 	
