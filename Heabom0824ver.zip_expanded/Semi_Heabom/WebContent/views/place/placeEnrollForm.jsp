@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../common/header.jsp" %>
 	<h2>장소 추가화면</h2>
-    <form action="">
+    <form action="<%=contextPath%>/insert.pl">
         이름<input type="text"><br>
         <select name="category" id="">
             <option value="호프">술집</option>
@@ -63,7 +64,8 @@
         시부터
         <select name="" id="">
             <option value="19">19</option>
-            <option value="20">21</option>
+            <option value="20">20</option>
+            <option value="22">21</option>
             <option value="22">22</option>
             <option value="23">23</option>
             <option value="24">24</option>
@@ -81,6 +83,8 @@
         홈페이지 <input type="text" name = "placeUrl"><br>
         예상소요시간 <input type="number" name = "useTime"> <br>
         예상소요비용 <input type="number" name = "userPrice">
+
+        <button type="submit">등록</button>
 
     </form>
     
