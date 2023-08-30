@@ -55,7 +55,7 @@ public class MemberDao {
 		return listCount;
 	}
 	
-	public ArrayList<Member> selectAdminList(Connection conn, PageInfo pi) {
+	public ArrayList<Member> selectAdminList(Connection conn) {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
 		
@@ -64,14 +64,8 @@ public class MemberDao {
 		
 		String sql = prop.getProperty("selectAdminList");
 		
-		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-		int endRow = startRow + pi.getBoardLimit() - 1;
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
 			
 			rset = pstmt.executeQuery();
 			

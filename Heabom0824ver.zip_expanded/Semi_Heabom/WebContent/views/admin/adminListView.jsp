@@ -128,7 +128,7 @@
                             <td width="30"></td>
                             <td width="150" height="110" align="center">
                                 <div class="adminpage-detail" align="center">
-                                    <a href="<%= contextPath %>/check.ad?cpage=1"><img src="<%=contextPath%>/resource/img/admin/회원.png"></a>
+                                    <a href="<%= contextPath %>/check.ad"><img src="<%=contextPath%>/resource/img/admin/회원.png"></a>
                                     <p class="adminpage-right-p"><strong>회원조회</strong></p>
                                 </div>
                             </td>

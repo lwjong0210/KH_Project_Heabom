@@ -4,13 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 	
 %>
 <!DOCTYPE html>
@@ -445,21 +439,13 @@
                     <button type="button" id="button2" class="btn btn-danger">선택 삭제</button>
                 </div>
                 <div id="content_6">
-                    <% if(currentPage != 1) { %>
-                        <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage -1 %>'">&lt;</button>
-                        <% } %>
-                        
-                        <% for(int p=startPage; p<=endPage; p++){ %>
-                            <% if(p == currentPage) { %>
-                            <button disabled><%= p %></button>
-                            <% } else { %>
-                            <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= p %>';"><%= p %></button>
-                               <% } %>
-                        <% } %> 
-                        
-                        <% if(currentPage != maxPage) { %>
-                        <button onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage +1 %>'">&gt;</button>
-                        <% } %>
+                    <div class="paging-area" align="center">
+                        <button>&lt;</button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>&gt;</button>
+                    </div>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>
