@@ -75,7 +75,7 @@ public class MemberEnrollController extends HttpServlet {
 			
 			
 			
-			int result = new MemberService().insertMember(m);
+			int result = new MemberService().insertMember(m); //db 에 넘기기 
 			if (result>0) {
 				HttpSession session = request.getSession();
 				session.setAttribute("alertMsg", "회원가입성공");
