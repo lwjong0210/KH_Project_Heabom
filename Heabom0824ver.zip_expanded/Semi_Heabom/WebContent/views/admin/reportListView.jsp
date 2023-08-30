@@ -28,20 +28,22 @@
 
         .wrap {
             width: 1900px;
-            height: 800px;
-            border: 1px solid black;
+            height: auto;
+            /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
             margin-top: 30px;
-            overflow: auto;
 
             background-color: #FDEEEE;
+
+            padding-top: 1%;
+            padding-bottom: 1%;
         }
 
         .background {
             box-sizing: border-box;
-            width: 90%;
-            height: 150%;
+            width: 70%;
+            height: 1000px;
             margin: auto;
             margin-top: 4%;
             margin-bottom: 4%;

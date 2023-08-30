@@ -149,7 +149,7 @@
 
         /*-------------------테이블---------------------------------*/
 
-        #content_2>table {
+        #content_2>form {
             width: 100%;
 
             margin-top: 4%;
@@ -383,6 +383,7 @@
             <div id="content1">
                 <div id="content_1"></div>
                 <div id="content_2">
+                    <form action="<%= contextPath %>/update.ad" method="post">
                         <table border="1">
                             <thead>
                                 <th width="130">
@@ -412,7 +413,7 @@
                                         <td><%= m.getMemVisit() %></td>
                                         <td><%= m.getEmail() %></td>
                                         <td>
-                                            <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="changeFn()">
+                                            <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="chageLangSelect()">
                                                 <option value="memberId" selected="selected">씨앗</option>
                                                 <option value="memberName">잔디</option>
                                                 <option value="nickname">새싹</option>
@@ -420,12 +421,13 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <button type="submit">변경</button>
+                                            <input type="submit" onclick="changeFn()" value="변경">
                                         </td>
                                     </tr>
                                     <% } %>
                             </tbody>
                         </table>
+                    </form>
                 </div>
                 <div id="content_3"></div>
             </div>
@@ -472,9 +474,9 @@
         }
     </script>
 
-    <!-- 회원 정보 수정 -->
+    <!-- 회원 등급 수정 -->
     <script>
-
+        
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>
