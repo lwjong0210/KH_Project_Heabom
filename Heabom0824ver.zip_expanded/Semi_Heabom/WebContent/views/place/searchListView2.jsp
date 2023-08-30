@@ -16,13 +16,29 @@
             margin: auto;
 
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 
             grid-column-gap: 30px;
             grid-row-gap: 30px;
             padding: 5%;
 
+
+        }
+
+        #box {
+            position: relative;
+        }
+
+        p {
+            position: absolute;
+            text-align: center;
+
+            color: white;
+            font-size: 30px;
+
+            top: 40%;
+	        left: 37%;
         }
 
         .wrap>div {
@@ -71,63 +87,103 @@
        
         <div id="box">
             <a href=""><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>강남구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>서초구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>동작구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>강서구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>양천구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>구로구</p>
         </div>
         <div id="box">
             <a href=""><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>금천구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>관악구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>영등포구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>송파구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>강동구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>광진구</p>
         </div>
         <div id="box">
             <a href=""><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>성동구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>용산구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>마포구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>서대문구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>중구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>동대문구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>중량구</p>
         </div>
         <div id="box">
             <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>종로구</p>
+        </div>
+        <div id="box">
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>성북구</p>
+        </div>
+        <div id="box">
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>은평구</p>
+        </div>
+        <div id="box">
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>강북구</p>
+        </div>
+        <div id="box">
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>도봉구</p>
+        </div>
+        <div id="box">
+            <a href="#"><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+            <p>노원구</p>
         </div>
     </div>
     <%@include file = "../common/footer.jsp" %>

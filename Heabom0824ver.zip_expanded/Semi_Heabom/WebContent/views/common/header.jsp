@@ -179,7 +179,7 @@
             <table class="navi_detail" border="0" align="center">
                 <tr>
                     <td><a href="<%= contextPath %>/search.pl"><div>해봄검색</div></a></td>
-                    <td><a href="#"><div>해봄코스</div></a></td>
+                    <td><a href="<%= contextPath %>/search.pl"><div>해봄코스</div></a></td>
                     <td><a href="<%= contextPath %>/list.bo?cpage=1"><div>자유게시판</div></a></td>
                     <td><a href="#"><div>해봄의소리</div></a></td>
                     <%if (loginMember != null && loginMember.getMemId().equals("admin")){ %>
