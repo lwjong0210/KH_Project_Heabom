@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR&display=swap');
+        
         .footer{
             /* background-color: rgb(240, 240, 240); */
             /* background-color: #ffebeb; */
@@ -30,6 +32,10 @@
         }
         .footer label{
         	margin: 0px;
+        }
+        .footer *{
+            font-family: 'Black Han Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
         }
     </style>
 </head>
