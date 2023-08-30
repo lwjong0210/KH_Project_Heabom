@@ -26,11 +26,13 @@ public class JDBCTemplate {
 		
 		
 		try {
-			Class.forName(prop.getProperty("driver")); // µ¿Àû
+			Class.forName(prop.getProperty("driver")); // ï¿½ï¿½ï¿½ï¿½
 			
-			conn = DriverManager.getConnection(prop.getProperty("url"),      // µ¿Àû
-											   prop.getProperty("username"), // µ¿Àû
-											   prop.getProperty("password"));// µ¿Àû
+			conn = DriverManager.getConnection(prop.getProperty("url"),      // ï¿½ï¿½ï¿½ï¿½
+											   prop.getProperty("username"), // ï¿½ï¿½ï¿½ï¿½
+											   prop.getProperty("password"));// ï¿½ï¿½ï¿½ï¿½
+			
+			conn.setAutoCommit(false);
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -42,7 +44,7 @@ public class JDBCTemplate {
 		
 	}
 	
-	// 2-1. Connection °´Ã¼ Àü´Þ¹Þ¾Æ¼­ commit ½ÃÄÑÁÖ´Â commit ¸Þ¼Òµå
+	// 2-1. Connection ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½Þ¹Þ¾Æ¼ï¿½ commit ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ commit ï¿½Þ¼Òµï¿½
 	public static void commit(Connection conn) {
 		try {
 			if(conn != null && !conn.isClosed()) {
@@ -53,7 +55,7 @@ public class JDBCTemplate {
 		}
 	}
 	
-	// 2-2. 	"	   °´Ã¼¸¦ Àü´Þ¹Þ¾Æ¼­ rollback ½ÃÄÑÁÖ´Â rollback ¸Þ¼Òµå
+	// 2-2. 	"	   ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹Þ¾Æ¼ï¿½ rollback ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ rollback ï¿½Þ¼Òµï¿½
 	public static void rollback(Connection conn) {
 		try {
 			if(conn != null && !conn.isClosed()) {
@@ -64,7 +66,7 @@ public class JDBCTemplate {
 		}
 	}
 	
-	// 3-1.     "      °´Ã¼¸¦ Àü´Þ¹Þ¾Æ¼­ ¹Ý³³½ÃÄÑÁÖ´Â close ¸Þ¼Òµå
+	// 3-1.     "      ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹Þ¾Æ¼ï¿½ ï¿½Ý³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ close ï¿½Þ¼Òµï¿½
 	public static void close(Connection conn) {
 		try {
 			if(conn != null && !conn.isClosed()) {
@@ -75,7 +77,7 @@ public class JDBCTemplate {
 		}
 	}
 	
-	// 3-2. Statement  °´Ã¼¸¦ Àü´Þ¹Þ¾Æ¼­ ¹Ý³³½ÃÄÑÁÖ´Â close ¸Þ¼Òµå
+	// 3-2. Statement  ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹Þ¾Æ¼ï¿½ ï¿½Ý³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ close ï¿½Þ¼Òµï¿½
 	public static void close(Statement stmt) {
 		try {
 			if(stmt != null && !stmt.isClosed()) {
@@ -86,7 +88,7 @@ public class JDBCTemplate {
 		}
 	}
 	
-	// 3-3. ResultSet  °´Ã¼¸¦ Àü´Þ¹Þ¾Æ¼­ ¹Ý³³½ÃÄÑÁÖ´Â close ¸Þ¼Òµå
+	// 3-3. ResultSet  ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¹Þ¾Æ¼ï¿½ ï¿½Ý³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ close ï¿½Þ¼Òµï¿½
 	public static void close(ResultSet rset) {
 		try {
 			if(rset != null && !rset.isClosed()) {
