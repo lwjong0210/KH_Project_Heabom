@@ -4,7 +4,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 	
 %>
 <!DOCTYPE html>
@@ -405,7 +411,7 @@
                                 <% for(Member m : list) { %>
                                     <tr>
                                         <td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
-                                        <td class="getMemId"><%= m.getMemNo() %></td>
+                                        <td><%= m.getMemNo() %></td>
                                         <td><%= m.getMemId() %></td>
                                         <td><%= m.getMemName() %></td>
                                         <td><%= m.getNickname() %></td>
@@ -440,12 +446,22 @@
                 </div>
                 <div id="content_6">
                     <div class="paging-area" align="center">
-                        <button>&lt;</button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>&gt;</button>
-                    </div>
+						<% if(currentPage != 1) { %>
+            			<button onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage -1 %>'">&lt;</button>
+            			<% } %>
+            
+            			<% for(int p=startPage; p<=endPage; p++){ %>
+            				<% if(p == currentPage) { %>
+            				<button disabled><%= p %></button>
+            				<% } else { %>
+            				<button onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= p %>';"><%= p %></button>
+           					<% } %>
+            			<% } %> 
+            
+            			<% if(currentPage != maxPage) { %>
+            			<button onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage +1 %>'">&gt;</button>
+						<% } %>
+        			</div>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>

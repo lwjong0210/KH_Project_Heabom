@@ -55,7 +55,7 @@ public class MemberDao {
 		return listCount;
 	}
 	
-	public ArrayList<Member> selectAdminList(Connection conn) {
+	public ArrayList<Member> selectAdminList(Connection conn, PageInfo pi) {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
 		
@@ -64,19 +64,25 @@ public class MemberDao {
 		
 		String sql = prop.getProperty("selectAdminList");
 		
+		
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Member(rset.getString("mem_id"),
+				list.add(new Member(rset.getString("mem_no"),
+									rset.getString("mem_id"),
 									rset.getString("mem_name"),
 									rset.getString("nickname"),
 									rset.getString("grade"),
 									rset.getInt("mem_point"),
 									rset.getDate("mem_visit"),
-									rset.getString("email")
+									rset.getString("email"),
+									rset.getString("memStatus")
 									));
 			}
 			
