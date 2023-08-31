@@ -35,7 +35,6 @@ public class MemberPwdUpdateController extends HttpServlet {
 		String updatePwd = request.getParameter("updatePwd");
 		Member updateMem = new MemberService().updatePwd(userId, userPwd, updatePwd);
 		
-		System.out.println(updateMem);
 		HttpSession session = request.getSession();
 		if(updateMem == null) {
 			session.setAttribute("alertMsg", "비밀번호 변경에 실패하였습니다.");
