@@ -118,4 +118,14 @@ AND FILE_LEVEL = 1
 AND P.STATUS = 'Y'
 </entry>
 
+<entry key="selectFileList">
+select 
+    FILE_NO
+   ,ORIGIN_NAME
+   ,FILE_PATH || '/' ||CHANGE_NAME "IMG"
+FROM TB_FILE
+WHERE REF_NO = ?
+AND FILE_LEVEL = 2
+</entry> 
+
 </properties>

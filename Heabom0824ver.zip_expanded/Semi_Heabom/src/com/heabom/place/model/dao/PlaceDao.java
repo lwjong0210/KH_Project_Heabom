@@ -135,6 +135,7 @@ public class PlaceDao {
 		//select 문 resultset 객체 필요
 		
 		ArrayList<Place> list = new ArrayList<Place>();
+		
 		ResultSet rset = null ;
 		PreparedStatement pstmt = null ;
 		
@@ -165,7 +166,6 @@ public class PlaceDao {
 				p.setUsePrice(rset.getInt("USE_PRICE"));
 				p.setBestStatus(rset.getString("BEST_STATUS"));
 				p.setTitleImg(rset.getString("TITLEIMG"));
-				
 				list.add(p);
 			}
 			
@@ -176,6 +176,41 @@ public class PlaceDao {
 			close(pstmt);
 		}
 		return list ;
+		
+	}
+	
+	/**
+	 * 조준하
+	 * 장소 detailview 에 표시할 사진들을 우루루 가져올꺼임
+	 * @return
+	 */
+	public ArrayList<File> selectFileList(Connection conn, String pNo){
+		//select 문 resultset 필요
+		ResultSet rset= null ;
+		PreparedStatement pstmt = null ; 
+		ArrayList<File> fileList = new ArrayList<File>();
+		
+		String sql = prop.getProperty("selectFileList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				File f = new File();
+				f.setFileNo(rset.getInt("FILE_NO")+ "");
+				f.setOriginName(rset.getString("ORIGIN_NAME"));
+				f.setFilePath(rset.getString("IMG"));
+				fileList.add(f);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return fileList;
+		
+		
 		
 	}
 	

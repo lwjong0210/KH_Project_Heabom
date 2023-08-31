@@ -46,6 +46,7 @@ import com.heabom.place.model.vo.Place;
 		}
 		
 		/**
+		 * 조준하
 		 * 장소에 따른 장소리스트 조회
 		 * @param lNo
 		 * @return
@@ -55,6 +56,20 @@ import com.heabom.place.model.vo.Place;
 			ArrayList<Place> list = new PlaceDao().selectPlaceList(conn, lNo);
 			close(conn);
 			return list ;
+		}
+		
+		
+		/**
+		 * 조준하
+		 * 장소 detailview 에 표시할 사진들을 우루루 가져올꺼임
+		 * @return
+		 */
+		public ArrayList<File> selectFileList(String pNo){
+			Connection conn = getConnection();
+			ArrayList<File> fileList = new PlaceDao().selectFileList(conn , pNo);
+			close(conn);
+			return fileList ;
+			
 		}
 	
 	
