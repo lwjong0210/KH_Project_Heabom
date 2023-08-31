@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import static com.heabom.common.JDBCTemplate.*;
 
 import com.heabom.common.model.vo.File;
+import com.heabom.member.model.vo.MemberAttachment;
 import com.heabom.place.model.dao.PlaceDao;
 import com.heabom.place.model.vo.Place;
+import com.heabom.place.model.vo.Review;
 
 	public class PlaceService {
 		
@@ -127,6 +129,22 @@ import com.heabom.place.model.vo.Place;
 			int result = new PlaceDao().likeInput(conn, memNo ,pNo );
 			close(conn);
 			return result ;
+		}
+		
+		public int insertReview(Review re,MemberAttachment at) {
+			Connection conn = getConnection();
+			int result1 = new PlaceDao().insertReview(conn, re);
+			int result2 = 1;
+			if(at != null) {
+				result2 = new PlaceDao().insertReviewAttachment(conn, re, at);
+			}
+			if (result1 > 0 && result2 > 0) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			close(conn);
+			return result1*result2 ; 
 		}
 	
 

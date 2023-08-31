@@ -3,68 +3,104 @@ package com.heabom.place.model.vo;
 import java.sql.Date;
 
 public class Review {
-	private String reviwNo;
-	private String placeNo;
-	private String reviewWriter;
-	private Date reviewDate;
-	private String reviewContent;
+	private String reNo;
+	private String reRefNo;
+	private String reWriter;
+	private String reContent;
+	private int reLikeStar;
+	private Date reDate;
+	private String reStatus;
+	private int reRefStar;
 	
 	public Review () {}
 
-	public Review(String reviwNo, String placeNo, String reviewWriter, Date reviewDate, String reviewContent) {
+	
+
+	public Review(String reNo, String reRefNo, String reWriter, String reContent, int reLikeStar, Date reDate,
+			String reStatus, int reRefStar) {
 		super();
-		this.reviwNo = reviwNo;
-		this.placeNo = placeNo;
-		this.reviewWriter = reviewWriter;
-		this.reviewDate = reviewDate;
-		this.reviewContent = reviewContent;
+		this.reNo = reNo;
+		this.reRefNo = reRefNo;
+		this.reWriter = reWriter;
+		this.reContent = reContent;
+		this.reLikeStar = reLikeStar;
+		this.reDate = reDate;
+		this.reStatus = reStatus;
+		this.reRefStar = reRefStar;
 	}
 
-	public String getReviwNo() {
-		return reviwNo;
+
+
+	public int getReRefStar() {
+		return reRefStar;
 	}
 
-	public void setReviwNo(String reviwNo) {
-		this.reviwNo = reviwNo;
+	public void setReRefStar(int reRefStar) {
+		this.reRefStar = reRefStar;
 	}
 
-	public String getPlaceNo() {
-		return placeNo;
+	public String getReNo() {
+		return reNo;
 	}
 
-	public void setPlaceNo(String placeNo) {
-		this.placeNo = placeNo;
+	public void setReNo(String reNo) {
+		this.reNo = reNo;
 	}
 
-	public String getReviewWriter() {
-		return reviewWriter;
+	public String getReRefNo() {
+		return reRefNo;
 	}
 
-	public void setReviewWriter(String reviewWriter) {
-		this.reviewWriter = reviewWriter;
+	public void setReRefNo(String reRefNo) {
+		this.reRefNo = reRefNo;
 	}
 
-	public Date getReviewDate() {
-		return reviewDate;
+	public String getReWriter() {
+		return reWriter;
 	}
 
-	public void setReviewDate(Date reviewDate) {
-		this.reviewDate = reviewDate;
+	public void setReWriter(String reWriter) {
+		this.reWriter = reWriter;
 	}
 
-	public String getReviewContent() {
-		return reviewContent;
+	public String getReContent() {
+		return reContent;
 	}
 
-	public void setReviewContent(String reviewContent) {
-		this.reviewContent = reviewContent;
+	public void setReContent(String reContent) {
+		this.reContent = reContent;
+	}
+
+	public int getReLikeStar() {
+		return reLikeStar;
+	}
+
+	public void setReLikeStar(int reLikeStar) {
+		this.reLikeStar = reLikeStar;
+	}
+
+	public Date getReDate() {
+		return reDate;
+	}
+
+	public void setReDate(Date reDate) {
+		this.reDate = reDate;
+	}
+
+	public String getReStatus() {
+		return reStatus;
+	}
+
+	public void setReStatus(String reStatus) {
+		this.reStatus = reStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "Review [reviwNo=" + reviwNo + ", placeNo=" + placeNo + ", reviewWriter=" + reviewWriter
-				+ ", reviewDate=" + reviewDate + ", reviewContent=" + reviewContent + "]";
+		return "Review [reNo=" + reNo + ", reRefNo=" + reRefNo + ", reWriter=" + reWriter + ", reContent=" + reContent
+				+ ", reLikeStar=" + reLikeStar + ", reDate=" + reDate + ", reStatus=" + reStatus + ", reRefStar="
+				+ reRefStar + "]";
 	}
-	
+
 	
 }

@@ -12,7 +12,9 @@ import java.util.Properties;
 import static com.heabom.common.JDBCTemplate.*;
 
 import com.heabom.common.model.vo.File;
+import com.heabom.member.model.vo.MemberAttachment;
 import com.heabom.place.model.vo.Place;
+import com.heabom.place.model.vo.Review;
 
 public class PlaceDao {
 	private Properties prop = new Properties();
@@ -319,4 +321,46 @@ public class PlaceDao {
 		return result;
 	}
 	
+	/**
+	 * 박용진 : 리뷰등록
+	 * 230901/0338
+	 * @param conn
+	 * @param re
+	 * @return
+	 */
+	public int insertReview(Connection conn,Review re) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReview");
+		try {
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertReviewAttachment(Connection conn,Review re, MemberAttachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReviewAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			pstmt.setString(4, re.getReNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}
+		return result;
+	}
 }

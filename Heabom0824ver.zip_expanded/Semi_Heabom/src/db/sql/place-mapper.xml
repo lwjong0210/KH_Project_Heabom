@@ -162,5 +162,50 @@ INSERT
    ?
   ,?
   )
-  </entry> 
+  </entry>
+  
+<entry key="insertReview">
+INSERT
+  INTO TB_REPORT
+    (
+      RE_NO
+     ,RE_REF_NO
+     ,RE_WRITER
+     ,RE_CONTENT
+     ,RE_LIKE_STAR
+     ,RE_REF_STAR
+     ,RE_DATE
+     ,RE_STATUS   
+    )
+VALUES
+    (
+      'RV' || SEQ_RVRP.NEXTVAL
+    , ?
+    , ?
+    , ?
+    , 0
+    , 0
+    , SYSDATE
+    , 'N'
+    )
+</entry>
+
+<entry key="insertReviewAttachment">
+INSERT INTO TB_FILE(
+    FILE_NO
+   ,ORIGIN_NAME
+   ,CHANGE_NAME
+   ,FILE_PATH
+   ,UPLOAD_DATE
+   ,REF_NO
+   )
+   VALUES(
+   SEQ_FILE.NEXTVAL
+   ,?
+   ,?
+   ,?
+   ,SYSDATE
+   ,? 
+)
+</entry>
 </properties>

@@ -64,7 +64,6 @@
 	String[] userBirthList = userBirth.split("-");
 	String userGrade = loginMember.getGrade();
 	int userPoint = loginMember.getMemPoint();
-	System.out.println(loginMember.getTitleImg());
 %>
 <form action="<%=contextPath%>/update.me" id="enroll-form" method="post" enctype="multipart/form-data">
         <div class="prop_setting">
@@ -77,11 +76,7 @@
                 <input type="text" readonly style="background-color: lightgray;" name="userId" value="<%=userId%>">
                 <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
             <td rowspan="2" width="120">
-            <% if(loginMember.getTitleImg().length() < 5) { %>
-                <img src="<%=contextPath%>/resource/img/profile/기본이미지.png" id="viewTitleImg" name="viewTitleImg" style="width: 120px; height: 120px;">
-            <% } else { %>
-                <img src="<%=contextPath%><%=loginMember.getTitleImg()%>" id="viewTitleImg" name="viewTitleImg" style="width: 120px; height: 120px;">
-            <% } %>                        		
+                <img src="" id="viewTitleImg" name="viewTitleImg" style="width: 120px; height: 120px;">                        		
                 <div id="file-area" style="display: none;">
                     <input type="file" name="viewTitleImg" id="enrolltitle" onchange="loadImg(this);">
                 </div>
@@ -94,7 +89,7 @@
         <tr>
             <td class="detail_title">이&nbsp&nbsp&nbsp름&nbsp</td>
             <td><input type="text" placeholder="ex)홍길동" readonly style="background-color: lightgray;" name="userName" value="<%=userName%>"></td>
-            <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록</p></td>
+            <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록(변경)</p></td>
         </tr>
         <tr>
             <td class="detail_title">이메일&nbsp</td>
