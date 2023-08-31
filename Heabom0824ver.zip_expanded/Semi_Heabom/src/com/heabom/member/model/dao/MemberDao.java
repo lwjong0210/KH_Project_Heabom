@@ -258,7 +258,6 @@ public class MemberDao {
 						  ,rset.getInt("MEM_POINT"));
 			}
 			
-			System.out.println("dao : " + m);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
