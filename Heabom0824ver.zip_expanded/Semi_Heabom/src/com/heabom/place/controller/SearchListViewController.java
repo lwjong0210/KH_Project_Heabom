@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.heabom.place.model.service.PlaceService;
 import com.heabom.place.model.vo.Place;
@@ -33,15 +34,20 @@ public class SearchListViewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//관련된 모든 장소들이 검색되어서 나올것이다.
-		int lNo = Integer.parseInt(request.getParameter("lNo"));
+		System.out.println("안녕");
 		
+		int lNo = Integer.parseInt(request.getParameter("lNo"));
+		System.out.println(lNo);
 		ArrayList<Place> list = new PlaceService().selectPlaceList(lNo);
 		
-		
+		if(!(list.isEmpty())) {
 		request.setAttribute("list", list);
-		
 		request.getRequestDispatcher("views/place/placeListView.jsp").forward(request, response);
-		
+		}else {
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg","등록된맛집이 없네용");
+			response.sendRedirect(request.getContextPath());
+		}
 	}
 
 	/**

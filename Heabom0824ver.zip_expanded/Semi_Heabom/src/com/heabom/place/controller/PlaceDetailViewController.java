@@ -33,14 +33,25 @@ public class PlaceDetailViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("안뇽");
+	
 		HttpSession session = request.getSession();
 		ArrayList<Place> list = (ArrayList<Place>)session.getAttribute("placeSearchList");
 		int index = Integer.parseInt(request.getParameter("index"));
 //		System.out.println(list.get(0));
 //		System.out.println(index);
-		Place p = list.get(index); 
-		ArrayList<File> fileList = new PlaceService()
+		Place p = list.get(index);
+		String pNo = list.get(index).getPlaceNo();
+		ArrayList<File> fileList = new PlaceService().selectFileList(pNo);
+		//session.removeAttribute("placeSearchList");
+		
+		if(!(fileList.isEmpty())) {
+			request.setAttribute("fileList", fileList);
+			request.setAttribute("placeInfo", p);
+			request.getRequestDispatcher("views/place/placeDetailView.jsp").forward(request, response);
+		}else {
+			System.out.println("실패");
+		}
+		
 		
 	}
 
