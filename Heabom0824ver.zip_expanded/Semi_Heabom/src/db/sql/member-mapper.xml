@@ -14,11 +14,9 @@
   FROM  TB_MEMBER
 </entry>
 
-<entry key="selectListCount">
-	SELECT
-	COUNT(*) COUNT
-	FROM TB_MEMBER
-	WHERE NOT MEM_STATUS IN('A')
+<entry key="updateMember">
+	UPDATE TB_MEMBER
+    SET MEM_POINT = ?
 </entry>
 
 <entry key="insertMember">

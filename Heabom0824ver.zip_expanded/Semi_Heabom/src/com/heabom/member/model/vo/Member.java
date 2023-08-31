@@ -53,7 +53,14 @@ public class Member {
 		this.email = email;
 		
 	}
+
 	
+	
+
+	public Member(int memPoint) {
+		super();
+		this.memPoint = memPoint;
+	}
 	
 	
 	

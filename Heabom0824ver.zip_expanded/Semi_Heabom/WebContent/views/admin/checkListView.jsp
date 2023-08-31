@@ -5,7 +5,6 @@
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -384,7 +383,7 @@
             <div id="content1">
                 <div id="content_1"></div>
                 <div id="content_2">
-                    <form action="<%= contextPath %>/update.ad" method="post">
+                    <form action="<%= contextPath %>/update.ck" method="post">
                         <table border="1">
                             <thead>
                                 <th width="130">
@@ -410,7 +409,7 @@
                                         <td><%= m.getMemName() %></td>
                                         <td><%= m.getNickname() %></td>
                                         <td><%= m.getGrade() %></td>
-                                        <td><input type="text" style="width: 50%;"></td>
+                                        <td><input type="text" name="memPoint" style="width: 50%;"></td>
                                         <td><%= m.getMemVisit() %></td>
                                         <td><%= m.getEmail() %></td>
                                         <td>
