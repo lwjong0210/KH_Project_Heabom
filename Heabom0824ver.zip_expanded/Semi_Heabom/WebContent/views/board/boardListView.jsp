@@ -255,6 +255,7 @@ tbody>tr:hover {
 			$("#list-area>tr").click(function(){
 				console.log($(this).children().eq(0).text())
 				location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text()
+
 			})
 		})
 

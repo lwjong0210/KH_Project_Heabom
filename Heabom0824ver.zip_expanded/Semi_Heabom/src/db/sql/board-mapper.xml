@@ -27,20 +27,18 @@ SELECT *
         , A.*
         FROM(SELECT 
              BOARD_NO
-             , SUBSTR(BOARD_NO,1,1)
              , BOARD_TITLE
              , MEM_ID
              , BOARD_COUNT
              , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
-             , COUNT(REPLY_NO) "COUNT"
+             , NVL(COUNT,0) "COUNT"
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
-             LEFT JOIN TB_REPLY USING(BOARD_NO)
+             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
              WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
                 OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
-             GROUP BY BOARD_NO, SUBSTR(BOARD_NO,1,1), BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
-             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC, BOARD_NO DESC
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC
              ) A
              )
              WHERE RNUM BETWEEN ? AND ?
@@ -53,31 +51,22 @@ SELECT *
         , A.*
         FROM(SELECT 
              BOARD_NO
-             , SUBSTR(BOARD_NO,1,1)
              , BOARD_TITLE
              , MEM_ID
              , BOARD_COUNT
              , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
-             , COUNT(REPLY_NO) "COUNT"
+             , NVL(COUNT,0) "COUNT"
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
-             LEFT JOIN TB_REPLY USING(BOARD_NO)
+             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
              WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
                 OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
-             GROUP BY BOARD_NO, SUBSTR(BOARD_NO,1,1), BOARD_TITLE, MEM_ID, BOARD_COUNT, CREATE_DATE
-             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC, BOARD_NO DESC
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC
              ) A
              WHERE BOARD_TITLE LIKE ?
              )
              WHERE RNUM BETWEEN ? AND ?
-	</entry>
-	
-	<entry key='countReply'>
-		SELECT COUNT(*) "count"
-		  FROM TB_REPLY
-		 WHERE BOARD_NO = ?
-		   AND REPLY_STATUS = 'Y'
 	</entry>
 
 	<entry key='insertBoard'>
@@ -163,8 +152,10 @@ SELECT *
 		     , BOARD_COUNT
 		     , TO_CHAR(CREATE_DATE,'YY/MM/DD HH24:MI') AS "CREATE_DATE"
 		     , HASHTAG_NAME
+		     , COUNT
 		  FROM TB_BOARD
 		  JOIN TB_MEMBER ON(WRITER = MEM_NO)
+          LEFT JOIN (SELECT RE_REF_NO, COUNT(*) "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS = 'Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
 		  LEFT JOIN TB_HASHTAG ON(PLACE_NO = BOARD_NO)
 		 WHERE SUBSTR(BOARD_NO,2) = ?
 	</entry>
@@ -197,15 +188,15 @@ SELECT *
 
 <entry key='selectReplyList'>
 	SELECT
-	  REPLY_NO
-	, REPLY_WRITER
-	, BOARD_NO
-	, REPLY_CONTENT
-	, REPLY_LIKE
-	, REPLY_DATE
-	, REPLY_STATUS
-	  FROM TB_REPLY
-	 WHERE BOARD_NO = ?
+	  RE_NO
+	, RE_WRITER
+	, RE_REF_NO
+	, RE_CONTENT
+	, RE_LIKE_STAR
+	, RE_DATE
+	, RE_STATUS
+	  FROM TB_REVIEW_REPLY
+	 WHERE SUBSTR(RE_REF_NO,2) = ?
 
 </entry>
 	

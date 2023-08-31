@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.heabom.board.model.service.BoardService;
 import com.heabom.board.model.vo.Board;
+import com.heabom.board.model.vo.Reply;
 import com.heabom.common.model.vo.File;
 
 /**
@@ -33,11 +34,15 @@ public class BoardDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
 		String bno = (String)request.getParameter("bno");
+		System.out.println("아니그럴리가 없는ㄷ ㅔ" + bno);
 		
 		BoardService bService = new BoardService();
+		ArrayList<Reply> rlist = new BoardService().selectReplyList(bno);
 		
 		int result = bService.increaseCount(bno);
+		
 		
 		
 		if(result>0) {
@@ -47,6 +52,10 @@ public class BoardDetailController extends HttpServlet {
 			
 			request.setAttribute("b", b);
 			request.setAttribute("list", list);
+			request.setAttribute("rlist", rlist);
+			
+			System.out.println(rlist + "제발제발제발");
+
 			
 			System.out.println(b);
 			

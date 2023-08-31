@@ -273,56 +273,56 @@
             overflow: hidden;
              
         }
-        #post_comment>div{
+        .post_comment>div{
             float: left;
         }
-        #post_comment_profile_img{
+        .post_comment_profile_img{
             padding-top: 10px;
             width: 4%;
             height: 100px;
         }
-        #post_comment_profile_img img{
+        .post_comment_profile_img img{
             width: 100%;
         }
-        #post_comment_box{
+        .post_comment_box{
             width: 92%;
             height: auto; /* 바꿔야됨 */
         }
-        #post_comment_box>div>*{
+        .post_comment_box>div>*{
             float: left;
         }
-        #comment_user_info{
+        .comment_user_info{
             height: 30px;
             width: 100%;
         }
-        #comment_userid{
+        .comment_userid{
             padding-top: 3px;
             height: 100%;
             padding-left: 10px;
             font-size: 20px;
             font-weight: 600;
         }
-        #comment_usergrade{
+        .comment_usergrade{
             width: 30px;
             height: 100%;
         }
-        #comment_usergrade >img{
+        .comment_usergrade >img{
             padding-top: 40%;
             padding-right: 40%;
             float: left;
             height: 100%;
             width: 100%;
         }
-        #comment_text{
+        .comment_text{
             padding: 10px;
             width: 100%;
             height: auto;
         }
-        #comment_info{
+        .comment_info{
             height: 30px;
             width: 100%;
         }
-        #comment_date{
+        .comment_date{
             width: auto;
             height: 100%;
             font-size: 14px;
@@ -332,33 +332,33 @@
             font-weight: 600;
             line-height: 25px;
         }
-        #comment_report{
+        .comment_report{
             width: 30px;
             height: 100%;
             text-align: center;
         }
-        #comment_report img{
+        .comment_report img{
             margin-bottom: 3px;
             width: 60%;
             height: 60%;
         }
-        #comment_like{
+        .comment_like{
             padding-top: 30px;
             width: 4%;
             height: 80px;
         }
-        #comment_like>div{
+        .comment_like>div{
             width: 100%;
         }
-        #comment_like_img{
+        .comment_like_img{
             height: 60%;
             text-align: center;
         }
-        #comment_like_img img{
+        .comment_like_img img{
             width: 80%;
             height: 80%;
         }
-        #comment_like_count{
+        .comment_like_count{
             text-align: center;
             height: 40%;
             width: 100%;
@@ -588,7 +588,7 @@
                     </div>
                     <div class="post_comment">
                         <div class="post_comment_text">
-                            <span>댓글 2</span>
+                            <span>댓글 <%= b.getCountReply() %></span>
                         </div>
                         <div class="post_comment_img">
                             <img src="resources/img/free-icon-add-comment-button-60782.png" alt="">
@@ -627,7 +627,7 @@
                         <img src="resources/img/free-icon-add-comment-button-60782.png" alt="">
                     </div>
                     <div id="post_comment_text2" style="width: 720px;">
-                        <span>댓글 2</span>
+                        <span>댓글 <%= b.getCountReply() %></span>
                     </div>
                 </div>
                 <div id="post_report">
@@ -657,80 +657,58 @@
     
             </div>
             <div id="post_comment_list">
-                <div id="post_comment">
-                    <div id="post_comment_profile_img">
-                        <img src="resources/img/free-icon-login-310869.png" alt="">
-                    </div>
-                    <div id="post_comment_box">
-                        <div id="comment_user_info">
-                            <div id="comment_userid">
-                                user01
-                            </div>
-                            <div id="comment_usergrade">
-                                <img src="resources/img/free-icon-benefit-6000574.png" alt="">
-                            </div>
-                        </div>
-                        <div id="comment_text">
-                            무한한 그들은 살 가치를 설레는 아름답고 끓는다. 하는 아니한 그들의 피는 새 천지는 고행을 그것은 심장의 약동하다. 얼마나 소리다.이것은 행복스럽고 현저하게 심장은 반짝이는 많이 부패뿐이다. 맺어, 인간이 오직 놀이 지혜는 남는 우리의 이것이다. 가는 무엇을 아니한 있음으로써 위하여, 심장은 아름다우냐? 석가는 끓는 가치를 것이 밥을 끓는 사막이다. 풍부하게 현저하게 발휘하기 위하여서 구하지 그림자는 철환하였는가? 같으며, 광야에서 것이 이것이다. 능히 관현악이며, 바이며, 청춘의 만천하의 쓸쓸하랴? 놀이 보이는 피고, 싹이 운다.
-                        </div>
-                        <div id="comment_info">
-                            <div id="comment_date">
-                                2023.08.09. 07:35
-                            </div>
-                            <div id="comment_report">
-                                <img src="resources/img/free-icon-siren-6043503.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div id="comment_like">
-                        <div id="comment_like_img">
-                            <img src="resources/img/thumbs-up-regular.svg" alt="">
-                        </div>
-                        <div id="comment_like_count">
-                            11
-                        </div>
-                    </div>
-                </div>
-                <div id="post_comment">
-                    <div id="post_comment_profile_img">
-                        <img src="resources/img/free-icon-login-310869.png" alt="">
-                    </div>
-                    <div id="post_comment_box">
-                        <div id="comment_user_info">
-                            <div id="comment_userid">
-                                user02
-                            </div>
-                            <div id="comment_usergrade">
-                                <img src="resources/img/free-icon-benefit-6000574.png" alt="">
-                            </div>
-                        </div>
-                        <div id="comment_text">
-                            대한 보내는 같은 없으면, 이상 청춘의 약동하다. 반짝이는 든 어디 곧 만천하의 그들은 우리 스며들어 것이다. 얼마나 인생에 아름답고 동산에는 희망의 구하지 끓는다. 심장의 피어나기 천자만홍이 운다. 심장은 밝은 곳으로 꽃이 따뜻한 있음으로써 것이다. 얼마나 인간의 우리의 곳으로 청춘의 어디 있다. 방황하였으며, 영락과 새 것이다. 심장은 석가는 청춘이 인생에 천하를 역사를 아름다우냐? 우리 싸인 목숨이 끓는 것이다. 이는 고행을 실현에 가슴이 품고 바로 뼈 피고, 아름다우냐? 가치를 인생의 미묘한 몸이 옷을 같지 밝은 맺어, 가슴이 봄바람이다.                    </div>
-                        <div id="comment_info">
-                            <div id="comment_date">
-                                2023.10.11. 17:35
-                            </div>
-                            <div id="comment_report">
-                                <img src="resources/img/free-icon-siren-6043503.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div id="comment_like">
-                        <div id="comment_like_img">
-                            <img src="resources/img/thumbs-up-regular.svg" alt="">
-                        </div>
-                        <div id="comment_like_count">
-                            10
-                        </div>
-                    </div>
-                </div>
+            	<% System.out.println("진짜 이게 안됨?" + rlist); %>
+            	<% if(rlist.isEmpty()){ %>
+            		System.out.println("되니");
+            	<% }else{ %>
+            			<% for(Reply r : rlist){ %>
+            		<% System.out.println(rlist + "Zzzzzzweqweqeeeew") ;%>
+            			
+	                <div class="post_comment">
+	                    <div class="post_comment_profile_img">
+	                        <img src="resources/img/free-icon-login-310869.png" alt="">
+	                    </div>
+	                    <div class="post_comment_box">
+	                        <div class="comment_user_info">
+	                            <div class="comment_userid">
+	                                <%= r.getReplyWriter() %>
+	                            </div>
+	                            <div class="comment_usergrade">
+	                                <img src="resources/img/free-icon-benefit-6000574.png" alt="">
+	                            </div>
+	                        </div>
+	                        <div class="comment_text">
+									<%= r.getReplyContent() %>
+	                        </div>
+	                        <div class="comment_info">
+	                            <div class="comment_date">
+	                                <%= r.getReplyDate() %>
+	                            </div>
+	                            <div class="comment_report">
+	                                <img src="resources/img/free-icon-siren-6043503.png" alt="">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="comment_like">
+	                        <div class="comment_like_img">
+	                            <img src="resources/img/thumbs-up-regular.svg" alt="">
+	                        </div>
+	                        <div class="comment_like_count">
+	                            <%= r.getReplyLike() %>
+	                        </div>
+	                    </div>
+	                </div>
+            			<% } %>
+        		<% } %>
+
             </div>
             <form action="rlist.bo" id="write_comment_form" method="post">
             	<input type="hidden" name="boardNo" value="<%= boardNo %>">
+                <% if(loginMember != null){ %>
                 <div id="write_comment_box" style="width: 100%;">
-          
+          		
                     <div id="write_comment_userid">
-                        <a href="#">jong210</a>
+                        <a href="#"><%= loginMember.getMemId() %></a>
                         <span id="count_char">0/500</span>
                     </div>	
     
@@ -749,6 +727,7 @@
                         </div>
                     </div>
                 </div>
+                <% } %>
             </form>
             <script>
                 $(function(){
@@ -777,9 +756,9 @@
             </script>
         </div>
         <div id="post_etc">
-            <button type="button" class="btn btn-light prev">∧ 이전글</button>
-            <button type="button" class="btn btn-light next">∨ 다음글</button>
-            <button type="button" class="btn btn-light list">목록</button>
+            <a type="button" class="btn btn-light prev" href="">∧ 이전글</a>
+            <a type="button" class="btn btn-light next">∨ 다음글</a>
+            <a type="button" class="btn btn-light list" href="<%= contextPath %>/list.bo?cpage=1">목록</a>
         </div>
         <div class="post_list" style="width: auto;">
             <table class="table list-area">

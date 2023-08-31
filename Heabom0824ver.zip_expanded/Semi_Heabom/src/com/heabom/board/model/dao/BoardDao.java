@@ -350,7 +350,7 @@ public class BoardDao {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+		System.out.println(bno+"Zzzzzzzzzzzzzzzzzzzzzz");
 		String sql = prop.getProperty("selectBoard");
 		
 		Board b = new Board();
@@ -367,13 +367,15 @@ public class BoardDao {
 				b.setBoardCount(rset.getInt("board_count"));
 				b.setCreateDate(rset.getString("create_date"));
 				b.setHashTagName(rset.getString("hashtag_name"));
+				b.setCountReply(rset.getInt("count"));
 				
 			}
-			System.out.println(b);
+			System.out.println(b + "진짜어이가없네");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
+			close(rset);
 			close(pstmt);
 		}
 		return b;
@@ -421,16 +423,18 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardNo);
+			rset=pstmt.executeQuery();
+			
 			
 			while(rset.next()) {
 				rlist.add(new Reply(
-									rset.getString("reply_no")
-								  , rset.getString("reply_writer")
-								  , rset.getString("board_no")
-								  , rset.getString("reply_content")
-								  , rset.getInt("reply_like")
-								  , rset.getString("reply_date")
-								  , rset.getString("reply_status")));
+									rset.getString("RE_NO")
+								  , rset.getString("RE_WRITER")
+								  , rset.getString("RE_REF_NO")
+								  , rset.getString("RE_CONTENT")
+								  , rset.getInt("RE_LIKE_STAR")
+								  , rset.getString("RE_DATE")
+								  , rset.getString("RE_STATUS")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
