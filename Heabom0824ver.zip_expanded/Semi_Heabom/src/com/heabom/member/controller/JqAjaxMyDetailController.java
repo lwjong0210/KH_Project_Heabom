@@ -23,6 +23,7 @@ public class JqAjaxMyDetailController extends HttpServlet {
     public JqAjaxMyDetailController() {
         super();
         // TODO Auto-generated constructor stub
+        //asd
     }
 
 	/**
