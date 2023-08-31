@@ -43,7 +43,7 @@ public class BoardDetailController extends HttpServlet {
 		if(result>0) {
 			Board b = bService.selectBoard(bno);
 			ArrayList<File> list = bService.selectFileList(bno);
-			
+			System.out.println("zz");
 			
 			request.setAttribute("b", b);
 			request.setAttribute("list", list);
