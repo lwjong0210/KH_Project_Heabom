@@ -164,6 +164,7 @@ public class PlaceDao {
 				p.setUseTime(rset.getInt("USE_TIME"));
 				p.setUsePrice(rset.getInt("USE_PRICE"));
 				p.setBestStatus(rset.getString("BEST_STATUS"));
+				p.setTitleImg(rset.getString("TITLE_IMG"));
 				System.out.println(p);
 				list.add(p);
 			}
