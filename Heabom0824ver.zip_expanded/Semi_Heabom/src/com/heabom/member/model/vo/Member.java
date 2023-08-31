@@ -57,8 +57,10 @@ public class Member {
 	
 	
 
-	public Member(int memPoint) {
+	public Member(String memId, String grade, int memPoint) {
 		super();
+		this.memId = memId;
+		this.grade = grade;
 		this.memPoint = memPoint;
 	}
 	

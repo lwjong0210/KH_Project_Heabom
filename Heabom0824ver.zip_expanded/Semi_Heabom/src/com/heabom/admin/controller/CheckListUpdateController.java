@@ -35,23 +35,29 @@ public class CheckListUpdateController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		String memId = request.getParameter("memId");
+		String grade = request.getParameter("grade");
 		int memPoint = Integer.parseInt(request.getParameter("memPoint"));
 		
-		Member m = new Member(memPoint);
+		Member m = new Member(memId, grade, memPoint);
 		
 		Member updateMem = new MemberService().updateMember(m);
+		
+		System.out.println(memPoint);
 		
 		if(updateMem != null) {
 			
 			HttpSession session = request.getSession();
 			
-			session.setAttribute(" ", session);
+			session.setAttribute("memId", updateMem);
 			session.setAttribute("alertMsg", "성공");
 			
 			response.sendRedirect(request.getContextPath() + "/check.ad");
 			
 		}else {
 			request.setAttribute("errorMsg", "실패");
+			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
 		}
 		
 	}
