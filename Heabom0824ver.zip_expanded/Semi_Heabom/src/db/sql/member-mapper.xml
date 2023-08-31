@@ -127,5 +127,23 @@ WHERE MEM_ID = ?
 AND MEM_STATUS != 'N'
 </entry>
 
+<entry key="myDetailUpdate">
+	UPDATE TB_MEMBER
+	   SET NICKNAME = ?
+	     , EMAIL = ?
+	     , MBTI = ?
+	     , MEM_PHONE = ?
+	     , MEM_BIRTHDAY = TO_DATE(?, 'YYYY-MM-DD')
+	 WHERE MEM_ID = ?
+</entry>
+
+<entry key="updateAttachment">
+	UPDATE TB_FILE
+	   SET ORIGIN_NAME = ?
+	     , CHANGE_NAME = ?
+	     , FILE_PATH = ?
+	 WHERE REF_NO = ?
+</entry>
+
 
 </properties>
