@@ -14,6 +14,7 @@ import java.util.Properties;
 import javax.naming.spi.DirStateFactory.Result;
 
 import com.heabom.board.model.vo.Board;
+import com.heabom.board.model.vo.Reply;
 import com.heabom.common.model.vo.File;
 import com.heabom.common.model.vo.HashTag;
 import com.heabom.common.model.vo.PageInfo;
@@ -368,6 +369,7 @@ public class BoardDao {
 				b.setHashTagName(rset.getString("hashtag_name"));
 				
 			}
+			System.out.println(b);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -406,6 +408,48 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	public ArrayList<Reply> selectReplyList(Connection conn, String boardNo){
+		
+		ArrayList<Reply> rlist = new ArrayList<Reply>();
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			
+			while(rset.next()) {
+				rlist.add(new Reply(
+									rset.getString("reply_no")
+								  , rset.getString("reply_writer")
+								  , rset.getString("board_no")
+								  , rset.getString("reply_content")
+								  , rset.getInt("reply_like")
+								  , rset.getString("reply_date")
+								  , rset.getString("reply_status")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return rlist;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

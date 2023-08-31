@@ -125,8 +125,8 @@ public class Board {
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", writer=" + writer + ", boardContent="
 				+ boardContent + ", boardCount=" + boardCount + ", createDate=" + createDate + ", boardStatus="
-				+ boardStatus + ", boardup=" + boardup + ", countReply="
-				+ countReply + "]";
+				+ boardStatus + ", boardup=" + boardup + ", countReply=" + countReply + ", hashTagName=" + hashTagName
+				+ "]";
 	}
 
 }
