@@ -147,7 +147,9 @@ public class MemberDao {
 						  ,rset.getString("MEM_STATUS")
 						  ,rset.getDate("MEM_VISIT")
 						  ,rset.getString("MEM_BIRTHDAY")
-						  ,rset.getInt("MEM_POINT"));
+						  ,rset.getInt("MEM_POINT")
+				 		  ,rset.getString("TITLEIMG")
+				 		  ,rset.getInt("FILE_LEVEL"));
 			}
 			
 		} catch (SQLException e) {
@@ -191,7 +193,13 @@ public class MemberDao {
 	public int insertMemberDetailAttachment(Connection conn , MemberAttachment at, Member m) {
 		int result = 0 ; 
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertAttachment");
+		String sql = prop.getProperty("insertMemberDetailAttachment");
+		
+		System.out.println("여기는 DAO");
+		System.out.println(at.getOriginName());
+		System.out.println(at.getChangeName());
+		System.out.println(at.getFilePath());
+		System.out.println(m.getMemNo());
 		
 		try {
 			pstmt= conn.prepareStatement(sql);
@@ -314,6 +322,28 @@ public class MemberDao {
 			pstmt.setString(4, m.getMemNo());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateStatus(Connection conn,String userId,String userPwd) {
+		System.out.println(userId);
+		System.out.println(userPwd);
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateStatus");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);

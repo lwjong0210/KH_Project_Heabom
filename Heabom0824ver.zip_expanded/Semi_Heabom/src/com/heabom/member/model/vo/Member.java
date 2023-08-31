@@ -18,7 +18,48 @@ public class Member {
 	private String memBirthday;
 	private int memPoint;
 	
+	private String titleImg;
+	private int fileLevel;
+	
 	public Member () {}
+
+	public Member(String memNo, String grade, String memId, String memPwd, String memName, String nickname,
+			String email, String mbit, String memPhone, Date enrollDate, String memStatus, Date memVisit,
+			String memBirthday, int memPoint, String titleImg, int fileLevel) {
+		super();
+		this.memNo = memNo;
+		this.grade = grade;
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.nickname = nickname;
+		this.email = email;
+		this.mbit = mbit;
+		this.memPhone = memPhone;
+		this.enrollDate = enrollDate;
+		this.memStatus = memStatus;
+		this.memVisit = memVisit;
+		this.memBirthday = memBirthday;
+		this.memPoint = memPoint;
+		this.titleImg = titleImg;
+		this.fileLevel = fileLevel;
+	}
+
+	public Member(String memNo, String memId, String memName, String nickname, String grade, int memPoint, Date memVisit, String email) {
+		super();
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memName = memName;
+		this.nickname = nickname;
+		this.grade = grade;
+		this.memPoint = memPoint;
+		this.memVisit = memVisit;
+		this.email = email;
+		
+	}
+
+	
+	
 
 	public Member(String memNo, String grade, String memId, String memPwd, String memName, String nickname,
 			String email, String mbit, String memPhone, Date enrollDate, String memStatus, Date memVisit,
@@ -39,23 +80,6 @@ public class Member {
 		this.memBirthday = memBirthday;
 		this.memPoint = memPoint;
 	}
-	
-
-	public Member(String memNo, String memId, String memName, String nickname, String grade, int memPoint, Date memVisit, String email) {
-		super();
-		this.memNo = memNo;
-		this.memId = memId;
-		this.memName = memName;
-		this.nickname = nickname;
-		this.grade = grade;
-		this.memPoint = memPoint;
-		this.memVisit = memVisit;
-		this.email = email;
-		
-	}
-
-	
-	
 
 	public Member(String memId, String grade, int memPoint) {
 		super();
@@ -66,6 +90,22 @@ public class Member {
 	
 	
 	
+
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
+	public int getFileLevel() {
+		return fileLevel;
+	}
+
+	public void setFileLevel(int fileLevel) {
+		this.fileLevel = fileLevel;
+	}
 
 	public String getMemNo() {
 		return memNo;

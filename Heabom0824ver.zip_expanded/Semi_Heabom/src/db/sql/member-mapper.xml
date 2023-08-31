@@ -63,7 +63,10 @@ SELECT
    ,MEM_VISIT
    ,TO_CHAR(MEM_BIRTHDAY, 'YYYY-MM-DD') "MEM_BIRTHDAY"
    ,MEM_POINT
+   ,'/' || FILE_PATH || '/' || CHANGE_NAME AS "TITLEIMG"
+   ,FILE_LEVEL
 FROM TB_MEMBER
+LEFT JOIN TB_FILE ON (MEM_NO = REF_NO)
 WHERE MEM_ID = ?
 AND MEM_PWD = ?
 </entry>
@@ -168,6 +171,13 @@ AND MEM_STATUS != 'N'
 	     , CHANGE_NAME = ?
 	     , FILE_PATH = ?
 	 WHERE REF_NO = ?
+</entry>
+
+<entry key="updateStatus">
+	UPDATE TB_MEMBER
+	   SET MEM_STATUS = 'N'
+	 WHERE MEM_ID = ?
+	   AND MEM_PWD = ?
 </entry>
 
 
