@@ -28,34 +28,7 @@ public class MemberDao {
 		}
 	}
 	
-	public int selectListCount(Connection conn) {
-		
-		int listCount = 0;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectListCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				listCount = rset.getInt("count");
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return listCount;
-	}
-	
-	public ArrayList<Member> selectAdminList(Connection conn, PageInfo pi) {
+	public ArrayList<Member> selectAdminList(Connection conn) {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
 		
@@ -81,8 +54,7 @@ public class MemberDao {
 									rset.getString("grade"),
 									rset.getInt("mem_point"),
 									rset.getDate("mem_visit"),
-									rset.getString("email"),
-									rset.getString("memStatus")
+									rset.getString("email")
 									));
 			}
 			
@@ -94,7 +66,6 @@ public class MemberDao {
 		}
 		return list;
 	}
-	
 	
 	
 	
@@ -214,7 +185,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public Member selectMember(Connection conn,String userId) {
+	public Member selectMember(Connection conn, String userId) {
 		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

@@ -41,7 +41,7 @@ public class Member {
 	}
 	
 
-	public Member(String memNo, String memId, String memName, String nickname, String grade, int memPoint, Date memVisit, String email, String memStatus) {
+	public Member(String memNo, String memId, String memName, String nickname, String grade, int memPoint, Date memVisit, String email) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -51,7 +51,6 @@ public class Member {
 		this.memPoint = memPoint;
 		this.memVisit = memVisit;
 		this.email = email;
-		this.memStatus = memStatus;
 		
 	}
 	

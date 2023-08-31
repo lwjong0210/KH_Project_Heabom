@@ -3,7 +3,8 @@
 <properties>
 <entry key="selectAdminList">
 	SELECT
-        MEM_ID
+		MEM_NO
+    ,   MEM_ID
     ,   MEM_NAME
     ,   NICKNAME
     ,	GRADE
@@ -11,6 +12,13 @@
     ,	MEM_VISIT
     ,	EMAIL
   FROM  TB_MEMBER
+</entry>
+
+<entry key="selectListCount">
+	SELECT
+	COUNT(*) COUNT
+	FROM TB_MEMBER
+	WHERE NOT MEM_STATUS IN('A')
 </entry>
 
 <entry key="insertMember">

@@ -4,13 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 	
 %>
 <!DOCTYPE html>
@@ -445,23 +439,23 @@
                     <button type="button" id="button2" class="btn btn-danger">선택 삭제</button>
                 </div>
                 <div id="content_6">
-                    <div class="paging-area" align="center">
-						<% if(currentPage != 1) { %>
-            			<button onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage -1 %>'">&lt;</button>
-            			<% } %>
-            
-            			<% for(int p=startPage; p<=endPage; p++){ %>
-            				<% if(p == currentPage) { %>
-            				<button disabled><%= p %></button>
-            				<% } else { %>
-            				<button onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= p %>';"><%= p %></button>
-           					<% } %>
-            			<% } %> 
-            
-            			<% if(currentPage != maxPage) { %>
-            			<button onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage +1 %>'">&gt;</button>
-						<% } %>
-        			</div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>
