@@ -1,3 +1,4 @@
+<%@page import="com.heabom.board.model.vo.Reply"%>
 <%@page import="java.lang.reflect.Field"%>
 <%@page import="com.heabom.common.model.vo.File"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,6 +8,7 @@
 <%
 	Board b = (Board)request.getAttribute("b");
 	ArrayList<File> list = (ArrayList<File>)request.getAttribute("list");
+	ArrayList<Reply> rlist = (ArrayList<Reply>)request.getAttribute("rlist");
 	
 	String boardNo = b.getBoardNo();
 	String boardTitle = b.getBoardTitle();
@@ -389,7 +391,7 @@
             color: black;
         }
         #write_comment_userid>span{
-            padding-left: 820px;
+            padding-left: 85%;
             font-size: 14px;
         }
         #write_comment_main{
@@ -602,10 +604,14 @@
                 </div>
             </div>
             <div id="post_hashtag">
-            <% String[] tagList = hashTag.split(","); %>
-            <% for(String s : tagList){ %>
-                <a href="#">#<%= s %></a>&nbsp;&nbsp;
+            <% if(hashTag != null){ %>
+	            <% String[] tagList = hashTag.split(","); %>
+	            <% for(String s : tagList){ %>
+	                <a href="#">#<%= s %></a>&nbsp;&nbsp;
+            
             <% } %>
+            
+	            <% } %>
             </div>
             <div id="post_content_footer">
                 <div id="post_wish">
@@ -719,22 +725,23 @@
                     </div>
                 </div>
             </div>
-            <form action="test.do" id="write_comment_form" method="post">
+            <form action="rlist.bo" id="write_comment_form" method="post">
+            	<input type="hidden" name="boardNo" value="<%= boardNo %>">
                 <div id="write_comment_box" style="width: 100%;">
           
                     <div id="write_comment_userid">
                         <a href="#">jong210</a>
                         <span id="count_char">0/500</span>
-                    </div>
+                    </div>	
     
                     <div id="write_comment_main">
                         <!-- textarea는 이미지를 넣을수가 없음 어떻게 해결? 그리고 스크롤생김 -->
-                        <textarea name="" id="write_comment" cols="30" rows="2"></textarea>
+                        <textarea name="reply-content" id="write_comment" cols="30" rows="2"></textarea>
                     </div>
     
                     <div id="write_comment_footer">
                         <div id="comment_upload_img">
-                            <input type="file">
+                            <input type="file" name="rfile" id="rfile">
                             <img src="resources/img/free-icon-camera-685655.png" alt="">
                         </div>
                         <div id="comment_submit">
@@ -765,6 +772,8 @@
                         $(this).css('outline','none')
                     })
                 })
+                
+
             </script>
         </div>
         <div id="post_etc">
