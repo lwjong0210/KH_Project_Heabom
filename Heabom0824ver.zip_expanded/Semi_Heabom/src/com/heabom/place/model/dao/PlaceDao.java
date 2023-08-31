@@ -166,6 +166,7 @@ public class PlaceDao {
 				p.setUsePrice(rset.getInt("USE_PRICE"));
 				p.setBestStatus(rset.getString("BEST_STATUS"));
 				p.setTitleImg(rset.getString("TITLEIMG"));
+				p.setLikeCount(rset.getInt("LIKECOUNT"));
 				list.add(p);
 			}
 			
@@ -241,11 +242,81 @@ public class PlaceDao {
 	 * 좋아요수 가져오기 
 	 * @return
 	 */
-	public int likeCount() {
+	public int likeCount(Connection conn , String pNo) {
+		ResultSet rset = null; 
 		PreparedStatement pstmt = null ;
-		int result ; 
-		String sql = prop.getProperty("");
+		int result = 0 ; 
+		String sql = prop.getProperty("likeCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("LIKECOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result ;
+		
 	}
 	
+	public int likeCheck(Connection conn , String memNo , String pNo) {
+		ResultSet rset = null; 
+		PreparedStatement pstmt = null ;
+		int result = 0 ; 
+		String sql = prop.getProperty("likeCheck");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			pstmt.setString(2, pNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = 1 ; //값이 있음
+			}else {
+				result = 0 ; //값이 없음
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		//System.out.println("dao에서의 result " + result);
+		return result; 
+		
+		
+	}
+	
+	/**
+	 * 조준하
+	 * 좋아요테이블에 삽입
+	 * @param conn
+	 * @param memNo
+	 * @param pNo
+	 * @return
+	 */
+	public int likeInput(Connection conn , String memNo , String pNo) { 
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("likeInput");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			pstmt.setString(2, pNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 }

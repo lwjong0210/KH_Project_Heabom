@@ -73,6 +73,7 @@ import com.heabom.place.model.vo.Place;
 		}
 		
 		/**
+		 * 조준하
 		 * 좋아요 수 증가
 		 * @param pNo
 		 * @return
@@ -90,18 +91,43 @@ import com.heabom.place.model.vo.Place;
 		}
 		
 		/**
+		 * 조준하
 		 * 좋아요수 가져오기
 		 * @return
 		 */
-		public int likeCount() {
+		public int likeCount(String pNo) {
 			Connection conn = getConnection();
-			int result = new PlaceDao().likeCount();
+			int result = new PlaceDao().likeCount(conn ,pNo);
 			close(conn);
 			return result ;
 		}
 	
 	
-	
+		/**
+		 * 조준하
+		 * 좋아요 있나없나 확인
+		 * @return
+		 */
+		public int likeCheck(String memNo , String pNo) {
+			Connection conn = getConnection();
+			int result = new PlaceDao().likeCheck(conn, memNo ,pNo );
+			close(conn);
+			return result ;
+		}
+		
+		/**
+		 * 조준하
+		 * 좋아요 테이블에 삽입
+		 * @param memNo
+		 * @param pNo
+		 * @return
+		 */
+		public int likeInput(String memNo , String pNo) {
+			Connection conn = getConnection();
+			int result = new PlaceDao().likeInput(conn, memNo ,pNo );
+			close(conn);
+			return result ;
+		}
 	
 
 }

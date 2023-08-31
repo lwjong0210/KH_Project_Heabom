@@ -22,6 +22,7 @@ public class Place {
 	private int usePrice;
 	private String bestStatus;
 	private String hashtagName;
+	private int likeCount ; 
 	
 	
 	private String titleImg ;
@@ -236,6 +237,19 @@ public class Place {
 	}
 
 
+	
+
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+
+
 
 	@Override
 	public String toString() {
@@ -244,8 +258,11 @@ public class Place {
 				+ phone + ", address=" + address + ", placeContent=" + placeContent + ", startTime=" + startTime
 				+ ", endTime=" + endTime + ", starPoint=" + starPoint + ", placeUrl=" + placeUrl + ", viewCount="
 				+ viewCount + ", useTime=" + useTime + ", usePrice=" + usePrice + ", bestStatus=" + bestStatus
-				+ ", hashtagName=" + hashtagName + ", titleImg=" + titleImg + "]";
+				+ ", hashtagName=" + hashtagName + ", likeCount=" + likeCount + ", titleImg=" + titleImg + "]";
 	}
+
+
+
 
 
 	

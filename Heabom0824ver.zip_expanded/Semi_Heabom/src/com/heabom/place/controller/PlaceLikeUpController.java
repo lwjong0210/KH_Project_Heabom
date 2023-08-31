@@ -6,8 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.heabom.member.model.vo.Member;
 import com.heabom.place.model.service.PlaceService;
+import com.heabom.place.model.vo.Place;
 
 /**
  * Servlet implementation class PlaceLikeUpController
@@ -29,13 +32,33 @@ public class PlaceLikeUpController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pNo = request.getParameter("input");
+		HttpSession session = request.getSession();
+		Member m = (Member)session.getAttribute("loginMember");
+		String memNo = m.getMemNo();
+		//System.out.println(memNo);
 //		System.out.println(pNo);
 //		System.out.println("?뭐여");
-		int result = new PlaceService().likeUp(pNo);
-		int likeCount = new PlaceService().likeCount();
-		String responseData = "좋아요" ;
-		response.setContentType("text/html; charset=UTF-8");
-		response.getWriter().print(responseData);
+		
+		//먼저 LIKE TB 에 있나 없나 확인을 해보자 
+		int check = new PlaceService().likeCheck(memNo , pNo);
+		// 0 이면 좋아요 눌릴것이고 1이면 돌려 보낼꺼임
+		System.out.println(check);
+		if(check > 0 ) {
+			int responseData = 99999 ;
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().print(responseData);
+		}else {
+			int result2 =  new PlaceService().likeInput(memNo , pNo);//resutl2 도 필요없긴해 사실 void 하고 싶었어..
+			int result = new PlaceService().likeUp(pNo); //좋아요 증가result 필요없을듯?
+			int likeCount = new PlaceService().likeCount(pNo);
+			int responseData = likeCount ;
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().print(responseData);
+		}
+		
+		
+		
+	
 	}
 
 	/**

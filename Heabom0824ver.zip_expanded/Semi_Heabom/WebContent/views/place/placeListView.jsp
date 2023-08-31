@@ -227,7 +227,7 @@ main {
                     <div class="description">
                         <div class="description_title">제목 : <%=list.get(i).getPlaceTitle() %></div>
                         <div class="description_sub1">분류 : <%=category %></div>
-                        <div class="description_sub2">조회수 <%=list.get(i).getViewCount() %></div>
+                        <div class="description_sub2">좋아요 <%=list.get(i).getLikeCount() %></div>
                     </div>
                 </div>
             </section>

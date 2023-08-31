@@ -254,7 +254,13 @@
                 </tr>
                 <tr>
                     <th>좋아요</th>
-                    <td>3 <button onclick="likeup();">좋아요</button></td>
+                    <td id = "likeCount"><%=place.getLikeCount()%> 
+                    
+                    <%if(loginMember != null){ %>
+                    <button onclick="likeup();">좋아요</button>
+                    <%} %>
+                    
+                    </td>
                 </tr>
             </table>
         </div>
@@ -328,16 +334,17 @@
 
                     type : "get", // 요청방식 지정
                     success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
-                        alert(result);
+                        if(result == 99999){
+                        	alert("이미 좋아요를 눌렀네요");
+                        }else{
                         console.log("ajax통신 성공!")
-                        $("#output1").text(result);
+                        $("#likeCount").text(result);
+                        }
                     },
                     error : function(){
                         console.log("ajax통신 실패!")
-                    },
-                    complete : function(){
-                        alert("complete지롱");
                     }
+
                     
                 })
     }
