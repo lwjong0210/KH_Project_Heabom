@@ -44,6 +44,18 @@ import com.heabom.place.model.vo.Place;
 			return result1*result2 ;
 			
 		}
+		
+		/**
+		 * 장소에 따른 장소리스트 조회
+		 * @param lNo
+		 * @return
+		 */
+		public ArrayList<Place> selectPlaceList(int lNo){
+			Connection conn = getConnection();
+			ArrayList<Place> list = new PlaceDao().selectPlaceList(conn, lNo);
+			close(conn);
+			return list ;
+		}
 	
 	
 	
