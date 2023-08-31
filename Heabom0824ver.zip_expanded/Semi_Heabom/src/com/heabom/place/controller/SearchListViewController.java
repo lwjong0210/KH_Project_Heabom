@@ -1,8 +1,7 @@
-package com.heabom.board.controller;
+package com.heabom.place.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,24 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.heabom.board.model.dao.AnswerDao;
-import com.heabom.board.model.service.AnswerService;
-import com.heabom.board.model.service.QuestionService;
-import com.heabom.board.model.vo.Answer;
-import com.heabom.board.model.vo.Question;
+import com.heabom.place.model.service.PlaceService;
+import com.heabom.place.model.vo.Place;
+import com.heabom.search.model.service.SearchService;
 
 /**
- * Servlet implementation class JqAjaxMyQnADetailController
+ * Servlet implementation class SearchListViewController
  */
-@WebServlet("/myQnaDetailAjax.do")
-public class JqAjaxMyQnADetailController extends HttpServlet {
+@WebServlet("/searchListView.pl")
+public class SearchListViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JqAjaxMyQnADetailController() {
+    public SearchListViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,14 +32,13 @@ public class JqAjaxMyQnADetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memNo = request.getParameter("memNo");
-
-		ArrayList<Question> quArr = new QuestionService().selectQuestion(memNo);
-
-		request.setAttribute("quArr", quArr);
+		//관련된 모든 장소들이 검색되어서 나올것이다.
+		int lNo = Integer.parseInt(request.getParameter("lNo"));
 		
-		request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);
-	
+		ArrayList<Place> list = new PlaceService().selectPlaceList(lNo);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/place/placeListView.jsp").forward(request, response);
+		
 	}
 
 	/**

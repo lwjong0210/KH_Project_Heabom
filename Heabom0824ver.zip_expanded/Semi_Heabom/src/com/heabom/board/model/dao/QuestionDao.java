@@ -38,7 +38,12 @@ public class QuestionDao {
 			while(rset.next()) {
 				quArr.add(new Question(rset.getInt("QUESTION_NO"),
 						               rset.getString("QUESTION_COMMENT"),
-						               rset.getDate("QUESTION_DATE")
+						               rset.getString("QUESTION_DATE"),
+						               rset.getString("ANSWER_WRITER"),
+						               rset.getString("ANSWER_OR_NOT"),
+						               rset.getString("ANSWER_CONTENT"),
+						               rset.getString("ANSWER_DATE"),
+						               rset.getString("ANSWER_NICKNAME")
 						               ));
 			}
 		} catch (SQLException e) {

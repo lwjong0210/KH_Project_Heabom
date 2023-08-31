@@ -13,6 +13,5 @@ public class AnswerService {
 		ArrayList<Answer> anArr = new AnswerDao().selectAnswer(conn, memNo);
 		close(conn);
 		return anArr;
-		
 	}
 }

@@ -72,4 +72,24 @@ public class MemberService {
 		close(conn);
 		return m; 
 	}
+	
+	public Member updatePwd(String userId,String userPwd,String updatePwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updatePwd(conn, userId, userPwd, updatePwd);
+		
+		Member updateMem = null;
+		
+		if(result >0) {
+			commit(conn);
+			
+			// 커밋으로 변경된 비밀번호를 확정해 주고 조회를 해와야 한다.
+			updateMem = new MemberDao().selectMember(conn, userId);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return updateMem;
+	}
 }

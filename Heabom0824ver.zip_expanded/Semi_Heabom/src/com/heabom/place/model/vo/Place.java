@@ -23,6 +23,22 @@ public class Place {
 	private String bestStatus;
 	private String hashtagName;
 	
+	
+	private String titleImg ;
+	
+	
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
+
+
 	public Place() {}
 
 	
@@ -219,6 +235,8 @@ public class Place {
 		this.hashtagName = hashtagName;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Place [placeNo=" + placeNo + ", placeTitle=" + placeTitle + ", categoryNo=" + categoryNo + ", writer="
@@ -226,8 +244,9 @@ public class Place {
 				+ phone + ", address=" + address + ", placeContent=" + placeContent + ", startTime=" + startTime
 				+ ", endTime=" + endTime + ", starPoint=" + starPoint + ", placeUrl=" + placeUrl + ", viewCount="
 				+ viewCount + ", useTime=" + useTime + ", usePrice=" + usePrice + ", bestStatus=" + bestStatus
-				+ ", hashtagName=" + hashtagName + "]";
+				+ ", hashtagName=" + hashtagName + ", titleImg=" + titleImg + "]";
 	}
+
 
 	
 	

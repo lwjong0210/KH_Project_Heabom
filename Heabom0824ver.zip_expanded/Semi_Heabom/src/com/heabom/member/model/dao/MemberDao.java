@@ -194,6 +194,65 @@ public class MemberDao {
 		
 	}
 	
+	public int updatePwd(Connection conn,String userId,String userPwd,String updatePwd) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePwd");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updatePwd);
+			pstmt.setString(2, userId);
+			pstmt.setString(3, userPwd);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public Member selectMember(Connection conn,String userId) {
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				 m  = new Member(rset.getString("MEM_NO")
+						  ,rset.getString("GRADE")
+						  ,rset.getString("MEM_ID")
+						  ,rset.getString("MEM_PWD")
+						  ,rset.getString("MEM_NAME")
+						  ,rset.getString("NICKNAME")
+						  ,rset.getString("EMAIL")
+						  ,rset.getString("MBTI")
+						  ,rset.getString("MEM_PHONE")
+						  ,rset.getDate("ENROLL_DATE")
+						  ,rset.getString("MEM_STATUS")
+						  ,rset.getDate("MEM_VISIT")
+						  ,rset.getString("MEM_BIRTHDAY")
+						  ,rset.getInt("MEM_POINT"));
+			}
+			
+			System.out.println("dao : " + m);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
+	
 }
 
 

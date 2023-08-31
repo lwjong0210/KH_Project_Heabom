@@ -42,6 +42,11 @@
         .prop_detail p {
             margin: -1px;
         }
+        
+        #titleImg:hover{
+        	cursor: pointer;
+        	color:gray;
+        }
 
     </style>
 </head>
@@ -68,7 +73,12 @@
                         <td width="245">
                             <input type="text" readonly style="background-color: lightgray;" value="<%=userId%>">
                             <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
-                        <td rowspan="2" width="120">사진미리보기</td>
+                        <td rowspan="2" width="120">
+                            <img src="" alt="" id="viewTitleImg" style="width: 120px; height: 120px;">
+				            <div id="file-area" style="display: none;">
+				                <input type="file" name="viewTitleImg" id="enrolltitle" onchange="loadImg(this);">
+				            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
@@ -77,7 +87,7 @@
                     <tr>
                         <td class="detail_title">비밀번호확인&nbsp</td>
                         <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td></td>
-                        <td class="detail_title" style="text-align: center;">대표사진</td>
+                        <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록</p></td>
                     </tr>
                     <tr>
                         <td class="detail_title">이&nbsp&nbsp&nbsp름&nbsp</td>
@@ -85,7 +95,7 @@
                         <td class="" rowspan="2" style="text-align: center; font-size: smaller;">
                             <p style="color: blue;"><strong>사진은 최대 10Mbyte를</strong></p>
                             <p style="margin-bottom: 5px;">넘을수 없습니다.</p>
-                            <p style="color: blue;"><strong>사진 규격은 125*125를</strong></p>
+                            <p style="color: blue;"><strong>사진 규격은 120*120를</strong></p>
                             <p>권장합니다.</p>
                         </td>
                     </tr>
@@ -122,14 +132,12 @@
                             <p style="font-size: smaller; color: green;"><strong>&nbsp* 획득한 포인트에 대한 등급입니다.</strong></p>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="detail_title">대표사진변경&nbsp</td>
-                        <td colspan="2"><input type="file"></td>
-                    </tr>
                 </table>
                 <input type="submit" class="btn btn-sm btn-success style="background-color: pink; border: 1;" value="정보변경" onclick="return vaildatePwd();">
+                <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</a>
+                <!--<button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</button>-->
                 <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-warning">취소</a>
-                <a href="" class="btn btn-sm btn-danger">탈퇴</a>
+                <button type="button" class="btn btn-sm btn-danger"data-toggle="modal" data-target="#deleteModal">회원탈퇴</button>
             </div>
         </td>
     </tr>
@@ -138,6 +146,83 @@
 <br><br>
         </div>
     </div>
+    
+    
+    <!-- 비밀번호 변경용 Modal -->
+	<div class="modal" id="updatePwdModal" align="center">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">비밀번호 변경</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+                    <form action="<%= contextPath %>/updatePwd.me" method="post">
+                    	<input type="hidden" name="userId" value="<%= userId %>">
+                        <table>
+                            <tr>
+                                <td>현재 비밀번호</td>
+                                <td><input type="text" name="userPwd" required></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호</td>
+                                <td><input type="text" name="updatePwd" required></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호 확인</td>
+                                <td><input type="text" name="checkPwd" required></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <button type="submit" class="btn btn-sm btn-secondary" onclick="return vaildatePwd()">변경완료</button>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+		</div>
+	</div>
+
+                <script>
+                function vaildatePwd(){
+                    if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
+                        alert("변경할 비밀번호가 일치하지 않습니다.");
+                        return false;
+                    }
+                }
+                </script>
+                
+    <!-- 회원탈퇴용 Modal -->
+	<div class="modal" id="deleteModal" align="center">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">회원탈퇴</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+                    <form action="<%= contextPath %>/updateStatus.me" method="post">
+                    <input type="hidden" name="userId" value="<%= userId %>">
+                        <b>탈퇴 후 복구가 불가능 합니다. <br>
+                        정말로 탈퇴 하시겠습니까? <br><br> </b>
+
+                        비밀번호 : <input type="password" name="userPwd" required> <br><br>
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="vaildateStatus()">탈퇴하기</button>
+                    </form>
+                </div>
+
+			</div>
+		</div>
+	</div>
+
+
 </body>
 <script>
     window.onload = function() {
@@ -221,5 +306,36 @@ function populateDateDropdown() {
     }
 }
 
+</script>
+
+<script>
+function chooseFile(){
+    $("#enrolltitle").click();
+}
+function loadImg(inputFile){
+    console.log(inputFile);
+    // infutFile : 현재 변화가 생긴 input type = "file" 요소객체
+    // num : 몇번째 input 요소인지 확인 후 해당 그영역에 미리보기 하기 위해 전달받는 숫자
+
+    // 선택된 파일이 있으면 inputFile.files[0]에 선택된 파일이 담겨 있음
+    //                          => inputFile.files.length 또한 1이 될 것이다.
+    if(inputFile.files.length == 1){ // 파일이 선택된 경우 => 파일을 읽어들여서 미리보기를 해야한다.
+        // 파일을 읽어들일 FileReader 객체 생성
+        const reader = new FileReader();
+
+        // 파일을 읽어들이는 메소드 호출
+        reader.readAsDataURL(inputFile.files[0]);
+        // 해당 파일을 읽어들이는 순간 해당 이 파일만의 고유한 url 부여
+
+        // 파일 읽어들이기가 완료 됬다고 하면 실행할 함수를 정의해두기
+        reader.onload = function(e){
+            // e.target.result => 읽어들인 파일의 고유한 url
+            $("#viewTitleImg").attr("src", e.target.result);
+        }
+
+    } else { // 선택된 파일이 취소된 경우 => 미리보기한 것도 사라지게 만들어 주어야 한다.
+        $("#viewTitleImg").attr("src", null);
+    }
+}
 </script>
 </html>

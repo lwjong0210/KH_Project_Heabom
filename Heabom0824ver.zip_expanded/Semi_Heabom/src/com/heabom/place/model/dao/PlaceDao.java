@@ -124,4 +124,60 @@ public class PlaceDao {
 	}
 	
 	
+	/**
+	 * 조준하
+	 * 검색후 장소조건에 맞는 장소list 반환
+	 * @param conn
+	 * @param lNo
+	 * @return
+	 */
+	public ArrayList<Place>  selectPlaceList(Connection conn , int lNo) {
+		//select 문 resultset 객체 필요
+		
+		ArrayList<Place> list = new ArrayList<Place>();
+		ResultSet rset = null ;
+		PreparedStatement pstmt = null ;
+		
+		String sql = prop.getProperty("selectPlaceList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, lNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Place p = new Place();
+				p.setPlaceNo(rset.getString("PLACE_NO"));
+				p.setPlaceTitle(rset.getString("PLACE_TITLE"));
+				p.setCategoryNo(rset.getInt("CATEGORY_NO"));
+				p.setWriter(rset.getString("WRITER"));
+				p.setLocationNo(rset.getInt("LOCATION_NO"));
+				p.setMakeDate(rset.getDate("MAKE_DATE"));
+				p.setStatus(rset.getString("STATUS"));
+				p.setPhone(rset.getString("PHONE"));
+				p.setAddress(rset.getString("ADDRESS"));
+				p.setPlaceContent(rset.getString("PLACE_CONTENT"));
+				p.setStartTime(rset.getInt("START_TIME"));
+				p.setEndTime(rset.getInt("END_TIME"));
+				p.setStarPoint(rset.getInt("STAR_POINT"));
+				p.setPlaceUrl(rset.getString("PLACE_URL"));
+				p.setViewCount(rset.getInt("VIEW_COUNT"));
+				p.setUseTime(rset.getInt("USE_TIME"));
+				p.setUsePrice(rset.getInt("USE_PRICE"));
+				p.setBestStatus(rset.getString("BEST_STATUS"));
+				p.setTitleImg(rset.getString("TITLE_IMG"));
+				System.out.println(p);
+				list.add(p);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list ;
+		
+	}
+	
+	
 }
