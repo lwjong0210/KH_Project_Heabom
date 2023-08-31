@@ -42,6 +42,11 @@
         .prop_detail p {
             margin: -1px;
         }
+        
+        #titleImg:hover{
+        	cursor: pointer;
+        	color:gray;
+        }
 
     </style>
 </head>
@@ -68,7 +73,12 @@
                         <td width="245">
                             <input type="text" readonly style="background-color: lightgray;" value="<%=userId%>">
                             <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
-                        <td rowspan="2" width="120">사진미리보기</td>
+                        <td rowspan="2" width="120">
+                            <img src="" alt="" id="viewTitleImg" style="width: 120px; height: 120px;">
+				            <div id="file-area" style="display: none;">
+				                <input type="file" name="viewTitleImg" id="enrolltitle" onchange="loadImg(this);">
+				            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
@@ -77,7 +87,7 @@
                     <tr>
                         <td class="detail_title">비밀번호확인&nbsp</td>
                         <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td></td>
-                        <td class="detail_title" style="text-align: center;">대표사진</td>
+                        <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록</p></td>
                     </tr>
                     <tr>
                         <td class="detail_title">이&nbsp&nbsp&nbsp름&nbsp</td>
@@ -85,7 +95,7 @@
                         <td class="" rowspan="2" style="text-align: center; font-size: smaller;">
                             <p style="color: blue;"><strong>사진은 최대 10Mbyte를</strong></p>
                             <p style="margin-bottom: 5px;">넘을수 없습니다.</p>
-                            <p style="color: blue;"><strong>사진 규격은 125*125를</strong></p>
+                            <p style="color: blue;"><strong>사진 규격은 120*120를</strong></p>
                             <p>권장합니다.</p>
                         </td>
                     </tr>
@@ -121,10 +131,6 @@
                             <input type="text" style="width: 100px; background-color: lightgray;" readonly value="<%=userGrade%>">
                             <p style="font-size: smaller; color: green;"><strong>&nbsp* 획득한 포인트에 대한 등급입니다.</strong></p>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">대표사진변경&nbsp</td>
-                        <td colspan="2"><input type="file"></td>
                     </tr>
                 </table>
                 <input type="submit" class="btn btn-sm btn-success style="background-color: pink; border: 1;" value="정보변경" onclick="return vaildatePwd();">
@@ -300,5 +306,36 @@ function populateDateDropdown() {
     }
 }
 
+</script>
+
+<script>
+function chooseFile(){
+    $("#enrolltitle").click();
+}
+function loadImg(inputFile){
+    console.log(inputFile);
+    // infutFile : 현재 변화가 생긴 input type = "file" 요소객체
+    // num : 몇번째 input 요소인지 확인 후 해당 그영역에 미리보기 하기 위해 전달받는 숫자
+
+    // 선택된 파일이 있으면 inputFile.files[0]에 선택된 파일이 담겨 있음
+    //                          => inputFile.files.length 또한 1이 될 것이다.
+    if(inputFile.files.length == 1){ // 파일이 선택된 경우 => 파일을 읽어들여서 미리보기를 해야한다.
+        // 파일을 읽어들일 FileReader 객체 생성
+        const reader = new FileReader();
+
+        // 파일을 읽어들이는 메소드 호출
+        reader.readAsDataURL(inputFile.files[0]);
+        // 해당 파일을 읽어들이는 순간 해당 이 파일만의 고유한 url 부여
+
+        // 파일 읽어들이기가 완료 됬다고 하면 실행할 함수를 정의해두기
+        reader.onload = function(e){
+            // e.target.result => 읽어들인 파일의 고유한 url
+            $("#viewTitleImg").attr("src", e.target.result);
+        }
+
+    } else { // 선택된 파일이 취소된 경우 => 미리보기한 것도 사라지게 만들어 주어야 한다.
+        $("#viewTitleImg").attr("src", null);
+    }
+}
 </script>
 </html>
