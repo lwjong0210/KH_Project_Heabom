@@ -125,9 +125,9 @@ table, div {
 									<td height="120" width="200">
 										<div style="width: 100px; height: 100px; margin: auto;">
 					                        <% if(loginMember.getTitleImg().length() < 5) { %>
-					                        	<img src="<%=contextPath%>/resource/img/profile/기본이미지.png" id="viewTitleImg" name="viewTitleImg" style="width: 100px; height: 100px; border-radius: 50px;">
+					                        	<img src="<%=contextPath%>/resource/img/profile/기본이미지.png" id="viewTitleImg2" name="viewTitleImg" style="width: 100px; height: 100px; border-radius: 50px;">
 					                        <% } else { %>
-					                        	<img src="<%=contextPath%><%=loginMember.getTitleImg()%>" id="viewTitleImg" name="viewTitleImg" style="width: 100px; height: 100px; border-radius: 50px;">
+					                        	<img src="<%=contextPath%><%=loginMember.getTitleImg()%>" id="viewTitleImg2" name="viewTitleImg" style="width: 100px; height: 100px; border-radius: 50px;">
 											<% } %>
 										</div>
 									</td>
