@@ -48,7 +48,7 @@ public class MemberUpdateController extends HttpServlet {
 				at = new MemberAttachment();
 				at.setOriginName(multiRequest.getOriginalFileName("viewTitleImg"));
 				at.setChangeName(multiRequest.getFilesystemName("viewTitleImg"));
-				at.setFilePath("resources/img/profile");
+				at.setFilePath("resource/img/profile");
 			}
 			
 			String memId = multiRequest.getParameter("userId");
@@ -70,8 +70,6 @@ public class MemberUpdateController extends HttpServlet {
 			m.setMemPhone(memphone);
 			m.setMemBirthday(memBirth);
 			m.setMemNo(memNo);
-			System.out.println("여기는 컨트롤러");
-			System.out.println(at.getFileNo());
 
 			int result = new MemberService().myDetailUpdate(at , m); //db 에 넘기기
 			Member updateMem = new MemberService().loginMember(memId, memPwd);

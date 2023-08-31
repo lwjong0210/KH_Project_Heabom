@@ -107,8 +107,6 @@ public class MemberService {
 	}
 	
 	public int myDetailUpdate(MemberAttachment at , Member m) {
-		System.out.println("여기는 서비스");
-		System.out.println(at.getFileNo());
 		Connection conn = getConnection();
 		int result1 = new MemberDao().myDetailUpdate(conn, m);
 		int result2 = 1;
@@ -131,4 +129,21 @@ public class MemberService {
 		
 		return result1 * result2;
 	}
+	
+	public int updateStatus(String userId, String userPwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updateStatus(conn, userId, userPwd);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+		
+	}
+	
 }

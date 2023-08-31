@@ -167,7 +167,12 @@
             </div>
                 <%}else{%>
                     <div style="line-height: 35px; text-align: center;">
-                    <p style="margin: 0; margin-top: 10px;"><strong><%=loginMember.getNickname()%>님</strong> 반갑습니다.</p>
+                    <p style="margin: 0; margin-top: 10px;">
+                    <%if(loginMember.getTitleImg().length() > 5) { %>
+                    	<img src="<%=contextPath%><%=loginMember.getTitleImg()%>" id="viewTitleImg" name="viewTitleImg" style="width: 17px; height: 17px; border-radius: 50px;">
+                    <% } %>
+                    <strong><%=loginMember.getNickname()%>님</strong> 반갑습니다.
+                    </p>
                     </div>
                     <% System.out.println(loginMember); %>
                     <a class="btn btn-sm btn-secondary" href="<%=contextPath%>/myPage.me">나의정보</a>

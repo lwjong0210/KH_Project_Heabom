@@ -64,83 +64,84 @@
 	String[] userBirthList = userBirth.split("-");
 	String userGrade = loginMember.getGrade();
 	int userPoint = loginMember.getMemPoint();
+	System.out.println(loginMember.getTitleImg());
 %>
 <form action="<%=contextPath%>/update.me" id="enroll-form" method="post" enctype="multipart/form-data">
         <div class="prop_setting">
-        <input type="hidden" value="<%=userNo%>">
+        <input type="hidden" name="userNo" value="<%=userNo%>">
             <br>
-                <table border="1" class="prop_detail" style="margin-bottom: 10px;">
-                    <tr>
-                        <td class="detail_title" width="100">아이디<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td width="245">
-                            <input type="text" readonly style="background-color: lightgray;" name="userId" value="<%=userId%>">
-                            <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
-                        <td rowspan="2" width="120">
-                            <img src="" alt="" id="viewTitleImg" name="viewTitleImg" style="width: 120px; height: 120px;">
-				            <div id="file-area" style="display: none;">
-				                <input type="file" name="viewTitleImg" id="enrolltitle" onchange="loadImg(this);">
-				            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td><input type="password" name="userPwd" id="updatePwd" value="<%=userPwd%>" style="background-color: lightgray;" required readonly><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경은 아래버튼을 눌러주세요</strong></p></td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">비밀번호확인&nbsp</td>
-                        <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td>
-                        <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록</p></td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">이&nbsp&nbsp&nbsp름&nbsp</td>
-                        <td><input type="text" placeholder="ex)홍길동" readonly style="background-color: lightgray;" name="userName" value="<%=userName%>"></td>
-                        <td class="" rowspan="2" style="text-align: center; font-size: smaller;">
-                            <p style="color: blue;"><strong>사진은 최대 10Mbyte를</strong></p>
-                            <p style="margin-bottom: 5px;">넘을수 없습니다.</p>
-                            <p style="color: blue;"><strong>사진 규격은 120*120를</strong></p>
-                            <p>권장합니다.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">이메일&nbsp</td>
-                        <td><input type="email" placeholder="ex)해봄@SunSpring.com" maxlength="30" name="userEamil" value="<%=userEmail%>"></td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">MBTI&nbsp</td>
-                        <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" minlength="4" maxlength="4" name="userMbti" value="<%=userMbti%>"></td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title" colspan="">휴대폰번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13" name="userPhone" value="<%=userPhone%>" required><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title" colspan="">닉네임<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍" name="nickName" value="<%=userNickname%>" required></td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">생년월일&nbsp</td>
-                        <td colspan="2">
-                            <select id="yearDropdown" name="userYear">
-                                <option value="" selected><%=userBirthList[0] %></option>
-                            </select>
-                            <select id="monthDropdown" name="userMonth">
-                                <option value="" selected><%=userBirthList[1] %></option>
-                            </select>
-                            <select id="dateDropdown" name="userDay">
-                                <option value="" selected><%=userBirthList[2] %></option>
-                            </select>
-                            <input type="hidden" name="userBirth" value="<%=userBirth%>">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="detail_title">등급 및 포인트&nbsp</td>
-                        <td colspan="2">
-                            <input type="number" style="width: 100px; background-color: lightgray;" readonly value="<%=userPoint%>">
-                            <input type="text" style="width: 100px; background-color: lightgray;" readonly value="<%=userGrade%>">
-                            <p style="font-size: smaller; color: green;"><strong>&nbsp* 획득한 포인트에 대한 등급입니다.</strong></p>
-                        </td>
-                    </tr>
-                </table>
+    <table border="1" class="prop_detail" style="margin-bottom: 10px;">
+        <tr>
+            <td class="detail_title" width="100">아이디<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
+            <td width="245">
+                <input type="text" readonly style="background-color: lightgray;" name="userId" value="<%=userId%>">
+                <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
+            <td rowspan="2" width="120">
+            <% if(loginMember.getTitleImg().length() < 5) { %>
+                <img src="<%=contextPath%>/resource/img/profile/기본이미지.png" id="viewTitleImg" name="viewTitleImg" style="width: 120px; height: 120px;">
+            <% } else { %>
+                <img src="<%=contextPath%><%=loginMember.getTitleImg()%>" id="viewTitleImg" name="viewTitleImg" style="width: 120px; height: 120px;">
+            <% } %>                        		
+                <div id="file-area" style="display: none;">
+                    <input type="file" name="viewTitleImg" id="enrolltitle" onchange="loadImg(this);">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
+            <td><input type="password" name="userPwd" id="updatePwd" value="<%=userPwd%>" style="background-color: lightgray;" required readonly><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경은 아래버튼을 눌러주세요</strong></p></td>
+        </tr>
+        <tr>
+            <td class="detail_title">이&nbsp&nbsp&nbsp름&nbsp</td>
+            <td><input type="text" placeholder="ex)홍길동" readonly style="background-color: lightgray;" name="userName" value="<%=userName%>"></td>
+            <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록</p></td>
+        </tr>
+        <tr>
+            <td class="detail_title">이메일&nbsp</td>
+            <td><input type="email" placeholder="ex)해봄@SunSpring.com" maxlength="30" name="userEamil" value="<%=userEmail%>"></td>
+            <td class="" rowspan="2" style="text-align: center; font-size: smaller;">
+                <p style="color: blue;"><strong>사진은 최대 10Mbyte를</strong></p>
+                <p style="margin-bottom: 5px;">넘을수 없습니다.</p>
+                <p style="color: blue;"><strong>사진 규격은 120*120를</strong></p>
+                <p>권장합니다.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="detail_title">MBTI&nbsp</td>
+            <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" minlength="4" maxlength="4" name="userMbti" value="<%=userMbti%>"></td>
+        </tr>
+        <tr>
+            <td class="detail_title" colspan="">휴대폰번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
+            <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13" name="userPhone" value="<%=userPhone%>" required><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
+        </tr>
+        <tr>
+            <td class="detail_title" colspan="">닉네임<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
+            <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍" name="nickName" value="<%=userNickname%>" required></td>
+        </tr>
+        <tr>
+            <td class="detail_title">생년월일&nbsp</td>
+            <td colspan="2">
+                <select id="yearDropdown" name="userYear">
+                    <option value="" selected><%=userBirthList[0] %></option>
+                </select>
+                <select id="monthDropdown" name="userMonth">
+                    <option value="" selected><%=userBirthList[1] %></option>
+                </select>
+                <select id="dateDropdown" name="userDay">
+                    <option value="" selected><%=userBirthList[2] %></option>
+                </select>
+                <input type="hidden" name="userBirth" value="<%=userBirth%>">
+            </td>
+        </tr>
+        <tr>
+            <td class="detail_title">등급 및 포인트&nbsp</td>
+            <td colspan="2">
+                <input type="number" style="width: 100px; background-color: lightgray;" readonly value="<%=userPoint%>">
+                <input type="text" style="width: 100px; background-color: lightgray;" readonly value="<%=userGrade%>">
+                <p style="font-size: smaller; color: green;"><strong>&nbsp* 획득한 포인트에 대한 등급입니다.</strong></p>
+            </td>
+        </tr>
+    </table>
                 <input type="submit" class="btn btn-sm btn-success style="background-color: pink; border: 1;" value="정보변경" onclick="return vaildatePwd();">
                 <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-info" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</a>
                 <!--<button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</button>-->
