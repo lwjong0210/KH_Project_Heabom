@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.heabom.board.model.dao.BoardDao;
 import com.heabom.board.model.vo.Board;
+import com.heabom.board.model.vo.Reply;
 import com.heabom.common.model.vo.File;
 import com.heabom.common.model.vo.HashTag;
 import com.heabom.common.model.vo.PageInfo;
@@ -152,6 +153,17 @@ public class BoardService {
 	 	
 	 	return list;
 		
+	}
+	
+	public ArrayList<Reply> selectReplyList(String boardNo){
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Reply> rlist = new BoardDao().selectReplyList(conn, boardNo);
+		
+		close(conn);
+		
+		return rlist;
 	}
 	
 }

@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.heabom.board.model.service.BoardService;
-import com.heabom.board.model.vo.Board;
-import com.heabom.common.model.vo.File;
+import com.heabom.board.model.vo.Reply;
 
 /**
- * Servlet implementation class BoardDetailController
+ * Servlet implementation class ReplyListController
  */
-@WebServlet("/detail.bo")
-public class BoardDetailController extends HttpServlet {
+@WebServlet("/rlist.bo")
+public class ReplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailController() {
+    public ReplyListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +32,12 @@ public class BoardDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String bno = (String)request.getParameter("bno");
+		String bno = request.getParameter("boardNo");
+				
+		ArrayList<Reply> rlist = new BoardService().selectReplyList(bno);
 		
-		BoardService bService = new BoardService();
-		
-		int result = bService.increaseCount(bno);
-		
-		
-		if(result>0) {
-			Board b = bService.selectBoard(bno);
-			ArrayList<File> list = bService.selectFileList(bno);
-			System.out.println("zz");
-			
-			request.setAttribute("b", b);
-			request.setAttribute("list", list);
-			
-			System.out.println(b);
-			
-			
-			request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
-		}
-		
-		
+		request.setAttribute("rlist", rlist);
+		request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
 		
 	}
 
