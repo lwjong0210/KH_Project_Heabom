@@ -1,3 +1,18 @@
+<%@page import="com.heabom.common.model.vo.File"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.heabom.place.model.vo.Place"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%
+     	Place place = (Place)request.getAttribute("placeInfo");
+    	ArrayList<File> fileList = (ArrayList<File>)request.getAttribute("fileList");
+    	
+    	//System.out.println(place);
+    	//System.out.println(fileList.get(0).getFilePath());
+    
+     	
+    %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,80 +144,81 @@
     </style>
 </head>
 <body>
-    <h1 align="center">장소 상세 페이지</h1>
+    <%@ include file="../common/header.jsp" %>
+    <h1 align="center"><%=place.getPlaceTitle()%></h1>
     <div class="wrap">
-        <div class="place-img">
-            <img src="img/간판없는가게.jpg" alt="간판없는가게">
+        <div class="place-img" style="border: 1px solid black;">
+            <img src="<%=place.getTitleImg()%>">
         </div>
         <div class="place-description">
             <table>
                 <tr>
-                    <th>작성 날짜</th>
-                    <td>2023-08-24</td>
+                    <th>등록일</th>
+                    <td><%=place.getMakeDate()%></td>
                 </tr>
                 <tr>
-                    <th>전화 번호</th>
-                    <td>010-1234-5678</td>
+                    <th>번호</th>
+                    <td><%=place.getPhone() %></td>
                 </tr>
                 <tr>
-                    <th>상세 주소</th>
-                    <td>서울특별시 강남구</td>
+                    <th>주소</th>
+                    <td><%=place.getAddress() %></td>
                 </tr>
                 <tr>
-                    <th>장소 설명</th>
-                    <td>여기는 간판 없는 가게입니다.</td>
+                    <th>내용</th>
+                    <td><%=place.getPlaceContent() %></td>
                 </tr>
                 <tr>
-                    <th>영업 시작 시간</th>
-                    <td>09:00</td>
+                    <th>오픈시간</th>
+                    <td><%=place.getStartTime() %>시</td>
                 </tr>
                 <tr>
-                    <th>영업 종료 시간</th>
-                    <td>22:00</td>
+                    <th>닫는시간</th>
+                    <td><%=place.getEndTime() %>시</td>
                 </tr>
                 <tr>
                     <th>별점</th>
-                    <td>⭐⭐⭐⭐</td>
+                    <td><%=place.getStarPoint() %></td>
                 </tr>
                 <tr>
-                    <th>홈페이지 주소</th>
-                    <td><a href="http://naver.com" target="_blank">http://naver.com</a></td>
+                    <th>홈페이지</th>
+                    <td><a href="<%=place.getPlaceUrl()%>">사이트 이동</a></td>
                 </tr>
                 <tr>
-                    <th>장소 소요 시간</th>
-                    <td>2시간</td>
+                    <th>예상소요시간</th>
+                    <td><%=place.getUseTime() %></td>
                 </tr>
                 <tr>
-                    <th>1인 예상 비용</th>
-                    <td>20,000원</td>
+                    <th>예상소요비용</th>
+                    <td><%=place.getUsePrice() %></td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <h1 align="center">사용자 후기</h1>
+    <h1 align="center">ì¬ì©ì íê¸°</h1>
 
     <form class="review-form" action="#" method="post" enctype="multipart/form-data">
-        <textarea name="review-text" rows="4" placeholder="리뷰를 작성해주세요."></textarea>
+        <textarea name="review-text" rows="4" placeholder="ë¦¬ë·°ë¥¼ ìì±í´ì£¼ì¸ì."></textarea>
         <input type="file" name="review-image">
-        <button type="submit">리뷰 등록하기</button>
+        <button type="submit">ë¦¬ë·° ë±ë¡íê¸°</button>
     </form>
 
     <div class="review-section">
         <div class="review">
             <div class="review-author">user01</div>
-            <div class="review-text">이 장소는 정말 좋았어요! 다음에 또 방문하고 싶네요.</div>
-            <img src="img/서울앵무새.jpg" alt="User Image" class="review-img">
+            <div class="review-text">ì´ ì¥ìë ì ë§ ì¢ìì´ì! ë¤ìì ë ë°©ë¬¸íê³  ì¶ë¤ì.</div>
+            <img src="img/ìì¸ìµë¬´ì.jpg" alt="User Image" class="review-img">
             <div class="review-date">2023-08-24</div>
-            <div class="report">신고하기</div>
+            <div class="report">ì ê³ íê¸°</div>
         </div>
         
         <div class="review">
             <div class="review-author">user02</div>
-            <div class="review-text">분위기도 좋고, 직원들도 친절해요. 추천합니다!</div>
+            <div class="review-text">ë¶ìê¸°ë ì¢ê³ , ì§ìë¤ë ì¹ì í´ì. ì¶ì²í©ëë¤!</div>
             <img src="path/to/image.jpg" alt="User Image" class="review-img">
             <div class="review-date">2023-08-23</div>
-            <div class="report">신고하기</div>
+            <div class="report">ì ê³ íê¸°</div>
         </div>
 
     </div>

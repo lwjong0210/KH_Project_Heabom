@@ -1,8 +1,8 @@
-package com.heabom.place.controller;
+package com.heabom.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,21 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.heabom.place.model.service.PlaceService;
-import com.heabom.place.model.vo.Place;
-import com.heabom.search.model.service.SearchService;
+import com.heabom.member.model.service.MemberService;
+import com.heabom.member.model.vo.Member;
 
 /**
- * Servlet implementation class SearchListViewController
+ * Servlet implementation class CheckListUpdateController
  */
-@WebServlet("/searchListView.pl")
-public class SearchListViewController extends HttpServlet {
+@WebServlet("/update.ck")
+public class CheckListUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchListViewController() {
+    public CheckListUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +32,28 @@ public class SearchListViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//관련된 모든 장소들이 검색되어서 나올것이다.
-		System.out.println("안녕");
 		
-		int lNo = Integer.parseInt(request.getParameter("lNo"));
-		System.out.println(lNo);
-		ArrayList<Place> list = new PlaceService().selectPlaceList(lNo);
+		request.setCharacterEncoding("UTF-8");
 		
-		if(!(list.isEmpty())) {
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/place/placeListView.jsp").forward(request, response);
-		}else {
+		int memPoint = Integer.parseInt(request.getParameter("memPoint"));
+		
+		Member m = new Member(memPoint);
+		
+		Member updateMem = new MemberService().updateMember(m);
+		
+		if(updateMem != null) {
+			
 			HttpSession session = request.getSession();
-			session.setAttribute("alertMsg","등록된맛집이 없네용");
-			response.sendRedirect(request.getContextPath());
+			
+			session.setAttribute(" ", session);
+			session.setAttribute("alertMsg", "성공");
+			
+			response.sendRedirect(request.getContextPath() + "/check.ad");
+			
+		}else {
+			request.setAttribute("errorMsg", "실패");
 		}
+		
 	}
 
 	/**

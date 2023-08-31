@@ -5,7 +5,6 @@
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -384,7 +383,7 @@
             <div id="content1">
                 <div id="content_1"></div>
                 <div id="content_2">
-                    <form action="<%= contextPath %>/update.ad" method="post">
+                    <form action="<%= contextPath %>/update.ck" method="post">
                         <table border="1">
                             <thead>
                                 <th width="130">
@@ -405,12 +404,12 @@
                                 <% for(Member m : list) { %>
                                     <tr>
                                         <td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
-                                        <td class="getMemId"><%= m.getMemNo() %></td>
+                                        <td><%= m.getMemNo() %></td>
                                         <td><%= m.getMemId() %></td>
                                         <td><%= m.getMemName() %></td>
                                         <td><%= m.getNickname() %></td>
                                         <td><%= m.getGrade() %></td>
-                                        <td><input type="text" style="width: 50%;"></td>
+                                        <td><input type="text" name="memPoint" style="width: 50%;"></td>
                                         <td><%= m.getMemVisit() %></td>
                                         <td><%= m.getEmail() %></td>
                                         <td>
@@ -439,13 +438,23 @@
                     <button type="button" id="button2" class="btn btn-danger">선택 삭제</button>
                 </div>
                 <div id="content_6">
-                    <div class="paging-area" align="center">
-                        <button>&lt;</button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>&gt;</button>
-                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>

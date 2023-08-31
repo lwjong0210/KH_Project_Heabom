@@ -28,33 +28,6 @@ public class MemberDao {
 		}
 	}
 	
-	public int selectListCount(Connection conn) {
-		
-		int listCount = 0;
-		
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectListCount");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				listCount = rset.getInt("count");
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return listCount;
-	}
-	
 	public ArrayList<Member> selectAdminList(Connection conn) {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
@@ -64,13 +37,18 @@ public class MemberDao {
 		
 		String sql = prop.getProperty("selectAdminList");
 		
+		
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
+			
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Member(rset.getString("mem_id"),
+				list.add(new Member(rset.getString("mem_no"),
+									rset.getString("mem_id"),
 									rset.getString("mem_name"),
 									rset.getString("nickname"),
 									rset.getString("grade"),
@@ -90,6 +68,29 @@ public class MemberDao {
 	}
 	
 	
+	public int updateMember(Connection conn, Member m) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, m.getMemPoint());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
@@ -208,7 +209,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public Member selectMember(Connection conn,String userId) {
+	public Member selectMember(Connection conn, String userId) {
 		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
