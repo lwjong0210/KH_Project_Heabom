@@ -37,7 +37,6 @@ public class MemberUpdateController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("여기는 컨트롤러");
 		if(ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 10*1024*1024;
 			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/profile/");
@@ -45,10 +44,10 @@ public class MemberUpdateController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",new MyFileRenamePolicy());		
 			
 			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
-			if(multiRequest.getOriginalFileName("upfile") != null) {//넘어온게 있어.
+			if(multiRequest.getOriginalFileName("viewTitleImg") != null) {//넘어온게 있어.
 				at = new MemberAttachment();
-				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+				at.setOriginName(multiRequest.getOriginalFileName("viewTitleImg"));
+				at.setChangeName(multiRequest.getFilesystemName("viewTitleImg"));
 				at.setFilePath("resources/img/profile");
 			}
 			
@@ -56,10 +55,10 @@ public class MemberUpdateController extends HttpServlet {
 			String memPwd = multiRequest.getParameter("userPwd");
 			String memName = multiRequest.getParameter("userName");
 			String nickName = multiRequest.getParameter("nickName");
-			String email = multiRequest.getParameter("userEamil");
-			String mbti = multiRequest.getParameter("userMbti");
+			String email = (multiRequest.getParameter("userEamil") == null) ? "" : multiRequest.getParameter("userEamil");
+			String mbti = (multiRequest.getParameter("userMbti") == null) ? "" : multiRequest.getParameter("userMbti");
 			String memphone = multiRequest.getParameter("userPhone");
-			String memBirth = multiRequest.getParameter("userBirth");
+			String memBirth = (multiRequest.getParameter("userBirth") == null) ? "1111-11-11" : multiRequest.getParameter("userBirth"); 
 			String memNo = multiRequest.getParameter("userNo");
 			
 			Member m = new Member();
@@ -72,7 +71,7 @@ public class MemberUpdateController extends HttpServlet {
 			m.setMemBirthday(memBirth);
 			m.setMemNo(memNo);
 			System.out.println("여기는 컨트롤러");
-			System.out.println(nickName);
+			System.out.println(at.getFileNo());
 
 			int result = new MemberService().myDetailUpdate(at , m); //db 에 넘기기
 			Member updateMem = new MemberService().loginMember(memId, memPwd);

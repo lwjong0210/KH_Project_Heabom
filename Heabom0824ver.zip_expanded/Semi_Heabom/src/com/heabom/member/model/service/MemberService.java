@@ -108,6 +108,7 @@ public class MemberService {
 	
 	public int myDetailUpdate(MemberAttachment at , Member m) {
 		System.out.println("여기는 서비스");
+		System.out.println(at.getFileNo());
 		Connection conn = getConnection();
 		int result1 = new MemberDao().myDetailUpdate(conn, m);
 		int result2 = 1;
@@ -116,7 +117,7 @@ public class MemberService {
 			if(at.getFileNo() != 0) {
 				result2 = new MemberDao().updateAttachment(conn, at, m);
 			}else {
-				result2 = new MemberDao().insertAttachment(conn, at);
+				result2 = new MemberDao().insertMemberDetailAttachment(conn, at, m);
 			}
 		}
 		

@@ -105,6 +105,25 @@ INSERT INTO TB_FILE(
 )
 </entry>
 
+<entry key="insertMemberDetailAttachment">
+INSERT INTO TB_FILE(
+    FILE_NO
+   ,ORIGIN_NAME
+   ,CHANGE_NAME
+   ,FILE_PATH
+   ,UPLOAD_DATE
+   ,REF_NO
+   )
+   VALUES(
+   SEQ_FILE.NEXTVAL
+   ,?
+   ,?
+   ,?
+   ,SYSDATE
+   ,? 
+)
+</entry>
+
 <entry key="updatePwd">
 UPDATE TB_MEMBER
 SET MEM_PWD = ?

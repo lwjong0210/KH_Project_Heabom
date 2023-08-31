@@ -84,11 +84,11 @@
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td><input type="password" name="userPwd" id="updatePwd" value="<%=userPwd%>"></td>
+                        <td><input type="password" name="userPwd" id="updatePwd" value="<%=userPwd%>" style="background-color: lightgray;" required readonly><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경은 아래버튼을 눌러주세요</strong></p></td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호확인&nbsp</td>
-                        <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td></td>
+                        <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td>
                         <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록</p></td>
                     </tr>
                     <tr>
@@ -107,15 +107,15 @@
                     </tr>
                     <tr>
                         <td class="detail_title">MBTI&nbsp</td>
-                        <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" maxlength="4" name="userMbti" value="<%=userMbti%>"></td>
+                        <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" minlength="4" maxlength="4" name="userMbti" value="<%=userMbti%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title" colspan="">휴대폰번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13" name="userPhone" value="<%=userPhone%>"><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
+                        <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13" name="userPhone" value="<%=userPhone%>" required><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
                     </tr>
                     <tr>
                         <td class="detail_title" colspan="">닉네임<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍" name="nickName" value="<%=userNickname%>"></td>
+                        <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍" name="nickName" value="<%=userNickname%>" required></td>
                     </tr>
                     <tr>
                         <td class="detail_title">생년월일&nbsp</td>
@@ -237,7 +237,6 @@
 
 <script>
 $(function(){
-	 console.log("dsff");
 	    populateYearDropdown();
 	    populateMonthDropdown();
 	    populateDateDropdown();
