@@ -38,10 +38,8 @@ public class JqAjaxMyQnADetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memNo = request.getParameter("memNo");
 
-		ArrayList<Answer> anArr = new AnswerService().selectAnswer(memNo);
 		ArrayList<Question> quArr = new QuestionService().selectQuestion(memNo);
 
-		request.setAttribute("anArr", anArr);
 		request.setAttribute("quArr", quArr);
 		
 		request.getRequestDispatcher("views/member/myQnA.jsp").forward(request, response);

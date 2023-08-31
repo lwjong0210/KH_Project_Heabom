@@ -128,8 +128,10 @@
                     </tr>
                 </table>
                 <input type="submit" class="btn btn-sm btn-success style="background-color: pink; border: 1;" value="정보변경" onclick="return vaildatePwd();">
+                <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</a>
+                <!--<button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</button>-->
                 <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-warning">취소</a>
-                <a href="" class="btn btn-sm btn-danger">탈퇴</a>
+                <button type="button" class="btn btn-sm btn-danger"data-toggle="modal" data-target="#deleteModal">회원탈퇴</button>
             </div>
         </td>
     </tr>
@@ -138,6 +140,83 @@
 <br><br>
         </div>
     </div>
+    
+    
+    <!-- 비밀번호 변경용 Modal -->
+	<div class="modal" id="updatePwdModal" align="center">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">비밀번호 변경</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+                    <form action="<%= contextPath %>/updatePwd.me" method="post">
+                    	<input type="hidden" name="userId" value="<%= userId %>">
+                        <table>
+                            <tr>
+                                <td>현재 비밀번호</td>
+                                <td><input type="text" name="userPwd" required></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호</td>
+                                <td><input type="text" name="updatePwd" required></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호 확인</td>
+                                <td><input type="text" name="checkPwd" required></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <button type="submit" class="btn btn-sm btn-secondary" onclick="return vaildatePwd()">변경완료</button>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+		</div>
+	</div>
+
+                <script>
+                function vaildatePwd(){
+                    if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
+                        alert("변경할 비밀번호가 일치하지 않습니다.");
+                        return false;
+                    }
+                }
+                </script>
+                
+    <!-- 회원탈퇴용 Modal -->
+	<div class="modal" id="deleteModal" align="center">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">회원탈퇴</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+                    <form action="<%= contextPath %>/updateStatus.me" method="post">
+                    <input type="hidden" name="userId" value="<%= userId %>">
+                        <b>탈퇴 후 복구가 불가능 합니다. <br>
+                        정말로 탈퇴 하시겠습니까? <br><br> </b>
+
+                        비밀번호 : <input type="password" name="userPwd" required> <br><br>
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="vaildateStatus()">탈퇴하기</button>
+                    </form>
+                </div>
+
+			</div>
+		</div>
+	</div>
+
+
 </body>
 <script>
     window.onload = function() {
