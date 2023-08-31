@@ -4,11 +4,11 @@
     pageEncoding="UTF-8"%>
     <%
     	ArrayList<Place> list = (ArrayList<Place>)request.getAttribute("list");
-    
-    
+       	session.setAttribute("placeSearchList", list);
+ 
     	//젠장 place 에 카테고리가 int 로 되어있어서 고생좀 합니다.
     	//vo 수정하기도 귀찮고 join 쿼리 돌리기는 더 귀찮으니까 걍 이없으면 잇몸으로 씹습니다. 시간도 없고; 
-    	
+    	String category = null ; 
     	int locationNo = list.get(0).getLocationNo();
     	String location = null ; 
     	switch (locationNo){
@@ -210,15 +210,24 @@ main {
     <h1 align="center"><%=location%></h1>
     <div class="wrap">
           <%for (int i = 0 ; i <list.size() ; i ++ ) {%>
+	          <%if (list.get(i).getCategoryNo() == 1){ 
+	          		category = "주점";
+	          }else if(list.get(i).getCategoryNo() == 2) {
+	        	  	category = "카페";
+	          }else{
+	        	  category = "음식점";
+	          }  %>
+	          	
+	        
             <section>
                 <div class="item">
                     <div class="img" >
-                        <a href="#"><img src="" style="background-color: red; "></a>
+                        <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
                     </div>
                     <div class="description">
-                        <div class="description_title"><%=list.get(i).getPlaceTitle() %></div>
-                        <div class="description_sub1"><%=list.get(i).getCategoryNo() %></div>
-                        <div class="description_sub2"><%=list.get(i).getViewCount() %></div>
+                        <div class="description_title">제목 : <%=list.get(i).getPlaceTitle() %></div>
+                        <div class="description_sub1">분류 : <%=category %></div>
+                        <div class="description_sub2">조회수 <%=list.get(i).getViewCount() %></div>
                     </div>
                 </div>
             </section>
