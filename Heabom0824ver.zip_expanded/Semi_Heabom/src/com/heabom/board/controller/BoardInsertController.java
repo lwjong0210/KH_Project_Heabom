@@ -85,7 +85,7 @@ public class BoardInsertController extends HttpServlet {
 				System.out.println("그럼 여기는 타겠지?");
 			}
 			int result = 0;
-			System.out.println(list);
+			
 			System.out.println(list.isEmpty());
 			if(list.isEmpty()) {
 				result = new BoardService().insertBoard(b);

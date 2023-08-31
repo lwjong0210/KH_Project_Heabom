@@ -8,22 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.heabom.common.model.vo.File;
 import com.heabom.place.model.service.PlaceService;
 import com.heabom.place.model.vo.Place;
-import com.heabom.search.model.service.SearchService;
 
 /**
- * Servlet implementation class SearchListViewController
+ * Servlet implementation class PlaceDetailViewController
  */
-@WebServlet("/searchListView.pl")
-public class SearchListViewController extends HttpServlet {
+@WebServlet("/placeDetailView.pl")
+public class PlaceDetailViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchListViewController() {
+    public PlaceDetailViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +33,14 @@ public class SearchListViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//관련된 모든 장소들이 검색되어서 나올것이다.
-		int lNo = Integer.parseInt(request.getParameter("lNo"));
-		
-		ArrayList<Place> list = new PlaceService().selectPlaceList(lNo);
-		
-		
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/place/placeListView.jsp").forward(request, response);
+		System.out.println("안뇽");
+		HttpSession session = request.getSession();
+		ArrayList<Place> list = (ArrayList<Place>)session.getAttribute("placeSearchList");
+		int index = Integer.parseInt(request.getParameter("index"));
+//		System.out.println(list.get(0));
+//		System.out.println(index);
+		Place p = list.get(index); 
+		ArrayList<File> fileList = new PlaceService()
 		
 	}
 
