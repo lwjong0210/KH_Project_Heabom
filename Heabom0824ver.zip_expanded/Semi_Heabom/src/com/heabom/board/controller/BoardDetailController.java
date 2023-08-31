@@ -51,7 +51,7 @@ public class BoardDetailController extends HttpServlet {
 			request.setAttribute("list", list);
 			
 			System.out.println(b);
-			System.out.println(list);
+			
 			
 			request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
 		}

@@ -1,5 +1,10 @@
+<%@page import="com.heabom.place.model.vo.Place"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	ArrayList<Place> list = (ArrayList<Place>)request.getAttribute("list");
+    %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -102,100 +107,24 @@ section {
     </style>
 </head>
 <body>
+	
     <%@include file = "../common/header.jsp" %>
     <h1 align="center">종로구</h1>
     <div class="wrap">
-        <main>
+          <%for (int i = 0 ; i <list.size() ; i ++ ) {%>
             <section>
                 <div class="item">
                     <div class="img">
                         <a href="#"><img src="img/간판없는가게.jpg" alt="간판없는가게"></a>
                     </div>
                     <div class="description">
-                        <div class="description_title">간판없는가게</div>
-                        <div class="description_sub1">식당</div>
-                        <div class="description_sub2">조회수:</div>
-                    </div>
-                </div>
-    
-                <div class="item">
-                    <div class="img">
-                        <a href="#"><img src="img/리차드하우스 연남.jpg" alt="리차드하우스"></a>
-                    </div>
-                    <div class="description">
-                        <div class="description_title">리차드하우스</div>
-                        <div class="description_sub1">식당</div>
-                        <div class="description_sub2">조회수:</div>
-                    </div>
-                </div>
-    
-                <div class="item">
-                    <div class="img">
-                        <a href="#"><img src="img/바빌리안테이블.jpg" alt="바빌리안테이블"></a>
-                    </div>
-                    <div class="description">
-                        <div class="description_title">바빌리안테이블</div>
-                        <div class="description_sub1">식당</div>
-                        <div class="description_sub2">조회수:</div>
-                    </div>
-                </div>
-    
-                <div class="item">
-                    <div class="img">
-                        <a href="#"><img src="img/서울앵무새.jpg" alt="서울앵무새"></a>                   
-                    </div>
-                    <div class="description">
-                        <div class="description_title">서울앵무새</div>
-                        <div class="description_sub1">카페</div>
-                        <div class="description_sub2">조회수:</div>
-                    </div>
-                </div>
-    
-                <div class="item">
-                    <div class="img">
-                        <a href="#"><img src="img/세상의모든아침.jpg" alt="세상의모든아침"></a>
-                    </div>
-                    <div class="description">
-                        <div class="description_title">세상의모든아침</div>
-                        <div class="description_sub1">카페</div>
-                        <div class="description_sub2">조회수:</div>
-                    </div>
-                </div>
-    
-                <div class="item">
-                    <div class="img">
-                        <a href="#"><img src="img/이태리이층집.jpg" alt="이태리이층집"></a>
-                    </div>
-                    <div class="description">
-                        <div class="description_title">이태리이층집</div>
-                        <div class="description_sub1">카페</div>
-                        <div class="description_sub2">조회수:</div>
-                    </div>
-                </div>
-    
-                <div class="item">
-                    <div class="img">
-                        <a href="#"><img src="img/익선애뜻.jpg" alt="익선애뜻"></a>
-                    </div>
-                    <div class="description">
-                        <div class="description_title">익선애뜻</div>
-                        <div class="description_sub1">호프</div>
-                        <div class="description_sub2">조회수:</div>
-                    </div>
-                </div>
-    
-                <div class="item">
-                    <div class="img">
-                        <a href="#"><img src="img/일떼라쪼당산본점.jpg" alt="일떼라쪼당산본점"></a>
-                    </div>
-                    <div class="description">
-                        <div class="description_title">일떼라쪼당산본점</div>
-                        <div class="description_sub1">호프</div>
-                        <div class="description_sub2">조회수:</div>
+                        <div class="description_title"><%=list.get(i).getPlaceTitle() %></div>
+                        <div class="description_sub1"><%=list.get(i).getCategoryNo() %></div>
+                        <div class="description_sub2"><%=list.get(i).getViewCount() %></div>
                     </div>
                 </div>
             </section>
-        </main>
+        <%} %>
     </div>
 </body>
 </html>

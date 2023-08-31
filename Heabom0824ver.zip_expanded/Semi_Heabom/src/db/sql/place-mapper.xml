@@ -90,4 +90,28 @@ VALUES
 )
 </entry>
 
+<entry key="selectPlaceList">
+SELECT 
+    PLACE_NO
+   ,PLACE_TITLE
+   ,CATEGORY_NO
+   ,WRITER
+   ,LOCATION_NO
+   ,MAKE_DATE
+   ,STATUS
+   ,PHONE
+   ,ADDRESS
+   ,PLACE_CONTENT
+   ,START_TIME
+   ,END_TIME
+   ,STAR_POINT
+   ,PLACE_URL
+   ,VIEW_COUNT
+   ,USE_TIME
+   ,USE_PRICE
+   ,BEST_STATUS
+FROM TB_PLACE
+WHERE LOCATION_NO = ?
+</entry>
+
 </properties>
