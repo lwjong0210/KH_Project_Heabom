@@ -9,8 +9,7 @@
     	
     	//System.out.println(place);
     	//System.out.println(fileList.get(0).getFilePath());
-        System.out.println("안녕");
-        System.out.println(fileList.size());
+   
      	
     %>
 
@@ -210,8 +209,8 @@
         <div class="place-description">
             <table>
                 <tr>
-                    <th>등록일</th>
-                    <td><%=place.getMakeDate()%></td>
+                    <th>글번호</th>
+                    <td id ="plNo"><%=place.getPlaceNo()%></td>
                 </tr>
                 <tr>
                     <th>번호</th>
@@ -324,7 +323,7 @@
         $.ajax({
                     //요청을 보내기 
                     url : "likeup.pl",
-                    data : {input : $("#input1").val()}, //데이터 넘길때에는 무조건 중괄호 열어라
+                    data : {input : $("#plNo").html()}, //데이터 넘길때에는 무조건 중괄호 열어라
                     //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
 
                     type : "get", // 요청방식 지정

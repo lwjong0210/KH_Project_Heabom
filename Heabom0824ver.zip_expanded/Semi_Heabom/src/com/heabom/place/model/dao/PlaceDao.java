@@ -215,4 +215,37 @@ public class PlaceDao {
 	}
 	
 	
+	/**
+	 * 좋아요 증가
+	 * @return
+	 */
+	public int likeUp(Connection conn , String pNo) {
+		int result = 0 ;
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("likeUp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ;
+	}
+	
+	/**
+	 * 좋아요수 가져오기 
+	 * @return
+	 */
+	public int likeCount() {
+		PreparedStatement pstmt = null ;
+		int result ; 
+		String sql = prop.getProperty("");
+	}
+	
+	
 }

@@ -71,6 +71,34 @@ import com.heabom.place.model.vo.Place;
 			return fileList ;
 			
 		}
+		
+		/**
+		 * 좋아요 수 증가
+		 * @param pNo
+		 * @return
+		 */
+		public int likeUp(String pNo) {
+			Connection conn = getConnection();
+			int result = new PlaceDao().likeUp(conn, pNo);
+			if(result > 0) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			close(conn);
+			return result ;
+		}
+		
+		/**
+		 * 좋아요수 가져오기
+		 * @return
+		 */
+		public int likeCount() {
+			Connection conn = getConnection();
+			int result = new PlaceDao().likeCount();
+			close(conn);
+			return result ;
+		}
 	
 	
 	

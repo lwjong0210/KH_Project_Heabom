@@ -128,4 +128,10 @@ WHERE REF_NO = ?
 AND FILE_LEVEL = 2
 </entry> 
 
+<entry key="likeUp">
+UPDATE TB_PLACE
+   SET LIKECOUNT = LIKECOUNT + 1
+WHERE PLACE_NO = ?
+</entry> 
+
 </properties>
