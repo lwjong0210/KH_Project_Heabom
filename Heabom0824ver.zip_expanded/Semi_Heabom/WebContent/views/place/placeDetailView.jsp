@@ -254,8 +254,8 @@
                     <td><%=place.getUsePrice() %></td>
                 </tr>
                 <tr>
-                    <th>예상소요비용</th>
-                    <td><%=place.getUsePrice() %></td>
+                    <th>좋아요</th>
+                    <td>3 <button onclick="likeup();">좋아요</button></td>
                 </tr>
             </table>
         </div>
@@ -317,6 +317,33 @@
         $("#myCarousel").carousel("next");
       });
     });
+
+
+
+    function likeup(){
+        $.ajax({
+                    //요청을 보내기 
+                    url : "likeup.pl",
+                    data : {input : $("#input1").val()}, //데이터 넘길때에는 무조건 중괄호 열어라
+                    //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
+
+                    type : "get", // 요청방식 지정
+                    success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
+                        alert(result);
+                        console.log("ajax통신 성공!")
+                        $("#output1").text(result);
+                    },
+                    error : function(){
+                        console.log("ajax통신 실패!")
+                    },
+                    complete : function(){
+                        alert("complete지롱");
+                    }
+                    
+                })
+    }
+
+
     </script>
 
 
