@@ -145,7 +145,7 @@ public class MemberDao {
 						  ,rset.getDate("ENROLL_DATE")
 						  ,rset.getString("MEM_STATUS")
 						  ,rset.getDate("MEM_VISIT")
-						  ,rset.getDate("MEM_BIRTHDAY")
+						  ,rset.getString("MEM_BIRTHDAY")
 						  ,rset.getInt("MEM_POINT"));
 			}
 			

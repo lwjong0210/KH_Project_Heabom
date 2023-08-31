@@ -15,14 +15,14 @@ public class Member {
 	private Date enrollDate;
 	private String memStatus;
 	private Date memVisit;
-	private Date memBirthday;
+	private String memBirthday;
 	private int memPoint;
 	
 	public Member () {}
 
 	public Member(String memNo, String grade, String memId, String memPwd, String memName, String nickname,
 			String email, String mbit, String memPhone, Date enrollDate, String memStatus, Date memVisit,
-			Date memBirthday, int memPoint) {
+			String memBirthday, int memPoint) {
 		super();
 		this.memNo = memNo;
 		this.grade = grade;
@@ -152,11 +152,11 @@ public class Member {
 		this.memVisit = memVisit;
 	}
 
-	public Date getMemBirthday() {
+	public String getMemBirthday() {
 		return memBirthday;
 	}
 
-	public void setMemBirthday(Date memBirthday) {
+	public void setMemBirthday(String memBirthday) {
 		this.memBirthday = memBirthday;
 	}
 

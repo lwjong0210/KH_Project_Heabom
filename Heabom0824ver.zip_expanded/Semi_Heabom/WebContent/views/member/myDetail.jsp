@@ -1,8 +1,11 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.sql.Date"%>
 <%@page import="com.heabom.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	Member loginMember =  (Member)session.getAttribute("loginMember");
+	String contextPath = request.getContextPath();
 %>    
 <!DOCTYPE html>
 <html>
@@ -43,6 +46,19 @@
     </style>
 </head>
 <body>
+<%
+	String userId = loginMember.getMemId();
+	String userPwd = loginMember.getMemPwd();
+	String userName = loginMember.getMemName();
+	String userPhone = loginMember.getMemPhone();
+	String userNickname = loginMember.getNickname();
+	String userEmail = (loginMember.getEmail() == null) ? "" : loginMember.getEmail();
+	String userMbti = (loginMember.getMbit() == null) ? "" : loginMember.getMbit();
+	String userBirth = (loginMember.getMemBirthday() == null) ? "1111-11-11" : loginMember.getMemBirthday();
+	String[] userBirthList = userBirth.split("-");
+	String userGrade = loginMember.getGrade();
+	int userPoint = loginMember.getMemPoint();
+%>
         <div class="prop_setting">
             <br>
             <form action="">
@@ -50,22 +66,22 @@
                     <tr>
                         <td class="detail_title" width="100">아이디<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
                         <td width="245">
-                            <input type="text" readonly style="background-color: lightgray;" value="<%=loginMember.getMemId()%>">
+                            <input type="text" readonly style="background-color: lightgray;" value="<%=userId%>">
                             <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
                         <td rowspan="2" width="120">사진미리보기</td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td><input type="password" value="<%=loginMember.getMemPwd()%>"></td>
+                        <td><input type="password" id="updatePwd" value="<%=userPwd%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호확인&nbsp</td>
-                        <td><input type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td></td>
+                        <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td></td>
                         <td class="detail_title" style="text-align: center;">대표사진</td>
                     </tr>
                     <tr>
                         <td class="detail_title">이&nbsp&nbsp&nbsp름&nbsp</td>
-                        <td><input type="text" placeholder="ex)홍길동" readonly style="background-color: lightgray;"></td>
+                        <td><input type="text" placeholder="ex)홍길동" readonly style="background-color: lightgray;" value="<%=userName%>"></td>
                         <td class="" rowspan="2" style="text-align: center; font-size: smaller;">
                             <p style="color: blue;"><strong>사진은 최대 10Mbyte를</strong></p>
                             <p style="margin-bottom: 5px;">넘을수 없습니다.</p>
@@ -75,34 +91,34 @@
                     </tr>
                     <tr>
                         <td class="detail_title">이메일&nbsp</td>
-                        <td><input type="email" placeholder="ex)해봄@SunSpring.com" maxlength="30"></td>
+                        <td><input type="email" placeholder="ex)해봄@SunSpring.com" maxlength="30" value="<%=userEmail%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title">MBTI&nbsp</td>
-                        <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" maxlength="4"></td>
+                        <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" maxlength="4" value="<%=userMbti%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title" colspan="">휴대폰번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13"><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
+                        <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13" value="<%=userPhone%>"><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
                     </tr>
                     <tr>
                         <td class="detail_title" colspan="">닉네임<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍"></td>
+                        <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍" value="<%=userNickname%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title">생년월일&nbsp</td>
                         <td colspan="2">
-                            <select id="yearDropdown"></select>
-                            <select id="monthDropdown"></select>
-                            <select id="dateDropdown"></select>
+                            <select id="yearDropdown"><%=userBirthList[0] %></select>
+                            <select id="monthDropdown"><%=userBirthList[1] %></select>
+                            <select id="dateDropdown"><%=userBirthList[2] %></select>
                             
                         </td>
                     </tr>
                     <tr>
                         <td class="detail_title">등급 및 포인트&nbsp</td>
                         <td colspan="2">
-                            <input type="number" value="" style="width: 100px; background-color: lightgray;" readonly>
-                            <input type="text" value="" style="width: 100px; background-color: lightgray;" readonly>
+                            <input type="number" style="width: 100px; background-color: lightgray;" readonly value="<%=userPoint%>">
+                            <input type="text" style="width: 100px; background-color: lightgray;" readonly value="<%=userGrade%>">
                             <p style="font-size: smaller; color: green;"><strong>&nbsp* 획득한 포인트에 대한 등급입니다.</strong></p>
                         </td>
                     </tr>
@@ -111,8 +127,8 @@
                         <td colspan="2"><input type="file"></td>
                     </tr>
                 </table>
-                <input type="submit" class="btn btn-sm btn-success style="background-color: pink; border: 1;">
-                <a href="" class="btn btn-sm btn-warning">취소</a>
+                <input type="submit" class="btn btn-sm btn-success style="background-color: pink; border: 1;" value="정보변경" onclick="return vaildatePwd();">
+                <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-warning">취소</a>
                 <a href="" class="btn btn-sm btn-danger">탈퇴</a>
             </div>
         </td>
