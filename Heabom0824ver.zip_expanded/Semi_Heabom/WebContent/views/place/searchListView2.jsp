@@ -85,7 +85,7 @@
    
         <div class="wrap">
             <div id="box">
-                <a href=''><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href=''><img src="<%=contextPath%>/resource/img/place/뷰.png" onclick="location.href=<%=contextPath%>/searchListView.pl "></a>
                 <p>강남구</p>
             </div>
             <div id="box">
