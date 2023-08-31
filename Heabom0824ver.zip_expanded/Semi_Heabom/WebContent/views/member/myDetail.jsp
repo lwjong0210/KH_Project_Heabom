@@ -52,6 +52,7 @@
 </head>
 <body>
 <%
+	String userNo = loginMember.getMemNo();
 	String userId = loginMember.getMemId();
 	String userPwd = loginMember.getMemPwd();
 	String userName = loginMember.getMemName();
@@ -64,17 +65,18 @@
 	String userGrade = loginMember.getGrade();
 	int userPoint = loginMember.getMemPoint();
 %>
+<form action="<%=contextPath%>/update.me" id="enroll-form" method="post" enctype="multipart/form-data">
         <div class="prop_setting">
+        <input type="hidden" value="<%=userNo%>">
             <br>
-            <form action="">
                 <table border="1" class="prop_detail" style="margin-bottom: 10px;">
                     <tr>
                         <td class="detail_title" width="100">아이디<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
                         <td width="245">
-                            <input type="text" readonly style="background-color: lightgray;" value="<%=userId%>">
+                            <input type="text" readonly style="background-color: lightgray;" name="userId" value="<%=userId%>">
                             <br><p style="font-size: smaller; color: red;"><strong>&nbsp* 아이디는 수정 불가 사항입니다.</strong></p></td>
                         <td rowspan="2" width="120">
-                            <img src="" alt="" id="viewTitleImg" style="width: 120px; height: 120px;">
+                            <img src="" alt="" id="viewTitleImg" name="viewTitleImg" style="width: 120px; height: 120px;">
 				            <div id="file-area" style="display: none;">
 				                <input type="file" name="viewTitleImg" id="enrolltitle" onchange="loadImg(this);">
 				            </div>
@@ -82,16 +84,16 @@
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td><input type="password" id="updatePwd" value="<%=userPwd%>"></td>
+                        <td><input type="password" name="userPwd" id="updatePwd" value="<%=userPwd%>" style="background-color: lightgray;" required readonly><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경은 아래버튼을 눌러주세요</strong></p></td>
                     </tr>
                     <tr>
                         <td class="detail_title">비밀번호확인&nbsp</td>
-                        <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td></td>
+                        <td><input id="checkPwd" type="password"><br><p style="font-size: smaller; color: green;"><strong>&nbsp* 비밀번호 변경시 작성해주세요</strong></p></td>
                         <td class="detail_title" style="text-align: center;"><p id="titleImg" onclick="chooseFile();">대표사진등록</p></td>
                     </tr>
                     <tr>
                         <td class="detail_title">이&nbsp&nbsp&nbsp름&nbsp</td>
-                        <td><input type="text" placeholder="ex)홍길동" readonly style="background-color: lightgray;" value="<%=userName%>"></td>
+                        <td><input type="text" placeholder="ex)홍길동" readonly style="background-color: lightgray;" name="userName" value="<%=userName%>"></td>
                         <td class="" rowspan="2" style="text-align: center; font-size: smaller;">
                             <p style="color: blue;"><strong>사진은 최대 10Mbyte를</strong></p>
                             <p style="margin-bottom: 5px;">넘을수 없습니다.</p>
@@ -101,27 +103,33 @@
                     </tr>
                     <tr>
                         <td class="detail_title">이메일&nbsp</td>
-                        <td><input type="email" placeholder="ex)해봄@SunSpring.com" maxlength="30" value="<%=userEmail%>"></td>
+                        <td><input type="email" placeholder="ex)해봄@SunSpring.com" maxlength="30" name="userEamil" value="<%=userEmail%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title">MBTI&nbsp</td>
-                        <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" maxlength="4" value="<%=userMbti%>"></td>
+                        <td colspan="2"><input type="text" placeholder="ex)ESFJ(최대4글자)" minlength="4" maxlength="4" name="userMbti" value="<%=userMbti%>"></td>
                     </tr>
                     <tr>
                         <td class="detail_title" colspan="">휴대폰번호<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13" value="<%=userPhone%>"><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
+                        <td colspan="2"><input type="text" placeholder="ex)010-1234-5678" minlength="13" maxlength="13" name="userPhone" value="<%=userPhone%>" required><p style="font-size: smaller; color: green;"><strong>&nbsp* 010-1234-5678과 같이 13자로 작성해주세요</strong></p></td>
                     </tr>
                     <tr>
                         <td class="detail_title" colspan="">닉네임<label for="" style="color:hotpink">&nbsp★&nbsp</label></td>
-                        <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍" value="<%=userNickname%>"></td>
+                        <td colspan="2"><input type="text" placeholder="ex)동해번쩍서해번쩍" name="nickName" value="<%=userNickname%>" required></td>
                     </tr>
                     <tr>
                         <td class="detail_title">생년월일&nbsp</td>
                         <td colspan="2">
-                            <select id="yearDropdown"><%=userBirthList[0] %></select>
-                            <select id="monthDropdown"><%=userBirthList[1] %></select>
-                            <select id="dateDropdown"><%=userBirthList[2] %></select>
-                            
+                            <select id="yearDropdown" name="userYear">
+                                <option value="" selected><%=userBirthList[0] %></option>
+                            </select>
+                            <select id="monthDropdown" name="userMonth">
+                                <option value="" selected><%=userBirthList[1] %></option>
+                            </select>
+                            <select id="dateDropdown" name="userDay">
+                                <option value="" selected><%=userBirthList[2] %></option>
+                            </select>
+                            <input type="hidden" name="userBirth" value="<%=userBirth%>">
                         </td>
                     </tr>
                     <tr>
@@ -134,15 +142,16 @@
                     </tr>
                 </table>
                 <input type="submit" class="btn btn-sm btn-success style="background-color: pink; border: 1;" value="정보변경" onclick="return vaildatePwd();">
-                <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</a>
+                <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-info" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</a>
                 <!--<button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updatePwdModal">비밀번호변경</button>-->
                 <a href="<%=contextPath%>/myPage.me" class="btn btn-sm btn-warning">취소</a>
                 <button type="button" class="btn btn-sm btn-danger"data-toggle="modal" data-target="#deleteModal">회원탈퇴</button>
             </div>
         </td>
     </tr>
-</table>
+    </table>
 </form>
+
 <br><br>
         </div>
     </div>
@@ -166,15 +175,15 @@
                         <table>
                             <tr>
                                 <td>현재 비밀번호</td>
-                                <td><input type="text" name="userPwd" required></td>
+                                <td><input type="password" name="userPwd" required></td>
                             </tr>
                             <tr>
                                 <td>변경할 비밀번호</td>
-                                <td><input type="text" name="updatePwd" required></td>
+                                <td><input type="password" name="updatePwd" required></td>
                             </tr>
                             <tr>
                                 <td>변경할 비밀번호 확인</td>
-                                <td><input type="text" name="checkPwd" required></td>
+                                <td><input type="password" name="checkPwd" required></td>
                             </tr>
                         </table>
                         <br>
@@ -224,27 +233,18 @@
 
 
 </body>
-<script>
-    window.onload = function() {
-        let dropdown = document.getElementById('yearDropdown');
-        
-        for (let i = 1950; i <= 2023; i++) {
-            let option = document.createElement('option');
-            option.value = i;
-            option.text = i;
-            dropdown.appendChild(option);
-        }
-    }
-</script>
-<script>
-window.onload = function() {
-    populateYearDropdown();
-    populateMonthDropdown();
-    populateDateDropdown();
 
-    document.getElementById('yearDropdown').addEventListener('change', populateDateDropdown);
-    document.getElementById('monthDropdown').addEventListener('change', populateDateDropdown);
-}
+
+<script>
+$(function(){
+	    populateYearDropdown();
+	    populateMonthDropdown();
+	    populateDateDropdown();
+
+	    document.getElementById('yearDropdown').addEventListener('change', populateDateDropdown);
+	    document.getElementById('monthDropdown').addEventListener('change', populateDateDropdown);
+}) 
+   
 
 function populateYearDropdown() {
     let dropdown = document.getElementById('yearDropdown');

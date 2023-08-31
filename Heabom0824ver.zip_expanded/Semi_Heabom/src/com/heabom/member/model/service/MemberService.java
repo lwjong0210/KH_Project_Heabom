@@ -105,4 +105,30 @@ public class MemberService {
 		
 		return updateMem;
 	}
+	
+	public int myDetailUpdate(MemberAttachment at , Member m) {
+		System.out.println("여기는 서비스");
+		System.out.println(at.getFileNo());
+		Connection conn = getConnection();
+		int result1 = new MemberDao().myDetailUpdate(conn, m);
+		int result2 = 1;
+		
+		if(at != null) {
+			if(at.getFileNo() != 0) {
+				result2 = new MemberDao().updateAttachment(conn, at, m);
+			}else {
+				result2 = new MemberDao().insertMemberDetailAttachment(conn, at, m);
+			}
+		}
+		
+		if(result1 > 0 && result2 >0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1 * result2;
+	}
 }

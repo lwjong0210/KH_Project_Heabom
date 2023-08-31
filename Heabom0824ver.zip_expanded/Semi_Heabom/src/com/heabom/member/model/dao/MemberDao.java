@@ -186,7 +186,28 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return result ; 
+	}
+	
+	public int insertMemberDetailAttachment(Connection conn , MemberAttachment at, Member m) {
+		int result = 0 ; 
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
 		
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			pstmt.setString(4, m.getMemNo());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ; 
 	}
 	
 	public int updatePwd(Connection conn,String userId,String userPwd,String updatePwd) {
@@ -245,6 +266,59 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return m;
+	}
+	
+	public int myDetailUpdate(Connection conn,Member m) {
+		System.out.println("여기는Dao");
+		System.out.println(m.getNickname());
+		System.out.println(m.getEmail());
+		System.out.println(m.getMbit());
+		System.out.println(m.getMemPhone());
+		System.out.println(m.getMemBirthday());
+		System.out.println(m.getMemId());
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("myDetailUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getNickname());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getMbit());
+			pstmt.setString(4, m.getMemPhone());
+			pstmt.setString(5, m.getMemBirthday());
+			pstmt.setString(6, m.getMemId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateAttachment(Connection conn,MemberAttachment at, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getFilePath());
+			pstmt.setString(4, m.getMemNo());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 }

@@ -9,7 +9,8 @@
     	
     	//System.out.println(place);
     	//System.out.println(fileList.get(0).getFilePath());
-    
+        System.out.println("안녕");
+        System.out.println(fileList.size());
      	
     %>
 
@@ -18,6 +19,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <title>Document</title>
     <style>
         .wrap {
@@ -36,6 +44,9 @@
         width: 50%;
         position: relative;
     }
+
+
+
     .place-img img {
         width: 80%;
         height: 100%;
@@ -141,6 +152,14 @@
         .review-form textarea {
             resize: none;
         }
+        .carousel-item active{
+            width: 500px;
+            height: 500px;
+        }
+        .carousel-item{
+            width: 500px;
+            height: 500px;
+        }
     </style>
 </head>
 <body>
@@ -148,7 +167,45 @@
     <h1 align="center"><%=place.getPlaceTitle()%></h1>
     <div class="wrap">
         <div class="place-img" style="border: 1px solid black;">
-            <img src="<%=place.getTitleImg()%>">
+
+            <div class="container mt-3">
+               
+                <div id="myCarousel" class="carousel slide">
+                
+                  <!-- Indicators -->
+                  <ul class="carousel-indicators">
+                    <li class="item1 active"></li>
+                    <% for (int i = 0 ; i <fileList.size() ; i ++ ) { %>
+                    <li class="item<%=i%>"></li>
+                    <% } %>
+                  </ul>
+                  
+                  <!-- The slideshow -->
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="<%=place.getTitleImg()%>"  width="100%" height="100%">
+                    </div>
+
+                    <% for (int i = 0 ; i <fileList.size() ; i ++ ) { %>
+                    <div class="carousel-item">
+                      <img src="<%=fileList.get(i).getFilePath()%>"  width="100%" height="100%">
+                    </div>
+                    <% } %>
+
+                  </div>
+                  
+                  <!-- Left and right controls -->
+                  <a class="carousel-control-prev" href="#myCarousel">
+                    <span class="carousel-control-prev-icon"></span>
+                  </a>
+                  <a class="carousel-control-next" href="#myCarousel">
+                    <span class="carousel-control-next-icon"></span>
+                  </a>
+                </div>
+                </div>
+
+
+            <!-- <img src="<%=place.getTitleImg()%>"> -->
         </div>
         <div class="place-description">
             <table>
@@ -178,7 +235,11 @@
                 </tr>
                 <tr>
                     <th>별점</th>
-                    <td><%=place.getStarPoint() %></td>
+                    <td>
+                    <% for (int i = 0 ; i < place.getStarPoint(); i ++){ %>
+                    	⭐
+                    	<%} %>
+                    </td>
                 </tr>
                 <tr>
                     <th>홈페이지</th>
@@ -191,6 +252,10 @@
                 <tr>
                     <th>예상소요비용</th>
                     <td><%=place.getUsePrice() %></td>
+                </tr>
+                <tr>
+                    <th>좋아요</th>
+                    <td>3 <button onclick="likeup();">좋아요</button></td>
                 </tr>
             </table>
         </div>
@@ -222,5 +287,70 @@
         </div>
 
     </div>
+
+
+    
+<script>
+    $(document).ready(function(){
+      // Activate Carousel
+      $("#myCarousel").carousel();
+        
+      // Enable Carousel Indicators
+      $(".item1").click(function(){
+        $("#myCarousel").carousel(0);
+      });
+      $(".item2").click(function(){
+        $("#myCarousel").carousel(1);
+      });
+      $(".item3").click(function(){
+        $("#myCarousel").carousel(2);
+      });
+      $(".item4").click(function(){
+        $("#myCarousel").carousel(2);
+      });
+        
+      // Enable Carousel Controls
+      $(".carousel-control-prev").click(function(){
+        $("#myCarousel").carousel("prev");
+      });
+      $(".carousel-control-next").click(function(){
+        $("#myCarousel").carousel("next");
+      });
+    });
+
+
+
+    function likeup(){
+        $.ajax({
+                    //요청을 보내기 
+                    url : "likeup.pl",
+                    data : {input : $("#input1").val()}, //데이터 넘길때에는 무조건 중괄호 열어라
+                    //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
+
+                    type : "get", // 요청방식 지정
+                    success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
+                        alert(result);
+                        console.log("ajax통신 성공!")
+                        $("#output1").text(result);
+                    },
+                    error : function(){
+                        console.log("ajax통신 실패!")
+                    },
+                    complete : function(){
+                        alert("complete지롱");
+                    }
+                    
+                })
+    }
+
+
+    </script>
+
+
+
+
+
+
+
 </body>
 </html>

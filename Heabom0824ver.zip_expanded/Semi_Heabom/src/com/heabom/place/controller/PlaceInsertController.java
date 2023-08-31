@@ -50,7 +50,7 @@ public class PlaceInsertController extends HttpServlet {
 			
 			ArrayList<File> list = new ArrayList<File>();
 			//최대 4개 최소 1개
-			for(int i = 1 ; i < 4 ; i ++) { //1 2 3 4
+			for(int i = 1 ; i <= 4 ; i ++) { //1 2 3 4
 				String key = "file" + i ;
 				if(multiRequest.getOriginalFileName(key)!= null ) {
 					//원본명 수정명 폴더경로 파일레벨
