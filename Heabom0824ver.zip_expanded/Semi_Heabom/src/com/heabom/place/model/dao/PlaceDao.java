@@ -334,6 +334,11 @@ public class PlaceDao {
 		String sql = prop.getProperty("insertReview");
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, re.getReWriter());
+			pstmt.setString(2, re.getReContent());
+			pstmt.setInt(3, re.getReRefStar());
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -352,7 +357,7 @@ public class PlaceDao {
 			pstmt.setString(1, at.getOriginName());
 			pstmt.setString(2, at.getChangeName());
 			pstmt.setString(3, at.getFilePath());
-			pstmt.setString(4, re.getReNo());
+//			pstmt.setString(4, re.getReNo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

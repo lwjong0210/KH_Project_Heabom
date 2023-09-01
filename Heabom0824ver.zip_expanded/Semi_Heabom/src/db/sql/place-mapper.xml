@@ -166,7 +166,7 @@ INSERT
   
 <entry key="insertReview">
 INSERT
-  INTO TB_REPORT
+  INTO TB_REVIEW_REPLY
     (
       RE_NO
      ,RE_REF_NO
@@ -180,13 +180,13 @@ INSERT
 VALUES
     (
       'RV' || SEQ_RVRP.NEXTVAL
-    , ?
+    , 'PL1'
     , ?
     , ?
     , 0
-    , 0
+    , ?
     , SYSDATE
-    , 'N'
+    , 'Y'
     )
 </entry>
 
@@ -205,7 +205,7 @@ INSERT INTO TB_FILE(
    ,?
    ,?
    ,SYSDATE
-   ,? 
+   , 'RV' || SEQ_RVRP.CURRVAL
 )
 </entry>
 </properties>

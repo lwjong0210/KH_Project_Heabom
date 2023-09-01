@@ -1,5 +1,6 @@
 package com.heabom.place.controller;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,31 +37,35 @@ public class PlaceReviewDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 10*1024*1024;
-			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/place_upfiles/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/place_review/");
 		
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",new MyFileRenamePolicy());		
+			
 			
 			String content = multiRequest.getParameter("content");
 			int star = Integer.parseInt(multiRequest.getParameter("star"));
 			String refNo = multiRequest.getParameter("refNo");
 			String writer = multiRequest.getParameter("writer");
+			String file = (multiRequest.getFile("file")+"");
+			
+			String[] fileList = file.split("\\\\");
+			String getOriginalFileName = fileList[8];
+			String getFilesystemName = fileList[8];
 			
 			Review re = new Review();
+			re.setReRefNo(refNo);
 			re.setReContent(content);
 			re.setReRefStar(star);
-			re.setReRefNo(refNo);
 			re.setReWriter(writer);
-			System.out.println(re);
 			
 			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
-			if(multiRequest.getOriginalFileName("upfile") != null) {//넘어온게 있어.
+			if(file != null) {//넘어온게 있어.
 				at = new MemberAttachment();
-				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
-				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+				at.setOriginName(getOriginalFileName);
+				at.setChangeName(getFilesystemName);
 				at.setFilePath("resource/img/place_review");
 			}
-			
-			int result = new PlaceService().insertReview(re, at);
+			int result = new PlaceService().insertReview(re, at);			
 			
 		}
 	}
