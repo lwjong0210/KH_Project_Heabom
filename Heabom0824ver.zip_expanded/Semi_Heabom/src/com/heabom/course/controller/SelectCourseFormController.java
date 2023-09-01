@@ -85,9 +85,16 @@ public class SelectCourseFormController extends HttpServlet {
 			else {
 				System.out.println("끝");
 				
-				for (int j = 0 ; j < courseList.size() ; j++) {
-					System.out.println(courseList.get(j));
-				}
+				ArrayList<Place> coursePlaceList = new CourseService().selectCoursePlaceList(courseList);
+//					for (int i = 0 ; i <coursePlaceList.size() ; i ++) {
+//						System.out.println(coursePlaceList.get(i));
+//					}
+				request.setAttribute("coursePlaceList", coursePlaceList);
+				request.getRequestDispatcher("views/course/courseView.jsp").forward(request, response);
+				
+//				for (int j = 0 ; j < courseList.size() ; j++) {
+//					System.out.println(courseList.get(j));
+//				}
 				
 			}
 			

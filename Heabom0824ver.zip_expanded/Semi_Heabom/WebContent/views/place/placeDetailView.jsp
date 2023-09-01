@@ -268,32 +268,6 @@
         </div>
     </div>
 
-    <h1 align="center">ì¬ì©ì íê¸°</h1>
-
-    <form class="review-form" action="#" method="post" enctype="multipart/form-data">
-        <textarea name="review-text" rows="4" placeholder="ë¦¬ë·°ë¥¼ ìì±í´ì£¼ì¸ì."></textarea>
-        <input type="file" name="review-image">
-        <button type="submit">ë¦¬ë·° ë±ë¡íê¸°</button>
-    </form>
-
-    <div class="review-section">
-        <div class="review">
-            <div class="review-author">user01</div>
-            <div class="review-text">ì´ ì¥ìë ì ë§ ì¢ìì´ì! ë¤ìì ë ë°©ë¬¸íê³  ì¶ë¤ì.</div>
-            <img src="img/ìì¸ìµë¬´ì.jpg" alt="User Image" class="review-img">
-            <div class="review-date">2023-08-24</div>
-            <div class="report">ì ê³ íê¸°</div>
-        </div>
-        
-        <div class="review">
-            <div class="review-author">user02</div>
-            <div class="review-text">ë¶ìê¸°ë ì¢ê³ , ì§ìë¤ë ì¹ì í´ì. ì¶ì²í©ëë¤!</div>
-            <img src="path/to/image.jpg" alt="User Image" class="review-img">
-            <div class="review-date">2023-08-23</div>
-            <div class="report">ì ê³ íê¸°</div>
-        </div>
-
-    </div>
 
 
     
