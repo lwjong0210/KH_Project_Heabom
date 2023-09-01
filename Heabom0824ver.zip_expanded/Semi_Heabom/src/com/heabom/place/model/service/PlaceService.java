@@ -147,9 +147,9 @@ import com.heabom.place.model.vo.Review;
 			return result1*result2 ; 
 		}
 		
-		public ArrayList<Review> selectReplyList(){
+		public ArrayList<Review> selectReplyList(String pNo){
 			Connection conn = getConnection();
-			ArrayList<Review> rlist = new PlaceDao().selectReplyList(conn);
+			ArrayList<Review> rlist = new PlaceDao().selectReplyList(conn, pNo);
 			close(conn);
 			return rlist;
 		}

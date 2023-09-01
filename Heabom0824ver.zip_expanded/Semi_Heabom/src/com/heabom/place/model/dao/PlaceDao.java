@@ -334,9 +334,10 @@ public class PlaceDao {
 		String sql = prop.getProperty("insertReview");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, re.getReWriter());
-			pstmt.setString(2, re.getReContent());
-			pstmt.setInt(3, re.getReRefStar());
+			pstmt.setString(1, re.getReRefNo());
+			pstmt.setString(2, re.getReWriter());
+			pstmt.setString(3, re.getReContent());
+			pstmt.setInt(4, re.getReRefStar());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -369,7 +370,7 @@ public class PlaceDao {
 		return result;
 	}
 	
-	public ArrayList<Review> selectReplyList(Connection conn){
+	public ArrayList<Review> selectReplyList(Connection conn, String pNo){
 		ArrayList<Review> rlist = new ArrayList<Review>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -377,7 +378,7 @@ public class PlaceDao {
 		String sql = prop.getProperty("selectReplyList");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			//pstmt.setString(1, pNo);
+			pstmt.setString(1, pNo);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				rlist.add(new Review(rset.getString("RE_NO"),

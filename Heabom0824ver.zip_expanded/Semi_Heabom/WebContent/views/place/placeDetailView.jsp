@@ -6,13 +6,8 @@
     <%
      	Place place = (Place)request.getAttribute("placeInfo");
     
-    	
     	ArrayList<File> fileList = (ArrayList<File>)request.getAttribute("fileList");
-    	
-    	//System.out.println(place);
-    	//System.out.println(fileList.get(0).getFilePath());
-   
-     	
+		     	
     %>
 
 <!DOCTYPE html>
@@ -331,7 +326,7 @@
 
 
 
-
+	<%@include file="../place/placeDetailReview.jsp"%>
 
 
 </body>

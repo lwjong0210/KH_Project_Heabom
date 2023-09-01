@@ -371,7 +371,6 @@ table, div {
 			})
 		}
 	</script>
-	<%@include file="../place/placeDetailReview.jsp"%>
 	<%@include file="../common/footer.jsp"%>
 </body>
 </html>
