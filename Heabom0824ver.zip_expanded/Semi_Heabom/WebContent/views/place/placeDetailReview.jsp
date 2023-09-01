@@ -165,7 +165,7 @@ function selectReplyList(){
 			                result +=  `<tr>
 			                    <td colspan="2" width="550">
 			                        <p class="reviewText"> \${list[i].reContent}</p>
-			                        <div class="noneImg" align="center" style="display:none;">
+			                        <div class="noneImg" align="center" style="display:none">
 			                            <img src="<%=contextPath1%>/\${list[i].imgPath}" alt="" width="350" height="300">  
 			                        </div>
 			                    </td>
