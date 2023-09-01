@@ -4,7 +4,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+   PageInfo pi = (PageInfo)request.getAttribute("pi");
+   ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+   
+   int startPage = pi.getStartPage();
+   int endPage = pi.getEndPage();
+   int currentPage = pi.getCurrentPage();
+   int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -383,7 +389,7 @@
             <div id="content1">
                 <div id="content_1"></div>
                 <div id="content_2">
-                    <form action="<%= contextPath %>/update.ck" method="post">
+                    <form id="ckeckListView-form" action="<%= contextPath %>/update.ck" method="post">
                         <table border="1">
                             <thead>
                                 <th width="130">
@@ -438,23 +444,31 @@
                     <button type="button" id="button2" class="btn btn-danger">선택 삭제</button>
                 </div>
                 <div id="content_6">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                    <tr>
+               <td colspan="5" style="border-top: 1px solid gray;">
+                  <ul class="pagination justify-content-center" style="margin: 0;">
+                     <% if(pi.getCurrentPage() != 1){ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage -1 %>'">&lt;</button></li>
+                     <% } %>
+                     <% for(int i = startPage; i <= endPage; i++ ){ %>
+                     <% if(i == currentPage){ %>
+                     <li class="page-item"><button class="page-link btn active"
+                           disabled><%= i %></button></li>
+                     <% }else{ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= i %>'"><%= i %></button></li>
+
+                     <% } %>
+                     <% } %>
+
+                     <% if(currentPage != maxPage){ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage +1 %>'">&gt;</button></li>
+                     <% } %>
+                  </ul>
+               </td>
+            </tr>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>

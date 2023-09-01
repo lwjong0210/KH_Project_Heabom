@@ -11,17 +11,29 @@ import com.heabom.member.model.vo.Member;
 import com.heabom.member.model.vo.MemberAttachment;
 
 public class MemberService {
-
-	public ArrayList<Member> selectAdminList() {
-		
-		Connection conn = /*JDBCTemplate.*/getConnection();
-		
-		ArrayList<Member> list = new MemberDao().selectAdminList(conn);
-		
-		close(conn);
-		return list;
-		
-	}
+	
+	public int selectMemberListCount() {
+	      
+	      Connection conn = getConnection();
+	      
+	      int listCount = new MemberDao().selectMemberListCount(conn);
+	      
+	      close(conn);
+	      return listCount;
+	   }
+	   
+	   
+	   public ArrayList<Member> selectAdminList(PageInfo pi) {
+	   
+	      System.out.println(pi.getBoardLimit());
+	      Connection conn = /*JDBCTemplate.*/getConnection();
+	      
+	      ArrayList<Member> list = new MemberDao().selectAdminList(conn, pi);
+	      
+	      close(conn);
+	      return list;
+	      
+	   }
 	
 	public Member updateMember(Member m) {
 		
