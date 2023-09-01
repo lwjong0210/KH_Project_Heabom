@@ -68,6 +68,7 @@ public class PlaceReviewDetailController extends HttpServlet {
 			
 			int result = new PlaceService().insertReview(re, at);
 			System.out.println("돌아온result : " + result);
+			//response.setContentType("text/html; charset=utf-8");
 			response.getWriter().print(result);
 		}
 	}
