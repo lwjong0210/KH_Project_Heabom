@@ -11,9 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import com.heabom.board.model.vo.Board;
+import com.heabom.board.model.vo.PrevNextPage;
 import com.heabom.board.model.vo.Reply;
 import com.heabom.common.model.vo.File;
 import com.heabom.common.model.vo.HashTag;
@@ -445,14 +444,106 @@ public class BoardDao {
 		}
 		return rlist;
 		
+	}
+	
+	public int insertReply(Connection conn, Reply r) {
 		
+		PreparedStatement pstmt = null;
 		
+		int result = 0 ;
 		
+		String sql = prop.getProperty("insertReply");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, r.getBoardNo());
+			pstmt.setString(2, r.getReplyWriter());
+			pstmt.setString(3, r.getReplyContent());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+//	public int minBo(Connection conn) {
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		int minBo = 0;
+//		
+//		String sql = prop.getProperty("minBo");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			rset = pstmt.executeQuery();
+//			if(rset.next()) {
+//				minBo = rset.getInt("minbo");
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		return minBo;
+//	}
+//	public int maxBo(Connection conn) {
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		int maxBo = 0;
+//		
+//		String sql = prop.getProperty("maxBo");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			rset = pstmt.executeQuery();
+//			if(rset.next()) {
+//				maxBo = rset.getInt("maxbo");
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		return maxBo;
+//	}
+	
+	public PrevNextPage prevNextBo(Connection conn, int bno) {
 		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
+		PrevNextPage p = new PrevNextPage();
 		
-		
+		String sql = prop.getProperty("prevNextBo");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				p.setCurrentPage(bno);
+				p.setNextPage(rset.getInt("next"));
+				p.setPrevPage(rset.getInt("prev"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
+		}
+		return p;
 		
 	}
 

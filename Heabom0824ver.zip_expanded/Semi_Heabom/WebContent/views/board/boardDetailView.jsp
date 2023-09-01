@@ -1,3 +1,4 @@
+<%@page import="com.heabom.board.model.vo.PrevNextPage"%>
 <%@page import="com.heabom.board.model.vo.Reply"%>
 <%@page import="java.lang.reflect.Field"%>
 <%@page import="com.heabom.common.model.vo.File"%>
@@ -9,6 +10,7 @@
 	Board b = (Board)request.getAttribute("b");
 	ArrayList<File> list = (ArrayList<File>)request.getAttribute("list");
 	ArrayList<Reply> rlist = (ArrayList<Reply>)request.getAttribute("rlist");
+	PrevNextPage p = (PrevNextPage)request.getAttribute("p");
 	
 	String boardNo = b.getBoardNo();
 	String boardTitle = b.getBoardTitle();
@@ -659,10 +661,11 @@
             <div id="post_comment_list">
             	<% System.out.println("진짜 이게 안됨?" + rlist); %>
             	<% if(rlist.isEmpty()){ %>
-            		System.out.println("되니");
+					<div style="border: none; background-color: white; font-size: large; height: 100px;">
+						아직 등록된 댓글이 없습니다.
+					</div>
             	<% }else{ %>
             			<% for(Reply r : rlist){ %>
-            		<% System.out.println(rlist + "Zzzzzzweqweqeeeew") ;%>
             			
 	                <div class="post_comment">
 	                    <div class="post_comment_profile_img">
@@ -702,9 +705,10 @@
         		<% } %>
 
             </div>
-            <form action="rlist.bo" id="write_comment_form" method="post">
+            <form action="insert.rp" id="write_comment_form" method="post">
             	<input type="hidden" name="boardNo" value="<%= boardNo %>">
                 <% if(loginMember != null){ %>
+            	<input type="hidden" name="userNo" value="<%= loginMember.getMemNo()%>">
                 <div id="write_comment_box" style="width: 100%;">
           		
                     <div id="write_comment_userid">
@@ -756,8 +760,8 @@
             </script>
         </div>
         <div id="post_etc">
-            <a type="button" class="btn btn-light prev" href="">∧ 이전글</a>
-            <a type="button" class="btn btn-light next">∨ 다음글</a>
+            <a type="button" class="btn btn-light prev" href="<%= contextPath %>/detail.bo?bno=<%= p.getPrevPage() %>">∧ 이전글</a>
+            <a type="button" class="btn btn-light next" href="<%= contextPath %>/detail.bo?bno=<%= p.getNextPage() %>">∨ 다음글</a>
             <a type="button" class="btn btn-light list" href="<%= contextPath %>/list.bo?cpage=1">목록</a>
         </div>
         <div class="post_list" style="width: auto;">

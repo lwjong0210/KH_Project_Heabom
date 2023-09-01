@@ -38,7 +38,7 @@ SELECT *
              WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
                 OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
-             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC,CAST(SUBSTR(BOARD_NO,2) AS NUMBER) DESC,CREATE_DATE DESC
              ) A
              )
              WHERE RNUM BETWEEN ? AND ?
@@ -62,7 +62,7 @@ SELECT *
              WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
                 OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
-             ORDER BY SUBSTR(BOARD_NO,1,1) DESC, CREATE_DATE DESC
+             ORDER BY SUBSTR(BOARD_NO,1,1) DESC,CAST(SUBSTR(BOARD_NO,2) AS NUMBER) DESC, CREATE_DATE DESC
              ) A
              WHERE BOARD_TITLE LIKE ?
              )
@@ -78,12 +78,10 @@ SELECT *
                , WRITER
                , BOARD_CONTENT
                , BOARD_UP
-              
                )
                VALUES
                (
                  ? ||SEQ_BNO.NEXTVAL
-               , ?
                , ?
                , ?
                , ?
@@ -197,6 +195,79 @@ SELECT *
 	, RE_STATUS
 	  FROM TB_REVIEW_REPLY
 	 WHERE SUBSTR(RE_REF_NO,2) = ?
+
+</entry>
+<entry key='insertReply'>
+	INSERT 
+	  INTO TB_REVIEW_REPLY
+	            (
+	              RE_NO
+	            , RE_REF_NO
+	            , RE_WRITER
+	            , RE_CONTENT
+	            )
+	            VALUES
+	            (
+	            'RP'||SEQ_RVRP.NEXTVAL
+	            , ?
+	            , ?
+	            , ?
+	            )
+
+</entry>
+
+<entry key="minBo">
+	SELECT 
+       MIN(NUM) "minbo"
+  FROM
+     (
+     SELECT 
+            BOARD_NO
+          , CAST(SUBSTR(BOARD_NO,2) AS NUMBER) AS "NUM"
+       FROM TB_BOARD
+       JOIN TB_MEMBER ON(WRITER = MEM_NO)
+      WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+         OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+        AND BOARD_STATUS = 'Y'
+
+      ORDER BY SUBSTR(BOARD_NO,1,1) DESC,CAST(SUBSTR(BOARD_NO,2) AS NUMBER) DESC,CREATE_DATE DESC 
+      )
+
+</entry>
+<entry key="maxBo">
+	SELECT 
+       MAX(NUM) "maxbo"
+  FROM
+     (
+     SELECT 
+            BOARD_NO
+          , CAST(SUBSTR(BOARD_NO,2) AS NUMBER) AS "NUM"
+       FROM TB_BOARD
+       JOIN TB_MEMBER ON(WRITER = MEM_NO)
+      WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+         OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+        AND BOARD_STATUS = 'Y'
+
+      ORDER BY SUBSTR(BOARD_NO,1,1) DESC,CAST(SUBSTR(BOARD_NO,2) AS NUMBER) DESC,CREATE_DATE DESC 
+      )
+
+</entry>
+<entry key='prevNextBo'>
+SELECT A.*
+  FROM
+     (
+     SELECT 
+            CAST(SUBSTR(BOARD_NO,2) AS NUMBER) "CNUM"
+          , LAG(CAST(SUBSTR(BOARD_NO,2) AS NUMBER),1) OVER(ORDER BY CAST(SUBSTR(BOARD_NO,2) AS NUMBER)) prev
+          , LEAD(CAST(SUBSTR(BOARD_NO,2) AS NUMBER),1) OVER(ORDER BY CAST(SUBSTR(BOARD_NO,2) AS NUMBER)) next
+       FROM TB_BOARD
+       JOIN TB_MEMBER ON(WRITER = MEM_NO)
+      WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+         OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+        AND BOARD_STATUS = 'Y'
+      ORDER BY SUBSTR(BOARD_NO,1,1) DESC,CAST(SUBSTR(BOARD_NO,2) AS NUMBER) DESC,CREATE_DATE DESC
+      ) A
+  WHERE CNUM = ?
 
 </entry>
 	

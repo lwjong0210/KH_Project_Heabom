@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.heabom.board.model.dao.BoardDao;
 import com.heabom.board.model.vo.Board;
+import com.heabom.board.model.vo.PrevNextPage;
 import com.heabom.board.model.vo.Reply;
 import com.heabom.common.model.vo.File;
 import com.heabom.common.model.vo.HashTag;
@@ -164,6 +165,48 @@ public class BoardService {
 		close(conn);
 		
 		return rlist;
+	}
+	
+	public int insertReply(Reply r) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDao().insertReply(conn, r);
+	
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+//	public int minBo() {
+//		Connection conn = getConnection();
+//		
+//		int minBo = new BoardDao().minBo(conn);
+//		
+//		close(conn);
+//		return minBo;
+//	}
+//	
+//	public int maxBo() {
+//		Connection conn = getConnection();
+//		
+//		int maxBo = new BoardDao().maxBo(conn);
+//		close(conn);
+//		return maxBo;
+//	}
+	
+	public PrevNextPage prevNextBo(int bno) {
+		
+		Connection conn = getConnection();
+		
+		PrevNextPage p = new BoardDao().prevNextBo(conn, bno);
+		
+		close(conn);
+		return p;
 	}
 	
 }
