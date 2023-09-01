@@ -6,9 +6,9 @@
     <%
      	Place place = (Place)request.getAttribute("placeInfo");
     
-    	if(request.getAttribute("fileList") != null){
+    	
     	ArrayList<File> fileList = (ArrayList<File>)request.getAttribute("fileList");
-    	}
+    	
     	//System.out.println(place);
     	//System.out.println(fileList.get(0).getFilePath());
    
