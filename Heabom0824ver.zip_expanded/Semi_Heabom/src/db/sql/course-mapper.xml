@@ -62,5 +62,75 @@ AND FILE_LEVEL = 1
 AND P.STATUS = 'Y'
 </entry>
 
+<entry key="saveCourse1">
+INSERT 
+INTO
+TB_COURSE
+(
+    COURSE_NO
+   ,COURSE_WRITER
+   ,PALCE1
+   ,COURSE_TIME
+   ,COURSE_MONEY
+)
+VALUES
+(
+    'C'||SEQ_CNO.NEXTVAL
+   ,? --작성자
+   ,? -- 장소번호1
+   ,? -- 시간
+   ,? -- 돈
+)
+</entry>
+
+<entry key="saveCourse2">
+INSERT 
+INTO
+TB_COURSE
+(
+    COURSE_NO
+   ,COURSE_WRITER
+   ,PALCE1
+   ,PLACE2
+   ,COURSE_TIME
+   ,COURSE_MONEY
+)
+VALUES
+(
+    'C'||SEQ_CNO.NEXTVAL
+   ,? --작성자
+   ,? -- 장소번호1
+   ,? -- 장소번호2
+   ,? -- 시간
+   ,? -- 돈
+)
+</entry>
+
+<entry key="saveCourse3">
+INSERT 
+INTO
+TB_COURSE
+(
+    COURSE_NO
+   ,COURSE_WRITER
+   ,PALCE1
+   ,PLACE2
+   ,PLACE3
+   ,COURSE_TIME
+   ,COURSE_MONEY
+)
+VALUES
+(
+    'C'||SEQ_CNO.NEXTVAL
+   ,? --작성자
+   ,? -- 장소번호1
+   ,? -- 장소번호2
+   ,? -- 장소번호3
+   ,? -- 시간
+   ,? -- 돈
+)
+</entry>
+
+
 
 </properties>
