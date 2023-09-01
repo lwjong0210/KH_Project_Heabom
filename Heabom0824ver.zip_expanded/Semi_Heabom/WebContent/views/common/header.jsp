@@ -19,6 +19,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><!--alert-->
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
     <!-- jQuery library -->
@@ -116,7 +118,7 @@
    <%@ include file="sidebar.jsp" %>
     <%if (alertMsg != null){  %>
         <script>
-        alert("<%=alertMsg%>");
+        swal("<%=alertMsg%>");
         </script>
         <%session.removeAttribute("alertMsg"); // invalidate 쓰면 session 이 다 날아간다 따라서 이 세션만 지울수 있게 removeattribute 를 쓴다%>
     <%} %>
@@ -185,7 +187,7 @@
             <table class="navi_detail" border="0" align="center">
                 <tr>
                     <td><a href="<%= contextPath %>/search.pl"><div>해봄검색</div></a></td>
-                    <td><a href="#"><div>해봄코스</div></a></td>
+                    <td><a href="<%= contextPath %>/searchCourse.pl"><div>해봄코스</div></a></td>
                     <td><a href="<%= contextPath %>/list.bo?cpage=1"><div>자유게시판</div></a></td>
                     <td><a href="#"><div>해봄의소리</div></a></td>
                     <%if (loginMember != null && loginMember.getMemId().equals("admin")){ %>
