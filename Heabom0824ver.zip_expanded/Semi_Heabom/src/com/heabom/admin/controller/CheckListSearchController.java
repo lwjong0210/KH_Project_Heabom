@@ -69,7 +69,7 @@ public class CheckListSearchController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("keyWord", keyWord);
 		
-		request.getRequestDispatcher("views/admin/checkListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/checkListSearchView.jsp").forward(request, response);
 		
 	}
 

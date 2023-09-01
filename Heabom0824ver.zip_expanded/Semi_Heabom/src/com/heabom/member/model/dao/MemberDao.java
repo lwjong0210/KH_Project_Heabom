@@ -130,7 +130,7 @@ public class MemberDao {
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
 			
-			String sql = prop.getProperty("selectAdminList");
+			String sql = prop.getProperty("selectAdminKeyWord");
 			
 			int startRow = (pi.getCurrentPage()-1)*pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;

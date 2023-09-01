@@ -7,10 +7,12 @@
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
    
-   int startPage = pi.getStartPage();
-   int endPage = pi.getEndPage();
-   int currentPage = pi.getCurrentPage();
-   int maxPage = pi.getMaxPage();
+   String keyWord = (String)request.getAttribute("keyWord");
+	
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
