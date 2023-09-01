@@ -18,6 +18,25 @@
     		totalTime += list.get(i).getUseTime();
     	}
     	
+    	//ArrayList <String> saveList  = new ArrayList<String>();
+    	//String [] saveList = new String [3];
+    	//for(int i =0; i<list.size() ; i++){
+    	//	saveList[i] = list.get(i).getPlaceNo();
+    	//}
+    	String str1 = null;
+    	String str2 = null;
+    	String str3 = null;
+    	
+    	if(list.size() == 1){
+    	 str1 = list.get(0).getPlaceNo();
+    	}else if (list.size() == 2){
+    	 str1 = list.get(0).getPlaceNo();
+    	 str2 = list.get(1).getPlaceNo();
+    		}else{
+	    	str1 = list.get(0).getPlaceNo();
+	       	str2 = list.get(1).getPlaceNo();
+	    	str3 = list.get(2).getPlaceNo();
+    		}
     %>
 
 <!DOCTYPE html>
@@ -134,7 +153,7 @@ main {
 	
     <%@include file = "../common/header.jsp" %>
     <h1 align="center">코스조회</h1>
-    <h1  align="center"><button>코스 저장</button></h1>
+    <h1  align="center"><button onclick="location.href ='<%=contextPath%>/saveCourse.pl?str1=<%=str1%>&str2=<%=str2%>&str3=<%=str3%>&money=<%=totalMoney %>&time=<%=totalTime %>'">코스 저장</button></h1>
     <div class="wrap">
     
     

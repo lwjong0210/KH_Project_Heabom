@@ -28,6 +28,7 @@ public class CourseService {
 	
 	
 	/**
+	 * 조준하
 	 * 코스리스트 조회를 위한 장소선택함수
 	 * @return
 	 */
@@ -38,11 +39,64 @@ public class CourseService {
 		return coursePlaceList;
 	}
 	
+
 	public ArrayList<Course> selectCourse(String memNo){
 		Connection conn = getConnection();
 		ArrayList<Course> clist = new CourseDao().selectCourse(conn, memNo);
 		close(conn);
 		return clist;
+	}
+
+	
+	/**
+	 * 조준하
+	 * 코스값 1개 저장
+	 * @return
+	 */
+	public int saveCourse1(String writer , String pl1 , int time , int money ) {
+		Connection conn = getConnection();
+		int result = new CourseDao().saveCourse1(writer , conn, pl1 ,time,money);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result; 
+	}
+	
+	/**
+	 * 조준하
+	 * 코스값2개저장
+	 * @return
+	 */
+	public int saveCourse2(String writer ,String pl1 , String pl2 , int time , int money) {
+		Connection conn = getConnection();
+		int result = new CourseDao().saveCourse2(writer ,conn, pl1 ,pl2,time,money );
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result; 
+		
+	}
+	
+	
+	/**
+	 * 조준하
+	 * 코스값3개 저장
+	 * @return
+	 */
+	public int saveCourse3(String writer ,String pl1 , String pl2 , String pl3 , int time , int money) {
+		Connection conn = getConnection();
+		int result = new CourseDao().saveCourse3(writer,conn,pl1,pl2,pl3,time,money);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result; 
+>>>>>>> 96ead0874fcad7aa9055566bfbf8de9b287499c1
 		
 	}
 	

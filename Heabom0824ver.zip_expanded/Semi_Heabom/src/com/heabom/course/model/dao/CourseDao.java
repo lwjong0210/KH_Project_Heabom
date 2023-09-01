@@ -149,4 +149,72 @@ public class CourseDao {
 		return clist;
 	}
 
+	/**
+	 * 조준하
+	 * @param conn
+	 * @param pl1
+	 * @return
+	 */
+	public int saveCourse1(String writer ,Connection conn , String pl1 , int time , int money) {
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("saveCourse1");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, pl1);
+			pstmt.setInt(3, time);
+			pstmt.setInt(4, money);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ;
+		
+	}
+	
+	public int saveCourse2(String writer ,Connection conn , String pl1 , String pl2 , int time , int money) {
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("saveCourse2");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, pl1);
+			pstmt.setString(3, pl2);
+			pstmt.setInt(4, time);
+			pstmt.setInt(5, money);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ;
+	}
+	
+	public int saveCourse3(String writer , Connection conn , String pl1 , String pl2 , String pl3 , int time , int money) {
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("saveCourse3");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, pl1);
+			pstmt.setString(3, pl2);
+			pstmt.setString(4, pl3);
+			pstmt.setInt(5, time);
+			pstmt.setInt(6, money);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ;
+	}
+	
+	
 }
