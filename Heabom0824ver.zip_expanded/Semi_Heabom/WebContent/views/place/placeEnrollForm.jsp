@@ -108,7 +108,7 @@
 
         <div id="file-area" style = "display:none">
             <input type="file" name="file1" id = "file1" onchange ="loadImg(this,1)" required>
-            <input type="file" name="file2" id = "file2" onchange ="loadImg(this,2)">
+            <input type="file" name="file2" id = "file2" onchange ="loadImg(this,2)" required>
             <input type="file" name="file3" id = "file3" onchange ="loadImg(this,3)">
             <input type="file" name="file4" id = "file4" onchange ="loadImg(this,4)">
         </div>

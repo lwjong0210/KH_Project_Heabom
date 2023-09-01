@@ -1,4 +1,4 @@
-package com.heabom.place.controller;
+package com.heabom.course.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,21 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.heabom.common.model.vo.File;
-import com.heabom.place.model.service.PlaceService;
-import com.heabom.place.model.vo.Place;
-
 /**
- * Servlet implementation class PlaceDetailViewController
+ * Servlet implementation class CourseCheckFormController
  */
-@WebServlet("/placeDetailView.pl")
-public class PlaceDetailViewController extends HttpServlet {
+@WebServlet("/courseCheck.pl")
+public class CourseCheckFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PlaceDetailViewController() {
+    public CourseCheckFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +29,12 @@ public class PlaceDetailViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		ArrayList searchKey = new ArrayList();
+		int lNo = Integer.parseInt(request.getParameter("lNo"));
+		searchKey.add(lNo);
 		HttpSession session = request.getSession();
-		ArrayList<Place> list = (ArrayList<Place>)session.getAttribute("placeSearchList");
-		int index = Integer.parseInt(request.getParameter("index"));
-//		System.out.println(list.get(0));
-//		System.out.println(index);
-		Place p = list.get(index);
-		String pNo = list.get(index).getPlaceNo();
-		ArrayList<File> fileList = new PlaceService().selectFileList(pNo);
-		//session.removeAttribute("placeSearchList");
-		
-		if(!(fileList.isEmpty())) {
-			request.setAttribute("fileList", fileList);
-			request.setAttribute("placeInfo", p);
-			request.getRequestDispatcher("views/place/placeDetailView.jsp").forward(request, response);
-		}else {
-			System.out.println("실패!");
-		}
-		
-		
+		session.setAttribute("searchKey", searchKey);//세션에 검색을 위한 배열 추가
+		request.getRequestDispatcher("views/course/courseCheck.jsp").forward(request, response);
 	}
 
 	/**
