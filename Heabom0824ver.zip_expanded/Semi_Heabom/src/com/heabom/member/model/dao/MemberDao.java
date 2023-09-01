@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import static com.heabom.common.JDBCTemplate.*;
 
+import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.PageInfo;
 import com.heabom.member.model.vo.Member;
 import com.heabom.member.model.vo.MemberAttachment;
@@ -93,6 +94,77 @@ public class MemberDao {
 	      }
 	      return list;
 	   }
+	   
+	   public int selectMemberKeyWordCount(Connection conn, String keyWord) {
+			
+			int listCount = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectMemberKeyWordCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, '%' + keyWord + '%');
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					listCount = rset.getInt("count");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return listCount;
+			
+		}
+	   
+	   
+	   public ArrayList<Member> selectAdminList(Connection conn, PageInfo pi, String keyWord){
+			
+			System.out.println(pi.getBoardLimit());
+			
+			ArrayList<Member> list = new ArrayList<Member>();
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectAdminList");
+			
+			int startRow = (pi.getCurrentPage()-1)*pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, '%' + keyWord + '%');
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+				rset = pstmt.executeQuery();
+				
+				while (rset.next()) {
+		             list.add(new Member(
+		                 rset.getString("MEM_NO"),
+		                 rset.getString("MEM_ID"),
+		                 rset.getString("MEM_NAME"),
+		                 rset.getString("NICKNAME"),
+		                 rset.getString("GRADE"),
+		                 rset.getInt("MEM_POINT"),
+		                 rset.getDate("MEM_VISIT"),
+		                 rset.getString("EMAIL")
+		             ));
+		         }
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return list;
+			
+		}
 	
 	
 	public int updateMember(Connection conn, Member m) {

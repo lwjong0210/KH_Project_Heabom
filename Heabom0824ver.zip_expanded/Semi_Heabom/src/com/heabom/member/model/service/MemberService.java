@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import static com.heabom.common.JDBCTemplate.*;
 
+import com.heabom.board.model.dao.BoardDao;
+import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.PageInfo;
 import com.heabom.member.model.dao.MemberDao;
 import com.heabom.member.model.vo.Member;
@@ -21,6 +23,15 @@ public class MemberService {
 	      close(conn);
 	      return listCount;
 	   }
+	
+	public int selectMemberKeyWordCount(String keyWord) {
+		
+		Connection conn = getConnection();
+		
+		int listCount = new BoardDao().selectKeyWordCount(conn, keyWord);
+		close(conn);
+		return listCount;
+	}
 	   
 	   
 	   public ArrayList<Member> selectAdminList(PageInfo pi) {
@@ -34,6 +45,17 @@ public class MemberService {
 	      return list;
 	      
 	   }
+	   
+	   public ArrayList<Member> selectAdminList(PageInfo pi, String keyWord){
+			
+			System.out.println(pi.getBoardLimit());
+			Connection conn = getConnection();
+			
+			ArrayList<Member> list = new MemberDao().selectAdminList(conn, pi, keyWord);
+			
+			close(conn);
+			return list;
+		}
 	
 	public Member updateMember(Member m) {
 		

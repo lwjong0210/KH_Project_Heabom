@@ -375,7 +375,7 @@
                     </select>
                 </div>
                 <div id="header_4">
-                    <form action="" id="search_form">
+                    <form action="<%= contextPath %>/search.ck?cpage=1&keyword" id="search_form">
                         <div id="search_text">
                             <input type="text" id="keyword" name="keyword">
                         </div>
