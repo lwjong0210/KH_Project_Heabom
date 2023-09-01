@@ -164,8 +164,8 @@ function selectReplyList(){
 			                if( list[i].imgPath != "/") {
 			                result +=  `<tr>
 			                    <td colspan="2" width="550">
-			                        <p class="reviewText"> \${list[i].reContent} </p>
-			                        <div align="center" style="display:none;">
+			                        <p class="reviewText"> \${list[i].reContent}</p>
+			                        <div class="noneImg" align="center" style="display:none;">
 			                            <img src="<%=contextPath1%>/\${list[i].imgPath}" alt="" width="350" height="300">  
 			                        </div>
 			                    </td>
@@ -184,7 +184,6 @@ function selectReplyList(){
 			            </table>`
 			            }
             }
-            //console.log(result);
             $(".preview").html(result);
         },
         error:function(){
