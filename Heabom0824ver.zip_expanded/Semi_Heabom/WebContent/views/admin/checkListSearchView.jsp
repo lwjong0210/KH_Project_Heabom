@@ -6,13 +6,12 @@
 <%
    PageInfo pi = (PageInfo)request.getAttribute("pi");
    ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
-   
    String keyWord = (String)request.getAttribute("keyWord");
-	
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int currentPage = pi.getCurrentPage();
-	int maxPage = pi.getMaxPage();
+   
+   int startPage = pi.getStartPage();
+   int endPage = pi.getEndPage();
+   int currentPage = pi.getCurrentPage();
+   int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -310,7 +309,7 @@
 
         /*--------------------------페이지바---------------------------------*/
 
-        .pagination {
+        .page-item {
             display: flex;
             justify-content: center;
 
@@ -452,7 +451,7 @@
                   <ul class="pagination justify-content-center" style="margin: 0;">
                      <% if(pi.getCurrentPage() != 1){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage -1 %>'">&lt;</button></li>
+                           onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= currentPage -1 %>'">&lt;</button></li>
                      <% } %>
                      <% for(int i = startPage; i <= endPage; i++ ){ %>
                      <% if(i == currentPage){ %>
@@ -460,14 +459,14 @@
                            disabled><%= i %></button></li>
                      <% }else{ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= i %>'"><%= i %></button></li>
+                           onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= i %>'"><%= i %></button></li>
 
                      <% } %>
                      <% } %>
 
                      <% if(currentPage != maxPage){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage +1 %>'">&gt;</button></li>
+                           onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= currentPage +1 %>'">&gt;</button></li>
                      <% } %>
                   </ul>
                </td>

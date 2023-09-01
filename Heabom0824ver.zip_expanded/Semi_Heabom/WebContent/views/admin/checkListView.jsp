@@ -308,7 +308,8 @@
 
         /*--------------------------페이지바---------------------------------*/
 
-        .pagination {
+        .page-item {
+
             display: flex;
             justify-content: center;
 
