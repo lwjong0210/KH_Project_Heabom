@@ -1,3 +1,4 @@
+<%@page import="com.heabom.common.model.vo.PageInfo"%>
 <%@page import="com.heabom.board.model.vo.PrevNextPage"%>
 <%@page import="com.heabom.board.model.vo.Reply"%>
 <%@page import="java.lang.reflect.Field"%>
@@ -8,10 +9,12 @@
     pageEncoding="UTF-8"%>
 <%
 	Board b = (Board)request.getAttribute("b");
-	ArrayList<File> list = (ArrayList<File>)request.getAttribute("list");
+	ArrayList<File> flist = (ArrayList<File>)request.getAttribute("flist");
+	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
 	ArrayList<Reply> rlist = (ArrayList<Reply>)request.getAttribute("rlist");
 	PrevNextPage p = (PrevNextPage)request.getAttribute("p");
-	
+
+
 	String boardNo = b.getBoardNo();
 	String boardTitle = b.getBoardTitle();
 	String writer = b.getWriter();
@@ -642,6 +645,16 @@
                 </div>
             </div>
         </div>
+        <div style="width 100%; height: auto">
+                     <% if(flist.isEmpty()){ %>
+             사진없다잉
+         <% }else{ %>
+             		<% System.out.println("됨?ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ"); %>
+             <% for(int i = 0; i<flist.size(); i ++){ %>
+        			<img src="<%= contextPath %>/<%= flist.get(i).getFilePath() %>/<%= flist.get(i).getChangeName() %>"width="auto" height="150">
+        		<% } %>
+         <% } %>
+        </div>
         <div id="post_comment_area">
             <div id="post_comment_header">
                 <div style="width: 80px; line-height: 40px; font-weight: 600; font-size: 25px;">
@@ -658,6 +671,7 @@
                 </div>
     
             </div>
+       
             <div id="post_comment_list">
             	<% System.out.println("진짜 이게 안됨?" + rlist); %>
             	<% if(rlist.isEmpty()){ %>
@@ -682,6 +696,8 @@
 	                        </div>
 	                        <div class="comment_text">
 									<%= r.getReplyContent() %>
+
+
 	                        </div>
 	                        <div class="comment_info">
 	                            <div class="comment_date">
@@ -768,68 +784,18 @@
             <table class="table list-area">
 
                 <h3>최신 글</h3>
+                
+
+                
+                
                 <tbody>
-                    <tr>
-                        <td class="new_post_title">
-                            <span>
-                                안녕하세요    
-                            </span>
-                            <div>
-                                [2]
-                            </div>
-                        </td>
-                        <td class="post_writer">ghdtkddnjs1101</td>
-                        <td class="post_date">20:11</td>
-                    </tr>
-                    <tr>
-                        <td class="new_post_title">
-                            <span>
-                                집가고싶다    
-                            </span>
-                            <div>
-                                [11]
-                            </div>
-                        </td>
-                        <td class="post_writer">dldnjswhd123</td>
-                        <td class="post_date">17:01</td>
-                    </tr>
-                    <tr>
-                        <td class="new_post_title">
-                            <span>
-                                점심메뉴추천해주세요    
-                            </span>
-                            <div>
-                                [2]
-                            </div>
-                        </td>
-                        <td class="post_writer">whwnsgk0492</td>
-                        <td class="post_date">12:11</td>
-                    </tr>
-                    <tr>
-                        <td class="new_post_title">
-                            <span>
-                                내일은 뭐하지    
-                            </span>
-                            <div>
-                                [20]
-                            </div>
-                        </td>
-                        <td class="post_writer">qkrdydwks103</td>
-                        <td class="post_date">11:11</td>
-                    </tr>
-                    <tr>
-                        <td class="new_post_title">
-                            <span>
-                                아 잠온다  
-                            </span>
-                            <div>
-                                [6]
-                            </div>
-                        </td>
-                        <td class="post_writer">wkdgmlwn55</td>
-                        <td class="post_date">08:11</td>
-                    </tr>
+       				<!-- 여기에 들어감 -->
+                    <div id="pagenation-area">
+                    </div>
                 </tbody>
+                
+                
+                
                 <tfoot>
                     <tr>
                         <td colspan="3" style="padding: 0;">
@@ -848,8 +814,35 @@
                         </td>
                     </tr>
                 </tfoot>
+                
+                
+                
             </table>
         </div>
     </div>
 </body>
+                 <script>
+                    $(function(){
+                        pagenation();
+                    })
+
+                    function pagenation(){
+                        $.ajax({
+                            url:"pageNation.bo",
+                            data:{cpage:1},
+                            datatype:"html",
+                            success:function(result){
+								console.log("하이루");
+								console.log(result);
+								
+                            $("#pagenation-area").html(result);
+								
+                            }
+                            
+                        })
+                    }
+                    
+              
+
+                </script>
 </html>

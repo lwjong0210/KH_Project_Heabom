@@ -11,6 +11,7 @@ public class Board {
 	private String boardStatus;
 	private String boardup;
 	private int countReply;
+	private String category;
 	
 	public Board() {}
 	
@@ -28,6 +29,14 @@ public class Board {
 		this.countReply = countReply;
 	}
 
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	public Board(String boardNo, String boardTitle, String writer, int boardCount, String createDate,
 			int countReply) {

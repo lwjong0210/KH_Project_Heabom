@@ -2,7 +2,6 @@
 <%@page import="com.heabom.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
     
 <!DOCTYPE html>
 <html>
@@ -67,7 +66,7 @@
                     <button type="button" id="uploadBtn">파일첨부</button>
                     &lt; 별점 &gt;
                     <input type="hidden" name="star" id="star">
-                    <input type="hidden" name="refNo" id="refNo" value="<%=place.getPlaceNo()%>">
+                    <input type="hidden" name="refNo" id="refNo">
                     <input type="hidden" name="writer" id="writer" value="<%=loginMember.getMemNo()%>">
                     <select name="starpoint" id="starpoint">
                             <option value="5" selected>5점</option>

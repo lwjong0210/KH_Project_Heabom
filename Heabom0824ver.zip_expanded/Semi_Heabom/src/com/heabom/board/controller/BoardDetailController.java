@@ -38,8 +38,10 @@ public class BoardDetailController extends HttpServlet {
 		
 		String bno = (String)request.getParameter("bno");
 		
+		
 		BoardService bService = new BoardService();
 		ArrayList<Reply> rlist = new BoardService().selectReplyList(bno);
+		
 		
 		int result = bService.increaseCount(bno);
 		
@@ -47,12 +49,11 @@ public class BoardDetailController extends HttpServlet {
 		
 		if(result>0) {
 			Board b = bService.selectBoard(bno);
-			ArrayList<File> list = bService.selectFileList(bno);
+			ArrayList<File> flist = bService.selectFileList(b.getBoardNo());
 			PrevNextPage p = new BoardService().prevNextBo(Integer.parseInt(bno));
-			System.out.println("zz");
-			
+			System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋ배고파" + flist);
 			request.setAttribute("b", b);
-			request.setAttribute("list", list);
+			request.setAttribute("flist", flist);
 			request.setAttribute("rlist", rlist);
 			request.setAttribute("p", p);
 			

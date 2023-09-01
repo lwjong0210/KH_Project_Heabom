@@ -205,7 +205,7 @@ INSERT INTO TB_FILE(
    ,?
    ,?
    ,SYSDATE
-   ,?
+   ,'RV'|| SEQ_RVRP.CURRVAL
 )
 </entry>
 

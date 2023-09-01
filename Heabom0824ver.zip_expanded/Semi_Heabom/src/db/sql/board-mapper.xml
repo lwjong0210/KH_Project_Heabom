@@ -85,6 +85,7 @@ SELECT *
                , ?
                , ?
                , ?
+               , ?
                )
 	</entry>
 		<entry key="insertAttachment">
@@ -97,15 +98,17 @@ SELECT *
 		, FILE_PATH
 		, UPLOAD_DATE
 		, REF_NO
+		, FILE_LEVEL
 		)
 		VALUES
 		(
-		SEQ_FILE.NEXTVAL
+		  SEQ_FILE.NEXTVAL
 		, ?
 		, ?
 		, ?
 		, SYSDATE
-		, SEQ_BNO.CURRVAL
+		, ? ||SEQ_BNO.CURRVAL
+		, 2
 		)
 	</entry>
 	<entry key='returnBoardNo'>

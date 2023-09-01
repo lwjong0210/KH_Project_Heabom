@@ -352,13 +352,14 @@ public class PlaceDao {
 	public int insertReviewAttachment(Connection conn,Review re, MemberAttachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
+		System.out.println(re.getReNo());
 		String sql = prop.getProperty("insertReviewAttachment");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, at.getOriginName());
 			pstmt.setString(2, at.getChangeName());
 			pstmt.setString(3, at.getFilePath());
-			pstmt.setString(4, re.getReNo());
+			//pstmt.setString(4, re.getReNo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

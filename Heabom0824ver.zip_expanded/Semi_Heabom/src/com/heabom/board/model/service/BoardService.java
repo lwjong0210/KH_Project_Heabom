@@ -66,35 +66,47 @@ public class BoardService {
 //		
 //	}
 	
-	public int insertBoard(Board b) {
-		
-		Connection conn = getConnection();
-		
-		int result = new BoardDao().insertBoard(conn, b);
-	
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		close(conn);
-		return result;
-	}
+//	public int insertBoard(Board b) {
+//		
+//		Connection conn = getConnection();
+//		
+//		int result1 = new BoardDao().insertBoard(conn, b);
+//		
+//	
+//		
+//		if(result > 0) {
+//			commit(conn);
+//		}else {
+//			rollback(conn);
+//		}
+//		close(conn);
+//		return result;
+//	}
+//	public int insertBoard(Board b, ArrayList<File> list) {
+//		
+//		Connection conn = getConnection();
+//		
+//		int result1 = new BoardDao().insertBoard(conn, b);
+//		int result2 = new BoardDao().insertAttachment(conn, list);
+//		
+//		if(result1 > 0 && result2>0) {
+//			commit(conn);
+//		}else {
+//			rollback(conn);
+//		}
+//		close(conn);
+//		return result1 * result2;
+//	}
 	public int insertBoard(Board b, ArrayList<File> list) {
-		
 		Connection conn = getConnection();
-		
 		int result1 = new BoardDao().insertBoard(conn, b);
-		int result2 = new BoardDao().insertAttachment(conn, list);
-		
-		if(result1 > 0 && result2>0) {
-			commit(conn);
-		}else {
-			rollback(conn);
+		int result2 = 1;
+		if(!list.isEmpty()) {
+			result2 = new BoardDao().insertAttachment(conn, list, b);
 		}
 		close(conn);
 		return result1 * result2;
+		
 	}
 	
 	public String returnBoardNo() {

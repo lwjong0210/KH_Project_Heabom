@@ -241,7 +241,7 @@ public class BoardDao {
 		
 	}
 	
-	public int insertAttachment(Connection conn, ArrayList<File> list) {
+	public int insertAttachment(Connection conn, ArrayList<File> list, Board b) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -256,7 +256,7 @@ public class BoardDao {
 				pstmt.setString(1, f.getOriginName());
 				pstmt.setString(2, f.getChangeName());
 				pstmt.setString(3, f.getFilePath());
-				
+				pstmt.setString(4, b.getBoardNo());
 				result = pstmt.executeUpdate();
 				
 			}

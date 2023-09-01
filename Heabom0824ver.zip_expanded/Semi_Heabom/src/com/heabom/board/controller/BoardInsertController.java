@@ -54,13 +54,9 @@ public class BoardInsertController extends HttpServlet {
 			String noticeUp = multiRequest.getParameter("noticeUp");
 			String MemNo = multiRequest.getParameter("userNo");
 			
-			
-			HttpSession session = request.getSession();
-			
 			Board b = new Board();
 			
 			b.setBoardTitle(boardTitle);
-//			b.setBoardCategory(boardCategory);
 			b.setBoardNo(boardCategory);
 			b.setBoardContent(boardContent);
 			if(noticeUp == null) {
@@ -69,9 +65,10 @@ public class BoardInsertController extends HttpServlet {
 			b.setBoardup(noticeUp);				
 			
 			b.setWriter(MemNo);
+			
 			ArrayList<File> list = new ArrayList<File>();
 			
-			for(int i = 1; i <= 4; i++) {
+			for(int i = 1; i <= 5; i++) {
 				String key = "file" + i;
 				if(multiRequest.getOriginalFileName(key) != null) {
 					File f = new File();
@@ -79,34 +76,30 @@ public class BoardInsertController extends HttpServlet {
 					f.setChangeName(multiRequest.getFilesystemName(key));
 					f.setFilePath("resource/img/board");
 					list.add(f);
-					System.out.println("그럼 여기 안타겠지?");
 				}
 				
-				System.out.println("그럼 여기는 타겠지?");
 			}
-			int result = 0;
+//			int result = 0;
 			
-			System.out.println(list.isEmpty());
-			if(list.isEmpty()) {
-				result = new BoardService().insertBoard(b);
-				
-			}else {
-				result = new BoardService().insertBoard(b,list);
-				
-			}
+//			if(list.isEmpty()) {
+//				result = new BoardService().insertBoard(b);
+//				
+//			}else {
+//				result = new BoardService().insertBoard(b,list);
+//				
+//			}
+			int result = new BoardService().insertBoard(b, list);
 			
 			String boardNo = new BoardService().returnBoardNo();
 			
 			String hashList = multiRequest.getParameter("tag");
 			int result2 = 1;
-			if(hashList.isEmpty()) {
-			}else {
+			if(!hashList.isEmpty()) {
 				HashTag ht = new HashTag();
 				ht.setCategoryNo(boardNo);
 				ht.setHashTagName(hashList);
 				
 				result2 = new BoardService().insertHash(ht);
-				
 			}
 			
 			if(result > 0 && result2 > 0) {
