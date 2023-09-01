@@ -48,9 +48,17 @@ public class PlaceReviewDetailController extends HttpServlet {
 			String writer = multiRequest.getParameter("writer");
 			String file = (multiRequest.getFile("file")+"");
 			
-			String[] fileList = file.split("\\\\");
-			String getOriginalFileName = fileList[8];
-			String getFilesystemName = fileList[8];
+			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
+			if(file.length() > 10) {
+				String[] fileList = file.split("\\\\");
+				String getOriginalFileName = fileList[8];
+				String getFilesystemName = fileList[8];
+				
+				at = new MemberAttachment();
+				at.setOriginName(getOriginalFileName);
+				at.setChangeName(getFilesystemName);
+				at.setFilePath("resource/img/place_review");
+			}
 			
 			Review re = new Review();
 			re.setReRefNo(refNo);
@@ -58,15 +66,9 @@ public class PlaceReviewDetailController extends HttpServlet {
 			re.setReRefStar(star);
 			re.setReWriter(writer);
 			
-			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
-			if(file != null) {//넘어온게 있어.
-				at = new MemberAttachment();
-				at.setOriginName(getOriginalFileName);
-				at.setChangeName(getFilesystemName);
-				at.setFilePath("resource/img/place_review");
-			}
-			int result = new PlaceService().insertReview(re, at);			
-			
+			int result = new PlaceService().insertReview(re, at);
+			System.out.println("돌아온result : " + result);
+			response.getWriter().print(result);
 		}
 	}
 

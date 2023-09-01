@@ -368,4 +368,34 @@ public class PlaceDao {
 		}
 		return result;
 	}
+	
+	public ArrayList<Review> selectReplyList(Connection conn){
+		ArrayList<Review> rlist = new ArrayList<Review>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReplyList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setString(1, pNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				rlist.add(new Review(rset.getString("RE_NO"),
+						             rset.getString("RE_WRITER"),
+						             rset.getString("NICKNAME"),
+						             rset.getString("RE_CONTENT"),
+						             rset.getInt("RE_LIKE_STAR"),
+						             rset.getInt("RE_REF_STAR"),
+						             rset.getString("RE_DATE"),
+						             rset.getString("IMGPATH")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return rlist;
+	}
 }

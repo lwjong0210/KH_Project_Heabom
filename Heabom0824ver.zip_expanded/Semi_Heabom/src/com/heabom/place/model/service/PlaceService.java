@@ -146,6 +146,13 @@ import com.heabom.place.model.vo.Review;
 			close(conn);
 			return result1*result2 ; 
 		}
+		
+		public ArrayList<Review> selectReplyList(){
+			Connection conn = getConnection();
+			ArrayList<Review> rlist = new PlaceDao().selectReplyList(conn);
+			close(conn);
+			return rlist;
+		}
 	
 
 }

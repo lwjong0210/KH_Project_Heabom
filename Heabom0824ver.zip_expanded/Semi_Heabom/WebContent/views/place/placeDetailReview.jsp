@@ -74,7 +74,7 @@
                         </select>
                         <input type="hidden" id="getstar" onclick="getStar(event);">
                         <button type="button" class="btn btn-sm btn-info" onclick="insertReview();">리뷰등록</button>
-                        <button class="btn btn-sm btn-danger" type="reset">초기화</button>
+                        <button class="btn btn-sm btn-danger" id="allreset" type="reset">초기화</button>
                 </div>
             <% } %>
             </div>
@@ -194,7 +194,9 @@ function insertReview(){
             console.log("리뷰작성 ajax 통신 성공!!!");
 			if(result > 0){ // 댓글작성 성공! => 갱신된 댓글 리스트 조회
 				selectReplyList(); // 한번더 불러줘서 갱신된 글을 불러 준다.
-				$("#replyContent").val(""); // 정상적으로 입력했으면, 초기화 해준다.
+				$("#allreset").click(); // 정상적으로 입력했으면, 초기화 해준다.
+			}else{
+				console.log("result 문제발생!!!!");	
 			}
 		},
 		error:function(){
@@ -204,7 +206,20 @@ function insertReview(){
 	})
 }
 
-
+function selectReplyList(){
+    $.ajax({
+    	url:"rlist.pl",
+    	// data:{
+    	// 	pNo:<%=place.getPlaceNo()%>
+    	// },
+        success:function(list){
+            console.log("ajax 리뷰조회 성공 !!!")
+        },
+        error:function(){
+            console.log("ajax 리뷰죠회 실패 ㅠㅠ")
+        }
+    })
+}
 
 </script>
 

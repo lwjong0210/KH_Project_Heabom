@@ -8,15 +8,17 @@ public class Review {
 	private String reWriter;
 	private String reContent;
 	private int reLikeStar;
-	private Date reDate;
+	private String reDate;
 	private String reStatus;
 	private int reRefStar;
 	
+	private String nickname;
+	private String imgPath;
+	
+	
 	public Review () {}
 
-	
-
-	public Review(String reNo, String reRefNo, String reWriter, String reContent, int reLikeStar, Date reDate,
+	public Review(String reNo, String reRefNo, String reWriter, String reContent, int reLikeStar, String reDate,
 			String reStatus, int reRefStar) {
 		super();
 		this.reNo = reNo;
@@ -29,7 +31,36 @@ public class Review {
 		this.reRefStar = reRefStar;
 	}
 
+	
 
+	public Review(String reNo, String reWriter, String nickname, String reContent, int reLikeStar, int reRefStar,
+			String reDate, String imgPath) {
+		super();
+		this.reNo = reNo;
+		this.reWriter = reWriter;
+		this.nickname = nickname;
+		this.reContent = reContent;
+		this.reLikeStar = reLikeStar;
+		this.reRefStar = reRefStar;
+		this.reDate = reDate;
+		this.imgPath = imgPath;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
 
 	public int getReRefStar() {
 		return reRefStar;
@@ -79,11 +110,11 @@ public class Review {
 		this.reLikeStar = reLikeStar;
 	}
 
-	public Date getReDate() {
+	public String getReDate() {
 		return reDate;
 	}
 
-	public void setReDate(Date reDate) {
+	public void setReDate(String reDate) {
 		this.reDate = reDate;
 	}
 
