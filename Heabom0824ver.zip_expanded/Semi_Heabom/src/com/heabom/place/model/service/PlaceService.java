@@ -134,6 +134,7 @@ import com.heabom.place.model.vo.Review;
 		public int insertReview(Review re,MemberAttachment at) {
 			Connection conn = getConnection();
 			int result1 = new PlaceDao().insertReview(conn, re);
+			System.out.println("여기는 service : " + result1);
 			int result2 = 1;
 			if(at != null) {
 				result2 = new PlaceDao().insertReviewAttachment(conn, re, at);

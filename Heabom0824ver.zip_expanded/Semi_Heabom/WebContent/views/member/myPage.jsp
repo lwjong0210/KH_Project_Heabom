@@ -164,7 +164,7 @@ table, div {
 											onclick="myVisit2();">
 											<img src="<%=contextPath%>/resource/img/myPage/방문게시물.png">
 											<p class="mypage-right-p">
-												<strong>방문게시물</strong>
+												<strong>나만의코스</strong>
 											</p>
 										</div>
 									</td>
@@ -252,30 +252,16 @@ table, div {
 			})
 		}
 
-		// 방문페이지 Ajax
-		function myVisit() {
-			myVisit1();
-			myVisit2();
-
-		}
-
-		function myVisit1() {
+		// 나만의코스 Ajax
+		function myQna() {
 			$.ajax({
-				url : "myVisitDetailAjax.do",
-				success : function(result) {
-					console.log("무슨 말이라도 해봐");
+				url : "myCourseDetailAjax.do",
+				data : {
+					memNo : $("#memNo").val()
 				},
-				error : function() {
-					console.log("ajax통신 실패 (방문페이지)");
-				}
-			})
-		}
-
-		function myVisit2() {
-			$.ajax({
-				url : "myVisitAjax.do",
 				datatype : "html",
 				success : function(result) {
+					console.log("ajax 성공");
 					$("#test").html(result);
 				},
 				error : function() {

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.heabom.course.model.dao.CourseDao;
+import com.heabom.course.model.vo.Course;
 import com.heabom.place.model.vo.Place;
 
 public class CourseService {
@@ -35,6 +36,14 @@ public class CourseService {
 		ArrayList<Place> coursePlaceList = new CourseDao().selectCoursePlaceList(conn, courseList);
 		close(conn);
 		return coursePlaceList;
+	}
+	
+	public ArrayList<Course> selectCourse(String memNo){
+		Connection conn = getConnection();
+		ArrayList<Course> clist = new CourseDao().selectCourse(conn, memNo);
+		close(conn);
+		return clist;
+		
 	}
 	
 }

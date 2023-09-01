@@ -358,14 +358,14 @@ public class PlaceDao {
 			pstmt.setString(1, at.getOriginName());
 			pstmt.setString(2, at.getChangeName());
 			pstmt.setString(3, at.getFilePath());
-//			pstmt.setString(4, re.getReNo());
+			pstmt.setString(4, re.getReNo());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			close(conn);
+			close(pstmt);
 		}
 		return result;
 	}

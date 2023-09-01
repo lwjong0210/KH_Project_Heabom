@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.heabom.course.model.vo.Course;
 import com.heabom.place.model.vo.Place;
 import com.heabom.search.model.dao.SearchDao;
 
@@ -128,6 +129,24 @@ public class CourseDao {
 		}
 		return plist;
 		
+	}
+	
+	public ArrayList<Course> selectCourse(Connection conn,String memNo){
+		ArrayList<Course> clist = new ArrayList<Course>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectCourse");
+		try {
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return clist;
 	}
 
 }

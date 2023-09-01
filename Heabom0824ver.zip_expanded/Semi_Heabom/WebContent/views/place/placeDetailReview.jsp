@@ -93,7 +93,7 @@
 <script>
 $(function(){ 
 	selectReplyList();
-	setInterval(selectReplyList, 1000);
+	setInterval(selectReplyList, 10000);
     $("#uploadBtn").click(function(){
         $("#file").click();
     })
