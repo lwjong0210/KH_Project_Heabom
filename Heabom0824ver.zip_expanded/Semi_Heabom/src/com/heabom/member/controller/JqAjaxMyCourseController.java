@@ -35,8 +35,8 @@ public class JqAjaxMyCourseController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memNo = request.getParameter("memNo");
-		ArrayList<Course> clist = new CourseService().selectCourse(memNo);
-		
+		ArrayList<Course> clist = new CourseService().myCourseSelect(memNo);
+		request.setAttribute("clist", clist);
 		request.getRequestDispatcher("views/member/myCourse.jsp").forward(request, response);
 	}
 

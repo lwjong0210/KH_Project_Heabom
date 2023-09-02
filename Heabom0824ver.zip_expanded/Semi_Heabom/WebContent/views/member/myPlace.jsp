@@ -89,7 +89,7 @@
                 <tr>
                     <td rowspan="4" width="300" height="130">
                     <% if(p.getImgpath().length() < 10) { %>
-                        <img src="#" alt="">
+                        <img src="https://breffee.net/data/editor/2210/20221013104826_fd5326c8ac17c04c88d91f03a8d313d8_5r8y.jpg" alt="">
                     <% }else{ %>
                     	<img src="<%=contextPath2 %><%=p.getImgpath() %>" alt="">
                     <% } %>

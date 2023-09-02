@@ -40,9 +40,9 @@ public class CourseService {
 	}
 	
 
-	public ArrayList<Course> selectCourse(String memNo){
+	public ArrayList<Course> myCourseSelect(String memNo){
 		Connection conn = getConnection();
-		ArrayList<Course> clist = new CourseDao().selectCourse(conn, memNo);
+		ArrayList<Course> clist = new CourseDao().myCourseSelect(conn, memNo);
 		close(conn);
 		return clist;
 	}

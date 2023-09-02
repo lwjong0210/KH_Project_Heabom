@@ -131,14 +131,25 @@ public class CourseDao {
 		
 	}
 	
-	public ArrayList<Course> selectCourse(Connection conn,String memNo){
+	public ArrayList<Course> myCourseSelect(Connection conn,String memNo){
 		ArrayList<Course> clist = new ArrayList<Course>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectCourse");
+		String sql = prop.getProperty("myCourseSelect");
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				clist.add(new Course(
+						rset.getString("PALCE1"),
+						rset.getString("TITLEIMG"),
+						rset.getString("LOCATION_NAME"),
+						rset.getString("HASHTAG_NAME")));
+
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

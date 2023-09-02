@@ -10,6 +10,9 @@ public class Course {
 	private String place5;
 	private int courseTime;
 	private int courseMoney;
+	private String titleImg; 
+	private String locationName;
+	private String hashtagName;
 	
 	public Course() {}
 
@@ -25,6 +28,40 @@ public class Course {
 		this.place5 = place5;
 		this.courseTime = courseTime;
 		this.courseMoney = courseMoney;
+	}
+	
+	
+
+	public Course(String place1, String titleImg, String locationName, String hashtagName) {
+		super();
+		this.place1 = place1;
+		this.titleImg = titleImg;
+		this.locationName = locationName;
+		this.hashtagName = hashtagName;
+	}
+
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
+	public String getLocationName() {
+		return locationName;
+	}
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+	public String getHashtagName() {
+		return hashtagName;
+	}
+
+	public void setHashtagName(String hashtagName) {
+		this.hashtagName = hashtagName;
 	}
 
 	public String getCourseNo() {

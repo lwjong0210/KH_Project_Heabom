@@ -161,7 +161,7 @@ table, div {
 								<tr>
 									<td width="110" height="110">
 										<div class="mypage-detail" align="center"
-											onclick="myVisit2();">
+											onclick="myCourse();">
 											<img src="<%=contextPath%>/resource/img/myPage/방문게시물.png">
 											<p class="mypage-right-p">
 												<strong>나만의코스</strong>
@@ -253,7 +253,7 @@ table, div {
 		}
 
 		// 나만의코스 Ajax
-		function myQna() {
+		function myCourse() {
 			$.ajax({
 				url : "myCourseDetailAjax.do",
 				data : {

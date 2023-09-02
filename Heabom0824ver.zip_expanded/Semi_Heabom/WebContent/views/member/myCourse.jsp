@@ -1,5 +1,12 @@
+<%@page import="com.heabom.course.model.vo.Course"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.heabom.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Course> clist = (ArrayList<Course>)request.getAttribute("clist");
+	String cContextPath = request.getContextPath();
+%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,37 +79,24 @@
 </head>
 <body>
     <div class="yj_myVisit_area" align="center">
+    	<% if(clist != null) { %>
+	    	<% for (Course c : clist) { %>
+		        <div class="thumbnail" align="center">
+		        	<% if(c.getTitleImg().length() > 5) { %>
+		        	<% System.out.println(c.getTitleImg()); %>
+		            	<img src="<%=cContextPath %><%=c.getTitleImg() %>" style="height: 120px; width: 150px; border-radius: 10px;">
+		            <% } else { %>
+		            	<img src="https://breffee.net/data/editor/2210/20221013104826_fd5326c8ac17c04c88d91f03a8d313d8_5r8y.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
+		            <% } %>
+		            <div class="text_limit"><strong>내코스</strong></div>
+		            <div class="yj_location">지역 : <%=c.getLocationName() %></div>
+		        </div>
+	        <% } %>
+        <% } else { %>
         <div class="thumbnail" align="center">
-            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
-            <div class="text_limit"><strong>경복궁야경투어</strong></div>
-            <div class="yj_location">지역 : 중구</div>
+        	<p>해봄에서는 나만의 코스를 만들수 있습니다.</p>
         </div>
-        <div class="thumbnail" align="center">
-            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
-            <div class="text_limit"><strong>경복궁야경투어</strong></div>
-            <div class="yj_location">지역 : 중구</div>
-        </div>
-        <div class="thumbnail" align="center">
-            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
-            <div class="text_limit"><strong>경복궁야경투어</strong></div>
-            <div class="yj_location">지역 : 중구</div>
-        </div>
-        <div class="thumbnail" align="center">
-            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
-            <div class="text_limit"><strong>경복궁야경투어</strong></div>
-            <div class="yj_location">지역 : 중구</div>
-        </div>
-        <div class="thumbnail" align="center">
-            <img src="https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
-            <div class="text_limit"><strong>경복궁야경투어</strong></div>
-            <div class="yj_location">지역 : 중구</div>
-        </div>
-
-
-
-
-
-
+        <% } %>
     </div>
 </body>
 </html>
