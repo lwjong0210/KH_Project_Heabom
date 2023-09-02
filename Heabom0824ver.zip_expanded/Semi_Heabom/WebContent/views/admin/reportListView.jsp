@@ -280,6 +280,7 @@
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
+
     <div class="wrap">
         <div class="background">
             <div id="header">
@@ -392,29 +393,13 @@
                     <div class="modal-body" align="center">
                       <form action="delete.re" method="post">
                           <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
-  
-                          <input type="hidden" name="userPwd" >
-                          <button type="submit" name="userPwd" class="btn btn-sm btn-warning">보류</button>
-                          <button type="submit" name="userPwd" class="btn btn-sm btn-danger">추방</button>
                           
-                          <!-- 
-                              회원 탈퇴 요청시 sql문
-                              UPDATE MEMEBR
-                                  SET STATUS = 'N'
-                                      , MODIFY_DATE = STSDATE
-                                  WHERE USER_ID = 현재 로그인 한 회원 아이디
-                                      AND USER_PWD = 사용자가 입력한 비밀번호
-                                      
-                                      (정보변경, 비번변경 처럼 갱신된 회원을 다시 조회할 필요 없음)
-                                      
-                                      성공했을 경우 : 메인페이지 alert(성공적으로 회원 탈퇴가 되었습니다. 그동안 이용해주셔서 감사합니다.)
-                                                  단, 로그아웃이 되어있어야 함. (세션에 loginMember라는 키 값에 해당하는 것을 지우기)
-                                                  
-                                      실패했을 경우 : 마이 페이지 alert (회원 탈퇴 실패)
-                           -->
+                          <input type="password" name="userPwd" value="">
+                          <button type="submit" class="btn btn-sm btn-warning">보류</button>
+                          <button type="submit" class="btn btn-sm btn-danger">추방</button>
+                          
                       </form>
   
                     </div>
-
 </body>
 </html>

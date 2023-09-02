@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.heabom.member.model.service.MemberService;
+import com.heabom.member.model.vo.Member;
 
 /**
  * Servlet implementation class ReportMemberDeleteController
@@ -30,18 +31,21 @@ public class ReportMemberDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String memPwd = request.getParameter("memPwd");
+		String userPwd = request.getParameter("userPwd");
 		
-		int result = new MemberService().deleteReportMember(memPwd);
+		
+		int result = new MemberService().deleteReportMember(userPwd);
+		System.out.println(result);
+		
 		
 		HttpSession session = request.getSession();
 		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "추방 성공");
-			session.invalidate();
-			response.sendRedirect(request.getContextPath());
-		}else {
+		if(result == 0) { //실패
 			session.setAttribute("alertMsg", "추방 실패");
+			response.sendRedirect(request.getContextPath() + "/report.ad?cpage=1");
+		}else { //성공
+			session.setAttribute("alertMsg", "추방 성공");
+			session.removeAttribute("loginMember");
 			response.sendRedirect(request.getContextPath() + "/report.ad?cpage=1");
 		}
 		
