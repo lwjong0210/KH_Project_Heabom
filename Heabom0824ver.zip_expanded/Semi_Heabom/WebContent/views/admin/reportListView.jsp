@@ -32,7 +32,6 @@
             /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
-            margin-top: 30px;
 
             background-color: #FDEEEE;
 
@@ -114,13 +113,13 @@
 
         table>thead {
             text-align: center;
-            font-size: 25px;
+            font-size: 20px;
             
         }
 
-        table>tbody {
+        table>#tbody {
             text-align: center;
-            font-size: 20px;
+            font-size: 15px;
 
             background-color: white;
         }
@@ -130,9 +129,9 @@
             padding-bottom: 20px;
         }
 
-        td {
-            padding-top: 40px;
-            padding-bottom: 40px;
+        #tbody>tr>td {
+            padding-top: 35px;
+            padding-bottom: 35px;
         }
 
         /*----------------------------회원 아이디---------------------------------------*/
@@ -150,7 +149,7 @@
             width: 40%;
             height: 30%;
 
-            top: 100px;
+            top: 90px;
             bottom: 0px;
             left: 120px;
             right: 0px;
@@ -220,12 +219,15 @@
         /*--------------------------페이지바---------------------------------*/
 
         .pagination {
+
             display: flex;
             justify-content: center;
+
         }
 
         .page-link {
-            font-size: 30px;
+
+            font-size: 20px;
         }
 
         /*--------------------------선택 수정, 삭제---------------------------------*/
@@ -310,7 +312,7 @@
                             <th width="130">보기</th>
                             <th width="130">관리</th>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody">
                             <tr>
                                 <td>1</td>
                                 <td>user01</td>
