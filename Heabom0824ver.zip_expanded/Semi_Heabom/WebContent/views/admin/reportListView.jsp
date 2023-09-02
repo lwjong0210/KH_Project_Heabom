@@ -142,8 +142,8 @@
         }
 
         #tbody>tr>td {
-            padding-top: 35px;
-            padding-bottom: 35px;
+            padding-top: 13px;
+            padding-bottom: 13px;
         }
 
         /*----------------------------회원 아이디---------------------------------------*/
@@ -335,7 +335,7 @@
                                 <td><%= r.getReComplite() %></td>
                                 <td><span class="badge badge-pill badge-success"><%= r.getReStatus() %></span></td>
                                 <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
+                                <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deleteModal">관리</button></td>
                              </tr>
                              <% } %>
                         </tbody>
@@ -376,5 +376,45 @@
             </div>
         </div>
     </div>
+
+    <!-- 회원 신고 처리용 Modal -->
+			<div class="modal" id="deleteModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">신고 관리</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+              
+                    <!-- Modal body --> 
+                    <div class="modal-body" align="center">
+                      <form action="delete.re" method="post">
+                          <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
+  
+                          <input type="hidden" name="userPwd" >
+                          <button type="submit" name="userPwd" class="btn btn-sm btn-warning">보류</button>
+                          <button type="submit" name="userPwd" class="btn btn-sm btn-danger">추방</button>
+                          
+                          <!-- 
+                              회원 탈퇴 요청시 sql문
+                              UPDATE MEMEBR
+                                  SET STATUS = 'N'
+                                      , MODIFY_DATE = STSDATE
+                                  WHERE USER_ID = 현재 로그인 한 회원 아이디
+                                      AND USER_PWD = 사용자가 입력한 비밀번호
+                                      
+                                      (정보변경, 비번변경 처럼 갱신된 회원을 다시 조회할 필요 없음)
+                                      
+                                      성공했을 경우 : 메인페이지 alert(성공적으로 회원 탈퇴가 되었습니다. 그동안 이용해주셔서 감사합니다.)
+                                                  단, 로그아웃이 되어있어야 함. (세션에 loginMember라는 키 값에 해당하는 것을 지우기)
+                                                  
+                                      실패했을 경우 : 마이 페이지 alert (회원 탈퇴 실패)
+                           -->
+                      </form>
+  
+                    </div>
+
 </body>
 </html>
