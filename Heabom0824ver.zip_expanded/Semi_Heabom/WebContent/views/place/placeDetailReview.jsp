@@ -2,7 +2,10 @@
 <%@page import="com.heabom.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%
+	String contextPath1 = request.getContextPath();
+	Member loginMember1 =  (Member)session.getAttribute("loginMember");
+%>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,19 +58,19 @@
 </head>
 <body>
 <div class="yj_place_area" align="center">
-    <form id="uploadForm" action="<%=contextPath%>/review.pl" id="enroll-form" method="post" enctype="multipart/form-data">
+    <form id="uploadForm" action="<%=contextPath1%>/review.pl" id="enroll-form" method="post" enctype="multipart/form-data">
             <input type="file" id="file" name="file" style="display:none;">
             <div class="place_text" align="center">
                 <textarea name="content" id="content" cols="118" rows="5" style="resize: none;" placeholder="해봄은 여러분의 소중한 리뷰를 기다리고 있습니다."></textarea>
             </div>
             <div class="text_btn" align="center" style="float: left; width: 900px;">
-            <% if(loginMember != null) { %>
+            <% if(loginMember1 != null) { %>
                 <div class="options" align="center" style="text-align: right;">
                     <button type="button" id="uploadBtn">파일첨부</button>
                     &lt; 별점 &gt;
                     <input type="hidden" name="star" id="star">
-                    <input type="hidden" name="refNo" id="refNo">
-                    <input type="hidden" name="writer" id="writer" value="<%=loginMember.getMemNo()%>">
+                    <input type="hidden" name="refNo" id="refNo" value="<%=place.getPlaceNo()%>">
+                    <input type="hidden" name="writer" id="writer" value="<%=loginMember1.getMemNo()%>">
                     <select name="starpoint" id="starpoint">
                             <option value="5" selected>5점</option>
                             <option value="4">4점</option>
@@ -143,10 +146,10 @@ function selectReplyList(){
 			                <tr>
 			                    <td rowspan="2" width="80" height="80">
 			                    	<div align="center">`
-			    						<% if(loginMember.getTitleImg().length() < 5) { %>
-			    						result +=	`<img src="<%=contextPath%>/resource/img/profile/기본이미지.png" name="viewTitleImg" style="width: 75px; height: 75px; border-radius: 20px;">`
+			    						<% if(loginMember1.getTitleImg().length() < 5) { %>
+			    						result +=	`<img src="<%=contextPath1%>/resource/img/profile/기본이미지.png" name="viewTitleImg" style="width: 75px; height: 75px; border-radius: 20px;">`
 			                            <% } else { %>
-			                            result += 	`<img src="<%=contextPath%><%=loginMember.getTitleImg()%>" name="viewTitleImg" style="width: 75px; height: 75px; border-radius: 20px;">`
+			                            result += 	`<img src="<%=contextPath1%><%=loginMember1.getTitleImg()%>" name="viewTitleImg" style="width: 75px; height: 75px; border-radius: 20px;">`
 			    						<% } %>
 			    						result += `</div>
 			                    </td>
@@ -166,11 +169,11 @@ function selectReplyList(){
 			                    <td colspan="2" width="550">
 			                        <p class="reviewText"> \${list[i].reContent}</p>
 			                        <div class="noneImg" align="center" style="display:none">
-			                            <img src="<%=contextPath%>/\${list[i].imgPath}" alt="" width="350" height="300">  
+			                            <img src="<%=contextPath1%>/\${list[i].imgPath}" alt="" width="350" height="300">  
 			                        </div>
 			                    </td>
 			                    <td width="130" height="130">
-			                        <img src="<%=contextPath%>/\${list[i].imgPath}" alt="" width="130" height="130">  
+			                        <img src="<%=contextPath1%>/\${list[i].imgPath}" alt="" width="130" height="130">  
 			                    </td>
 			                </tr>
 			            </table>`

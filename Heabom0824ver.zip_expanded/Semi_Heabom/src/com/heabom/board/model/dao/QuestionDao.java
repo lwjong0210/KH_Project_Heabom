@@ -43,7 +43,7 @@ public class QuestionDao {
 						               rset.getString("ANSWER_OR_NOT"),
 						               rset.getString("ANSWER_CONTENT"),
 						               rset.getString("ANSWER_DATE"),
-						               rset.getString("ANSWER_NICKNAME")
+						               rset.getString("NICKNAME")
 						               ));
 			}
 		} catch (SQLException e) {
