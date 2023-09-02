@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import static com.heabom.common.JDBCTemplate.*;
 
+import com.heabom.admin.model.vo.Report;
 import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.PageInfo;
 import com.heabom.member.model.vo.Member;
@@ -165,6 +166,13 @@ public class MemberDao {
 			return list;
 			
 		}
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 	
 	
 	public int updateMember(Connection conn, Member m) {

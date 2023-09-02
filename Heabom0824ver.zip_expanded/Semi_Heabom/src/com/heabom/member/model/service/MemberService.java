@@ -56,6 +56,9 @@ public class MemberService {
 			close(conn);
 			return list;
 		}
+	   
+	   
+	   
 	
 	public Member updateMember(Member m) {
 		

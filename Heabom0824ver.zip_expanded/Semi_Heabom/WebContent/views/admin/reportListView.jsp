@@ -1,5 +1,17 @@
+<%@page import="com.heabom.admin.model.vo.Report"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.heabom.common.model.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Report> list = (ArrayList<Report>)request.getAttribute("list");
+	
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -313,72 +325,19 @@
                             <th width="130">관리</th>
                         </thead>
                         <tbody id="tbody">
+                        <% for(Report r : list) { %>
                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
+                                <td><%= r.getReportNo() %></td>
+                                <td><%= r.getReporter() %></td>
+                                <td><%= r.getReported() %></td>
+                                <td><%= r.getReCategory() %></td>
+                                <td><%= r.getReDate() %></td>
+                                <td><%= r.getReComplite() %></td>
+                                <td><span class="badge badge-pill badge-success"><%= r.getReStatus() %></span></td>
                                 <td>사유 불 충분</td>
                                 <td><button type="button" class="btn btn-danger">미처리</button></td>
                              </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
+                             <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -387,23 +346,31 @@
             <div id="footer">
                 <div id="footer_1"></div>
                 <div id="footer_2">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                    <tr>
+               <td colspan="5" style="border-top: 1px solid gray;">
+                  <ul class="pagination justify-content-center" style="margin: 0;">
+                     <% if(pi.getCurrentPage() != 1){ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= currentPage -1 %>'">&lt;</button></li>
+                     <% } %>
+                     <% for(int i = startPage; i <= endPage; i++ ){ %>
+                     <% if(i == currentPage){ %>
+                     <li class="page-item"><button class="page-link btn active"
+                           disabled><%= i %></button></li>
+                     <% }else{ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= i %>'"><%= i %></button></li>
+
+                     <% } %>
+                     <% } %>
+
+                     <% if(currentPage != maxPage){ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= currentPage +1 %>'">&gt;</button></li>
+                     <% } %>
+                  </ul>
+               </td>
+            </tr>
                 </div>
                 <div id="footer_3"></div>
             </div>

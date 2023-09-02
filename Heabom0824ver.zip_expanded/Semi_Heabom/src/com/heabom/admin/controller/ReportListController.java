@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.admin.model.service.ReportService;
+import com.heabom.admin.model.vo.Report;
 import com.heabom.common.model.vo.PageInfo;
-import com.heabom.member.model.service.MemberService;
-import com.heabom.member.model.vo.Member;
 
 /**
  * Servlet implementation class ReportListController
@@ -42,7 +42,7 @@ public class ReportListController extends HttpServlet {
 	      int startPage;
 	      int endPage;
 	      
-	      listCount = new MemberService().selectReportListCount();
+	      listCount = new ReportService().selectReportListCount();
 	      currentPage = Integer.parseInt(request.getParameter("cpage"));
 	      
 	      boardLimit= 10;
@@ -59,7 +59,7 @@ public class ReportListController extends HttpServlet {
 	      
 	      PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 	      
-	      ArrayList<Member> list = new MemberService().selectReportList(pi);
+	      ArrayList<Report> list = new ReportService().selectReportList(pi);
 	      
 	      request.setAttribute("pi", pi);
 	      request.setAttribute("list", list);
