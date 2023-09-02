@@ -897,6 +897,19 @@ tfoot>tr {
 
             </script>
 		</div>
+		<div align="right" id="delete-update-area" style="width: auto;">
+			<% if(loginMember != null && loginMember.getMemId().equals(b.getWriter())) { %>
+				<a class="btn btn-sm btn-warning">수정하기</a>
+				<a onclick="deleteConfirm();" class="btn btn-sm btn-danger">삭제하기</a>
+				<% } %>
+				<script>
+					function deleteConfirm(){
+						if(confirm("정말로 이 게시글을 삭제하시겠습니까?")){
+							location.href= href="<%= contextPath %>/deleteForm.bo?bno=<%= b.getBoardNo() %>"
+						}
+					}
+				</script>
+		</div>
 		<div id="post_etc">
 			<a type="button" class="btn btn-light prev"
 				href="<%=contextPath%>/detail.bo?bno=<%=p.getPrevPage()%>">∧ 이전글</a>

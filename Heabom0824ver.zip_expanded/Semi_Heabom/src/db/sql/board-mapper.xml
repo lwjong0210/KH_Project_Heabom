@@ -295,5 +295,14 @@ SELECT A.*
              ) A
 
 	</entry>
+		<entry key='deleteBoard'>
+        UPDATE 
+		       TB_BOARD 
+		   SET 
+		       BOARD_STATUS = 'N' 
+		 WHERE BOARD_NO = ?
+
+	</entry>
+	
 	
 </properties>
