@@ -22,7 +22,8 @@ public class Place {
 	private int usePrice;
 	private String bestStatus;
 	private String hashtagName;
-	private int likeCount ; 
+	private int likeCount ;
+	private String imgpath;
 	
 	
 	private String titleImg ;
@@ -38,6 +39,17 @@ public class Place {
 		this.titleImg = titleImg;
 	}
 
+	
+	public String getImgpath() {
+		return imgpath;
+	}
+
+
+
+	public void setImgpath(String imgpath) {
+		this.imgpath = imgpath;
+	}
+
 
 
 	public Place() {}
@@ -45,7 +57,7 @@ public class Place {
 	
 	
 	public Place(String placeNo, String placeTitle, Date makeDate ,String placeContent, int starPoint, int viewCount,
-			String hashtagName) {
+			String hashtagName, String imgpath) {
 		super();
 	
 		this.placeNo = placeNo;
@@ -55,6 +67,7 @@ public class Place {
 		this.starPoint = starPoint;
 		this.viewCount = viewCount;
 		this.hashtagName = hashtagName;
+		this.imgpath = imgpath;
 	}
 
 

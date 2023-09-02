@@ -7,6 +7,7 @@
 	ArrayList<Place> plist = (ArrayList<Place>)request.getAttribute("plist");
 	// 장소번호, 장소제목, 장소 내용, 만든날짜, 조회수, 별점, 해시태그
 	Member loginMember =  (Member)session.getAttribute("loginMember");
+	String contextPath2 = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +88,11 @@
             <table border="0" class="detail_tb">
                 <tr>
                     <td rowspan="4" width="300" height="130">
-                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
+                    <% if(p.getImgpath().length() < 10) { %>
+                        <img src="#" alt="">
+                    <% }else{ %>
+                    	<img src="<%=contextPath2 %><%=p.getImgpath() %>" alt="">
+                    <% } %>
                     </td>
                     <td rowspan="4" width="10"></td>
                     <td height="40" width="350" colspan="4"><div class="text_limit"><strong><%=p.getPlaceTitle() %></strong></div></td>

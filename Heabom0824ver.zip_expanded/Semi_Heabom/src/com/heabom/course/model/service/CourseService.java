@@ -96,7 +96,6 @@ public class CourseService {
 			rollback(conn);
 		}
 		return result; 
->>>>>>> 96ead0874fcad7aa9055566bfbf8de9b287499c1
 		
 	}
 	

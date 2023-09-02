@@ -47,7 +47,8 @@ public class PlaceDao {
 						rset.getString("PLACE_CONTENT"),
 						rset.getInt("VIEW_COUNT"),
 						rset.getInt("STAR_POINT"),
-						rset.getString("HASHTAG_NAME")
+						rset.getString("HASHTAG_NAME"),
+						rset.getString("IMGPATH")
 						));
 			}
 		} catch (SQLException e) {
