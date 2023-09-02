@@ -5,7 +5,6 @@
     pageEncoding="UTF-8"%>
     <%
      	Place place = (Place)request.getAttribute("placeInfo");
-    
     	ArrayList<File> fileList = (ArrayList<File>)request.getAttribute("fileList");
 		     	
     %>
