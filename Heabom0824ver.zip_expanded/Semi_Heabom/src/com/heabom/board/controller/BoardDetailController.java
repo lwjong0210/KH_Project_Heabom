@@ -71,8 +71,10 @@ public class BoardDetailController extends HttpServlet {
 			
 		
 			listCount = new BoardService().selectListCount();
-//			currentPage = Integer.parseInt(request.getParameter("cpage"));
-			currentPage = 1;
+				currentPage = 1;
+//				currentPage = Integer.parseInt(request.getParameter("cpage2"));
+				
+//			currentPage = 1;
 		
 			boardLimit= 20;
 
@@ -88,6 +90,9 @@ public class BoardDetailController extends HttpServlet {
 			
 			PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 			request.setAttribute("pi", pi);
+			request.setAttribute("bno", bno);
+			request.setAttribute("cpage2", currentPage);
+		
 			
 			
 			request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);

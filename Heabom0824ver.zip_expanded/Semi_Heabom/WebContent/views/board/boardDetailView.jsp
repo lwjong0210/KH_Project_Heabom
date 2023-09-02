@@ -22,11 +22,6 @@ int boardCount = b.getBoardCount();
 String createDate = b.getCreateDate();
 String hashTag = b.getHashTagName();
 
-PageInfo pi = (PageInfo) request.getAttribute("pi");
-int startPage = pi.getStartPage();
-int endPage = pi.getEndPage();
-int currentPage = pi.getCurrentPage();
-int maxPage = pi.getMaxPage();
 %>
 
 <!DOCTYPE html>
@@ -43,6 +38,7 @@ int maxPage = pi.getMaxPage();
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 div {
 	/*border: 1px solid red;*/
@@ -913,92 +909,197 @@ tfoot>tr {
 
 						<input type="hidden" id="cpage3" value="1">
 
-
+                        
 
 			<!-- 여기에 들어감 -->
-			<div id="pagenation-area"></div>
 
-			<tfoot>
-				<tr>
-					<td colspan="5" style="border-top: 1px solid gray;">
-						<ul class="pagination justify-content-center" style="margin: 0;">
-						<% int cpage2 = 1; %>
-							<% System.out.println(cpage2+"gggggggggggggggggggg"); %>
-							<%
-							if (cpage2 != 1) {
-							%>
-							<li class="page-item"><button class="page-link"
-									onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage - 1%>'">Previous</button></li>
-							<%
-							}
-							%>
-							<%
-							for (int i = startPage; i <= endPage; i++) {
-							%>
-							<%
-							if (i == cpage2) {
-							%>
-							<li class="page-item"><button class="page-link btn active"
-									disabled><%=i%></button></li>
-							<%
-							} else {
-							%>
-							<li class="page-item"><button class="page-link"
-									onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=i%>'"><%=i%></button></li>
+            <table id="dataTableBody" style="width: 100%">
 
-							<%
-							}
-							%>
-							<%
-							}
-							%>
-
-							<%
-							if (cpage2 != maxPage) {
-							%>
-							<li class="page-item"><button class="page-link"
-									onclick="pagenationNext();">Next</button></li>
-							<%
-							}
-							%>
-						</ul>
-					</td>
-				</tr>
-
-			</tfoot>
+			</table>
+			<br>
+			<ul class="page-item"></ul>
 
 		</div>
 	</div>
+
+
+
+
+
+
+
+
+
+
 	<script>
+	let listCount; // 현재 총 게시글 개수
+	let currentPage = 1; //현재 페이지
+	let pageLimit= 10; //  하단에 보여지는 페이징바의 최대개수	
+	let boardLimit = 10; // 한 페이지내에 보여질 게시글 최대개수
+	
+	let maxPage ; // 가장마지막 페이지
+	let startPage; // 페이징바의 시작수
+	let endPage; // 페이징바의 끝 수
+	
+	let boardList; //표시하려하는 데이터 리스트
 
 		$(function(){
-                        pagenation(1);
+			
+	
+			 
+			 $.ajax({ 
+				url: "pageNation.bo",
+				success: function (plist) {
+			        boardList= JSON.parse(plist);
+				   	listCount = boardList.length;
+			           console.log(listCount + "!!!!");
+                       	maxPage = Math.ceil(listCount / boardLimit);
+                       	startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+                		endPage = startPage + pageLimit - 1;
+
+                        boardListView(1, boardLimit);
+                		if(endPage > maxPage) {
+                			endPage = maxPage;
+                		};
                         
-                    })
+                        pagingBar(listCount, boardLimit, pageLimit, 1);
+				}
+			 });
+			 
+			})
+			function boardListView(currentPage, boardLimit) {
+			console.log(currentPage+ "aaaa" + boardLimit)
+			  let chartHtml = "";
 
+			currentPage = Number(currentPage);
+			boardLimit = Number(boardLimit);
+			let charTitleHtml = 
+			"<tr><th style='width: 8%;'>글번호</th>"+
+	    	"<th style='width: 57%;'>제목</th>"+
+	    	"<th style='width: 10%;'>작성자</th>"+
+	    	"<th style='width: 10%;'>조회수</th>"+
+	    	"<th style='width: 15%;'>작성일</th></tr>"
+            ;
+			// 총게시글 78개, 1페이지 인덱스 0 ~ 9 , 2페이지 인덱스 10 ~ 19, ..., 8페이지 인덱스 70 ~ 77
+			if(currentPage == maxPage){
+				  for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + (listCount % boardLimit) ;
+				    i++
+				  ) {
+					  
+		
+					  console.log(boardList[i]);
+					    chartHtml +=
+					      "<tr class='boardTr'><td>" +
+					      boardList[i].boardNo.substr(1) +
+					      "</td><td>" +
+					      boardList[i].boardTitle +
+					      "</td><td>" +
+					      boardList[i].writer +
+					      "</td><td>" +
+					      boardList[i].boardCount +
+					      "</td><td>" +
+					      boardList[i].createDate +
+					      "</td></tr>";
+				  }
+			}else{
+	
+			  for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + boardLimit;
+			    i++
+			  ) {
+				  
+	
+				  console.log(boardList[i]);
+				    chartHtml +=           
 
-                    function pagenation(value){
-				console.log(value)
-                        $.ajax({
-                            url:"pageNation.bo",
-                            data:{cpage:value},
-                            datatype:"html",
-                            success:function(result){
-								
-                            $("#pagenation-area").html(result);
-								
-                            }
-                            
-                        })
-                    }
-                    
-            		$(function(){
-            			$("#list-area>tr").click(function(){
-            				console.log($(this).children().eq(0).text())
-            				location.href='<%=contextPath%>/detail.bo?bno='+ $(this).children().eq(0).text()
+				      "<tr class='boardTr'><td>" +
+				      boardList[i].boardNo.substr(1) +
+				      "</td><td>" +
+				      boardList[i].boardTitle +
+				      "</td><td>" +
+				      boardList[i].writer +
+				      "</td><td>" +
+				      boardList[i].boardCount +
+				      "</td><td>" +
+				      boardList[i].createDate +
+				      "</td></tr>";
+			  }
+			  }
+				  $("#dataTableBody").html(charTitleHtml+chartHtml);
+					
+					$("#dataTableBody tr").click(function () {
+						console.log("크,ㄹ릭!!!")
+						console.log($(this).children().eq(0).text())
+						location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text()
 
 					})
-		})
+	}
+			 
+			
+		
+		function pagingBar(listCount, boardLimit, pageLimit, currentPage) {
+			console.log("pageLimit"+pageLimit)
+			  console.log("currentPage : " + currentPage);
+
+
+			  let pageGroup = Math.ceil(currentPage / pageLimit); // 페이지 그룹
+
+			  let pageHtml = "";
+
+			  if (currentPage > 1) {
+			    pageHtml += "<li><a href='#' id='prev'> 이전 </a></li>";
+			  }
+
+			 //페이징 번호 표시 
+			  for (var i = startPage; i <= endPage; i++) {
+				  console.log(endPage + "ep");
+				  console.log(startPage + "sp");
+			    if (currentPage == i) {
+			      pageHtml +=
+			        "<li class='on' style='background-color: black'><a href='#' id='" + i + "'>" + i + "</a></li>";
+			    } else {
+			      pageHtml += "<li><a href='#' id='" + i + "'>" + i + "</a></li>";
+			    }
+			  }
+
+			  if (currentPage != maxPage) {
+			    pageHtml += "<li><a href='#' id='next'> 다음 </a></li>";
+			  }
+
+			  $(".page-item").html(pageHtml);
+
+
+			  //페이징 번호 클릭 이벤트 
+			  $(".page-item li a").click(function () {
+			    let $id = $(this).attr("id");
+			    selectedPage = $(this).text();
+
+			    if ($id == "next") {
+			    	selectedPage = currentPage + 1;
+			    }
+			    if ($id == "prev") {
+			    	selectedPage = currentPage - 1;
+			    }
+			    
+			    currentPage = selectedPage;
+			    console.log(currentPage)
+			    pagingBar(listCount, boardLimit, pageLimit, selectedPage);
+			    boardListView(selectedPage, boardLimit);
+			  });
+			}
+                    
+			$("#boardLimit").change(function () {
+			    boardLimit = $("#boardLimit").val();
+			    pagingBar(listCount, boardLimit, pageLimit, currentPage);
+			    boardListView(currentPage, boardLimit);
+			 });
+
+			
+			
+			
+			
+			
+
+
 	</script>
 </body>
 </html>

@@ -221,4 +221,13 @@ public class BoardService {
 		return p;
 	}
 	
+	public ArrayList<Board> selectAllList(){
+		Connection conn = getConnection();
+		
+		ArrayList<Board> list = new BoardDao().selectAllList(conn);
+	
+		close(conn);
+		return list;
+	}
+	
 }

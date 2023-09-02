@@ -273,6 +273,26 @@ SELECT A.*
   WHERE CNUM = ?
 
 </entry>
-	
+	<entry key='selectAllList'>
+        SELECT 
+        ROWNUM RNUM
+        , A.*
+        FROM(SELECT 
+             BOARD_NO
+             , BOARD_TITLE
+             , MEM_ID
+             , BOARD_COUNT
+             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
+             , NVL(COUNT,0) "COUNT"
+             FROM TB_BOARD
+             JOIN TB_MEMBER ON(WRITER = MEM_NO)
+             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
+             WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
+                OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
+               AND BOARD_STATUS = 'Y'
+             ORDER BY CAST(SUBSTR(BOARD_NO,2) AS NUMBER) DESC,CREATE_DATE DESC
+             ) A
+
+	</entry>
 	
 </properties>

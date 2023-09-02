@@ -199,7 +199,8 @@ tbody>tr:hover {
 				
 					<td hidden><%= b.getBoardNo().substring(1) %></td>
 					<td><div class="post-notice">공지</div></td>
-					<td class="post-notice-title"><%= b.getBoardTitle() %> <% if(b.getCountReply() != 0){ %>
+					<td class="post-notice-title"><%= b.getBoardTitle() %> 
+					<% if(b.getCountReply() != 0){ %>
 						<b style="color: red"> [<%= b.getCountReply() %>]
 					</b> <% }else{ %> <% } %></td>
 					<% }else{ %>
