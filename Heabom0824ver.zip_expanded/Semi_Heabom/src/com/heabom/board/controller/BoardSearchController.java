@@ -46,7 +46,7 @@ public class BoardSearchController extends HttpServlet {
 		listCount = new BoardService().selectKeyWordCount(keyWord);
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 	
-			boardLimit= 10;
+			boardLimit= 20;
 
 		pageLimit = 10;
 		System.out.println(boardLimit);

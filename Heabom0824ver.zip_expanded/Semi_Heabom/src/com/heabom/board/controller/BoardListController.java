@@ -45,7 +45,7 @@ public class BoardListController extends HttpServlet {
 		listCount = new BoardService().selectListCount();
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 	
-			boardLimit= 10;
+		boardLimit= 20;
 
 		pageLimit = 10;
 		

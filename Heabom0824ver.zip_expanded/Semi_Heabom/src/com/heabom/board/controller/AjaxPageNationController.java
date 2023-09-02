@@ -17,13 +17,13 @@ import com.heabom.common.model.vo.PageInfo;
  * Servlet implementation class PageNationController
  */
 @WebServlet("/pageNation.bo")
-public class PageNationController extends HttpServlet {
+public class AjaxPageNationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PageNationController() {
+    public AjaxPageNationController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,7 @@ public class PageNationController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("dkdkd앙아아아앙아ㅏ앙아아아아ㅓ아아암");
-		String bno = request.getParameter("bno");
+//		String bno = request.getParameter("bno");
 		
 		int listCount; // 현재 총 게시글 개수
 		int currentPage; // 현재 페이지
@@ -48,6 +48,7 @@ public class PageNationController extends HttpServlet {
 	
 		listCount = new BoardService().selectListCount();
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
+//		currentPage = 1;
 	
 			boardLimit= 10;
 
@@ -63,6 +64,8 @@ public class PageNationController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		ArrayList<Board> plist = new BoardService().selectList(pi);
+		
+		
 		request.setAttribute("pi", pi);
 		request.setAttribute("plist", plist);
 		
