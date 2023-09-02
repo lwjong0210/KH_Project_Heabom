@@ -2,19 +2,23 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <entry key="selectPlace">
-	SELECT
-	    PLACE_NO
-	  , PLACE_TITLE
-	  , MAKE_DATE
-	  , PLACE_CONTENT
-	  , VIEW_COUNT
-	  , STAR_POINT
-	  , HASHTAG_NAME
-	FROM TB_PLACE
-	LEFT JOIN TB_HASHTAG USING (PLACE_NO)
-    WHERE WRITER = ?
-    AND STATUS = 'Y'
-    ORDER BY MAKE_DATE DESC
+SELECT
+    A.*
+  , '/'|| FILE_PATH ||'/'|| CHANGE_NAME IMGPATH
+FROM(SELECT
+            PLACE_NO
+          , PLACE_TITLE
+          , MAKE_DATE
+          , PLACE_CONTENT
+          , VIEW_COUNT
+          , STAR_POINT
+          , HASHTAG_NAME
+        FROM TB_PLACE
+        LEFT JOIN TB_HASHTAG USING (PLACE_NO)
+        WHERE STATUS = 'Y'
+        AND WRITER = ?
+        ORDER BY MAKE_DATE DESC) A
+LEFT JOIN TB_FILE ON (REF_NO = A.PLACE_NO) 
 </entry>
 
 <entry key="insertPlace">
