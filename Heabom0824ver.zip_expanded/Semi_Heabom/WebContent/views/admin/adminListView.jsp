@@ -121,7 +121,7 @@
                         <tr>
                             <td width="150" height="110" align="center">
                                 <div class="adminpage-detail" align="center">
-                                    <a href="<%= contextPath %>/report.ad"><img src="<%=contextPath%>/resource/img/admin/신고.png"></a>
+                                    <a href="<%= contextPath %>/report.ad?cpage=1"><img src="<%=contextPath%>/resource/img/admin/신고.png"></a>
                                     <p class="adminpage-right-p"><strong>신고관리</strong></p>
                                 </div>
                             </td>

@@ -5,9 +5,9 @@
     pageEncoding="UTF-8"%>
     <%
      	Place place = (Place)request.getAttribute("placeInfo");
-    
+    	System.out.println("여기는 placeDetailView : "+place.getPlaceNo());
     	ArrayList<File> fileList = (ArrayList<File>)request.getAttribute("fileList");
-		     	
+    	System.out.println(place.getPlaceNo());     	
     %>
 
 <!DOCTYPE html>

@@ -1,5 +1,17 @@
+<%@page import="com.heabom.admin.model.vo.Report"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.heabom.common.model.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Report> list = (ArrayList<Report>)request.getAttribute("list");
+	
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -32,7 +44,6 @@
             /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
-            margin-top: 30px;
 
             background-color: #FDEEEE;
 
@@ -114,13 +125,13 @@
 
         table>thead {
             text-align: center;
-            font-size: 25px;
+            font-size: 20px;
             
         }
 
-        table>tbody {
+        table>#tbody {
             text-align: center;
-            font-size: 20px;
+            font-size: 15px;
 
             background-color: white;
         }
@@ -130,9 +141,9 @@
             padding-bottom: 20px;
         }
 
-        td {
-            padding-top: 40px;
-            padding-bottom: 40px;
+        #tbody>tr>td {
+            padding-top: 13px;
+            padding-bottom: 13px;
         }
 
         /*----------------------------회원 아이디---------------------------------------*/
@@ -150,7 +161,7 @@
             width: 40%;
             height: 30%;
 
-            top: 100px;
+            top: 90px;
             bottom: 0px;
             left: 120px;
             right: 0px;
@@ -220,12 +231,15 @@
         /*--------------------------페이지바---------------------------------*/
 
         .pagination {
+
             display: flex;
             justify-content: center;
+
         }
 
         .page-link {
-            font-size: 30px;
+
+            font-size: 20px;
         }
 
         /*--------------------------선택 수정, 삭제---------------------------------*/
@@ -310,73 +324,20 @@
                             <th width="130">보기</th>
                             <th width="130">관리</th>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody">
+                        <% for(Report r : list) { %>
                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
+                                <td><%= r.getReportNo() %></td>
+                                <td><%= r.getReporter() %></td>
+                                <td><%= r.getReported() %></td>
+                                <td><%= r.getReCategory() %></td>
+                                <td><%= r.getReDate() %></td>
+                                <td><%= r.getReComplite() %></td>
+                                <td><span class="badge badge-pill badge-success"><%= r.getReStatus() %></span></td>
                                 <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
+                                <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deleteModal">관리</button></td>
                              </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>user01</td>
-                                <td>user02</td>
-                                <td>스펨</td>
-                                <td>.</td>
-                                <td>.</td>
-                                <td><span class="badge badge-pill badge-success">미처리</span></td>
-                                <td>사유 불 충분</td>
-                                <td><button type="button" class="btn btn-danger">미처리</button></td>
-                             </tr>
+                             <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -385,27 +346,75 @@
             <div id="footer">
                 <div id="footer_1"></div>
                 <div id="footer_2">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                    <tr>
+               <td colspan="5" style="border-top: 1px solid gray;">
+                  <ul class="pagination justify-content-center" style="margin: 0;">
+                     <% if(pi.getCurrentPage() != 1){ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= currentPage -1 %>'">&lt;</button></li>
+                     <% } %>
+                     <% for(int i = startPage; i <= endPage; i++ ){ %>
+                     <% if(i == currentPage){ %>
+                     <li class="page-item"><button class="page-link btn active"
+                           disabled><%= i %></button></li>
+                     <% }else{ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= i %>'"><%= i %></button></li>
+
+                     <% } %>
+                     <% } %>
+
+                     <% if(currentPage != maxPage){ %>
+                     <li class="page-item"><button class="page-link"
+                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= currentPage +1 %>'">&gt;</button></li>
+                     <% } %>
+                  </ul>
+               </td>
+            </tr>
                 </div>
                 <div id="footer_3"></div>
             </div>
         </div>
     </div>
+
+    <!-- 회원 신고 처리용 Modal -->
+			<div class="modal" id="deleteModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">신고 관리</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+              
+                    <!-- Modal body --> 
+                    <div class="modal-body" align="center">
+                      <form action="delete.re" method="post">
+                          <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
+  
+                          <input type="hidden" name="userPwd" >
+                          <button type="submit" name="userPwd" class="btn btn-sm btn-warning">보류</button>
+                          <button type="submit" name="userPwd" class="btn btn-sm btn-danger">추방</button>
+                          
+                          <!-- 
+                              회원 탈퇴 요청시 sql문
+                              UPDATE MEMEBR
+                                  SET STATUS = 'N'
+                                      , MODIFY_DATE = STSDATE
+                                  WHERE USER_ID = 현재 로그인 한 회원 아이디
+                                      AND USER_PWD = 사용자가 입력한 비밀번호
+                                      
+                                      (정보변경, 비번변경 처럼 갱신된 회원을 다시 조회할 필요 없음)
+                                      
+                                      성공했을 경우 : 메인페이지 alert(성공적으로 회원 탈퇴가 되었습니다. 그동안 이용해주셔서 감사합니다.)
+                                                  단, 로그아웃이 되어있어야 함. (세션에 loginMember라는 키 값에 해당하는 것을 지우기)
+                                                  
+                                      실패했을 경우 : 마이 페이지 alert (회원 탈퇴 실패)
+                           -->
+                      </form>
+  
+                    </div>
+
 </body>
 </html>

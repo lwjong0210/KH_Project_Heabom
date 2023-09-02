@@ -98,9 +98,13 @@
                 <tr>
                     <td height="20" width="350" colspan="4">
                         <div class="text_limit" >
-                        	<% String[] hList = p.getHashtagName().split(","); %>
-                        	<% for(int i = 0; i<hList.length; i++) {%>
-                        		<a href="#">#<%= hList[i] %></a>
+                        	<% if(p.getHashtagName() != null) {%>
+	                        	<% String[] hList = p.getHashtagName().split(","); %>
+	                        	<% for(int i = 0; i<hList.length; i++) {%>
+	                        		<a href="#">#<%= hList[i] %></a>
+	                            <% } %>
+                            <% }else{ %>
+                            	<a href="#">#등록된 태그가 없습니다.</a>
                             <% } %>
                         </div>
                     </td>

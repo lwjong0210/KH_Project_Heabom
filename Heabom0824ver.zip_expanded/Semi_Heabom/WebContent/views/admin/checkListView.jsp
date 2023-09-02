@@ -57,7 +57,6 @@
             /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
-            margin-top: 30px;
 
             background-color: #FDEEEE;
 

@@ -56,6 +56,26 @@ public class MemberService {
 			close(conn);
 			return list;
 		}
+	   
+	   
+	   public int deleteReportMember(String memPwd) {
+		   
+		   Connection conn = getConnection();
+		   
+		   int result = new MemberDao().deleteReportMember(conn, memPwd);
+		   
+		   if(result > 0) {
+			   commit(conn);
+		   }else {
+			   rollback(conn);
+		   }
+		   
+		   close(conn);
+		   
+		   return result;
+	   }
+	   
+	   
 	
 	public Member updateMember(Member m) {
 		

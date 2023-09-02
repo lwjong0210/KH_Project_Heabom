@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판3</title>
+    <title>게시판4</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -15,8 +15,8 @@
         }
 
         p {
-            box-sizing: border-box;
-            border: 1px solid black;
+            /*box-sizing: border-box;
+            border: 1px solid black;*/
             float: left;
         }
 
@@ -26,7 +26,7 @@
             /* border: 1px solid black; */
             box-sizing: border-box;
             margin: auto;
-            margin-top: 30px;
+
 
             background-color: #FDEEEE;
 
@@ -114,13 +114,13 @@
 
         table>thead {
             text-align: center;
-            font-size: 25px;
+            font-size: 20px;
             
         }
 
-        table>tbody {
+        table>#tbody {
             text-align: center;
-            font-size: 25px;
+            font-size: 15px;
 
             background-color: white;
         }
@@ -130,7 +130,7 @@
             padding-bottom: 3%;
         }
 
-        td {
+        #tbody>tr>td {
             padding-top: 4%;
             padding-bottom: 4%;
         }
@@ -220,7 +220,7 @@
         }
 
         .page-link {
-            font-size: 30px;
+            font-size: 20px;
         }
 
         /*-------------------------- 버튼 ---------------------------------*/
@@ -313,7 +313,7 @@
                             <th width="120">사용여부</th>
                             <th width="120">관리</th>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody">
                             <tr>
                                 <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                 <td>메인 이미지</td>
