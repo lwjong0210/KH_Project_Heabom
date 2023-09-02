@@ -37,8 +37,8 @@ public class PlaceDetailViewController extends HttpServlet {
 		HttpSession session = request.getSession();
 		ArrayList<Place> list = (ArrayList<Place>)session.getAttribute("placeSearchList");
 		int index = Integer.parseInt(request.getParameter("index"));
-//		System.out.println(list.get(0));
-//		System.out.println(index);
+		//System.out.println(list.get(0));
+		//System.out.println(inde;x)
 		Place p = list.get(index);
 		String pNo = list.get(index).getPlaceNo();
 		ArrayList<File> fileList = new PlaceService().selectFileList(pNo);

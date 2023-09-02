@@ -334,10 +334,16 @@ public class PlaceDao {
 		String sql = prop.getProperty("insertReview");
 		try {
 			pstmt = conn.prepareStatement(sql);
+			System.out.println("여기는 리뷰 dao : "+ re.getReRefNo());
 			pstmt.setString(1, re.getReRefNo());
 			pstmt.setString(2, re.getReWriter());
 			pstmt.setString(3, re.getReContent());
 			pstmt.setInt(4, re.getReRefStar());
+			System.out.println("1번 : " + re.getReRefNo());
+			System.out.println("2번 : " + re.getReWriter());
+			System.out.println("3번 : " + re.getReContent());
+			System.out.println("4번 : " + re.getReRefStar());
+			
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
