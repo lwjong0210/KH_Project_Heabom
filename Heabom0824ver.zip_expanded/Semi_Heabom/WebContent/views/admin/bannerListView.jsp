@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         div, input {
-            /*border: 1px solid red;*/
+            border: 1px solid red;
             box-sizing: border-box;
         }
 
@@ -100,6 +100,19 @@
 
         #footer_3 {
             width: 70%;
+        }
+
+        /*---------------------------------------------------------*/
+
+        #header2 {
+            position: relative;
+        }
+
+        #strong {
+            position: absolute;
+
+            font-size: 50px;
+            top: 9%;
         }
 
         /*-------------------테이블---------------------------------*/
@@ -288,16 +301,7 @@
         <div class="background">
             <div id="header">
                 <div id="header_1"></div>
-                <div id="header_2">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">전체</button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Link 1</a>
-                          <a class="dropdown-item" href="#">Link 2</a>
-                          <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                      </div>
-                </div>
+                <div id="header_2"><strong id="strong">배너 관리</strong></div>
                 <div id="header_3"></div>
                 <div id="header_4"></div>
                 <div id="header_5"></div>
@@ -361,28 +365,8 @@
             </div>
             <div id="footer">
                 <div id="footer_1"></div>
-                <div id="footer_2">
-                    <button type="button" id="button3" class="btn btn-warning">순서 지정</button>
-                </div>
-                <div id="footer_3">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
-                </div>
+                <div id="footer_2"></div>
+                <div id="footer_3"></div>
                 <div id="footer_4"></div>
             </div>
         </div>
