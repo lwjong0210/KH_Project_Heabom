@@ -45,10 +45,11 @@ public class ReportMemberDeleteController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		if (result == 0) { // 실패
+		if (result == 0) {
 		    session.setAttribute("alertMsg", "추방 실패");
 		    response.sendRedirect(request.getContextPath() + "/report.ad?cpage=1");
-		} else { // 성공
+		} else {
+			session.setAttribute("alertMsg", "추방 성공");
 		    Member loginMember = (Member) session.getAttribute("loginMember");
 		    
 		    
