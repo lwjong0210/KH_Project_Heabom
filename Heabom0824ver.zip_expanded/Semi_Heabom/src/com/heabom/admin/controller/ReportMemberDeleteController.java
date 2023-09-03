@@ -52,6 +52,7 @@ public class ReportMemberDeleteController extends HttpServlet {
 		    Member loginMember = (Member) session.getAttribute("loginMember");
 		    
 		    
+		    
 		    // 관리자의 경우 'loginMember' 속성을 제거하지 않음.
 		    response.sendRedirect(request.getContextPath() + "/report.ad?cpage=1");
 		}
