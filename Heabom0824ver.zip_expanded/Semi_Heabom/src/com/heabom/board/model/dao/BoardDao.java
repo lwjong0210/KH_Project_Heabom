@@ -355,9 +355,9 @@ public class BoardDao {
 		Board b = new Board();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, bno);
+			pstmt.setString(1, bno.substring(0));
 			rset = pstmt.executeQuery();
-			
+			System.out.println("DAO에서의 bno : " + bno.substring(0));
 			if(rset.next()) {
 				b.setBoardNo(rset.getString("board_no"));
 				b.setBoardTitle(rset.getString("board_title"));
@@ -628,5 +628,112 @@ public class BoardDao {
 		}
 		return blist;
 	}
+	
+	public ArrayList<File> selectAttachmentList(Connection conn, String boardNo){
+		PreparedStatement pstmt = null;
+		ArrayList<File> list = new ArrayList<File>();
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAttachmentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				File f = new File();
+				f.setFileNo(rset.getString("file_no"));
+				f.setOriginName(rset.getString("origin_name"));
+				f.setChangeName(rset.getString("change_name"));
+				f.setFilePath(rset.getString("file_path"));
+				
+				list.add(f);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rset);
+		}
+		return list;
+	}
+	
+	public HashTag selectHashTag(Connection conn, String boardNo) {
+		PreparedStatement pstmt = null;
+		HashTag htag = new HashTag();
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectHashTag");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				htag.setCategoryNo(rset.getString("place_no"));
+				htag.setHashTagName(rset.getString("hashtag_name"));				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return htag;
+		
+		
+	}
+	
+	public int updateBoard(Connection conn, Board b) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("updateBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b.getBoardTitle());
+			pstmt.setString(2, b.getBoardContent());
+			pstmt.setString(3, b.getBoardup());
+			pstmt.setString(4, b.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		return result;
+		
+		
+	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

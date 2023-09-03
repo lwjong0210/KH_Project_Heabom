@@ -250,4 +250,33 @@ public class BoardService {
 		return blist;
 	}
 	
+	public ArrayList<File> selectAttachmentList(String boardNo) {
+		Connection conn = getConnection();
+		ArrayList<File> list = new BoardDao().selectAttachmentList(conn, boardNo);
+		close(conn);
+		return list;
+	}
+	
+	public HashTag selectHashTag(String boardNo) {
+		Connection conn = getConnection();
+		HashTag htag = new BoardDao().selectHashTag(conn, boardNo);
+		close(conn);
+		return htag;
+		
+	}
+	
+	public int updatetBoard(Board b, ArrayList<File> list) {
+		Connection conn = getConnection();
+		int result1 = new BoardDao().updateBoard(conn, b);
+		int result2 = 1;
+		
+		if(!list.isEmpty()) {
+			result2 = new BoardDao().insertAttachment(conn, list, b);
+		}
+		
+		close(conn);
+		return result1 * result2;
+		
+	}
+	
 }
