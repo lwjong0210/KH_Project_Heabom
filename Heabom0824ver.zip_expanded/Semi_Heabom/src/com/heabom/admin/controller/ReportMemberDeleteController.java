@@ -35,13 +35,11 @@ public class ReportMemberDeleteController extends HttpServlet {
 		
 		
 		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd"); //이건 왜있누
 		
 		System.out.println("안녕?");
-		System.out.println(userId + "" + userPwd);
 		
 		
-		int result = new MemberService().deleteReportMember(userId, userPwd);
+		int result = new MemberService().deleteReportMember(userId);
 		System.out.println(result);
 		
 		
@@ -53,12 +51,6 @@ public class ReportMemberDeleteController extends HttpServlet {
 		} else { // 성공
 		    Member loginMember = (Member) session.getAttribute("loginMember");
 		    
-		    // 추방된 회원이 관리자 자신인지 확인
-		    if (loginMember != null && !userPwd.equals(loginMember.getMemPwd())) {
-		        session.setAttribute("alertMsg", "추방 성공");
-		    } else {
-		        session.setAttribute("alertMsg", "회원 추방 성공");
-		    }
 		    
 		    // 관리자의 경우 'loginMember' 속성을 제거하지 않음.
 		    response.sendRedirect(request.getContextPath() + "/report.ad?cpage=1");

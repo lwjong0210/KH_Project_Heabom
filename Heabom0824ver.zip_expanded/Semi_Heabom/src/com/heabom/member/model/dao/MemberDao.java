@@ -194,7 +194,7 @@ public class MemberDao {
 	   
 	   
 	   
-	   public int deleteReportMember(Connection conn, String userId, String userPwd) {
+	   public int deleteReportMember(Connection conn, String userId) {
 		    
 		   int result = 0;
 
@@ -203,7 +203,6 @@ public class MemberDao {
 		       String sql = prop.getProperty("deleteReportMember");
 		       PreparedStatement pstmt = conn.prepareStatement(sql);
 		       pstmt.setString(1, userId);     // MEM_ID 매개변수 설정
-		       pstmt.setString(2, userPwd);    // MEM_PWD 매개변수 설정
 
 		       result = pstmt.executeUpdate();
 
