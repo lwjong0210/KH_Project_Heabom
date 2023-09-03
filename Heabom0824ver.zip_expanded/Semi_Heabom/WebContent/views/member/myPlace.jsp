@@ -78,7 +78,13 @@
         <div class="yj_myPlace_detail">
             <table border="0" class="detail_tb">
                 <tr>
-                    <td height="40" width="350" colspan="4"><strong><%=loginMember.getNickname() %>님의 핫한 장소 해봄과 함께 하세요.</strong></td>
+                    <td height="40" width="350" colspan="4">
+                        <a href="<%=contextPath2%>/search.pl">
+                            <p style="color: black;">
+                                <strong><%=loginMember.getNickname() %>님의 핫한 장소 해봄과 함께 하세요.</strong>
+                            </p>
+                        </a>
+                    </td>
                 </tr>
             </table>
         </div>

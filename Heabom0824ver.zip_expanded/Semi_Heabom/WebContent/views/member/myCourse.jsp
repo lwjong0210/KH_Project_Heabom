@@ -6,6 +6,7 @@
 <%
 	ArrayList<Course> clist = (ArrayList<Course>)request.getAttribute("clist");
 	String cContextPath = request.getContextPath();
+	System.out.println(clist.size());
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +80,7 @@
 </head>
 <body>
     <div class="yj_myVisit_area" align="center">
-    	<% if(clist != null) { %>
+    	<% if(clist.size() > 1) { %>
 	    	<% for (Course c : clist) { %>
 		        <div class="thumbnail" align="center">
 		        	<% if(c.getTitleImg().length() > 5) { %>
@@ -94,7 +95,7 @@
 	        <% } %>
         <% } else { %>
         <div class="thumbnail" align="center">
-        	<p>해봄에서는 나만의 코스를 만들수 있습니다.</p>
+        	<a href="<%=cContextPath%>/searchCourse.pl"><p style="color: black;">해봄에서는 나만의 코스를 만들수 있습니다.</p></a>
         </div>
         <% } %>
     </div>

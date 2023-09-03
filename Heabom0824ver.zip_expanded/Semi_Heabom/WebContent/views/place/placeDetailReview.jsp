@@ -95,7 +95,7 @@
 <script>
 $(function(){ 
 	selectReplyList();
-	setInterval(selectReplyList, 10000);
+	setInterval(selectReplyList, 500);
     $("#uploadBtn").click(function(){
         $("#file").click();
     })
@@ -155,7 +155,7 @@ function selectReplyList(){
 			                    </td>
 			                    <td colspan="2">
 			                    별점(`
-			                    	for(let i = 0; i<list[i].reRefStar; i++) { 
+			                    	for(let j = 0; j<list[i].reRefStar; j++) { 
 			                    	result += `⭐`
 			                    	}
 			                    	result += `)\${list[i].reRefStar}
