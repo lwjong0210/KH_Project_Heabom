@@ -1,5 +1,11 @@
+<%@page import="com.heabom.board.model.vo.Board"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Board> mblist = (ArrayList<Board>)request.getAttribute("blist");
+	String bContextPath = request.getContextPath();
+%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,50 +67,62 @@
 </head>
 <body>
     <div class="yj_myBoard_area" align="cneter">
+    <% if(mblist.size() > 0) { %>
+    	<% for(Board b : mblist) { %>
         <div class="yj_myBoard_detail">
             <table border="0" class="detail_tb">
                 <tr>
                     <td rowspan="4" width="300" height="130">
-                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
+                    <% if( b.getBoardImg().length() > 5) {%>
+                        <img src="<%=bContextPath %><%=b.getBoardImg() %>" alt="">
+                    <% }else{ %>
+                    	<img src="https://breffee.net/data/editor/2210/20221013104826_fd5326c8ac17c04c88d91f03a8d313d8_5r8y.jpg" alt="">
+                    <% } %>    
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>11월 최대 여의도 불꽃축제</strong></div></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong><%=b.getBoardTitle() %></strong></div></td>
                 </tr>
                 <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit">2023년 국제 최대 규모의 불꽃 축제가 여의도에서 열린다.</div></td>
+                    <td height="30" width="350" colspan="4"><div class="text_limit"><%=b.getBoardContent() %></div></td>
                 </tr>
                 <tr>
-                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
+                <% if(b.getHashTagName().length() < 1 ) { %>
+                	<td height="20" width="350" colspan="4">
+                		<div class="text_limit" >
+                			<a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a>
+               			</div>
+            		</td>
+           		<% }else{ %>
+	                <% if((b.getHashTagName().length() - b.getHashTagName().replace(",", "").length()) > 0) { %>
+	                	<% String[] hashlist = b.getHashTagName().split(",");%>
+	                    <td height="20" width="350" colspan="4">
+	                    	<div class="text_limit" >
+	                    	<% for(int i = 0 ; i<hashlist.length; i++) { %>
+	                    		<a href="#"><%=hashlist[i] %></a></td>
+	  	                	<% } %>
+	  	                	</div>
+	                <% }else{ %>
+	                	<td height="20" width="350" colspan="4">
+	                		<div class="text_limit" >
+	                			<a href="#"><%=b.getHashTagName() %></a>
+	               			</div>
+	            		</td>
+	                <% } %>
+                <% } %>
                 </tr>
                 <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
-                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
-                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
+                    <td width="120" style="text-align: center; font-size: smaller;">작성일: <%=b.getCreateDate() %></td>
+                    <td width="80" style="text-align: center; font-size: smaller;">조회수: <%=b.getBoardCount() %></td>
+                    <td width="150" style="text-align: center; font-size: smaller;"></td>
                 </tr>
             </table>
         </div>
-        <div class="yj_myBoard_detail">
-            <table border="0" class="detail_tb">
-                <tr>
-                    <td rowspan="4" width="300" height="130">
-                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
-                    </td>
-                    <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>여기는 내글관리Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
-                </tr>
-                <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt eos a maxime magnam quam laudantium, quas sint numquam, natus nam deleniti, at cum deserunt ducimus porro perspiciatis debitis quo vitae.</div></td>
-                </tr>
-                <tr>
-                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
-                </tr>
-                <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
-                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
-                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
-                </tr>
-            </table>
-        </div>
+        <% } %>
+    <% }else{ %>
+            <div class="yj_myBoard_detail">
+                <p>자유게시판에서 글을 작성해 보세요.</p>
+            </div>
+   	<% } %>
     </div>
 </body>
 </html>

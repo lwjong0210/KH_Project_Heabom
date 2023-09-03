@@ -12,6 +12,7 @@ public class Board {
 	private String boardup;
 	private int countReply;
 	private String category;
+	private String boardImg;
 	
 	public Board() {}
 	
@@ -28,7 +29,18 @@ public class Board {
 		this.boardup = boardup;
 		this.countReply = countReply;
 	}
-
+	
+	public Board(String boardNo, String boardTitle, String boardContent, String createDate, int boardCount,
+			String boardImg, String hashTagName) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.createDate = createDate;
+		this.boardCount = boardCount;
+		this.boardImg = boardImg;
+		this.hashTagName = hashTagName;
+	}
 
 	public String getCategory() {
 		return category;
@@ -50,6 +62,16 @@ public class Board {
 	}
 	private String hashTagName;
 	
+	
+	
+	public String getBoardImg() {
+		return boardImg;
+	}
+
+	public void setBoardImg(String boardImg) {
+		this.boardImg = boardImg;
+	}
+
 	public String getHashTagName() {
 		return hashTagName;
 	}

@@ -596,10 +596,37 @@ public class BoardDao {
 		}
 		return result;
 		
-		
-		
-		
-		
+	}
+	
+	public ArrayList<Board> myBoardSelect(Connection conn,String memNo){
+		ArrayList<Board> blist = new ArrayList<Board>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("myBoardSelect");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				blist.add(new Board(rset.getString("BOARD_NO"),
+						            rset.getString("BOARD_TITLE"),
+						            rset.getString("BOARD_CONTENT"),
+						            rset.getString("CREATE_DATE"),
+						            rset.getInt("BOARD_COUNT"),
+						            rset.getString("BOARD_IMG"),
+						            rset.getString("HASHTAG_NAME")
+						            ));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return blist;
 	}
 
 }

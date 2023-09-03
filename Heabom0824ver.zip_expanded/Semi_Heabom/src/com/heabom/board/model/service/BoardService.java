@@ -1,4 +1,4 @@
-package com.heabom.board.model.service;
+                   package com.heabom.board.model.service;
 
 import static com.heabom.common.JDBCTemplate.close;
 import static com.heabom.common.JDBCTemplate.commit;
@@ -241,6 +241,13 @@ public class BoardService {
 		}
 		close(conn);
 		return result;
+	}
+	
+	public ArrayList<Board> myBoardSelect(String memNo){
+		Connection conn = getConnection();
+		ArrayList<Board> blist = new BoardDao().myBoardSelect(conn, memNo);
+		close(conn);
+		return blist;
 	}
 	
 }
