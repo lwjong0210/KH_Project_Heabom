@@ -6,6 +6,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Report> list = (ArrayList<Report>)request.getAttribute("list");
+	String keyWord = (String)request.getAttribute("keyWord");
 	
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -299,10 +300,9 @@
                       </div>
                 </div>
                 <div id="header_4">
-                    <form action="<%= contextPath %>/search.re?cpage=1&keyword" id="search_form" method="get">
+                    <form <%= contextPath %>/search.re?cpage=1&keyword" id="search_form" method="get">
                         <div id="search_text">
-                            <input type="text" id="keyword" name="keyword">
-                            <input type="hidden" name="cpage" value="1">
+                            <input type="text" name="keyword">
                         </div>
                         <div id="search_btn">
                             <input type="submit" value="검색">
@@ -353,7 +353,7 @@
                   <ul class="pagination justify-content-center" style="margin: 0;">
                      <% if(pi.getCurrentPage() != 1){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= currentPage -1 %>'">&lt;</button></li>
+                           onclick="location.href='<%= contextPath %>/search.re?keyword=<%= keyWord %>&cpage=<%= currentPage -1 %>'">&lt;</button></li>
                      <% } %>
                      <% for(int i = startPage; i <= endPage; i++ ){ %>
                      <% if(i == currentPage){ %>
@@ -361,14 +361,14 @@
                            disabled><%= i %></button></li>
                      <% }else{ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= i %>'"><%= i %></button></li>
+                           onclick="location.href='<%= contextPath %>/search.re?keyword=<%= keyWord %>&cpage=<%= i %>'"><%= i %></button></li>
 
                      <% } %>
                      <% } %>
 
                      <% if(currentPage != maxPage){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/report.ad?cpage=<%= currentPage +1 %>'">&gt;</button></li>
+                           onclick="location.href='<%= contextPath %>/search.re?keyword=<%= keyWord %>&cpage=<%= currentPage +1 %>'">&gt;</button></li>
                      <% } %>
                   </ul>
                </td>

@@ -63,7 +63,6 @@ public class MemberService {
 		   Connection conn = getConnection();
 		   
 		   int result = new MemberDao().deleteReportMember(conn, userId, userPwd);
-		   System.out.println(result);
 		   
 		   if(result > 0) {
 			   commit(conn);
