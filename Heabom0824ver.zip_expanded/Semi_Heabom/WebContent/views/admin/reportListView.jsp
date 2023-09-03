@@ -325,7 +325,7 @@
                             <tr>
                                 <td><%= r.getReportNo() %></td>
                                 <td><%= r.getReporter() %></td>
-                                <td><%= userId %></td>
+                                <td><%= r.getReported() %></td>
                                 <td><%= r.getReCategory() %></td>
                                 <td><%= r.getReDate() %></td>
                                 <td><%= r.getReComplite() %></td>

@@ -61,11 +61,11 @@ public class MemberService {
 	   
 	   
 	   
-	   public int deleteReportMember(String userId, String userPwd) {
+	   public int deleteReportMember(String userId) {
 		   
 		   Connection conn = getConnection();
 		   
-		   int result = new MemberDao().deleteReportMember(conn, userId, userPwd);
+		   int result = new MemberDao().deleteReportMember(conn, userId);
 		   
 		   if(result > 0) {
 			   commit(conn);

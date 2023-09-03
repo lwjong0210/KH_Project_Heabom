@@ -363,8 +363,6 @@
                 <div id="header_1"></div>
                 <div id="header_2">
                     <p id="p1">총 회원 수 : </p>
-                    <p id="p2"> 차단 : </p>
-                    <p id="p3"> 탈퇴 : </p>
                 </div>
                 <div id="header_3"></div>
                 <div id="header_4">
@@ -394,7 +392,6 @@
                                 <th width="120">포인트</th>
                                 <th width="160">최종 접속</th>
                                 <th width="120">이메일</th>
-                                <th width="120">회원 상태</th>
                                 <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
                             </thead>
                             <tbody class="listInner">
@@ -408,14 +405,6 @@
                                         <td><input type="text" name="memPoint" style="width: 50%;"></td>
                                         <td><%= m.getMemVisit() %></td>
                                         <td><%= m.getEmail() %></td>
-                                        <td>
-                                            <select id="search_date2" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="chageLangSelect()">
-                                                <option value="차단" selected="selected">차단</option>
-                                                <option value="잔디">잔디</option>
-                                                <option value="새싹">새싹</option>
-                                                <option value="벚꽃">벚꽃</option>
-                                            </select>
-                                        </td>
                                         <td>
                                             <input type="submit" value="변경" onclick="changeFn()">
                                         </td>
