@@ -396,7 +396,8 @@ public class PlaceDao {
 						             rset.getInt("RE_LIKE_STAR"),
 						             rset.getInt("RE_REF_STAR"),
 						             rset.getString("RE_DATE"),
-						             rset.getString("IMGPATH")));
+						             rset.getString("IMGPATH"),
+						             rset.getString("USERIMGPATH")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -146,11 +146,11 @@ function selectReplyList(){
 			                <tr>
 			                    <td rowspan="2" width="80" height="80">
 			                    	<div align="center">`
-			    						<% if(loginMember1.getTitleImg().length() < 5) { %>
+			                    	if(list[i].userImgPath && list[i].userImgPath.length < 5) {
 			    						result +=	`<img src="<%=contextPath1%>/resource/img/profile/기본이미지.png" name="viewTitleImg" style="width: 75px; height: 75px; border-radius: 20px;">`
-			                            <% } else { %>
-			                            result += 	`<img src="<%=contextPath1%><%=loginMember1.getTitleImg()%>" name="viewTitleImg" style="width: 75px; height: 75px; border-radius: 20px;">`
-			    						<% } %>
+			                            } else {
+			                            result += 	`<img src="<%=contextPath1%>/\${list[i].userImgPath}" name="viewTitleImg" style="width: 75px; height: 75px; border-radius: 20px;">`
+			    						}
 			    						result += `</div>
 			                    </td>
 			                    <td colspan="2">
