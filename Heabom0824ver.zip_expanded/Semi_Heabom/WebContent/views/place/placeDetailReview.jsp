@@ -95,11 +95,15 @@
 <script>
 $(function(){ 
 	selectReplyList();
-	setInterval(selectReplyList, 500);
+	setInterval(selectReplyList, 100000);
     $("#uploadBtn").click(function(){
         $("#file").click();
     })
- 
+    
+    $(document).on('click','.reviewText',function(){
+    $(this).next().css("display","")
+	})
+	
 });
 
 function uploadFile(){
@@ -195,7 +199,22 @@ function selectReplyList(){
     })
 }
 
-function insertReview(){
+// 등록 및 동기화
+async function insertReview() {
+	insertReview1();
+    const result = await selectReplyList1();
+};
+
+function selectReplyList1(){
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            selectReplyList();
+        }, 100);
+    })
+};
+
+
+function insertReview1(){
     $("#getstar").click();
     uploadFile();
 
@@ -222,7 +241,7 @@ function insertReview(){
 			console.log(result);
             console.log("리뷰작성 ajax 통신 성공!!!");
             $("#content").val("");
-            selectReplyList(); 
+             
 			if(result > 0){ // 댓글작성 성공! => 갱신된 댓글 리스트 조회
 				$("#allreset").click(); // 정상적으로 입력했으면, 초기화 해준다.
 			}else{
