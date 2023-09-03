@@ -301,7 +301,7 @@
         <div class="background">
             <div id="header">
                 <div id="header_1"></div>
-                <div id="header_2"><strong id="strong">로고 관리</strong></div>
+                <div id="header_2"><strong id="strong">배너 관리</strong></div>
                 <div id="header_3"></div>
                 <div id="header_4"></div>
                 <div id="header_5"></div>
@@ -318,7 +318,7 @@
                         <tbody id="tbody">
                             <form action="">
                                 <tr>
-                                    <td>로고 이미지</td>
+                                    <td>배너 이미지</td>
                                     <td><img id="img1" width="150" height="50" onclick="chooseFile(1);"></td>
                                     <td>
                                         <button type="submit" id="button1" class="btn btn-primary">등록</button>

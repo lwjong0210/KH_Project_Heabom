@@ -38,19 +38,10 @@
 
         #p1 {
             margin-top: 20%;
-        }
-
-        #p2 {
-            margin-top: 20%;
 
             color: orange;
         }
 
-        #p3 {
-            margin-top: 20%;
-
-            color: red;
-        }
 
         .wrap {
             width: 1900px;
@@ -362,7 +353,7 @@
             <div id="header">
                 <div id="header_1"></div>
                 <div id="header_2">
-                    <p id="p1">총 회원 수 : </p>
+                    <p id="p1">총 회원 수 : <%= pi.getListCount() %>명</p>
                 </div>
                 <div id="header_3"></div>
                 <div id="header_4">
@@ -392,7 +383,7 @@
                                 <th width="120">포인트</th>
                                 <th width="160">최종 접속</th>
                                 <th width="120">이메일</th>
-                                <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">추가</button>
+                                <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">변경</button>
                             </thead>
                             <tbody class="listInner">
                                 <% for(Member m : list) { %>
@@ -418,10 +409,7 @@
             </div>
             <div id="content2">
                 <div id="content_4"></div>
-                <div id="content_5">
-                    <button type="button" id="button1" class="btn btn-warning">선택 수정</button>
-                    <button type="button" id="button2" class="btn btn-danger">선택 삭제</button>
-                </div>
+                <div id="content_5"></div>
                 <div id="content_6">
                     <tr>
                <td colspan="5" style="border-top: 1px solid gray;">
