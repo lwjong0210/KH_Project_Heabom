@@ -280,6 +280,10 @@
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
+<%
+	String userId = loginMember.getMemId();
+	String userPwd = loginMember.getMemPwd();
+%>
 
     <div class="wrap">
         <div class="background">
@@ -331,7 +335,7 @@
                             <tr>
                                 <td><%= r.getReportNo() %></td>
                                 <td><%= r.getReporter() %></td>
-                                <td><%= r.getReported() %></td>
+                                <td><%= userId %></td>
                                 <td><%= r.getReCategory() %></td>
                                 <td><%= r.getReDate() %></td>
                                 <td><%= r.getReComplite() %></td>
@@ -392,9 +396,9 @@
               
                     <!-- Modal body --> 
                     <div class="modal-body" align="center">
-                      <form action="delete.re" method="post">
+                      <form action="<%= contextPath %>/delete.re" method="post">
                           <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
-                          <input type="hidden" name="userId" value="">
+                          <input type="hidden" name="userId" value="<%= userId %>">
                           <input type="password" name="userPwd">
                           <button type="submit" class="btn btn-sm btn-warning">보류</button>
                           <button type="submit" class="btn btn-sm btn-danger">추방</button>
