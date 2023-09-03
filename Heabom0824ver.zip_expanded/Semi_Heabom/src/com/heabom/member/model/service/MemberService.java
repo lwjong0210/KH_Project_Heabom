@@ -58,6 +58,9 @@ public class MemberService {
 		}
 	   
 	   
+	   
+	   
+	   
 	   public int deleteReportMember(String userId, String userPwd) {
 		   
 		   Connection conn = getConnection();

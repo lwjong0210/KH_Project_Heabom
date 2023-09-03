@@ -191,8 +191,8 @@
         }
 
         td {
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
 
             font-size: 15px;
         }
@@ -366,18 +366,11 @@
                     <p id="p2"> 차단 : </p>
                     <p id="p3"> 탈퇴 : </p>
                 </div>
-                <div id="header_3">
-                    <select id="search_date" name="search_date" fw-filter="" fw-label="" fw-msg="" onchange="changeFn()">
-                        <option value="memberId" selected="selected">회원 아이디</option>
-                        <option value="memberName">이름</option>
-                        <option value="nickname">별명</option>
-                        <option value="all">.</option>
-                    </select>
-                </div>
+                <div id="header_3"></div>
                 <div id="header_4">
                     <form action="<%= contextPath %>/search.ck?cpage=1&keyword" id="search_form" method="get">
                         <div id="search_text">
-                            <input type="text" id="keyword" name="keyword">
+                            <input type="text" id="keyword" name="keyword" placeholder="회원 이름 입력">
                             <input type="hidden" name="cpage" value="1">
                         </div>
                         <div id="search_btn">
@@ -393,9 +386,6 @@
                     <form id="ckeckListView-form" action="<%= contextPath %>/update.ck" method="post">
                         <table border="1">
                             <thead>
-                                <th width="130">
-                                    <input type="checkbox" name="check" style="width:30px;height:30px;border:none;" onclick="selectAll(this)">
-                                </th>
                                 <th width="130">번호</th>
                                 <th width="130">회원 아이디</th>
                                 <th width="130">이름</th>
@@ -410,7 +400,6 @@
                             <tbody class="listInner">
                                 <% for(Member m : list) { %>
                                     <tr>
-                                        <td><input type="checkbox" name="check" style="width:30px;height:30px;border:none;"></td>
                                         <td><%= m.getMemNo() %></td>
                                         <td><%= m.getMemId() %></td>
                                         <td><%= m.getMemName() %></td>
@@ -477,17 +466,6 @@
             <div id="footer"></div>
         </div>
     </div>
-
-    <!-- 전체 클릭 -->
-    <script>
-        function selectAll(selectAll) {
-            const check = document.getElementsByName('check');
-
-            check.forEach((check) => {
-                check.checked = selectAll.checked;
-            })
-        }
-    </script>
 
     <!-- 회원 등급 수정 -->
     <script>
