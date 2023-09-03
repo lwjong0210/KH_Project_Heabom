@@ -38,7 +38,7 @@ public class BoardDetailController extends HttpServlet {
 
 		
 		String bno = (String)request.getParameter("bno");
-		
+		System.out.println(bno + "boardDetail 에서 bno");
 		
 		BoardService bService = new BoardService();
 		ArrayList<Reply> rlist = new BoardService().selectReplyList(bno);
@@ -52,7 +52,7 @@ public class BoardDetailController extends HttpServlet {
 			Board b = bService.selectBoard(bno);
 			ArrayList<File> flist = bService.selectFileList(b.getBoardNo());
 			PrevNextPage p = new BoardService().prevNextBo(Integer.parseInt(bno));
-			System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋ배고파" + flist);
+			System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋ배고파" + b);
 			request.setAttribute("b", b);
 			request.setAttribute("flist", flist);
 			request.setAttribute("rlist", rlist);

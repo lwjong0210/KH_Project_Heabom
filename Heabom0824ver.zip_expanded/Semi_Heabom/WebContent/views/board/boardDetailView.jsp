@@ -899,8 +899,9 @@ tfoot>tr {
 		</div>
 		<div align="right" id="delete-update-area" style="width: auto;">
 			<% if(loginMember != null && loginMember.getMemId().equals(b.getWriter())) { %>
-				<a class="btn btn-sm btn-warning">수정하기</a>
+				<a href="<%= contextPath %>/updateForm.bo?bno=<%= boardNo %>" class="btn btn-sm btn-warning">수정하기</a>
 				<a onclick="deleteConfirm();" class="btn btn-sm btn-danger">삭제하기</a>
+				
 				<% } %>
 				<script>
 					function deleteConfirm(){
