@@ -321,7 +321,7 @@
                             <form action="">
                                 <tr>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>메인 이미지</td>
+                                    <td>로고 이미지</td>
                                     <td><img id="img1" width="150" height="50" onclick="chooseFile(1);"></td>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                     <td>
@@ -331,7 +331,7 @@
                                  </tr>
                                  <tr>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>메인 이미지</td>
+                                    <td>로고 이미지</td>
                                     <td><img id="img2" width="150" height="50"  onclick="chooseFile(2);"></td>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                     <td>
@@ -341,7 +341,7 @@
                                  </tr>
                                  <tr>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>메인 이미지</td>
+                                    <td>로고 이미지</td>
                                     <td><img id="img3" width="150" height="50"  onclick="chooseFile(3);"></td>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                     <td>
@@ -351,7 +351,7 @@
                                  </tr>
                                  <tr>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>메인 이미지</td>
+                                    <td>로고 이미지</td>
                                     <td><img id="img4" width="150" height="50"  onclick="chooseFile(4);"></td>
                                     <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                     <td>
@@ -394,6 +394,13 @@
                                         case 4: $("#img2").attr("src", e.target.result); break;
                                     }
                                 }
+                            }else {
+                                switch(num) {
+                                        case 1: $("#img1").attr("src", null); break;
+                                        case 2: $("#img2").attr("src", null); break;
+                                        case 3: $("#img2").attr("src", null); break;
+                                        case 4: $("#img2").attr("src", null); break;
+                                    }
                             }
                         }
                     </script>

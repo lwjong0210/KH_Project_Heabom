@@ -33,7 +33,7 @@ public class ReportListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount;
+		  int listCount;
 	      int currentPage;
 	      int pageLimit;
 	      int boardLimit;
