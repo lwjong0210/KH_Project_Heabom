@@ -9,15 +9,17 @@ public class ReviewReply {
 	private String reOriginWriter;
 	private String reContent;
 	private int reLikeStar;
-	private Date reDate;
+	private String reDate;
 	private String reLevel;
 	private String reStatus;
 	private String nickname;
+	private String imgPath;
+	private String fileLevel;
 	
 	public ReviewReply () {}
 
 	public ReviewReply(String reNo, String reRefNo, String reWriter, String reOriginWriter, String reContent,
-			int reLikeStar, Date reDate, String reLevel, String reStatus) {
+			int reLikeStar, String reDate, String reLevel, String reStatus) {
 		super();
 		this.reNo = reNo;
 		this.reRefNo = reRefNo;
@@ -32,7 +34,7 @@ public class ReviewReply {
 	
 	
 
-	public ReviewReply(String reNo, String reRefNo, String reWriter, String reContent, int reLikeStar, Date reDate,
+	public ReviewReply(String reNo, String reRefNo, String reWriter, String reContent, int reLikeStar, String reDate,
 			String reLevel, String nickname) {
 		super();
 		this.reNo = reNo;
@@ -43,6 +45,37 @@ public class ReviewReply {
 		this.reDate = reDate;
 		this.reLevel = reLevel;
 		this.nickname = nickname;
+	}
+	
+	
+	
+	
+	public ReviewReply(String reRefNo, String reNo, String reContent, String nickname, String reDate, String imgPath,
+			String reLevel) {
+		super();
+		this.reRefNo = reRefNo;
+		this.reNo = reNo;
+		this.reContent = reContent;
+		this.nickname = nickname;
+		this.reDate = reDate;
+		this.imgPath = imgPath;
+		this.reLevel = reLevel;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public String getFileLevel() {
+		return fileLevel;
+	}
+
+	public void setFileLevel(String fileLevel) {
+		this.fileLevel = fileLevel;
 	}
 
 	public String getReNo() {
@@ -93,11 +126,11 @@ public class ReviewReply {
 		this.reLikeStar = reLikeStar;
 	}
 
-	public Date getReDate() {
+	public String getReDate() {
 		return reDate;
 	}
 
-	public void setReDate(Date reDate) {
+	public void setReDate(String reDate) {
 		this.reDate = reDate;
 	}
 

@@ -4,6 +4,8 @@
     pageEncoding="UTF-8"%>
 <%
 	ArrayList<ReviewReply> relist = (ArrayList<ReviewReply>)request.getAttribute("relist");
+	String reContextPaht = request.getContextPath();
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +39,7 @@
         }
     
         .text_limit {
-            width: 250px;
+            width: 300px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;  /* 말줄임 적용 */
@@ -59,21 +61,21 @@
                 <table border="0" class="detail_tb">
                     <tr>
                         <td height="80" width="80">
-                            <img src="https://tse1.mm.bing.net/th?id=OIP.bcPW77h3l7ZG8_rqFbsIKwHaHj&pid=Api&P=0&h=220" alt="" style="width: 100%; height: 100%; border-radius: 50px;">
+                        <% if(re.getImgPath().length() < 5) { %>
+                            <img src="<%=reContextPaht %>/resource/img/profile/기본이미지.png" alt="" style="width: 70%; height: 70%; border-radius: 50px;">
+                        <% } else { %>
+                        	<img src="<%=reContextPaht %><%=re.getImgPath() %>" alt="" style="width: 70%; height: 70%; border-radius: 50px;">
+                        <% } %>
                         </td>
                         <td width="3"></td>
                         <td width="250">
                             <div style="font-size: medium; margin-bottom: 5px;"><strong><%=re.getNickname() %>님께서</strong>
-                                <% if(re.getReLevel().equals("1")) { %>
+                                <% if(re.getReNo().substring(0,2).equals("RV")) { %>
                                 	내 게시물에 리뷰를 작성하였습니다.</div>
                                 <% } else { %>
                                 	내 게시물에 리플을 작성하였습니다.</div>
                                 <% } %>
                             <div class="text_limit" style="font-size: small;"><%=re.getReContent() %></div>
-                        </td>
-                        <td width="3"></td>
-                        <td width="110" height="100">
-                            <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
                         </td>
                     </tr>
                 </table>

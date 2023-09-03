@@ -30,20 +30,20 @@ public class ReviewReplyDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectReviewReply");
+		String sql = prop.getProperty("selectReviewReply1");
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memNo);
+			pstmt.setString(2, memNo);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				relist.add(new ReviewReply(rset.getString("RE_NO")
-						                  ,rset.getString("RE_REF_NO")
-						                  ,rset.getString("RE_WRITER")
+				relist.add(new ReviewReply(rset.getString("RE_REF_NO")
+						                  ,rset.getString("RE_NO")
 						                  ,rset.getString("RE_CONTENT")
-						                  ,rset.getInt("RE_LIKE_STAR")
-						                  ,rset.getDate("RE_DATE")
-						                  ,rset.getString("RE_LEVEL")
 						                  ,rset.getString("NICKNAME")
+						                  ,rset.getString("RE_DATE")
+						                  ,rset.getString("IMG_PATH")
+						                  ,rset.getString("FILE_LEVEL")
 						                  ));
 
 			}
