@@ -86,7 +86,7 @@
                     <td height="30" width="350" colspan="4"><div class="text_limit"><%=b.getBoardContent() %></div></td>
                 </tr>
                 <tr>
-                <% if(b.getHashTagName().length() < 1 ) { %>
+                <% if(b.getHashTagName() == null ) { %>
                 	<td height="20" width="350" colspan="4">
                 		<div class="text_limit" >
                 			<a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a>
