@@ -18,7 +18,8 @@ FROM(SELECT
         WHERE STATUS = 'Y'
         AND WRITER = ?
         ORDER BY MAKE_DATE DESC) A
-LEFT JOIN TB_FILE ON (REF_NO = A.PLACE_NO) 
+LEFT JOIN TB_FILE ON (REF_NO = A.PLACE_NO)
+WHERE FILE_LEVEL = 1
 </entry>
 
 <entry key="insertPlace">

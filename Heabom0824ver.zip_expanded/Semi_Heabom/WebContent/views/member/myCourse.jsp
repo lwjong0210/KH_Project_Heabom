@@ -95,7 +95,7 @@
 	        <% } %>
         <% } else { %>
         <div class="thumbnail" align="center">
-        	<p>해봄에서는 나만의 코스를 만들수 있습니다.</p>
+        	<a href="<%=cContextPath%>/searchCourse.pl"><p style="color: black;">해봄에서는 나만의 코스를 만들수 있습니다.</p></a>
         </div>
         <% } %>
     </div>

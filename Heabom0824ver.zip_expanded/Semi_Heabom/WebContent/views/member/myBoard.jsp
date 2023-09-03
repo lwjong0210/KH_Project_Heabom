@@ -61,6 +61,13 @@
     .text_limit:hover{
         color: darkgray;
     }
+    #notMyboard{
+        color: black;
+        text-decoration: none;
+    }
+    #notMyBoard:hover{
+        color: red;
+    }
 
 
     </style>
@@ -120,7 +127,7 @@
         <% } %>
     <% }else{ %>
             <div class="yj_myBoard_detail">
-                <p>자유게시판에서 글을 작성해 보세요.</p>
+                <a id="notMyBoard" href="<%=bContextPath%>/list.bo?cpage=1" style="color: black;" >자유게시판에서 글을 작성해 보세요.</a>
             </div>
    	<% } %>
     </div>
