@@ -31,10 +31,11 @@ public class ReportMemberDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		
 		
-		int result = new MemberService().deleteReportMember(userPwd);
+		int result = new MemberService().deleteReportMember(userId, userPwd);
 		System.out.println(result);
 		
 		

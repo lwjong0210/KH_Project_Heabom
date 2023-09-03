@@ -167,6 +167,7 @@ public class MemberDao {
 			
 		}
 	   
+	   /*
 	   public int deleteReportMember(Connection conn, String userPwd) {
 		   
 		   int result = 0;
@@ -188,6 +189,36 @@ public class MemberDao {
 		}
 		   return result;
 	   }
+	   */
+	   
+	   public int deleteReportMember(Connection conn, String userId, String userPwd) {
+		    
+		   int result = 0;
+
+		   try {
+		       // MEM_ID 및 MEM_PWD를 기반으로 회원 삭제하는 SQL 쿼리
+		       String sql = "DELETE FROM TB_MEMBER WHERE MEM_ID = ? AND MEM_PWD = ?";
+		       PreparedStatement pstmt = conn.prepareStatement(sql);
+		       pstmt.setString(1, userId);     // MEM_ID 매개변수 설정
+		       pstmt.setString(2, userPwd);    // MEM_PWD 매개변수 설정
+
+		       result = pstmt.executeUpdate();
+
+		       if (result > 0) {
+		           commit(conn);
+		       } else {
+		           rollback(conn);
+		       }
+
+		   } catch (SQLException e) {
+		       e.printStackTrace();
+		   } finally {
+		       close(conn);
+		   }
+
+		   return result;
+
+		}
 	   
 	   
 	   

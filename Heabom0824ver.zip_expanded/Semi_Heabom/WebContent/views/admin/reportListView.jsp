@@ -286,7 +286,7 @@
             <div id="header">
                 <div id="header_1"></div>
                 <div id="header_2">
-                    <p id="p1">신고 수 : </p>
+                    <p id="p1">신고 수 : <%= pi.getListCount() %></p>
                 </div>
                 <div id="header_3">
                     <div class="dropdown">
@@ -393,8 +393,8 @@
                     <div class="modal-body" align="center">
                       <form action="delete.re" method="post">
                           <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
-                          
-                          <input type="password" name="userPwd" value="">
+                          <input type="hidden" name="userId" value="<%= loginMember.getMemId() %>">
+                          <input type="password" name="userPwd">
                           <button type="submit" class="btn btn-sm btn-warning">보류</button>
                           <button type="submit" class="btn btn-sm btn-danger">추방</button>
                           
