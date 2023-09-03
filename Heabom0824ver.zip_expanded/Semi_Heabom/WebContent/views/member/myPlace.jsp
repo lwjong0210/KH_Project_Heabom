@@ -115,9 +115,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;"><%=p.getMakeDate() %></td>
+                    <td width="100" style="text-align: center; font-size: smaller;"><%=p.getMakeDate() %></td>
                     <td width="80" style="text-align: center; font-size: smaller;">조회수: <%=p.getStarPoint() %></td>
-                    <td width="150" style="text-align: center; font-size: smaller;">별점: <%=p.getViewCount() %></td>
+                    <td width="170" style="text-align: center; font-size: smaller;">
+                    	별점:
+                    	<% for(int i = 0; i<p.getViewCount(); i++) { %>
+                    	⭐
+                    	<% } %>
+                    	(<%=p.getViewCount() %>)
+                   	</td>
                 </tr>
             </table>
         </div>
