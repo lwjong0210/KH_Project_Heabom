@@ -34,7 +34,7 @@ public class ReportMemberDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("memId");
 		
 		System.out.println("안녕?");
 		
