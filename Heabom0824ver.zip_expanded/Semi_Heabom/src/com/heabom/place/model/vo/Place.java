@@ -25,7 +25,20 @@ public class Place {
 	private int likeCount ;
 	private String imgpath;
 	
+	private String userImgPath;
 	
+	public String getUserImgPath() {
+		return userImgPath;
+	}
+
+
+
+	public void setUserImgPath(String userImgPath) {
+		this.userImgPath = userImgPath;
+	}
+
+
+
 	private String titleImg ;
 	
 	

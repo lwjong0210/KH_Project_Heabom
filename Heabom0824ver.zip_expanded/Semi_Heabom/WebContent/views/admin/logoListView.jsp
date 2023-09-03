@@ -301,7 +301,7 @@
         <div class="background">
             <div id="header">
                 <div id="header_1"></div>
-                <div id="header_2"><strong id="strong">로고 관리</strong></div>
+                <div id="header_2"><strong id="strong">배너 관리</strong></div>
                 <div id="header_3"></div>
                 <div id="header_4"></div>
                 <div id="header_5"></div>
@@ -311,52 +311,17 @@
                 <div id="content_2">
                     <table border="1">
                         <thead>
-                            <th width="100"><input type="checkbox" style="width:30px;height:30px;border:none;"></th>
                             <th width="120">분류</th>
                             <th width="150">이미지</th>
-                            <th width="120">사용여부</th>
                             <th width="120">관리</th>
                         </thead>
                         <tbody id="tbody">
                             <form action="">
                                 <tr>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>로고 이미지</td>
+                                    <td>배너 이미지</td>
                                     <td><img id="img1" width="150" height="50" onclick="chooseFile(1);"></td>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
                                     <td>
                                         <button type="submit" id="button1" class="btn btn-primary">등록</button>
-                                        <button type="button" id="button2" class="btn btn-danger">삭제</button>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>로고 이미지</td>
-                                    <td><img id="img2" width="150" height="50"  onclick="chooseFile(2);"></td>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>
-                                        <button type="submit" id="button1" class="btn btn-primary">등록</button>
-                                        <button type="button" id="button2" class="btn btn-danger">삭제</button>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>로고 이미지</td>
-                                    <td><img id="img3" width="150" height="50"  onclick="chooseFile(3);"></td>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>
-                                        <button type="submit" id="button1" class="btn btn-primary">등록</button>
-                                        <button type="button" id="button2" class="btn btn-danger">삭제</button>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>로고 이미지</td>
-                                    <td><img id="img4" width="150" height="50"  onclick="chooseFile(4);"></td>
-                                    <td><input type="checkbox" style="width:30px;height:30px;border:none;"></td>
-                                    <td>
-                                        <button type="submit" id="button1" class="btn btn-primary">등록</button>
-                                        <button type="button" id="button2" class="btn btn-danger">삭제</button>
                                     </td>
                                  </tr>
                             </form>
@@ -371,9 +336,6 @@
                 <div id="footer_3">
                     <div id="file-area" style="display: none;">
                         <input type="file" name="file1" id="file1" onchange="loadImg(this, 1);">
-                        <input type="file" name="file2" id="file2" onchange="loadImg(this, 2);">
-                        <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
-                        <input type="file" name="file4" id="file4" onchange="loadImg(this, 4);">
                     </div>
 
                     <script>
@@ -389,17 +351,11 @@
                                 reader.onload = function(e) {
                                     switch(num) {
                                         case 1: $("#img1").attr("src", e.target.result); break;
-                                        case 2: $("#img2").attr("src", e.target.result); break;
-                                        case 3: $("#img2").attr("src", e.target.result); break;
-                                        case 4: $("#img2").attr("src", e.target.result); break;
                                     }
                                 }
                             }else {
                                 switch(num) {
                                         case 1: $("#img1").attr("src", null); break;
-                                        case 2: $("#img2").attr("src", null); break;
-                                        case 3: $("#img2").attr("src", null); break;
-                                        case 4: $("#img2").attr("src", null); break;
                                     }
                             }
                         }

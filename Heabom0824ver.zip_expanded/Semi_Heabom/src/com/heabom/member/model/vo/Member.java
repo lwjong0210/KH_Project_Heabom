@@ -88,6 +88,14 @@ public class Member {
 		this.memPoint = memPoint;
 	}
 	
+
+	public Member(String memId) {
+		super();
+		this.memId = memId;
+	}
+	
+	
+	
 	
 	
 

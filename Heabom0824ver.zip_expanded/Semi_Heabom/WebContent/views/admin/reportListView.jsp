@@ -292,20 +292,11 @@
                 <div id="header_2">
                     <p id="p1">신고 수 : <%= pi.getListCount() %></p>
                 </div>
-                <div id="header_3">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">회원 아이디</button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Link 1</a>
-                          <a class="dropdown-item" href="#">Link 2</a>
-                          <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                      </div>
-                </div>
+                <div id="header_3"></div>
                 <div id="header_4">
                     <form action="<%= contextPath %>/search.re?cpage=1&keyword" id="search_form" method="get">
                         <div id="search_text">
-                            <input type="text" id="keyword" name="keyword">
+                            <input type="text" id="keyword" name="keyword" placeholder="피신고자 아이디 입력">
                             <input type="hidden" name="cpage" value="1">
                         </div>
                         <div id="search_btn">
@@ -327,7 +318,6 @@
                             <th width="130">신고시간</th>
                             <th width="180">신고처리시간</th>
                             <th width="130">처리내역</th>
-                            <th width="130">보기</th>
                             <th width="130">관리</th>
                         </thead>
                         <tbody id="tbody">
@@ -335,12 +325,11 @@
                             <tr>
                                 <td><%= r.getReportNo() %></td>
                                 <td><%= r.getReporter() %></td>
-                                <td><%= userId %></td>
+                                <td><%= r.getReported() %></td>
                                 <td><%= r.getReCategory() %></td>
                                 <td><%= r.getReDate() %></td>
                                 <td><%= r.getReComplite() %></td>
                                 <td><span class="badge badge-pill badge-success"><%= r.getReStatus() %></span></td>
-                                <td>사유 불 충분</td>
                                 <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deleteModal">관리</button></td>
                              </tr>
                              <% } %>
@@ -399,8 +388,7 @@
                       <form action="<%= contextPath %>/delete.re" method="post">
                           <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
                           <input type="hidden" name="userId" value="<%= userId %>">
-                          <input type="password" name="userPwd">
-                          <button type="submit" class="btn btn-sm btn-warning">보류</button>
+                          <input type="text" name="memId">
                           <button type="submit" class="btn btn-sm btn-danger">추방</button>
                           
                       </form>

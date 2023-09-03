@@ -14,7 +14,7 @@ public class Review {
 	
 	private String nickname;
 	private String imgPath;
-	
+	private String userImgPath;
 	
 	public Review () {}
 
@@ -31,7 +31,6 @@ public class Review {
 		this.reRefStar = reRefStar;
 	}
 
-	
 
 	public Review(String reNo, String reWriter, String nickname, String reContent, int reLikeStar, int reRefStar,
 			String reDate, String imgPath) {
@@ -44,6 +43,30 @@ public class Review {
 		this.reRefStar = reRefStar;
 		this.reDate = reDate;
 		this.imgPath = imgPath;
+	}
+
+	
+	
+	public Review(String reNo, String reWriter, String nickname, String reContent, int reLikeStar, int reRefStar,
+			String reDate, String imgPath, String userImgPath) {
+		super();
+		this.reNo = reNo;
+		this.reWriter = reWriter;
+		this.nickname = nickname;
+		this.reContent = reContent;
+		this.reLikeStar = reLikeStar;
+		this.reRefStar = reRefStar;
+		this.reDate = reDate;
+		this.imgPath = imgPath;
+		this.userImgPath = userImgPath;
+	}
+
+	public String getUserImgPath() {
+		return userImgPath;
+	}
+
+	public void setUserImgPath(String userImgPath) {
+		this.userImgPath = userImgPath;
 	}
 
 	public String getNickname() {

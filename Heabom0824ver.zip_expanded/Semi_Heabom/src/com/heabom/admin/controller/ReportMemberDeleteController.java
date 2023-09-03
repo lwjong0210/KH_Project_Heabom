@@ -1,6 +1,8 @@
 package com.heabom.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,28 +33,26 @@ public class ReportMemberDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
+		
+		String userId = request.getParameter("memId");
+		
+		System.out.println("안녕?");
 		
 		
-		int result = new MemberService().deleteReportMember(userId, userPwd);
+		int result = new MemberService().deleteReportMember(userId);
 		System.out.println(result);
 		
 		
 		HttpSession session = request.getSession();
 		
-		if (result == 0) { // 실패
+		if (result == 0) {
 		    session.setAttribute("alertMsg", "추방 실패");
 		    response.sendRedirect(request.getContextPath() + "/report.ad?cpage=1");
-		} else { // 성공
+		} else {
+			session.setAttribute("alertMsg", "추방 성공");
 		    Member loginMember = (Member) session.getAttribute("loginMember");
 		    
-		    // 추방된 회원이 관리자 자신인지 확인
-		    if (loginMember != null && !userPwd.equals(loginMember.getMemPwd())) {
-		        session.setAttribute("alertMsg", "추방 성공");
-		    } else {
-		        session.setAttribute("alertMsg", "회원 추방 성공");
-		    }
+		    
 		    
 		    // 관리자의 경우 'loginMember' 속성을 제거하지 않음.
 		    response.sendRedirect(request.getContextPath() + "/report.ad?cpage=1");

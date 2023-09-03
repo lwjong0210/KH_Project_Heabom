@@ -75,7 +75,7 @@
                                 <% } else { %>
                                 	내 게시물에 리플을 작성하였습니다.</div>
                                 <% } %>
-                            <div class="text_limit" style="font-size: small;"><%=re.getReContent() %></div>
+                            <div class="text_limit" style="font-size: medium;"><%=re.getReContent() %></div>
                         </td>
                     </tr>
                 </table>

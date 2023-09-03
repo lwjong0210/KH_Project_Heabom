@@ -261,5 +261,6 @@ tbody>tr:hover {
 		})
 
 	</script>
+	<%@ include file="../common/footer.jsp"%>	
 </body>
 </html>
