@@ -35,7 +35,10 @@ public class ReportMemberDeleteController extends HttpServlet {
 		
 		
 		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
+		String userPwd = request.getParameter("userPwd"); //이건 왜있누
+		
+		System.out.println("안녕?");
+		System.out.println(userId + "" + userPwd);
 		
 		
 		int result = new MemberService().deleteReportMember(userId, userPwd);
