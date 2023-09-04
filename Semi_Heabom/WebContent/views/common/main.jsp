@@ -48,7 +48,7 @@
     <title>Document</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <style>
-        /* #wrap{
+         #wrap{
             width: 1900px;
             height: auto;
             border: 0px solid black;
@@ -56,7 +56,8 @@
             margin: auto;
             margin-top: 30px;
            
-        } */
+        } 
+       
         div{
             border: 0px solid black;
 
@@ -147,19 +148,14 @@
 
 
 
-        
-
-
-
-
 
 
 
     </style>
 </head>
 <body>
+
     <div id="wrap">
-    
 
         <div id="content">
             <div id="content_1"  style="border: 1px solid black;">
