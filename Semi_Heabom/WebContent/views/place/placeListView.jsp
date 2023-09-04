@@ -141,6 +141,7 @@
   width: 1900px;
   text-align: center;
   border: 1px solid black;
+  margin: auto;
 }
 
 main {

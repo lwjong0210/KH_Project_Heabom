@@ -79,14 +79,28 @@
             margin-top: 30px;
             background-color: pink;
         }
+        #plzLogin{
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        
+        #plzLogin:hover {
+            color: red;
+        }
 
     </style>
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
+<%if (loginMember != null){ %>
 <div id = "enrollBtn" align ="center">
 <button   class="btn btn-primary" onclick="location.href ='<%=contextPath%>/enrollForm.pl'">맛집 등록하기</button>
 </div>
+<%}else{ %>
+<div id = "plzLogin" align ="center" >
+	<h2 data-toggle="modal" data-target="#myModal">로그인 하시면 장소를 등록할수 있어용</h2>
+</div>
+<%} %>
         <div class="wrap">
             <div id="box">
                 <a href='<%=contextPath%>/searchListView.pl?lNo=1'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>

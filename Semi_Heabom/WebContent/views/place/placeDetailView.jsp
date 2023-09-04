@@ -39,15 +39,16 @@
     .place-img {
         width: 50%;
         position: relative;
+      
     }
 
 
 
     .place-img img {
-        width: 80%;
+        width: 70%;
         height: 100%;
         object-fit: cover;
-        margin-left: 60px;
+        margin-left: 150px;
     }
     .place-description {
         width: 50%;
@@ -162,7 +163,7 @@
     <%@ include file="../common/header.jsp" %>
     <h1 align="center"><%=place.getPlaceTitle()%></h1>
     <div class="wrap">
-        <div class="place-img" style="border: 1px solid black;">
+        <div class="place-img" style="border: 0px solid black;">
 
             <div class="container mt-3">
                
@@ -191,11 +192,11 @@
                   </div>
                   
                   <!-- Left and right controls -->
-                  <a class="carousel-control-prev" href="#myCarousel">
-                    <span class="carousel-control-prev-icon"></span>
+                  <a  class="carousel-control-prev" href="#myCarousel">
+                    <span class="carousel-control-prev-icon" style="background-color: red;" ></span>
                   </a>
-                  <a class="carousel-control-next" href="#myCarousel">
-                    <span class="carousel-control-next-icon"></span>
+                  <a   class="carousel-control-next" href="#myCarousel">
+                    <span class="carousel-control-next-icon" style="background-color: red;"></span>
                   </a>
                 </div>
                 </div>

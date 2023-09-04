@@ -157,6 +157,7 @@
   width: 1900px;
   text-align: center;
   border: 1px solid black;
+  margin: auto;
 }
 
 main {
@@ -267,7 +268,7 @@ main {
 			//$(".wrap").find(".description_no").css("color","red");
 			$(".btnClass").click(function(){
 				let str = $(this).siblings(".description_no").html();
-				alert(str);
+			
 			})
 		})
 				

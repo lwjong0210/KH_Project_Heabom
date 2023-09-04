@@ -86,6 +86,7 @@
   width: 1900px;
   text-align: center;
   border: 1px solid black;
+  margin: auto;
 }
 
 main {
@@ -107,6 +108,7 @@ main {
     cursor: pointer;
     border: 1px solid black;
     text-align: center;
+    
 }
 
 .img {
@@ -147,6 +149,16 @@ main {
 .description>.description_title {
     font-weight: bold;
 }
+
+#plzLogin{
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        
+        #plzLogin:hover {
+            color: red;
+        }
+
     </style>
 </head>
 <body>
@@ -156,7 +168,9 @@ main {
     <%if (loginMember != null){ %>
     <h1  align="center"><button onclick="location.href ='<%=contextPath%>/saveCourse.pl?str1=<%=str1%>&str2=<%=str2%>&str3=<%=str3%>&money=<%=totalMoney %>&time=<%=totalTime %>'">코스 저장</button></h1>
     <%}else{ %>
-     <h1  align="center">로그인하시면 코스 저장이 가능해요!</h1>
+      <div id = "plzLogin" align ="center" >
+     <h1  align="center" data-toggle="modal" data-target="#myModal">로그인하시면 코스 저장이 가능해요!</h1>
+    </div>
     <%} %>
     <div class="wrap">
     
