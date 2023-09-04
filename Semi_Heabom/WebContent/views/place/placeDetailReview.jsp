@@ -276,27 +276,32 @@ function insertReview1(){
                 <input type="hidden" name="userId" value="">
                     <b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
                     아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
-                    <table border="0">
-                        <tr>
-                            <td>신고종류 : </td>
-                            <td>
-                                <select name="" id="" style="width: 295px">
-                                    <option value="">폭언/욕설</option>
-                                    <option value="">불법광고</option>
-                                    <option value="">음란물</option>
-                                    <option value="">허위게시글</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>신고내용 : </td>
-                            <td>
-                                <textarea name="" id="" cols="30" rows="5" style="resize: none;">
-                
-                                </textarea>
-                            </td>
-                        </tr>    
-                    </table>
+					    <table border="0">
+					        <tr>
+					            <td>신고종류 : </td>
+					            <td>
+					                <select name="" id="" style="width: 295px">
+					                    <option value="">폭언/욕설</option>
+					                    <option value="">불법광고</option>
+					                    <option value="">음란물</option>
+					                    <option value="">허위게시글</option>
+					                </select>
+					            </td>
+					        </tr>
+					        <tr>
+					            <td>신고내용 : </td>
+					            <td>
+					                <textarea name="" id="" cols="30" rows="5" style="resize: none;">
+					
+					                </textarea>
+					            </td>
+					        </tr>
+					        <tr>
+					            <th colspan="2">
+					                <p style="color: red; margin: 0;">무고한 신고는 신고자 계정이 재제 당할 수 있습니다.<input type="checkbox"></p>
+					            </th>
+					        </tr>
+					    </table>
                     <button type="submit" class="btn btn-sm btn-danger" onclick="vaildateStatus()">탈퇴하기</button>
                 </form>
             </div>
