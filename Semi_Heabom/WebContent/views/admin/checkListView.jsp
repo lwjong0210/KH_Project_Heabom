@@ -347,6 +347,9 @@
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
+<%
+   String memId = (String)request.getAttribute("memId");
+%>
     <div class="wrap">
         <div class="background">
             <div id="header">
@@ -379,27 +382,30 @@
                                 <th width="130">이름</th>
                                 <th width="130">별명</th>
                                 <th width="120">등급</th>
+                                <th></th>
                                 <th width="120">포인트</th>
                                 <th width="160">최종 접속</th>
                                 <th width="120">이메일</th>
                                 <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">변경</button>
                             </thead>
                             <tbody class="listInner">
-                                <% for(Member m : list) { %>
+                            <input type="hidden" name="listSize" value="<%=list.size()%>">
+                                <% for (int i = 0; i<list.size(); i++) { %>
                                     <tr>
-                                        <td><%= m.getMemNo() %></td>
-                                        <td><%= m.getMemId() %></td>
-                                        <td><%= m.getMemName() %></td>
-                                        <td><%= m.getNickname() %></td>
-                                        <td><%= m.getGrade() %></td>
-                                        <td><input type="text" name="memPoint" style="width: 50%;"></td>
-                                        <td><%= m.getMemVisit() %></td>
-                                        <td><%= m.getEmail() %></td>
+                                        <td><%= list.get(i).getMemNo() %></td>
+                                        <td><%= list.get(i).getMemId() %></td>
+                                        <td><%= list.get(i).getMemName() %></td>
+                                        <td><%= list.get(i).getNickname() %></td>
+                                        <td><%= list.get(i).getGrade() %></td>
+                                        <td><input type="hidden" name="memId<%=i %>" value="<%= list.get(i).getMemId() %>"></td>
+                                        <td><input type="text" name="memPoint<%=i %>" style="width: 50%;" ></td>
+                                        <td><%= list.get(i).getMemVisit() %></td>
+                                        <td><%= list.get(i).getEmail() %></td>
                                         <td>
-                                            <input type="submit" value="변경" onclick="changeFn()">
+                                            <input type="submit" id="commentbtn<%=i %>" value="변경" onclick="clkBtn()">
                                         </td>
                                     </tr>
-                                    <% } %>
+                                   <% } %>
                             </tbody>
                         </table>
                     </form>
@@ -445,6 +451,12 @@
 
     <!-- 회원 등급 수정 -->
     <script>
+        function clkBtn() {
+            $('input[name="memPoint"]').each(function(idx, item) {
+                var arr = $(item).val();
+                console.log(arr);
+            });
+        }
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>
