@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.heabom.admin.model.vo.Report;
 import com.heabom.place.model.service.PlaceService;
 import com.heabom.place.model.vo.Review;
 
@@ -36,6 +37,7 @@ public class PlaceReviewSelectController extends HttpServlet {
 		ArrayList<Review> rlist = new PlaceService().selectReplyList(pNo);
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(rlist, response.getWriter());
+		
 	}
 
 	/**

@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.admin.model.vo.Report;
+
 /**
  * Servlet implementation class UserReportController
  */
-@WebServlet("/insert.rp")
+@WebServlet("/insert1.rp")
 public class UserReportController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,8 +28,18 @@ public class UserReportController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String reporter = request.getParameter("reporter");
+		String reported = request.getParameter("reporter");
+		String reportType = request.getParameter("reportType");
+		String reportContent = request.getParameter("reportContent");
+		
+		Report re = new Report();
+		re.setReporter(reporter);
+		re.setReported(reported);
+		re.setReCategory(reportType);
+		re.setReContent(reportContent);
+		
+		
 	}
 
 	/**
