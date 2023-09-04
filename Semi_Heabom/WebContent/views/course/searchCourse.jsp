@@ -81,7 +81,7 @@
 <body>
 <%@include file = "../common/header.jsp" %>
 
-<button  class="btn btn-primary" onclick="location.href ='<%=contextPath%>/enrollForm.pl'">장소 새로 등록하기</button>
+
    
         <div class="wrap">
             <div id="box">

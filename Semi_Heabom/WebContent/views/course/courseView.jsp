@@ -153,7 +153,11 @@ main {
 	
     <%@include file = "../common/header.jsp" %>
     <h1 align="center">코스조회</h1>
+    <%if (loginMember != null){ %>
     <h1  align="center"><button onclick="location.href ='<%=contextPath%>/saveCourse.pl?str1=<%=str1%>&str2=<%=str2%>&str3=<%=str3%>&money=<%=totalMoney %>&time=<%=totalTime %>'">코스 저장</button></h1>
+    <%}else{ %>
+     <h1  align="center">로그인하시면 코스 저장이 가능해요!</h1>
+    <%} %>
     <div class="wrap">
     
     

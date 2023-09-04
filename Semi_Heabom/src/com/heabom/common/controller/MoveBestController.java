@@ -41,9 +41,7 @@ public class MoveBestController extends HttpServlet {
 		request.setAttribute("placeInfo", p);
 		request.setAttribute("fileList", fileList);
 		request.getRequestDispatcher("views/place/placeDetailView.jsp").forward(request, response);
-		
-		
-		
+
 	}
 
 	/**
