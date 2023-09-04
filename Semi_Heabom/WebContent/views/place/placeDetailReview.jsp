@@ -4,7 +4,10 @@
     pageEncoding="UTF-8"%>
 <%
 	String contextPath1 = request.getContextPath();
-	Member loginMember1 =  (Member)session.getAttribute("loginMember");
+	Member loginMember1 = new Member();
+	if((Member)session.getAttribute("loginMember") != null){
+		loginMember1 =  (Member)session.getAttribute("loginMember");
+	}
 %>      
 <!DOCTYPE html>
 <html>
@@ -64,7 +67,7 @@
                 <textarea name="content" id="content" cols="118" rows="5" style="resize: none;" placeholder="해봄은 여러분의 소중한 리뷰를 기다리고 있습니다."></textarea>
             </div>
             <div class="text_btn" align="center" style="float: left; width: 900px;">
-            <% if(loginMember1 != null) { %>
+            <% if(loginMember1.getMemNo() != null) { %>
                 <div class="options" align="center" style="text-align: right;">
                     <button type="button" id="uploadBtn">파일첨부</button>
                     &lt; 별점 &gt;
