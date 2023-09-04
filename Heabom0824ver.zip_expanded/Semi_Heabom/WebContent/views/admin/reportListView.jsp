@@ -282,7 +282,6 @@
 <%@include file = "../common/header.jsp" %>
 <%
 	String userId = loginMember.getMemId();
-	String userPwd = loginMember.getMemPwd();
 %>
 
     <div class="wrap">

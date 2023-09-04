@@ -281,7 +281,9 @@
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
-
+<%
+	String userId = loginMember.getMemId();
+%>
     <div class="wrap">
         <div class="background">
             <div id="header">
@@ -384,7 +386,8 @@
                     <div class="modal-body" align="center">
                       <form action="delete.re" method="post">
                           <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
-                          <input type="text" name="memId" value="">
+                          <input type="hidden" name="userId" value="<%= userId %>">
+                          <input type="text" name="memId">
                           <button type="submit" class="btn btn-sm btn-danger">추방</button>
                           
                       </form>
