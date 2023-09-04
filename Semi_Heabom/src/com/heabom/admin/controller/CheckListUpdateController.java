@@ -18,7 +18,7 @@ import com.heabom.member.model.vo.Member;
  */
 @WebServlet("/update.ck")
 public class CheckListUpdateController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,46 +28,53 @@ public class CheckListUpdateController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		
-		String memId = request.getParameter("memId");
-		String grade = request.getParameter("grade");
-		int memPoint = Integer.parseInt(request.getParameter("memPoint"));
-		
-		Member m = new Member(memId, grade, memPoint);
-		
-		Member updateMem = new MemberService().updateMember(m);
-		
-		System.out.println(memPoint);
-		
-		if(updateMem != null) {
-			
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("memId", updateMem);
-			session.setAttribute("alertMsg", "성공");
-			
-			response.sendRedirect(request.getContextPath() + "/check.ad");
-			
-		}else {
-			request.setAttribute("errorMsg", "실패");
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-			view.forward(request, response);
-		}
-		
-	}
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      
+      request.setCharacterEncoding("UTF-8");
+      int listSize =Integer.parseInt(request.getParameter("listSize")); 
+      System.out.println(listSize);
+      for(int i = 0; i<listSize; i++) {
+         String memId = request.getParameter("memId"+i);
+         int memPoint = Integer.parseInt(request.getParameter("memPoint"+i));
+         if(memPoint > 0) {
+            Member m = new Member(memId, memPoint);
+            int updateMember = new MemberService().updateMember1(m);
+            
+         }
+      }
+      
+      Member updateMem = new MemberService().updateMember(m);
+      
+      
+      
+      
+      if(updateMem != null) {
+         
+         HttpSession session = request.getSession();
+         
+         session.setAttribute("memId", updateMem);
+         session.setAttribute("alertMsg", "성공");
+         
+         response.sendRedirect(request.getContextPath() + "/check.ad");
+         
+      }else {
+         request.setAttribute("errorMsg", "실패");
+         RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+         view.forward(request, response);
+      }
+      */
+      
+   }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      // TODO Auto-generated method stub
+      doGet(request, response);
+   }
 
 }
