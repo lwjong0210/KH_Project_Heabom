@@ -21,25 +21,7 @@
             border: 0px solid black;
 
         }
-        #header{
-           width: 100%;
-           height: 10%;
-           box-sizing: border-box;
-        }
-        #header_1{
-            float: left;
-            width: 10%;
-            height: 100%;
-            box-sizing: border-box;
-            background-color: white;
-        }
-        #header_2{
-            float: left;
-            width: 90%;
-            height: 100%;
-            box-sizing: border-box;
-            background-color: white;
-        }
+  
         #content{
             width: 100%;
             height: 90%;
@@ -48,11 +30,10 @@
         }
         #content_1{
             float: left;
-            height: 100%;
-            width: 30%;
+            height: 720px;
+            width: 20%;
             box-sizing: border-box;
-            font-size: 15px;
-            padding-top: 400px;
+            border: 1px solid red;
             background-color: pink;
             
         }
@@ -66,36 +47,43 @@
         }
         
         #div1{
-            border: 1px solid black;
-            width: 300px;
-            height: 300px;
+    
+            width: 100%;
+            height: 25%;
             box-sizing: border-box;
-            border-radius: 40px;
+            
         }
         #div2{
             border: 0px solid black;
-            height: 20%;
-            border-radius: 10px;
+            height: 25%;
+            text-decoration: none;
+            color: black;
+            font-weight: 900;
+            font-size: xx-large;
+            text-align: center;
+   
            
         }
         #div3{
             border: 0px solid black;
-            height: 50%;
+            height: 25%;
             border-radius: 10px;
             text-align: center;
         }
         #div4{
             border: 0px solid black;
-            height: 30%;
+            height: 25%;
             
             text-align: center;
-            background-color: white;
+         
             
         }
         #best{
             text-decoration: none;
             color: black;
             font-weight: 900;
+            width: 500px;
+            height: 500px;
             
         }
  
@@ -104,12 +92,10 @@
         height: 100%;
         width: 100%;
         cursor: pointer;
-       
-       
       }
       #main {
-        width: 100%;
-        height: 100%;
+        width: 1300px;
+        height: 720px;
         box-sizing: border-box;
       
       }
@@ -133,15 +119,11 @@
     
 
         <div id="content">
-            <div id="content_1">
-                
-                    <div id="div2">
-                        <button class = "button" id = "leftBtn"> < </button>
-                        
-                        <button class = "button" id = "rightBtn"> > </button>
-                    </div>
-                    <div id="div3"></div>
-                    <div id="div4"></div>;
+            <div id="content_1"  style="border: 1px solid black;">
+                    <div id="div1" ></div>
+                    <div id="div2" ></div>
+                    <div id="div3"  ></div>
+                    <div id="div4" ></div>
                 
             </div>
             <div id="content_2">
@@ -168,15 +150,12 @@
             " <a id='best5'  href='http://www.naver.com'>금주의 베스트게시물5 </a>",
             " <a id='best6' href='http://www.naver.com'>금주의 베스트게시물6 </a>",
             ]
-            
 
-
-            console.log(bests);
-            $("#div3").html(bests[0]);
+            $("#div2").html(bests[0]);
 
 
                 setInterval (function(){
-                    $("#div3").html(bests[i]);
+                    $("#div2").html(bests[i]);
                     i++ ; 
                     if(i == 6){
                         i = 0 ; 
