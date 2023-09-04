@@ -276,8 +276,27 @@ function insertReview1(){
                 <input type="hidden" name="userId" value="">
                     <b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
                     아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
-
-                    비밀번호 : <input type="password" name="userPwd" required> <br><br>
+                    <table border="0">
+                        <tr>
+                            <td>신고종류 : </td>
+                            <td>
+                                <select name="" id="" style="width: 295px">
+                                    <option value="">폭언/욕설</option>
+                                    <option value="">불법광고</option>
+                                    <option value="">음란물</option>
+                                    <option value="">허위게시글</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>신고내용 : </td>
+                            <td>
+                                <textarea name="" id="" cols="30" rows="5" style="resize: none;">
+                
+                                </textarea>
+                            </td>
+                        </tr>    
+                    </table>
                     <button type="submit" class="btn btn-sm btn-danger" onclick="vaildateStatus()">탈퇴하기</button>
                 </form>
             </div>
