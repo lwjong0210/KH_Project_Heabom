@@ -251,32 +251,7 @@ public class MemberDao {
    }
    
    
-   public int updateMember1(Connection conn, Member m) {
-      
-int result = 0;
-      
-      PreparedStatement pstmt = null;
-      
-      String sql = prop.getProperty("updateMember1");
-      
-      try {
-         pstmt = conn.prepareStatement(sql);
-         
-         pstmt.setInt(1, m.getMemPoint());
-         pstmt.setString(2, m.getMemId());
-         
-         result = pstmt.executeUpdate();
-         
-      } catch (SQLException e) {
-         e.printStackTrace();
-      }finally {
-         close(pstmt);
-      }
-      
-      return result;
-      
-      
-   }
+   
    
    
    

@@ -103,24 +103,7 @@ public class MemberService {
    }
    
    
-   public int updateMember1(Member m) {
-      
-      Connection conn = getConnection();
-      
-      int result = new MemberDao().updateMember1(conn, m);
-      
-      if(result > 0) {
-            commit(conn);
-         }else {
-            rollback(conn);
-         }
-         
-         close(conn);
-         
-         return result;
-      
-      
-   }
+   
    
    
    

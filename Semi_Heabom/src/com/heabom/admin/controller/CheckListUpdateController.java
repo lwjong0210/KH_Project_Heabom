@@ -34,23 +34,31 @@ public class CheckListUpdateController extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
       request.setCharacterEncoding("UTF-8");
-      int listSize =Integer.parseInt(request.getParameter("listSize")); 
+      
+      int listSize = Integer.parseInt(request.getParameter("listSize")); 
+      
       System.out.println(listSize);
+      
       for(int i = 0; i<listSize; i++) {
+    	  
+    	  
          String memId = request.getParameter("memId"+i);
          int memPoint = Integer.parseInt(request.getParameter("memPoint"+i));
+         
+         
          if(memPoint > 0) {
+        	 
             Member m = new Member(memId, memPoint);
-            int updateMember = new MemberService().updateMember1(m);
+            Member updateMem = new MemberService().updateMember(m);
             
          }
       }
       
-      Member updateMem = new MemberService().updateMember(m);
+      // Member updateMem = new MemberService().updateMember();
       
       
       
-      
+      /*
       if(updateMem != null) {
          
          HttpSession session = request.getSession();
@@ -66,6 +74,7 @@ public class CheckListUpdateController extends HttpServlet {
          view.forward(request, response);
       }
       */
+      
       
    }
 
