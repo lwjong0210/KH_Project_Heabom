@@ -166,7 +166,7 @@ function selectReplyList(){
 			                    </td>
 			                </tr>
 			                <tr>
-			                    <td colspan="2">\${list[i].nickname} | \${list[i].reDate} | <a href="">신고</a></td>
+			                    <td colspan="2">\${list[i].nickname} | \${list[i].reDate} | <a href="" data-toggle="modal" data-target="#reportModal">신고</a></td>
 			                </tr>`
 			                if( list[i].imgPath != "/") {
 			                result +=  `<tr>
@@ -189,7 +189,7 @@ function selectReplyList(){
 			                    </td>
 			                </tr>
 			            </table>`
-			            }
+			            }                        
             }
             $(".preview").html(result);
         },
@@ -258,6 +258,33 @@ function insertReview1(){
 
 
 </script>
+
+<!-- 신고용 Modal -->
+<div class="modal" id="reportModal" align="center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">리뷰신고</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="#" method="post">
+                <input type="hidden" name="userId" value="">
+                    <b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
+                    아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
+
+                    비밀번호 : <input type="password" name="userPwd" required> <br><br>
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="vaildateStatus()">탈퇴하기</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
