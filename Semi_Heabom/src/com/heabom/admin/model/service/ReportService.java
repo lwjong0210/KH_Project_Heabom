@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.heabom.admin.model.dao.ReportDao;
 import com.heabom.admin.model.vo.Report;
 import com.heabom.board.model.dao.BoardDao;
+import static com.heabom.common.JDBCTemplate.*;
 import com.heabom.common.model.vo.PageInfo;
 import com.heabom.member.model.dao.MemberDao;
 import com.heabom.member.model.vo.Member;
@@ -59,6 +60,17 @@ public class ReportService {
 		
 		close(conn);
 		return list;
+	}
+	
+	public int boardInReport(Report re) {
+		Connection conn = getConnection();
+		int result = new ReportDao().boardInReport(conn, re);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result;
 	}
 	
 }

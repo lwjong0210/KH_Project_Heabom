@@ -185,6 +185,7 @@ function selectReplyList(){
 
 				                        <!-- Modal body -->
 				                        <div class="modal-body">
+                                            <form action="<%=contextPath1%>/insert1.rp" method="post">
 				                            <input type="hidden" name="userId" value="">
 				                            <b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
 				                                아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
@@ -201,7 +202,7 @@ function selectReplyList(){
 				                                            <textarea name="xContent" id="xContent" cols="30" rows="5" readonly style="background-color:lightgray; resize: none;"> \${list[i].reContent} </textarea>
 				                                        </td>
 				                                    </tr>
-				                                    <form action="<%=contextPath1%>/insert.rp" method="post">
+				                                    <input type="hidden" name="reNo" value="\${list[i].reNo}">
 				                                    <input type="hidden" name="reporter" value="<%=loginMember1.getMemNo()%>">
 				                                    <input type="hidden" name="reported" value="">
 				                                    <tr>
@@ -209,9 +210,9 @@ function selectReplyList(){
 				                                        <td>
 				                                        	<input name="reprotTypeSelect" type="hidden" onclick="getReportType(event)" value="">
 				                                            <select name="reportType" id="reportType">
-				                                                <option value="">비방</option>
-				                                                <option value="">불법광고</option>
-				                                                <option value="">허위게시글</option>
+				                                                <option value="비방">비방</option>
+				                                                <option value="불법광고">불법광고</option>
+				                                                <option value="허위게시글">허위게시글</option>
 				                                            </select>
 				                                        </td>
 				                                    </tr>

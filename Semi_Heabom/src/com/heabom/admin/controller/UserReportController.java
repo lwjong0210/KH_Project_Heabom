@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.admin.model.service.ReportService;
 import com.heabom.admin.model.vo.Report;
 
 /**
@@ -28,17 +29,29 @@ public class UserReportController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		String reNo = request.getParameter("reNo");
 		String reporter = request.getParameter("reporter");
 		String reported = request.getParameter("reporter");
 		String reportType = request.getParameter("reportType");
 		String reportContent = request.getParameter("reportContent");
 		
 		Report re = new Report();
+		re.setPostNo(reNo);
 		re.setReporter(reporter);
 		re.setReported(reported);
 		re.setReCategory(reportType);
 		re.setReContent(reportContent);
 		
+		int result = new ReportService().boardInReport(re);
+		
+		if(result > 0) {
+			request.setAttribute("alertMsg", "리뷰 신고에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath()+"/search.pl");
+		}else {
+			request.setAttribute("alertMsg", "리뷰 신고에 실패하였습니다.");
+		}
 		
 	}
 

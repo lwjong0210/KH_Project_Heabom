@@ -168,5 +168,27 @@ private Properties prop = new Properties();
 			return list;
 			
 		}
+	   
+	   public int boardInReport(Connection conn,Report re) {
+		   int result = 0;
+		   PreparedStatement pstmt = null;
+		   String sql = prop.getProperty("boardInReport");
+		   try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, re.getReporter());
+			pstmt.setString(2, re.getReported());
+			pstmt.setString(3, re.getReCategory());
+			pstmt.setString(4, re.getReContent());
+			pstmt.setString(5, re.getPostNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		   return result;
+	   }
 	
 }
