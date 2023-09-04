@@ -32,6 +32,8 @@ public class PlaceLikeUpController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pNo = request.getParameter("input");
+		String writer = request.getParameter("test");
+		
 		HttpSession session = request.getSession();
 		Member m = (Member)session.getAttribute("loginMember");
 		String memNo = m.getMemNo();
@@ -51,6 +53,14 @@ public class PlaceLikeUpController extends HttpServlet {
 			int result2 =  new PlaceService().likeInput(memNo , pNo);//resutl2 도 필요없긴해 사실 void 하고 싶었어..
 			int result = new PlaceService().likeUp(pNo); //좋아요 증가result 필요없을듯?
 			int likeCount = new PlaceService().likeCount(pNo);
+			
+			//좋아요 눌리면 그 쓴놈의 포인트를 증가시켜줍니다
+			int result4 = new PlaceService().upPoint(writer);
+			
+			//그 등급도 업데이트를 시켜야 할듯합니다..
+			int result3 = new PlaceService().upGrade(writer);
+			System.out.println(result3 + " "+ result4);
+			
 			int responseData = likeCount ;
 			response.setContentType("text/html; charset=UTF-8");
 			response.getWriter().print(responseData);
