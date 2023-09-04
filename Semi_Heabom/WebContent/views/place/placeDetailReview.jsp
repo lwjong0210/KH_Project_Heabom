@@ -92,6 +92,69 @@
     </div>
 </div>
 
+<!-- 신고용 Modal -->
+<div class="modal" id="reportModal" align="center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">리뷰신고</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="#" method="post">
+                <input type="hidden" name="userId" value="">
+                    <b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
+                    아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
+                    <table class="reportForm" border="0">
+                        <tr>
+                            <th>신고대상:</th>
+                            <td><input type="text" id="xUser" name="xUser" value="" readonly style="background-color: lightgray;"></td>
+                        </tr>
+                        <tr>
+                            <th>
+                                신고글:
+                            </th>
+                            <td>
+                                <textarea name="xContent" id="xContent" cols="30" rows="5" readonly style="background-color:lightgray; resize: none;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>신고종류 : </th>
+                            <td>
+                            	<input name="reprotTypeSelect" type="hidden" value="">
+                                <select name="reportType" id="reportType">
+                                    <option value="">비방</option>
+                                    <option value="">불법광고</option>
+                                    <option value="">허위게시글</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>신고내용 : </th>
+                            <td>
+                                <textarea name="reportContent" id="reportContent" cols="30" rows="5" style="resize: none;" required placeholder="신고내용은 신고종류에 맞게 작성해주세요. 부적절한 신고 내용은 신고자가 재제의 대상이 됩니다."></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                <p style="color: red; margin: 0; text-align: center;">무고한 신고는 신고자 계정이 재제 당할 수 있습니다.<input id="userReportCheck" type="checkbox" onclick="reportCheck();"></p>
+                            </th>
+                        </tr>
+                    </table>
+                    <br>
+                    <button type="submit" id="userReport" class="btn btn-sm btn-danger" onclick="insertReport()" disabled>신고하기</button>
+                    <button type="reset" class="btn btn-sm btn-info">초기화</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script>
 $(function(){ 
 	selectReplyList();
@@ -146,6 +209,12 @@ function selectReplyList(){
             let result = "";
             $(".preview").html("");
             for(let i=0; i<list.length; i++){
+                let xUserInput = document.getElementById("xUser");
+                xUserInput.value = list[i].nickname;
+
+                let xContentInput = document.getElementById("xContent");
+                xContentInput.value = list[i].reContent;
+
                 result += `<table class="preview_detail" border="2">
 			                <tr>
 			                    <td rowspan="2" width="80" height="80">
@@ -168,6 +237,8 @@ function selectReplyList(){
 			                <tr>
 			                    <td colspan="2">\${list[i].nickname} | \${list[i].reDate} | <a href="" data-toggle="modal" data-target="#reportModal">신고</a></td>
 			                </tr>`
+
+
 			                if( list[i].imgPath != "/") {
 			                result +=  `<tr>
 			                    <td colspan="2" width="550">
@@ -192,6 +263,7 @@ function selectReplyList(){
 			            }                        
             }
             $(".preview").html(result);
+            
         },
         error:function(){
             console.log("ajax 리뷰죠회 실패 ㅠㅠ")
@@ -259,56 +331,26 @@ function insertReview1(){
 
 </script>
 
-<!-- 신고용 Modal -->
-<div class="modal" id="reportModal" align="center">
-    <div class="modal-dialog">
-        <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">리뷰신고</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+<!-- 체크박스 checked 하면 신고버튼 활성화 -->
+<script>
+    function reportCheck() {
+        var checkbox = document.getElementById("userReportCheck");
+        var reportButton = document.getElementById("userReport");
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form action="#" method="post">
-                <input type="hidden" name="userId" value="">
-                    <b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
-                    아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
-					    <table border="0">
-					        <tr>
-					            <td>신고종류 : </td>
-					            <td>
-					                <select name="" id="" style="width: 295px">
-					                    <option value="">폭언/욕설</option>
-					                    <option value="">불법광고</option>
-					                    <option value="">음란물</option>
-					                    <option value="">허위게시글</option>
-					                </select>
-					            </td>
-					        </tr>
-					        <tr>
-					            <td>신고내용 : </td>
-					            <td>
-					                <textarea name="" id="" cols="30" rows="5" style="resize: none;">
-					
-					                </textarea>
-					            </td>
-					        </tr>
-					        <tr>
-					            <th colspan="2">
-					                <p style="color: red; margin: 0;">무고한 신고는 신고자 계정이 재제 당할 수 있습니다.<input type="checkbox"></p>
-					            </th>
-					        </tr>
-					    </table>
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="vaildateStatus()">탈퇴하기</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
+        if (checkbox.checked) {
+            reportButton.removeAttribute("disabled");
+        } else {
+            reportButton.setAttribute("disabled", "disabled");
+        }
+    }
+    
+    function getReportType(event) {
+        event.preventDefault();
+        let reportSelect = $("#reportType option:selected").val();
+        $("#reprotTypeSelect").val(reportSelect);
+    }
+</script>
 
 </body>
 </html>
