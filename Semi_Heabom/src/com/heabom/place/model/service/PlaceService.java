@@ -155,5 +155,37 @@ import com.heabom.place.model.vo.Review;
 			return rlist;
 		}
 	
+		
+		/**
+		 * 좋아요에 따른 등급 업그레이드 해보자
+		 * @return
+		 */
+		public int upGrade(String writer) {
+			Connection conn = getConnection();
+			int result = new PlaceDao().upGrade(conn,writer);
+			if (result > 0) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			return result ;
+		}
+		
+		/**
+		 * 좋아요가 눌리면 글쓴놈 포인트가 올라가야겠지?
+		 * 조준하
+		 * @param writer
+		 * @return
+		 */
+		public int upPoint(String writer) {
+			Connection conn = getConnection();
+			int result = new PlaceDao().upPoint(conn , writer);
+			if (result >0) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			return result ;
+		}
 
 }

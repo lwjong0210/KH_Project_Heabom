@@ -9,7 +9,7 @@
     
 	bannerList = new MainService().selectPlaceList();//메인 배너에 띄울 장소들 가져왔어용
 	int nullCheck = 0; 
-
+	System.out.println(bannerList);
 	//for (int i = 0 ; i < bannerList.size(); i++){
    	//	System.out.println(bannerList.get(i));
 	//}
@@ -32,6 +32,8 @@
 	nullCheck = 1 ;
 	System.out.println(titleImg1);
 	}
+	
+	
     %>
     
 	
@@ -138,7 +140,10 @@
       
       }
 
-
+      .text{
+        color: black;
+        font-size: xx-large;
+      }
 
 
 
@@ -179,9 +184,9 @@
             
             
             let bests = [
-            " <a id='best1' href='http://www.naver.com'>금주의 베스트게시물1  </a>",
-            " <a id='best2'  href='http://www.naver.com'>금주의 베스트게시물2 </a>",
-            " <a id='best3'  href='http://www.naver.com'>금주의 베스트게시물3 </a>",
+            " <h1 class = 'text'>HOT 게시물1</h1>",
+            " <h1 class = 'text'>HOT 게시물2</h1>",
+            " <h1 class = 'text'>HOT 게시물3</h1>",
 
             ]
 

@@ -7,7 +7,9 @@
      	Place place = (Place)request.getAttribute("placeInfo");
     	System.out.println("여기는 placeDetailView : "+place.getPlaceNo());
     	ArrayList<File> fileList = (ArrayList<File>)request.getAttribute("fileList");
-    	System.out.println(place.getPlaceNo());     	
+    	System.out.println(place.getPlaceNo()); 
+    	String writer = place.getWriter();
+    	
     %>
 
 <!DOCTYPE html>
@@ -301,7 +303,7 @@
         $.ajax({
                     //요청을 보내기 
                     url : "likeup.pl",
-                    data : {input : $("#plNo").html()}, //데이터 넘길때에는 무조건 중괄호 열어라
+                    data : {input : $("#plNo").html() , "test": "<%=writer%>"}, //데이터 넘길때에는 무조건 중괄호 열어라
                     //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
 
                     type : "get", // 요청방식 지정

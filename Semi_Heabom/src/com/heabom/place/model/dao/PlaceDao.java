@@ -408,4 +408,57 @@ public class PlaceDao {
 		}
 		return rlist;
 	}
+	
+	public int upGrade(Connection conn, String writer) {
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("upGrade");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, writer);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ;
+		
+	}
+	
+	/**
+	 * 좋아요 눌르면 글 쓴 작가의 포인트 증가
+	 * @param conn
+	 * @param writer
+	 * @return
+	 */
+	public int upPoint(Connection conn , String writer) {
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("upPoint");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result ;
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
