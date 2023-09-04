@@ -75,14 +75,18 @@
             background-size: 100%;
             filter: brightness(0.5);
         }
+        #enrollBtn{
+            margin-top: 30px;
+            background-color: pink;
+        }
 
     </style>
 </head>
 <body>
 <%@include file = "../common/header.jsp" %>
-
-<button  class="btn btn-primary" onclick="location.href ='<%=contextPath%>/enrollForm.pl'">장소 새로 등록하기</button>
-   
+<div id = "enrollBtn" align ="center">
+<button   class="btn btn-primary" onclick="location.href ='<%=contextPath%>/enrollForm.pl'">맛집 등록하기</button>
+</div>
         <div class="wrap">
             <div id="box">
                 <a href='<%=contextPath%>/searchListView.pl?lNo=1'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>

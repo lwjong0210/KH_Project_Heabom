@@ -81,8 +81,6 @@
 <body>
 <%@include file = "../common/header.jsp" %>
 
-
-   
         <div class="wrap">
             <div id="box">
                 <a href='<%=contextPath%>/courseCheck.pl?lNo=1'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
