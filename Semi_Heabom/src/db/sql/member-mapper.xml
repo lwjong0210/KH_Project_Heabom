@@ -61,13 +61,13 @@ SELECT
 </entry>
 
 <entry key="selectReportListCount">
-	SELECT 
+   SELECT 
        COUNT(*) "count"
         FROM TB_REPORT
 </entry>
 
 <entry key="selectReportList">
-	SELECT *
+   SELECT *
 FROM (
 SELECT ROWNUM RNUM, A.*
 FROM (
@@ -87,7 +87,7 @@ SELECT
 </entry>
 
 <entry key="updateMember">
-	UPDATE TB_MEMBER
+   UPDATE TB_MEMBER
     SET MEM_POINT = ?
 </entry>
 
@@ -144,21 +144,21 @@ AND MEM_PWD = ?
 </entry>
 
 <entry key="selectReviewReply">
-	SELECT
-	   RE_NO
-	 , RE_REF_NO
-	 , RE_WRITER
-	 , NICKNAME
-	 , RE_CONTENT
-	 , RE_LIKE_STAR
-	 , RE_DATE
-	 , RE_LEVEL
-	FROM TB_REVIEW_REPLY
-	JOIN TB_MEMBER ON (MEM_NO = RE_WRITER)
-	WHERE RE_ORIGIN_WRITER = ?
-	  AND RE_STATUS = 'N'
-	ORDER
-	   BY RE_DATE DESC
+   SELECT
+      RE_NO
+    , RE_REF_NO
+    , RE_WRITER
+    , NICKNAME
+    , RE_CONTENT
+    , RE_LIKE_STAR
+    , RE_DATE
+    , RE_LEVEL
+   FROM TB_REVIEW_REPLY
+   JOIN TB_MEMBER ON (MEM_NO = RE_WRITER)
+   WHERE RE_ORIGIN_WRITER = ?
+     AND RE_STATUS = 'N'
+   ORDER
+      BY RE_DATE DESC
 </entry>
 
 <entry key="selectReviewReply1">
@@ -247,28 +247,28 @@ AND MEM_STATUS != 'N'
 </entry>
 
 <entry key="myDetailUpdate">
-	UPDATE TB_MEMBER
-	   SET NICKNAME = ?
-	     , EMAIL = ?
-	     , MBTI = ?
-	     , MEM_PHONE = ?
-	     , MEM_BIRTHDAY = TO_DATE(?, 'YYYY-MM-DD')
-	 WHERE MEM_ID = ?
+   UPDATE TB_MEMBER
+      SET NICKNAME = ?
+        , EMAIL = ?
+        , MBTI = ?
+        , MEM_PHONE = ?
+        , MEM_BIRTHDAY = TO_DATE(?, 'YYYY-MM-DD')
+    WHERE MEM_ID = ?
 </entry>
 
 <entry key="updateAttachment">
-	UPDATE TB_FILE
-	   SET ORIGIN_NAME = ?
-	     , CHANGE_NAME = ?
-	     , FILE_PATH = ?
-	 WHERE REF_NO = ?
+   UPDATE TB_FILE
+      SET ORIGIN_NAME = ?
+        , CHANGE_NAME = ?
+        , FILE_PATH = ?
+    WHERE REF_NO = ?
 </entry>
 
 <entry key="updateStatus">
-	UPDATE TB_MEMBER
-	   SET MEM_STATUS = 'N'
-	 WHERE MEM_ID = ?
-	   AND MEM_PWD = ?
+   UPDATE TB_MEMBER
+      SET MEM_STATUS = 'N'
+    WHERE MEM_ID = ?
+      AND MEM_PWD = ?
 </entry>
 
 
