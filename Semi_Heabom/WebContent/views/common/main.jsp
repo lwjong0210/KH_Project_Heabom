@@ -1,5 +1,43 @@
+<%@page import="com.heabom.common.model.service.MainService"%>
+<%@page import="com.heabom.place.model.vo.Place"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.heabom.admin.controller.BannerListController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	ArrayList<Place> bannerList = new ArrayList<Place> ();
+    
+	bannerList = new MainService().selectPlaceList();//메인 배너에 띄울 장소들 가져왔어용
+	int nullCheck = 0; 
+
+	//for (int i = 0 ; i < bannerList.size(); i++){
+   	//	System.out.println(bannerList.get(i));
+	//}
+	String contextPath2 = request.getContextPath();
+	String pNo1 = null;
+	String pNo2 = null;
+	String pNo3 = null;
+	String titleImg1 =null;
+	String titleImg2 = null;
+	String titleImg3 = null;
+	
+	
+	if(!bannerList.isEmpty()){
+	pNo1 = bannerList.get(0).getPlaceNo();
+	pNo2 = bannerList.get(1).getPlaceNo();
+	pNo3 = bannerList.get(2).getPlaceNo();
+	titleImg1 = bannerList.get(0).getTitleImg();
+	titleImg2 = bannerList.get(1).getTitleImg();
+	titleImg3 = bannerList.get(2).getTitleImg();
+	nullCheck = 1 ;
+	System.out.println(titleImg1);
+	}
+    %>
+    
+	
+
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +132,7 @@
         cursor: pointer;
       }
       #main {
-        width: 1300px;
+        width: 1500px;
         height: 720px;
         box-sizing: border-box;
       
@@ -133,8 +171,6 @@
     </div>
 
 
-    
-
 
     <script>
         $(function(){
@@ -146,9 +182,7 @@
             " <a id='best1' href='http://www.naver.com'>금주의 베스트게시물1  </a>",
             " <a id='best2'  href='http://www.naver.com'>금주의 베스트게시물2 </a>",
             " <a id='best3'  href='http://www.naver.com'>금주의 베스트게시물3 </a>",
-            " <a id='best4'  href='http://www.naver.com'>금주의 베스트게시물4 </a>",
-            " <a id='best5'  href='http://www.naver.com'>금주의 베스트게시물5 </a>",
-            " <a id='best6' href='http://www.naver.com'>금주의 베스트게시물6 </a>",
+
             ]
 
             $("#div2").html(bests[0]);
@@ -157,28 +191,41 @@
                 setInterval (function(){
                     $("#div2").html(bests[i]);
                     i++ ; 
-                    if(i == 6){
+                    if(i == 3){
                         i = 0 ; 
                     }
                 
-                },1000);
+                },3000);
         
        
 
-
+		
 
         //형꺼
         
+		//분기 개빡세누 ㅋㅋ		
+       let arr = []; 
 
-        let j = 1;
-        let arr = [
-          "<img class='best' src='https://www.gangnam.go.kr/upload/editor/2020/12/29/b03f9390-fed9-41fc-874c-81f4d6b200f8.jpg' >",
-          "<img class='best' src='https://a.cdn-hotels.com/gdcs/production47/d1059/04077388-e2a5-4952-88d6-4cd6ffe07710.jpg' >",
-          "<img class='best' src='https://a.cdn-hotels.com/gdcs/production97/d1351/a274bc26-9643-4bae-a91f-cebaf7f9fa56.jpg' >",
-          "<img class='best' src='https://a.cdn-hotels.com/gdcs/production19/d1764/0fdc6746-e0a8-4abc-929e-e4a3e237b95b.jpg' >",
-          "<img class='best' src='https://korean.miceseoul.com/humanframe/theme/mice/assets/images/spot/img_spot_view_04_0.jpg' >",
-          "<img class='best' src='https://i.pinimg.com/236x/a8/a8/e4/a8a8e48b4fe56c83cf8fa07800cfa48a.jpg'>",
-        ];
+    	if (<%=nullCheck%>== 0){
+ 
+             arr = [
+              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src=''>게시글없음</a>",
+              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src=''>게시글없음</a>",
+              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src=''>게시글없음</a>",
+
+            ];
+    	}else{
+
+	        arr = [
+	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src='<%=titleImg1%>'></a>",
+	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src='<%=titleImg2%>'></a>",
+	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src='<%=titleImg3%>'></a>",
+	
+	        ];
+    	}
+    	
+    	 let j = 1;
+        
         $("#main").html(arr[0]);
         setInterval(function () {
           $("#main").html(arr[j]);
@@ -186,19 +233,14 @@
           if (j == arr.length) {
             j = 0;
           }
-        }, 1000);
-
-        $(".best").click(function(){
-            location.href = "http://www.daum.net"
-        })
-
+        }, 3000);
 
     })
 
-
-
+    
 
     </script>
+
 
 </body>
 </html>
