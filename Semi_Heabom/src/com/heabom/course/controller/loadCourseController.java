@@ -33,11 +33,17 @@ public class loadCourseController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cNo  = request.getParameter("cNo");
 		ArrayList<Place> list = new CourseService().loadCourse(cNo);
+//		
+//		for (int i = 0 ; i <list.size() ; i ++) {
+//			System.out.println("안녕안녕!");
+//			System.out.println(list.get(i));
+//		}
+		
 		//courseview 는 list 조회기 때문에 이대로만 주면 됨
 		if(list.isEmpty()) {
 			System.out.println("이런시발");
 		}else {
-			request.setAttribute("list", list);
+			request.setAttribute("coursePlaceList", list);
 			request.getRequestDispatcher("views/course/courseView2.jsp").forward(request, response);
 		}
 	

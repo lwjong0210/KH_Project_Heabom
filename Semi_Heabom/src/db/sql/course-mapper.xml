@@ -147,7 +147,7 @@ VALUES
 
 
 <entry key="loadCourse">
-</entry>
+
 SELECT DISTINCT
     PLACE_NO
    ,PLACE_TITLE
@@ -185,6 +185,6 @@ WHERE PLACE_NO IN (
     WHERE COURSE_NO = ?
 )
 AND F.FILE_LEVEL = 1
-
+</entry>
 
 </properties>
