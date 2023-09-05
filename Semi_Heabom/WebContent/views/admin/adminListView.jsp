@@ -8,6 +8,7 @@
 <style>
     table,div{
         box-sizing: border-box;
+        border: 1px solid black;
     } 
     .outer_yj{
         width: 1900px;
@@ -38,6 +39,9 @@
         width: 100px;
         height: 90px;
         cursor: pointer;
+
+        box-sizing: border-box;
+        border: 1px solid red;
     }
     .adminpage-detail .img-wrap {overflow: hidden;}
     .thumb {width: 100%; height: auto;}
@@ -103,20 +107,10 @@
                         <tr>
                             <td width="150" height="110" align="center">
                                 <div class="adminpage-detail" align="center">
-                                    <a href="<%= contextPath %>/banner.ad"><img src="<%=contextPath%>/resource/img/admin/배너.png"></a>
-                                    <p class="adminpage-right-p"><strong>배너수정</strong></p>
-                                </div>
-                            </td>
-                            <td width="30"></td>
-                            <td width="150" height="110" align="center">
-                                <div class="adminpage-detail" align="center">
                                     <a href="<%= contextPath %>/logo.ad"><img src="<%=contextPath%>/resource/img/admin/로고.png"></a>
                                     <p class="adminpage-right-p"><strong>로고수정</strong></p>
                                 </div>
                             </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" height="5"></td>
                         </tr>
                         <tr>
                             <td width="150" height="110" align="center">
