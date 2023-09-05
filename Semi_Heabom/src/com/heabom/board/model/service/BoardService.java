@@ -102,7 +102,7 @@ public class BoardService {
 		int result1 = new BoardDao().insertBoard(conn, b);
 		int result2 = 1;
 		if(!list.isEmpty()) {
-			result2 = new BoardDao().insertAttachment(conn, list, b);
+			result2 = new BoardDao().insertFile(conn, list, b);
 		}
 		close(conn);
 		return result1 * result2;
@@ -265,18 +265,66 @@ public class BoardService {
 		
 	}
 	
-	public int updatetBoard(Board b, ArrayList<File> list) {
+	public int updateBoard(Board b, ArrayList<File> list) {
 		Connection conn = getConnection();
 		int result1 = new BoardDao().updateBoard(conn, b);
 		int result2 = 1;
 		
 		if(!list.isEmpty()) {
-			result2 = new BoardDao().insertAttachment(conn, list, b);
+			result2 = new BoardDao().insertFile(conn, list, b);
 		}
 		
 		close(conn);
 		return result1 * result2;
 		
+	}
+	
+	public int deleteReply(String rpNo) {
+		Connection conn = getConnection();
+		int result = new BoardDao().deleteReply(conn, rpNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	}
+	
+	public int updateFile(ArrayList<File> list) {
+		Connection conn = getConnection();
+		int result = new BoardDao().updateFile(conn, list);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public int insertFile2(ArrayList<File> list, String boardNo) {
+		Connection conn = getConnection();
+		int result = new BoardDao().insertFile2(conn, list, boardNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public File selectFile(String fileNo) {
+		Connection conn = getConnection();
+		File f = new BoardDao().selectFile(conn, fileNo);
+		
+		close(conn);
+		return f;
 	}
 	
 }

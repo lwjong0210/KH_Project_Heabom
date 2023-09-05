@@ -88,7 +88,7 @@ SELECT *
                , ?
                )
 	</entry>
-		<entry key="insertAttachment">
+		<entry key="insertFile">
 		INSERT
 		INTO TB_FILE
 		(
@@ -199,6 +199,7 @@ SELECT *
 	, RE_STATUS
 	  FROM TB_REVIEW_REPLY
 	 WHERE SUBSTR(RE_REF_NO,2) = ?
+	   AND RE_STATUS = 'Y'
 
 </entry>
 <entry key='insertReply'>
@@ -352,7 +353,60 @@ UPDATE
      , BOARD_UP = ?
  WHERE BOARD_NO = ?
 
+</entry>
+
+<entry key='deleteReply'>
+UPDATE
+       TB_REVIEW_REPLY
+   SET 
+       RE_STATUS = 'N'
+ WHERE
+       RE_NO = ?
 
 </entry>
+
+<entry key='updateFile'>
+UPDATE
+       TB_FILE
+   SET 
+       ORIGIN_NAME = ?
+     , CHANGE_NAME = ?
+     , FILE_PATH = ?
+     , UPLOAD_DATE = SYSDATE 
+ WHERE
+       FILE_NO = ?
+</entry>
+	<entry key='selectFile'>
+		SELECT
+			FILE_NO
+			, ORIGIN_NAME
+			, CHANGE_NAME
+			, FILE_PATH
+			FROM TB_FILE
+			WHERE FILE_NO = ?
+			AND STATUS = 'Y'
+	</entry>
+	
+	<entry key='insertFile2'>
+		INSERT
+		INTO TB_FILE
+		(
+		FILE_NO
+		, ORIGIN_NAME
+		, CHANGE_NAME
+		, FILE_PATH
+		, UPLOAD_DATE
+		, REF_NO
+		)
+		VALUES
+		(
+		  SEQ_FILE.NEXTVAL
+		, ?
+		, ?
+		, ?
+		, SYSDATE
+		, ?
+		)
+	</entry>
 	
 </properties>

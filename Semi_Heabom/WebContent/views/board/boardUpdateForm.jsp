@@ -277,7 +277,7 @@
             </div>
         </div>
         <form action="update.bo" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="boardNo" value="zz">
+            <input type="hidden" name="boardNo" value="<%= b.getBoardNo() %>">
 
             <div class="write-post-area" style="padding: 10px;">
                 <div id="write-post-header">
@@ -366,6 +366,20 @@
                         <input type="file" name="file5" id="file5" onchange="loadImg(this, 5);">
                     </div>
                 </div>
+                <div id="hidden-area" style="display:none;">
+                	<input type="hidden" name="hidden1" id="hidden1">
+                	<input type="hidden" name="hidden2" id="hidden2">
+                	<input type="hidden" name="hidden3" id="hidden3">
+                	<input type="hidden" name="hidden4" id="hidden4">
+                	<input type="hidden" name="hidden5" id="hidden5">
+                	
+                	
+                	<input type="hidden" name="hidden11" id="hidden11">
+                	<input type="hidden" name="hidden22" id="hidden22">
+                	<input type="hidden" name="hidden33" id="hidden33">
+                	<input type="hidden" name="hidden44" id="hidden44">
+                	<input type="hidden" name="hidden55" id="hidden55">
+                </div>
                 <div id="write-poster-footer" style="margin-top: 10px;">
                     <div id="writer-poster-submit">
                         <input type="button" value="수정하기" onclick="postSubmit();">
@@ -377,6 +391,12 @@
                 </div>
             </div>
             <input type="hidden" id="hiddenTag" name="tag">
+            <div style="display: none;" id="hidden-area">
+            	
+            
+            
+            </div>
+
         </form>
         <script>
             /* 해시태그 스크립트 */
@@ -452,12 +472,12 @@
             			  }
             			  }
             	})
+
             }*/
     
             // select option에서 공지사항을 클릭했을때 상단게시체크박스가 나타나는 함수
             function clickNoticeOption(str){
 				if(str=='N'){
-					console.log("되나")
 					document.getElementById("admin-private").style.display='';
                 }else{
 					document.getElementById("admin-private").style.display='none';
@@ -466,15 +486,26 @@
             }
 
             function chooseFile(i){
+            	$("#contentImg" + i).attr("src", null)
                 $("#file" + i).click(); 
+            	$("#hidden" + i).val("");
+           
+            	console.log($("#hidden" + i).val());
+                console.log($("#file1").files + "ㅋㅋㅋㅋㅋ")
+                console.log("클릭발생")
             }
             function loadImg(inputFile,i){
+                console.log("체인지발생")
+            	console.log(inputFile.files.length)
+            	console.log(inputFile.files + "ㅋㅋ")
+            	console.log("gdgdgd")
             	if(inputFile.files.length == 1){
             		const reader = new FileReader();
 
                     reader.readAsDataURL(inputFile.files[0]);
 
                     reader.onload = function(e){
+
                         switch(i){
                             case 1: $("#contentImg1").attr("src", e.target.result); break;
                             case 2: $("#contentImg2").attr("src", e.target.result); break;
@@ -483,41 +514,56 @@
                             case 5: $("#contentImg5").attr("src", e.target.result); break;
                         }
                     }
-                }else{	
-                    switch(i){
-                    case 1: $("#contentImg1").attr("src", null); break;
-                    case 2: $("#contentImg2").attr("src", null); break;
-                    case 3: $("#contentImg3").attr("src", null); break;
-                    case 4: $("#contentImg4").attr("src", null); break;
-                    case 5: $("#contentImg5").attr("src", null); break;
-                    
-                    }
-            	}
+
+                }
             }
 
-        </script>
-
-                  <script>
                     	$(function(){
                     		jsonList = '<%= gsonList%>'
                     		arrList = JSON.parse(jsonList)
-             
-                    		console.log(arrList)
+             	
                     		console.log(arrList.length)
-                    		
+                    		console.log("띠용")
+                    		let a = arrList
+               
+                			$("#gsonList").val(arrList[0].fileNo)
+                			console.log(arrList[1].fileNo)
+                			console.log("??")
+                			let lsHtml = "";
+                			for(let i = 0; i < arrList.length; i++){
+                				$("#hidden" + (i+1)).val("flag")
+           //     				lsHtml +=
+            //    						"<input type='text' name='fileNo' value="+ arrList[i].fileNo +">"+
+             //   					    "<input type='text' name='filePath' value="+ arrList[i].filePath +">"+
+              //  					    "<input type='text' name='originName' value="+ arrList[i].originName + ">"+
+               // 					    "<input type='text' name='changeName' value="+ arrList[i].changeName +">"
+                				console.log($("#hidden" + (i+1)).val() + "뜨냐?")
+                			}
+            //    		$("#hidden-area").html(lsHtml);
+                			
                     		if(arrList.length != 0){
                     			for(let i = 0; i < arrList.length; i++){
+                    				$("#hidden" + (i+1)).val(arrList[i].fileNo)
+                    				console.log($("#hidden" + (i+1)).val())
+                    				
                     				let imgUrl ='<%=contextPath %>'+ '/' + arrList[i].filePath + '/' +arrList[i].changeName
 
                     				console.log(imgUrl)
-                    				$("#file" + (i+1)).attr("src",imgUrl)
+                    				console.log(arrList[i] + "ㅋㅋ?ㅋㅋ?ㅋㅋ?")
+                    				// 원래없던거라 체인지가 ㅇ벗다.
+                    				//$("#file" + (i+1)).attr("src",imgUrl)
+                    				// 원래 사진이 있던 곳에는 value에 값이 boardNo로 들어간다.
+                    				$("#hidden" + (i+1)).val(arrList[i].fileNo)
+                    				$("#hidden" + (i+1) + (i+1)).val(arrList[i])
                     				$("#contentImg" + (i+1)).attr("src", imgUrl)
+                    				
                     			}
                     		}
                     		
                     	})
                     
                     </script>
+
     </div>
 
 </body>

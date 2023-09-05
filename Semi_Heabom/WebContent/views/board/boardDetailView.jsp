@@ -712,10 +712,15 @@ tfoot>tr {
 					<div id="post_wish_img">
 						<img src="resources/img/free-icon-star-5708819.png" alt="">
 					</div>
-					<div style="width: auto;">
+					<div style="width: auto;" onclick="Like('<%= boardNo %>')">
 						<span>찜하기</span>
 					</div>
 				</div>
+				<script>
+					function Like(refNo){
+						location.href ='like.co?refNo=' + refNo
+					}
+				</script>
 				<div id="post_comment2">
 					<div id="post_comment_img2">
 						<img src="resources/img/free-icon-add-comment-button-60782.png"
@@ -806,10 +811,14 @@ tfoot>tr {
 							<div class="comment_usergrade">
 								<img src="resources/img/free-icon-benefit-6000574.png" alt="">
 							</div>
+							<a href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=<%= r.getReplyNo() %>" style="color: red; text-decoration: none; margin-left: 90%;">삭제</a>
 						</div>
+
+
+						
 						<div class="comment_text">
 							<%=r.getReplyContent()%>
-
+		
 
 						</div>
 						<div class="comment_info">
@@ -1100,20 +1109,7 @@ tfoot>tr {
 			    boardListView(selectedPage, boardLimit);
 			  });
 			}
-                    
-			$("#boardLimit").change(function () {
-			    boardLimit = $("#boardLimit").val();
-			    pagingBar(listCount, boardLimit, pageLimit, currentPage);
-			    boardListView(currentPage, boardLimit);
-			 });
-
 			
-			
-			
-			
-			
-
-
 	</script>
 </body>
 </html>
