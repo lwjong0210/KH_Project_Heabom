@@ -30,8 +30,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
 
     <style>
         *{
@@ -50,10 +48,6 @@
 
             background-color: transparent;
             
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
         }
         .header_outer>div{
             float: left;
@@ -119,10 +113,6 @@
         }
         .header_logo img:hover{
             opacity: 0.7;
-        }
-
-        .nav-up {
-            top: -40px; /*// 헤더 높이와 같게*/ 
         }
 
     </style>
@@ -222,45 +212,6 @@
                 location.href =  "<%=contextPath%>/enrollForm.me";
             }
 
-        </script>
-
-
-        <!-- 헤더 효과 -->
-        <script>
-            var didScroll;
-            var lastScrollTop = 0;
-            var delta = 5;
-            var navbarHeight = $('header_outer').outerHeight();
-
-            $(window).scroll(function(event){
-                didScroll = true;
-            });
-
-            setInterval(function() {
-                if (didScroll) {
-                    hasScrolled();
-                    didScroll = false;
-                }
-            }, 250);
-
-            function hasScrolled() {
-                var st = $(this).scrollTop();
-                
-                if(Math.abs(lastScrollTop - st) <= delta)
-                    return;
-                
-                if (st > lastScrollTop && st > navbarHeight){
-                    // Scroll Down
-                    $('header_outer').removeClass('nav-down').addClass('nav-up');
-                } else {
-                    // Scroll Up
-                    if(st + $(window).height() < $(document).height()) {
-                        $('header_outer').removeClass('nav-up').addClass('nav-down');
-                    }
-                }
-                
-                lastScrollTop = st;
-            }
         </script>
 
 </body>
