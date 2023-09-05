@@ -236,9 +236,11 @@ public class CourseDao {
 		ResultSet rset = null ;
 		PreparedStatement pstmt = null ;
 		String sql = prop.getProperty("loadCourse");
-		ArrayList<Place> list = new ArrayList<Place>(); 
+		ArrayList<Place> list = new ArrayList<Place>();
+		
 		
 		try {
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cNo);
 			pstmt.setString(2, cNo);
