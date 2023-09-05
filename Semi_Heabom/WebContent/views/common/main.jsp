@@ -51,7 +51,6 @@
          #wrap{
             width: 1900px;
             height: auto;
-            background-color: rgb(255, 240, 243);
             /*
             border: 0px solid black;
             box-sizing: border-box;
@@ -76,13 +75,13 @@
         }
         #content_1{
             float: left;
-            height: 720px;
+            height: 500px;
             width: 20%;
             /*
             box-sizing: border-box;
             border: 1px solid red;
             */
-            background-color: white;
+            background-color: rgb(255, 235, 244);
             
         }
         #content_2{
