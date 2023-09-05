@@ -353,7 +353,7 @@
             <div id="header">
                 <div id="header_1"></div>
                 <div id="header_2">
-                    <p id="p1">총 회원 수 : <%= pi.getListCount() %>명</p>
+                
                 </div>
                 <div id="header_3"></div>
                 <div id="header_4">
