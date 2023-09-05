@@ -397,12 +397,12 @@
                                         <td><%= list.get(i).getMemName() %></td>
                                         <td><%= list.get(i).getNickname() %></td>
                                         <td><%= list.get(i).getGrade() %></td>
-                                        <td><input type="hidden" name="memId<%=i %>" value="<%= list.get(i).getMemId() %>"></td>
-                                        <td><input type="text" name="memPoint<%=i %>" style="width: 50%;" ></td>
+                                        <td><input type="hidden" name="memId<%=i%>" value="<%= list.get(i).getMemId() %>"></td>
+                                        <td><input type="text" name="memPoint<%=i%>" style="width: 50%;" ></td>
                                         <td><%= list.get(i).getMemVisit() %></td>
                                         <td><%= list.get(i).getEmail() %></td>
                                         <td>
-                                            <input type="submit" id="commentbtn<%=i %>" value="변경" onclick="clkBtn()">
+                                            <input type="submit" id="commentbtn<%=i%>" value="변경" onclick="clkBtn()">
                                         </td>
                                     </tr>
                                    <% } %>

@@ -86,22 +86,15 @@ SELECT
   WHERE RNUM BETWEEN ? AND ?
 </entry>
 
+<entry key="deleteReportMember">
+	UPDATE TB_MEMBER
+      SET MEM_STATUS = 'N'
+    WHERE MEM_ID = ?
+</entry>
+
 <entry key="updateMember">
-<![CDATA[
    UPDATE TB_MEMBER
-SET MEM_POINT = ?,
-    GRADE = (
-        CASE
-            WHEN MEM_POINT >= 0 AND MEM_POINT <= 50 THEN '씨앗'
-            WHEN MEM_POINT >= 51 AND MEM_POINT <= 101 THEN '잔디'
-            WHEN MEM_POINT >= 101 AND MEM_POINT <= 200 THEN '새싹'
-            WHEN MEM_POINT >= 201 AND MEM_POINT <= 30000 THEN '벚꽃'
-            WHEN MEM_POINT >= 30001 AND MEM_POINT <= 99999 THEN '무궁화'
-            ELSE GRADE
-        END
-    )
-WHERE MEM_ID = ?
-]]>
+    SET MEM_POINT = ?
 </entry>
 
 <entry key="insertMember">

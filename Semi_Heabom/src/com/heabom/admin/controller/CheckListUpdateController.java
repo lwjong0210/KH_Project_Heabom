@@ -32,33 +32,28 @@ public class CheckListUpdateController extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
       request.setCharacterEncoding("UTF-8");
-      
       int listSize = Integer.parseInt(request.getParameter("listSize")); 
-      
-      System.out.println(listSize);
-      
+      System.out.println("컨트롤러 1번 : " + listSize);
+      String memId = "";
+      int memPoint = 0;
       for(int i = 0; i<listSize; i++) {
-    	  
-    	  
-         String memId = request.getParameter("memId"+i);
-         int memPoint = Integer.parseInt(request.getParameter("memPoint"+i));
-         
-         
-         if(memPoint > 0) {
-        	 
-            Member m = new Member(memId, memPoint);
-            Member updateMem = new MemberService().updateMember(m);
-            
-         }
+    	  if(i < 0) {
+    		  System.out.println(i);
+    	  }else {
+    		  memId = request.getParameter("memId"+i);
+    		  memPoint = Integer.parseInt(request.getParameter("memPoint"+i));
+    		  System.out.println("여기는 controller"+i);
+    	  }
       }
+         Member m = new Member(memId, memPoint);
+         Member updateMem = new MemberService().updateMember(m);
+         
+         System.out.println("asd"+memId);
+         System.out.println("++++++="+memPoint);
+        	 
       
-      // Member updateMem = new MemberService().updateMember();
       
-      
-      
-      /*
       if(updateMem != null) {
          
          HttpSession session = request.getSession();
@@ -73,8 +68,6 @@ public class CheckListUpdateController extends HttpServlet {
          RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
          view.forward(request, response);
       }
-      */
-      
       
    }
 
