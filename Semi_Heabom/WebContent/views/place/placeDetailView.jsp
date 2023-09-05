@@ -209,7 +209,7 @@
         <div class="place-description">
             <table>
                 <tr>
-                    <th>글번호</th>
+                    <th width = "150" >글번호</th>
                     <td id ="plNo"><%=place.getPlaceNo()%></td>
                 </tr>
                 <tr>
