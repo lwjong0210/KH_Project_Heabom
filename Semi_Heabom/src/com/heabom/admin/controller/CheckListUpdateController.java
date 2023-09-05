@@ -39,7 +39,28 @@ public class CheckListUpdateController extends HttpServlet {
       String userId = request.getParameter("memId");
       int point = Integer.parseInt(request.getParameter("memPoint"));
       
+      System.out.println("asdasd" + point);
+      
       System.out.println(userId +" "+ point);
+      
+      Member m = new Member(userId, point);
+      new MemberService().updateMember(m);
+      Member updateMem = new MemberService().updateMember(m);
+      
+      if(point != 0) {
+    	  
+    	  HttpSession session = request.getSession();         
+    	  session.setAttribute("memId", updateMem);
+    	  session.setAttribute("alertMsg", "성공");
+    	  
+    	  response.sendRedirect(request.getContextPath() + "/check.ad");
+    	  
+      }else {
+    	  request.setAttribute("errorMsg", "실패");
+    	  RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+    	  view.forward(request, response);
+      }
+      
       
       /*
       int listSize = Integer.parseInt(request.getParameter("listSize")); 
@@ -63,27 +84,15 @@ public class CheckListUpdateController extends HttpServlet {
       */
       
       
-         Member m = new Member(userId, point);
-         Member updateMem = new MemberService().updateMember(m);
          
+         
+         /*
          System.out.println("asd"+ userId);
          System.out.println("++++++="+ point);
-        	 
+         */
       
       
-      if(updateMem != null) {
-         
-         HttpSession session = request.getSession();         
-         session.setAttribute("memId", updateMem);
-         session.setAttribute("alertMsg", "성공");
-         
-         response.sendRedirect(request.getContextPath() + "/check.ad");
-         
-      }else {
-         request.setAttribute("errorMsg", "실패");
-         RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
-         view.forward(request, response);
-      }
+      
       
    }
 
