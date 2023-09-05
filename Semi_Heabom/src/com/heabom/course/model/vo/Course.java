@@ -32,6 +32,13 @@ public class Course {
 	
 	
 
+	public Course(String place1, String titleImg, String locationName) {
+		super();
+		this.place1 = place1;
+		this.titleImg = titleImg;
+		this.locationName = locationName;
+	}
+
 	public Course(String place1, String titleImg, String locationName, String hashtagName) {
 		super();
 		this.place1 = place1;
