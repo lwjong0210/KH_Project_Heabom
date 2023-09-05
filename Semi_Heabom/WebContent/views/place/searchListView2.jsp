@@ -102,104 +102,104 @@
 </div>
 <%} %>
         <div class="wrap">
-            <div id="box" width = "100" heigth = "100">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=1'><img src="<%=contextPath%>/resource/img/place/간판없는가게.jpg"></a>
+            <div id="box" >
+                <a href='<%=contextPath%>/searchListView.pl?lNo=1'><img style="width: 350px; height: 350px; " src="<%=contextPath%>/resource/img/place/간판없는가게.jpg"></a>
                 <p>강남구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=2'><img src="<%=contextPath%>/resource/img/place/서울앵무새.jpg"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=2'><img style="width: 350px; height: 350px;" src="<%=contextPath%>/resource/img/place/서울앵무새.jpg"></a>
                 <p>서초구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=3'><img src="<%=contextPath%>/resource/img/place/동작2.jpg"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=3'><img style="width: 350px; height: 350px;" src="<%=contextPath%>/resource/img/place/동작2.jpg"></a>
                 <p>동작구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=4'><img src="<%=contextPath%>/resource/img/place/이태리이층집.jpg"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=4'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/이태리이층집.jpg"></a>
                 <p>강서구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=5'><img src="<%=contextPath%>/resource/img/place/리차드하우스 연남.jpg"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=5'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/리차드하우스 연남.jpg"></a>
                 <p>양천구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=6'><img src="<%=contextPath%>/resource/img/place/바빌리안테이블.jpg"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=6'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/바빌리안테이블.jpg"></a>
                 <p>구로구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=7'><img src="<%=contextPath%>/resource/img/place/세상의모든아침.jpg"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=7'><img style="width: 350px; height: 350px;  "src="<%=contextPath%>/resource/img/place/세상의모든아침.jpg"></a>
                 <p>금천구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=8'><img src="<%=contextPath%>/resource/img/place/일떼라쪼당산본점.jpg"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=8'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/일떼라쪼당산본점.jpg"></a>
                 <p>관악구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=9'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=9'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>영등포구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=10'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=10'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>송파구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=11'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=11'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>강동구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=12'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=12'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>광진구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=13'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=13'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>성동구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=14'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=14'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>용산구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=15'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=15'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>마포구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=16'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=16'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>서대문구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=17'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=17'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>중구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=18'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=18'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>동대문구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=19'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=19'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>중량구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=20'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=20'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>종로구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=21'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=21'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>성북구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=22'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=22'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>은평구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=23'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=23'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>강북구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=24'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=24'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>도봉구</p>
             </div>
             <div id="box">
-                <a href='<%=contextPath%>/searchListView.pl?lNo=25'><img src="<%=contextPath%>/resource/img/place/뷰.png"></a>
+                <a href='<%=contextPath%>/searchListView.pl?lNo=25'><img style="width: 350px; height: 350px; "src="<%=contextPath%>/resource/img/place/뷰.png"></a>
                 <p>노원구</p>
             </div>
         </div>
