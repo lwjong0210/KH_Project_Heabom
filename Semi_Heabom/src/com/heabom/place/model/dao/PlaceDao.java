@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import static com.heabom.common.JDBCTemplate.*;
 
+import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.File;
 import com.heabom.member.model.vo.MemberAttachment;
 import com.heabom.place.model.vo.Place;
@@ -492,6 +493,48 @@ public class PlaceDao {
 		}
 		return p;
 	}
+	
+	public ArrayList<Place> myFavorSelect(Connection conn,String memNo) {
+		ArrayList<Place> fList = new ArrayList<Place>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql =  prop.getProperty("myFavorSelect");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				fList.add(new Place(rset.getString("WRITER"),
+									rset.getString("PLACE_TITLE"),
+						            rset.getInt("LOCATION_NO"),
+						            rset.getString("MAKE_DATE"),
+						            rset.getString("STATUS"),
+						            rset.getString("PHONE"),
+						            rset.getString("ADDRESS"),
+						            rset.getString("PLACE_CONTENT"),
+						            rset.getInt("START_TIME"),
+						            rset.getInt("END_TIME"),
+						            rset.getInt("STAR_POINT"),
+						            rset.getString("PLACE_URL"),
+						            rset.getInt("USE_TIME"),
+						            rset.getInt("USE_PRICE"),
+						            rset.getString("BEST_STATUS"),
+						            rset.getInt("LIKECOUNT"),
+						            rset.getString("TITLEIMG"),
+						            rset.getString("LOCATION_NAME")
+						            ));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return fList;
+	}
+	
 }
 
 

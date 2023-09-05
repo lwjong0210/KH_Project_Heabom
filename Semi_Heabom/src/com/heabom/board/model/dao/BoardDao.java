@@ -734,25 +734,21 @@ public class BoardDao {
 		
 	}
 	
-	public int updateFile(Connection conn, ArrayList<File> list) {
+	public int updateFile(Connection conn, File f) {
 		
 		PreparedStatement pstmt = null;
 		int result = 1;
 		String sql = prop.getProperty("updateFile");
 		try {
-			for(File f : list) {
 				pstmt = conn.prepareStatement(sql);
-				System.out.println(f.getOriginName() + "이게 왜 누락된 등호?");
-				System.out.println(f.getChangeName() + "이게 왜 누락된 등호?");
-				System.out.println(f.getFilePath() + "이게 왜 누락된 등호?");
-				System.out.println(f.getFileNo() + "이게 왜 누락된 등호?");
 
-				pstmt.setString(1, f.getOriginName());
-				pstmt.setString(2, f.getChangeName());
-				pstmt.setString(3, f.getFilePath());
-				pstmt.setString(4, f.getFileNo());
+				pstmt.setString(1, f.getFileNo());
+				pstmt.setString(2, f.getOriginName());
+				pstmt.setString(3, f.getChangeName());
+				pstmt.setString(4, f.getFilePath());
+				pstmt.setString(5, f.getFileNo());
+
 				result = pstmt.executeUpdate();
-			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -763,36 +759,59 @@ public class BoardDao {
 		
 	}
 	
-	public File selectFile(Connection conn, String fileNo) {
+	public int updateFileStatus(Connection conn, File f) {
 		
 		PreparedStatement pstmt = null;
-		File f = new File();
-		String sql = prop.getProperty("selectFile");
-		ResultSet rset = null;
-		
+		int result = 1;
+		String sql = prop.getProperty("updateFileStatus");
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, fileNo);
 			
-			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				f.setOriginName(rset.getString("ORIGIN_NAME"));
-				f.setChangeName(rset.getString("CHANGE_NAME"));
-				f.setFilePath(rset.getString("FILE_PATH"));
-			}
+			pstmt.setString(1, "N");
+
+			pstmt.setString(2, f.getFileNo());
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			close(conn);
+		}finally {
+			close(pstmt);
 		}
-		return f;
-		
-		
+		return result;
 		
 	}
 	
-	public int insertFile2(Connection conn, ArrayList<File> list, String boardNo) {
+//	public File selectFile(Connection conn, String fileNo) {
+//		
+//		PreparedStatement pstmt = null;
+//		File f = new File();
+//		String sql = prop.getProperty("selectFile");
+//		ResultSet rset = null;
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, fileNo);
+//			
+//			rset = pstmt.executeQuery();
+//			if(rset.next()) {
+//				f.setOriginName(rset.getString("ORIGIN_NAME"));
+//				f.setChangeName(rset.getString("CHANGE_NAME"));
+//				f.setFilePath(rset.getString("FILE_PATH"));
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			close(conn);
+//		}
+//		return f;
+//		
+//		
+//		
+//	}
+	
+	public int insertFile2(Connection conn, File f, String boardNo) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -800,7 +819,7 @@ public class BoardDao {
 		String sql = prop.getProperty("insertFile2");
 		
 		try {
-			for(File f:list) {
+		
 				System.out.println(f+"제발제발제발");
 			
 				pstmt = conn.prepareStatement(sql);
@@ -810,7 +829,6 @@ public class BoardDao {
 				pstmt.setString(4, boardNo);
 				result = pstmt.executeUpdate();
 				
-			}
 			
 			
 		} catch (SQLException e) {
@@ -823,11 +841,13 @@ public class BoardDao {
 	
 	}
 	
+
 	
 	
 	
 	
 	
+
 	
 	
 	

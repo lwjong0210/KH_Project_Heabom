@@ -1,5 +1,11 @@
+<%@page import="com.heabom.place.model.vo.Place"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ArrayList<Place> flist = (ArrayList<Place>)request.getAttribute("fList");
+	String fContextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,50 +67,35 @@
 </head>
 <body>
     <div class="yj_myFavorit_area" align="center">
+    <% for(Place p : flist) { %>
         <div class="yj_myFavorit_detail">
             <table border="0" class="detail_tb">
                 <tr>
                     <td rowspan="4" width="300" height="130">
-                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
+                        <img src="<%=fContextPath %><%=p.getTitleImg()%>" alt="">
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>여기는 즐겨찾기</strong></div></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong><%=p.getPlaceTitle() %></strong></div></td>
                 </tr>
                 <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit">2023년 국제 최대 규모의 불꽃 축제가 여의도에서 열린다.</div></td>
+                    <td height="30" width="350" colspan="4"><div class="text_limit"><%=p.getPlaceContent() %></div></td>
                 </tr>
                 <tr>
-                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
+                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="">지역 : <%=p.getLocationName() %></a></div></td>
                 </tr>
                 <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
-                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
-                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
+                    <td width="120" style="text-align: center; font-size: smaller;">작성일: <%=p.getStrMakeDate() %></td>
+                    <td width="80" style="text-align: center; font-size: smaller;">좋아요: <%=p.getLikeCount() %></td>
+                    <td width="150" style="text-align: center; font-size: smaller;">
+                    별점: 
+                    <% for(int i = 0; i<p.getStarPoint(); i++) { %>
+                    ⭐
+                    <% } %> 
+                    </td>
                 </tr>
             </table>
         </div>
-        <div class="yj_myFavorit_detail">
-            <table border="0" class="detail_tb">
-                <tr>
-                    <td rowspan="4" width="300" height="130">
-                        <img src="https://mediahub.seoul.go.kr/wp-content/uploads/2015/01/ff3e50a3a7011272d25652517be9489d.jpg" alt="">
-                    </td>
-                    <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto corrupti voluptatum, unde nihil illum fugiat aspernatur nesciunt ea excepturi libero veritatis iusto facere ipsa quod, perferendis omnis distinctio soluta minus!</strong></div></td>
-                </tr>
-                <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt eos a maxime magnam quam laudantium, quas sint numquam, natus nam deleniti, at cum deserunt ducimus porro perspiciatis debitis quo vitae.</div></td>
-                </tr>
-                <tr>
-                    <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="#">#용산</a> <a href="#">#불꽃축제</a> <a href="#">#서울데이트</a> <a href="#">#야경</a> <a href="#">#우리동네뷰맛집</a></div></td>
-                </tr>
-                <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;">작성일: 23/08/25</td>
-                    <td width="80" style="text-align: center; font-size: smaller;">조회수: 30</td>
-                    <td width="150" style="text-align: center; font-size: smaller;">별점: ★★★★★ </td>
-                </tr>
-            </table>
-        </div>
+        <% } %>
     </div>
 </body>
 </html>

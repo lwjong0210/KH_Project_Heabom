@@ -24,11 +24,63 @@ public class Place {
 	private String hashtagName;
 	private int likeCount ;
 	private String imgpath;
-	
+	private String locationName;
+	private String strMakeDate;
+	public String getStrMakeDate() {
+		return strMakeDate;
+	}
+
+
+
+	public void setStrMakeDate(String strMakeDate) {
+		this.strMakeDate = strMakeDate;
+	}
+
+
+
+	public String getLocationName() {
+		return locationName;
+	}
+
+
+
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+
+
 	private String userImgPath;
 	
 	public String getUserImgPath() {
 		return userImgPath;
+	}
+
+
+	
+
+	public Place(String writer,String placeTitle ,int locationNo, String strMakeDate, String status, String phone, String address,
+			String placeContent, int startTime, int endTime, int starPoint, String placeUrl, int useTime, int usePrice,
+			String bestStatus, int likeCount, String titleImg, String locationName) {
+		super();
+		this.writer = writer;
+		this.placeTitle = placeTitle;
+		this.locationNo = locationNo;
+		this.strMakeDate = strMakeDate;
+		this.status = status;
+		this.phone = phone;
+		this.address = address;
+		this.placeContent = placeContent;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.starPoint = starPoint;
+		this.placeUrl = placeUrl;
+		this.useTime = useTime;
+		this.usePrice = usePrice;
+		this.bestStatus = bestStatus;
+		this.likeCount = likeCount;
+		this.titleImg = titleImg;
+		this.locationName = locationName;
 	}
 
 
@@ -83,7 +135,7 @@ public class Place {
 		this.imgpath = imgpath;
 	}
 
-
+	
 
 	public Place(String placeNo, String placeTitle, int categoryNo, String writer, int locationNo, Date makeDate,
 			String status, String phone, String address, String placeContent, int startTime, int endTime, int starPoint,
