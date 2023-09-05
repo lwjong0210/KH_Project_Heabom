@@ -62,7 +62,7 @@
 <body>
 <div class="yj_place_area" align="center">
     <form id="uploadForm" action="<%=contextPath1%>/review.pl" id="enroll-form" method="post" enctype="multipart/form-data">
-            <input type="file" id="file" name="file" style="display:none;">
+            <input type="file" id="file1" name="file1" style="display:none;">
             <div class="place_text" align="center">
                 <textarea name="content" id="content" cols="118" rows="5" style="resize: none;" placeholder="해봄은 여러분의 소중한 리뷰를 기다리고 있습니다."></textarea>
             </div>
@@ -102,7 +102,7 @@ $(function(){
 	selectReplyList();
 	setInterval(selectReplyList, 100000);
     $("#uploadBtn").click(function(){
-        $("#file").click();
+        $("#file1").click();
     })
     
     $(document).on('click','.reviewText',function(){
