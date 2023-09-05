@@ -42,7 +42,7 @@
             height: 90px;
             margin: auto;
             margin-top: 0px;
-            border-bottom: 2px solid lightgray ;
+            /*border-bottom: 2px solid lightgray ;*/
             /* position: fixed; */
             
         }
