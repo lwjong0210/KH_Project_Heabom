@@ -134,6 +134,7 @@ VALUES
 <entry key="myCourseSelect">
 	SELECT
 	      PALCE1
+	    , COURSE_NO 
 	    , '/'||FILE_PATH||'/'||CHANGE_NAME TITLEIMG
 	    , LOCATION_NAME
 	FROM TB_COURSE

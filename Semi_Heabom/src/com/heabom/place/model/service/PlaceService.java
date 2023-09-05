@@ -187,5 +187,12 @@ import com.heabom.place.model.vo.Review;
 			}
 			return result ;
 		}
+		
+		public Place selectMyPlace(String pNo) {
+			Connection conn = getConnection();
+			Place p = new PlaceDao().selectMyPlace(conn, pNo);
+			close(conn);
+			return p;
+		}
 
 }
