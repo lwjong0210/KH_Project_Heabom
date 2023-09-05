@@ -36,6 +36,7 @@
             font-family: 'Gamja Flower', cursive;
             /* font-family: 'IBM Plex Sans KR', sans-serif; */
         }
+
         div{box-sizing: border-box; border: 0px solid red;}
         .header_outer{
             width: 1900px;
@@ -44,6 +45,8 @@
             margin-top: 0px;
             /*border-bottom: 2px solid lightgray ;*/
             /* position: fixed; */
+
+            background-color:  rgb(255, 235, 244);
             
         }
         .header_outer>div{
