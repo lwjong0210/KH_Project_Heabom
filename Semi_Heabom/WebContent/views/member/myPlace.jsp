@@ -95,7 +95,7 @@
                 <tr>
                     <td rowspan="4" width="300" height="130">
                     <% if(p.getImgpath().length() < 10) { %>
-                        <img src="https://breffee.net/data/editor/2210/20221013104826_fd5326c8ac17c04c88d91f03a8d313d8_5r8y.jpg" alt="">
+                        <a href="<%=contextPath2%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>"><img src="https://breffee.net/data/editor/2210/20221013104826_fd5326c8ac17c04c88d91f03a8d313d8_5r8y.jpg" alt=""></a>
                     <% }else{ %>
                     	<img src="<%=contextPath2 %><%=p.getImgpath() %>" alt="">
                     <% } %>
@@ -104,7 +104,9 @@
                     <td height="40" width="350" colspan="4"><div class="text_limit"><a href="<%=contextPath2%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>" style="font-size: large; color: black;"><strong><%=p.getPlaceTitle() %></strong></a></div></td>
                 </tr>
                 <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit"><%=p.getPlaceContent() %></div></td>
+                    <td height="30" width="350" colspan="4">
+                        <a href="<%=contextPath2%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>"><div class="text_limit"><%=p.getPlaceContent() %></div></a>
+                    </td>
                 </tr>
                 <tr>
                     <td height="20" width="350" colspan="4">
