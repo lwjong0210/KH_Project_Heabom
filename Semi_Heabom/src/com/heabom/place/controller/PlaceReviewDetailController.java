@@ -47,12 +47,13 @@ public class PlaceReviewDetailController extends HttpServlet {
 			int star = Integer.parseInt(multiRequest.getParameter("star"));
 			String refNo = multiRequest.getParameter("refNo");
 			String writer = multiRequest.getParameter("writer");
-			String file = (multiRequest.getFile("file")+"");
+			String file1 = (multiRequest.getFile("file1")+"");
+			System.out.println("file(좀 넘어와) : " + file1);
 			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
-			if(file.length() > 10) {
-				String[] fileList = file.split("\\\\");
-				String getOriginalFileName = fileList[8];
-				String getFilesystemName = fileList[8];
+			if(file1.length() > 10) {
+				String[] fileList = file1.split("\\\\");
+				String getOriginalFileName = fileList[7];
+				String getFilesystemName = fileList[7];
 				
 				at = new MemberAttachment();
 				at.setOriginName(getOriginalFileName);
