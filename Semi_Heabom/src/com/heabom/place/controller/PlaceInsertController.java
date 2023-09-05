@@ -166,6 +166,7 @@ public class PlaceInsertController extends HttpServlet {
 				locationNo = 25 ; 
 				break;
 			}
+			System.out.println("움허허ㅓ허ㅓ" + locationNo);
 			
 			
 			String phone = multiRequest.getParameter("phone");
