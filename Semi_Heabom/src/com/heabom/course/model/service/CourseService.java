@@ -42,6 +42,7 @@ public class CourseService {
 
 	public ArrayList<Course> myCourseSelect(String memNo){
 		Connection conn = getConnection();
+		System.out.println("여기는 코스 서비스 : " + memNo);
 		ArrayList<Course> clist = new CourseDao().myCourseSelect(conn, memNo);
 		close(conn);
 		return clist;

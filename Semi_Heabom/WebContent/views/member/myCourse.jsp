@@ -6,7 +6,7 @@
 <%
 	ArrayList<Course> clist = (ArrayList<Course>)request.getAttribute("clist");
 	String cContextPath = request.getContextPath();
-	System.out.println(clist.size());
+	System.out.println("여기는 코스 : "+clist.size());
 %>    
 <!DOCTYPE html>
 <html lang="en">

@@ -146,8 +146,7 @@ public class CourseDao {
 				clist.add(new Course(
 						rset.getString("PALCE1"),
 						rset.getString("TITLEIMG"),
-						rset.getString("LOCATION_NAME"),
-						rset.getString("HASHTAG_NAME")));
+						rset.getString("LOCATION_NAME")));
 
 			}
 		} catch (SQLException e) {
