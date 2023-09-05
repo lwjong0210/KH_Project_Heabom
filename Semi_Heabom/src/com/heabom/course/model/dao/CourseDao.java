@@ -145,9 +145,9 @@ public class CourseDao {
 			while(rset.next()) {
 				clist.add(new Course(
 						rset.getString("PALCE1"),
+						rset.getString("COURSE_NO"),
 						rset.getString("TITLEIMG"),
 						rset.getString("LOCATION_NAME")));
-
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
