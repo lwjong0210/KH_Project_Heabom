@@ -100,4 +100,18 @@ public class CourseService {
 		
 	}
 	
+	/**
+	 * 마이페이지에서 코스 불러오기
+	 * 조준하
+	 * @param cNo
+	 * @return
+	 */
+	public ArrayList<Place> loadCourse(String cNo){
+		Connection conn = getConnection();
+		ArrayList<Place> list = new CourseDao().loadCourse(conn , cNo);
+		close(conn);
+		return list;
+		
+	}
+	
 }
