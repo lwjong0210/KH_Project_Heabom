@@ -349,6 +349,7 @@
 <%@include file = "../common/header.jsp" %>
 <%
    String memId = (String)request.getAttribute("memId");
+   String grade = (String)request.getAttribute("grade");
 %>
     <div class="wrap">
         <div class="background">
@@ -362,7 +363,7 @@
                     <form action="<%= contextPath %>/search.ck?cpage=1&keyword" id="search_form" method="get">
                         <div id="search_text">
                             <input type="text" id="keyword" name="keyword" placeholder="회원 이름 입력">
-                            <input type="hidden" name="cpage" value="1">
+                            <input type="hidden" name="page" value="1">
                         </div>
                         <div id="search_btn">
                             <input type="submit" value="검색">
@@ -391,21 +392,23 @@
                             <tbody class="listInner">
                             <input type="hidden" name="listSize" value="<%=list.size()%>">
                                 <% for (int i = 0; i<list.size(); i++) { %>
+                                    <form action="update.ck">
                                     <tr>
                                         <td><%= list.get(i).getMemNo() %></td>
                                         <td><%= list.get(i).getMemId() %></td>
                                         <td><%= list.get(i).getMemName() %></td>
                                         <td><%= list.get(i).getNickname() %></td>
                                         <td><%= list.get(i).getGrade() %></td>
-                                        <td><input type="hidden" name="memId<%=i%>" value="<%= list.get(i).getMemId() %>"></td>
-                                        <td><input type="text" name="memPoint<%=i%>" style="width: 50%;" ></td>
+                                        <td><input type="hidden" name="memId" value="<%= list.get(i).getMemId() %>"></td>
+                                        <td><input type="number" name="memPoint" style="width: 50%"></td>
                                         <td><%= list.get(i).getMemVisit() %></td>
                                         <td><%= list.get(i).getEmail() %></td>
                                         <td>
-                                            <input type="submit" id="commentbtn<%=i%>" value="변경" onclick="clkBtn()">
+                                            <input type="submit" id="commentbtn<%=i%>" value="변경">
                                         </td>
                                     </tr>
-                                   <% } %>
+                                    </form>
+                                  <% } %>
                             </tbody>
                         </table>
                     </form>
@@ -421,7 +424,7 @@
                   <ul class="pagination justify-content-center" style="margin: 0;">
                      <% if(pi.getCurrentPage() != 1){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage -1 %>'">&lt;</button></li>
+                           onclick="location.href='<%= contextPath %>/check.ad?page=<%= currentPage -1 %>'">&lt;</button></li>
                      <% } %>
                      <% for(int i = startPage; i <= endPage; i++ ){ %>
                      <% if(i == currentPage){ %>
@@ -429,14 +432,14 @@
                            disabled><%= i %></button></li>
                      <% }else{ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= i %>'"><%= i %></button></li>
+                           onclick="location.href='<%= contextPath %>/check.ad?page=<%= i %>'"><%= i %></button></li>
 
                      <% } %>
                      <% } %>
 
                      <% if(currentPage != maxPage){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage +1 %>'">&gt;</button></li>
+                           onclick="location.href='<%= contextPath %>/check.ad?page=<%= currentPage +1 %>'">&gt;</button></li>
                      <% } %>
                   </ul>
                </td>
@@ -451,12 +454,8 @@
 
     <!-- 회원 등급 수정 -->
     <script>
-        function clkBtn() {
-            $('input[name="memPoint"]').each(function(idx, item) {
-                var arr = $(item).val();
-                console.log(arr);
-            });
-        }
+    
+        
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>

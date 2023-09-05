@@ -32,12 +32,19 @@ public class Course {
 	
 	
 
-	public Course(String place1, String titleImg, String locationName, String hashtagName) {
+	public Course(String place1, String titleImg, String locationName) {
 		super();
 		this.place1 = place1;
 		this.titleImg = titleImg;
 		this.locationName = locationName;
-		this.hashtagName = hashtagName;
+	}	
+	
+	public Course(String place1, String courseNo, String titleImg, String locationName) {
+		super();
+		this.place1 = place1;
+		this.courseNo = courseNo;
+		this.titleImg = titleImg;
+		this.locationName = locationName;
 	}
 
 	public String getTitleImg() {

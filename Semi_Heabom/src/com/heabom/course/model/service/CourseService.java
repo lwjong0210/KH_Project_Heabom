@@ -42,6 +42,7 @@ public class CourseService {
 
 	public ArrayList<Course> myCourseSelect(String memNo){
 		Connection conn = getConnection();
+		System.out.println("여기는 코스 서비스 : " + memNo);
 		ArrayList<Course> clist = new CourseDao().myCourseSelect(conn, memNo);
 		close(conn);
 		return clist;
@@ -96,6 +97,20 @@ public class CourseService {
 			rollback(conn);
 		}
 		return result; 
+		
+	}
+	
+	/**
+	 * 마이페이지에서 코스 불러오기
+	 * 조준하
+	 * @param cNo
+	 * @return
+	 */
+	public ArrayList<Place> loadCourse(String cNo){
+		Connection conn = getConnection();
+		ArrayList<Place> list = new CourseDao().loadCourse(conn , cNo);
+		close(conn);
+		return list;
 		
 	}
 	

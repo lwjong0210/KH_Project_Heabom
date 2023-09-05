@@ -81,9 +81,11 @@ public class MemberService {
       
    
    public Member updateMember(Member m) {
-	  System.out.println("여긴 service");
-      System.out.println("asdasd"+m.getMemId());
-      System.out.println("asss"+m.getMemPoint());
+	   
+	  // System.out.println("여긴 service");
+      // System.out.println("asdasd"+m.getMemId());
+      // System.out.println("asss"+m.getMemPoint());
+	   
       Connection conn = getConnection();
       
       int result = new MemberDao().updateMember(conn, m);

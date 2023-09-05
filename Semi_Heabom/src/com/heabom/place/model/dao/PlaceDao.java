@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import static com.heabom.common.JDBCTemplate.*;
 
+import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.File;
 import com.heabom.member.model.vo.MemberAttachment;
 import com.heabom.place.model.vo.Place;
@@ -449,6 +450,89 @@ public class PlaceDao {
 		}
 		return result ;
 		
+	}
+	public Place selectMyPlace(Connection conn,String pNo) {
+		Place p = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMyPlace");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				p = new Place();
+				p.setPlaceNo(rset.getString("PLACE_NO"));
+				p.setPlaceTitle(rset.getString("PLACE_TITLE"));
+				p.setCategoryNo(rset.getInt("CATEGORY_NO"));
+				p.setWriter(rset.getString("WRITER"));
+				p.setLocationNo(rset.getInt("LOCATION_NO"));
+				p.setMakeDate(rset.getDate("MAKE_DATE"));
+				p.setStatus(rset.getString("STATUS"));
+				p.setPhone(rset.getString("PHONE"));
+				p.setAddress(rset.getString("ADDRESS"));
+				p.setPlaceContent(rset.getString("PLACE_CONTENT"));
+				p.setStartTime(rset.getInt("START_TIME"));
+				p.setEndTime(rset.getInt("END_TIME"));
+				p.setStarPoint(rset.getInt("STAR_POINT"));
+				p.setPlaceUrl(rset.getString("PLACE_URL"));
+				p.setViewCount(rset.getInt("VIEW_COUNT"));
+				p.setUseTime(rset.getInt("USE_TIME"));
+				p.setUsePrice(rset.getInt("USE_PRICE"));
+				p.setBestStatus(rset.getString("BEST_STATUS"));
+				p.setTitleImg(rset.getString("TITLEIMG"));
+				p.setLikeCount(rset.getInt("LIKECOUNT"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return p;
+	}
+	
+	public ArrayList<Place> myFavorSelect(Connection conn,String memNo) {
+		ArrayList<Place> fList = new ArrayList<Place>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql =  prop.getProperty("myFavorSelect");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memNo);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				fList.add(new Place(rset.getString("WRITER"),
+									rset.getString("PLACE_TITLE"),
+						            rset.getInt("LOCATION_NO"),
+						            rset.getString("MAKE_DATE"),
+						            rset.getString("STATUS"),
+						            rset.getString("PHONE"),
+						            rset.getString("ADDRESS"),
+						            rset.getString("PLACE_CONTENT"),
+						            rset.getInt("START_TIME"),
+						            rset.getInt("END_TIME"),
+						            rset.getInt("STAR_POINT"),
+						            rset.getString("PLACE_URL"),
+						            rset.getInt("USE_TIME"),
+						            rset.getInt("USE_PRICE"),
+						            rset.getString("BEST_STATUS"),
+						            rset.getInt("LIKECOUNT"),
+						            rset.getString("TITLEIMG"),
+						            rset.getString("LOCATION_NAME")
+						            ));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return fList;
 	}
 	
 }

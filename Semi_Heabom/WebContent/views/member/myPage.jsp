@@ -174,7 +174,7 @@ table, div {
 											onclick="myFavorit();">
 											<img src="<%=contextPath%>/resource/img/myPage/즐겨찾기.png">
 											<p class="mypage-right-p">
-												<strong>즐겨찾기</strong>
+												<strong>나의좋아요</strong>
 											</p>
 										</div>
 									</td>
@@ -270,10 +270,13 @@ table, div {
 			})
 		}
 
-		// 즐겨찾기 Ajax
+		// 나의좋아요 Ajax
 		function myFavorit() {
 			$.ajax({
 				url : "myFavoritAjax.do",
+				data : {
+					memNo : $("#memNo").val()
+				},
 				datatype : "html",
 				success : function(result) {
 					console.log("ajax 성공");

@@ -315,7 +315,6 @@
                             <th width="130">피신고자</th>
                             <th width="130">신고사유</th>
                             <th width="130">신고시간</th>
-                            <th width="180">신고처리시간</th>
                             <th width="130">처리내역</th>
                             <th width="130">관리</th>
                         </thead>
@@ -327,7 +326,6 @@
                                 <td><%= r.getReported() %></td>
                                 <td><%= r.getReCategory() %></td>
                                 <td><%= r.getReDate() %></td>
-                                <td><%= r.getReComplite() %></td>
                                 <td><span class="badge badge-pill badge-success"><%= r.getReStatus() %></span></td>
                                 <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deleteModal">관리</button></td>
                              </tr>

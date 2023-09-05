@@ -81,16 +81,16 @@
                 <tr>
                     <td rowspan="4" width="300" height="130">
                     <% if( b.getBoardImg().length() > 5) {%>
-                        <img src="<%=bContextPath %><%=b.getBoardImg() %>" alt="">
+                        <a href="<%=bContextPath%>/detail.bo?bno=<%=b.getBoardNo().substring(1)%>"><img src="<%=bContextPath %><%=b.getBoardImg() %>" alt=""></a>
                     <% }else{ %>
                     	<img src="https://breffee.net/data/editor/2210/20221013104826_fd5326c8ac17c04c88d91f03a8d313d8_5r8y.jpg" alt="">
                     <% } %>    
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong><%=b.getBoardTitle() %></strong></div></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong><a style="font-size: large; color: black; font-weight: bolder;" href="<%=bContextPath%>/detail.bo?bno=<%=b.getBoardNo().substring(1)%>"><%=b.getBoardTitle() %></a></strong></div></td>
                 </tr>
                 <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit"><%=b.getBoardContent() %></div></td>
+                    <td height="30" width="350" colspan="4"><div class="text_limit"><a style="font-size: large; color: black; font-weight: normal;" href="<%=bContextPath%>/detail.bo?bno=<%=b.getBoardNo().substring(1)%>"><%=b.getBoardContent() %></a></div></td>
                 </tr>
                 <tr>
                 <% if(b.getHashTagName() == null ) { %>
@@ -105,13 +105,13 @@
 	                    <td height="20" width="350" colspan="4">
 	                    	<div class="text_limit" >
 	                    	<% for(int i = 0 ; i<hashlist.length; i++) { %>
-	                    		<a href="#"><%=hashlist[i] %></a></td>
+	                    		<a href="#">#<%=hashlist[i] %></a></td>
 	  	                	<% } %>
 	  	                	</div>
 	                <% }else{ %>
 	                	<td height="20" width="350" colspan="4">
 	                		<div class="text_limit" >
-	                			<a href="#"><%=b.getHashTagName() %></a>
+	                			<a href="#">#<%=b.getHashTagName() %></a>
 	               			</div>
 	            		</td>
 	                <% } %>
