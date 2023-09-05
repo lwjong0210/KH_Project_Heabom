@@ -51,12 +51,12 @@ public class CheckListUpdateController extends HttpServlet {
     	  
     	  HttpSession session = request.getSession();         
     	  session.setAttribute("memId", updateMem);
-    	  session.setAttribute("alertMsg", "성공");
+    	  session.setAttribute("alertMsg", "회원 등급이 변경되었습니다.");
     	  
     	  response.sendRedirect(request.getContextPath() + "/check.ad");
     	  
       }else {
-    	  request.setAttribute("errorMsg", "실패");
+    	  request.setAttribute("errorMsg", "회원 등급 변경에 실패했습니다.");
     	  RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
     	  view.forward(request, response);
       }

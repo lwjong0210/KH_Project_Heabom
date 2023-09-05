@@ -51,16 +51,21 @@
          #wrap{
             width: 1900px;
             height: auto;
+            background-color: rgb(255, 240, 243);
+            /*
             border: 0px solid black;
             box-sizing: border-box;
+            */
             margin: auto;
-            margin-top: 30px;
+            /*margin-top: 30px;*/
            
         } 
        
         div{
+            /*
+            box-sizing: border-box;
             border: 0px solid black;
-
+            */
         }
   
         #content{
@@ -73,9 +78,11 @@
             float: left;
             height: 720px;
             width: 20%;
+            /*
             box-sizing: border-box;
             border: 1px solid red;
-            background-color: pink;
+            */
+            background-color: white;
             
         }
         #content_2{
@@ -158,7 +165,7 @@
     <div id="wrap">
 
         <div id="content">
-            <div id="content_1"  style="border: 1px solid black;">
+            <div id="content_1" >
                     <div id="div1" ></div>
                     <div id="div2" ></div>
                     <div id="div3"  ></div>
