@@ -6,7 +6,6 @@
 <%
 	ArrayList<Course> clist = (ArrayList<Course>)request.getAttribute("clist");
 	String cContextPath = request.getContextPath();
-	System.out.println("여기는 코스 : "+clist.size());
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -84,8 +83,7 @@
 	    	<% for (Course c : clist) { %>
 		        <div class="thumbnail" align="center">
 		        	<% if(c.getTitleImg().length() > 5) { %>
-		        	<% System.out.println(c.getTitleImg()); %>
-		            	<img src="<%=cContextPath %><%=c.getTitleImg() %>" style="height: 120px; width: 150px; border-radius: 10px;">
+		            	<a href="<%=cContextPath%>/load.cs?cNo=<%=c.getCourseNo()%>"><img src="<%=cContextPath %><%=c.getTitleImg() %>" style="height: 120px; width: 150px; border-radius: 10px;"></a>
 		            <% } else { %>
 		            	<img src="https://breffee.net/data/editor/2210/20221013104826_fd5326c8ac17c04c88d91f03a8d313d8_5r8y.jpg" style="height: 120px; width: 150px; border-radius: 10px;">
 		            <% } %>

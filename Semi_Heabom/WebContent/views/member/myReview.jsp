@@ -69,13 +69,21 @@
                         </td>
                         <td width="3"></td>
                         <td width="250">
-                            <div style="font-size: medium; margin-bottom: 5px;"><strong><%=re.getNickname() %>님께서</strong>
-                                <% if(re.getReNo().substring(0,2).equals("RV")) { %>
-                                	내 게시물에 리뷰를 작성하였습니다.</div>
+
+                            
+                            <% if(re.getReNo().substring(0,2).equals("RV")) { %>
+                            	<a href="<%=reContextPaht %>/myplaceView.mp?pNo=<%=re.getReRefNo()%>" style="text-align: left; color: black;">
+                            		<div style="font-size: medium; margin-bottom: 5px;"><strong><%=re.getNickname() %>님께서</strong>내 게시물에 리뷰를 작성하였습니다.</div>
+                            		<div class="text_limit" style="font-size: medium;"><%=re.getReContent() %></div>
+                           		</a>
                                 <% } else { %>
-                                	내 게시물에 리플을 작성하였습니다.</div>
+                            	<a href="<%=reContextPaht %>/detail.bo?bno=<%=re.getReRefNo().substring(1) %>" style="text-align: left; color: black;">
+	                               	<div style="font-size: medium; margin-bottom: 5px;"><strong><%=re.getNickname() %>님께서</strong>내 게시물에 댓글을 작성하였습니다.</div>
+                            		<div class="text_limit" style="font-size: medium;"><%=re.getReContent() %></div>
+                           		</a>
                                 <% } %>
-                            <div class="text_limit" style="font-size: medium;"><%=re.getReContent() %></div>
+                            
+                            
                         </td>
                     </tr>
                 </table>

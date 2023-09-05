@@ -1,4 +1,4 @@
-package com.heabom.member.controller;
+package com.heabom.place.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,23 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.heabom.course.model.dao.CourseDao;
-import com.heabom.course.model.service.CourseService;
-import com.heabom.course.model.vo.Course;
-import com.heabom.member.model.service.MemberService;
-import com.heabom.member.model.vo.Member;
+import com.heabom.common.model.vo.File;
+import com.heabom.place.model.service.PlaceService;
+import com.heabom.place.model.vo.Place;
 
 /**
- * Servlet implementation class JqAjaxMyCourseController
+ * Servlet implementation class MyPlaceViewController
  */
-@WebServlet("/myCourseDetailAjax.do")
-public class JqAjaxMyCourseController extends HttpServlet {
+@WebServlet("/myplaceView.mp")
+public class MyPlaceViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JqAjaxMyCourseController() {
+    public MyPlaceViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,10 +32,18 @@ public class JqAjaxMyCourseController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memNo = request.getParameter("memNo");
-		ArrayList<Course> clist = new CourseService().myCourseSelect(memNo);
-		request.setAttribute("clist", clist);
-		request.getRequestDispatcher("views/member/myCourse.jsp").forward(request, response);
+		System.out.println("이거타냐?");
+		String pNo = request.getParameter("pNo");
+		Place p = new PlaceService().selectMyPlace(pNo);
+		ArrayList<File> myfileList = new PlaceService().selectFileList(pNo);
+		if(!(myfileList.isEmpty())) {
+			request.setAttribute("fileList", myfileList);
+			request.setAttribute("placeInfo", p);
+			request.getRequestDispatcher("views/place/placeDetailView.jsp").forward(request, response);
+		}else {
+			System.out.println("실패!");
+		}
+		
 	}
 
 	/**

@@ -101,7 +101,7 @@
                     <% } %>
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong><%=p.getPlaceTitle() %></strong></div></td>
+                    <td height="40" width="350" colspan="4"><div class="text_limit"><a href="<%=contextPath2%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>" style="font-size: large; color: black;"><strong><%=p.getPlaceTitle() %></strong></a></div></td>
                 </tr>
                 <tr>
                     <td height="30" width="350" colspan="4"><div class="text_limit"><%=p.getPlaceContent() %></div></td>

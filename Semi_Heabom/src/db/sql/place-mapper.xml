@@ -124,6 +124,35 @@ AND P.STATUS = 'Y'
 ORDER BY LIKECOUNT DESC
 </entry>
 
+<entry key="selectMyPlace">
+SELECT 
+    PLACE_NO
+   ,PLACE_TITLE
+   ,CATEGORY_NO
+   ,WRITER
+   ,LOCATION_NO
+   ,MAKE_DATE
+   ,P.STATUS
+   ,PHONE
+   ,ADDRESS
+   ,PLACE_CONTENT
+   ,START_TIME
+   ,END_TIME
+   ,STAR_POINT
+   ,PLACE_URL
+   ,VIEW_COUNT
+   ,USE_TIME
+   ,USE_PRICE
+   ,BEST_STATUS
+   ,FILE_PATH || '/' ||CHANGE_NAME "TITLEIMG"
+   ,LIKECOUNT
+FROM TB_PLACE P
+JOIN TB_FILE F ON ( REF_NO = PLACE_NO )
+WHERE PLACE_NO = ?
+AND FILE_LEVEL = 1 
+AND P.STATUS = 'Y'
+</entry>
+
 <entry key="selectFileList">
 select 
     FILE_NO
