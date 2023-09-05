@@ -36,6 +36,7 @@ public class PlaceReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(ServletFileUpload.isMultipartContent(request)) {
+			System.out.println("여기는 리뷰 컨트롤러");
 			int maxSize = 10*1024*1024;
 			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/place_review/");
 		
@@ -47,7 +48,6 @@ public class PlaceReviewDetailController extends HttpServlet {
 			String refNo = multiRequest.getParameter("refNo");
 			String writer = multiRequest.getParameter("writer");
 			String file = (multiRequest.getFile("file")+"");
-			
 			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
 			if(file.length() > 10) {
 				String[] fileList = file.split("\\\\");
