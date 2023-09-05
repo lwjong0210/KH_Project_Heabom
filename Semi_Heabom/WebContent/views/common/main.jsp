@@ -48,6 +48,13 @@
     <title>Document</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <style>
+        *{
+            /*
+            box-sizing: border-box;
+            border: 1px solid red;
+            */
+        }
+
          #wrap{
             width: 1900px;
             height: auto;
@@ -57,6 +64,8 @@
             */
             margin: auto;
             /*margin-top: 30px;*/
+
+            background-color: rgb(255, 235, 244);
            
         } 
        

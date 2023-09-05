@@ -46,7 +46,7 @@
             /*border-bottom: 2px solid lightgray ;*/
             /* position: fixed; */
 
-            background-color:  rgb(255, 235, 244);
+            background-color: transparent;
             
         }
         .header_outer>div{
@@ -181,7 +181,7 @@
                     <strong><%=loginMember.getNickname()%>님</strong> 반갑습니다.
                     </p>
                     </div>
-                    <a class="btn btn-sm btn-secondary" href="<%=contextPath%>/myPage.me">나의정보</a>
+                    <a class="btn btn-sm btn-info" href="<%=contextPath%>/myPage.me">나의정보</a>
                     <button  class="btn btn-sm btn-danger" onclick="location.href = '<%=contextPath%>/logout.me'">로그아웃</button>
                 <%}%>
     </div>
