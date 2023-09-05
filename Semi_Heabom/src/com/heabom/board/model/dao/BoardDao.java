@@ -241,12 +241,12 @@ public class BoardDao {
 		
 	}
 	
-	public int insertAttachment(Connection conn, ArrayList<File> list, Board b) {
+	public int insertFile(Connection conn, ArrayList<File> list, Board b) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String sql = prop.getProperty("insertAttachment");
+		String sql = prop.getProperty("insertFile");
 		
 		try {
 			for(File f:list) {
@@ -713,9 +713,115 @@ public class BoardDao {
 		
 		
 	}
+	
+	public int deleteReply(Connection conn, String rpNo) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rpNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	public int updateFile(Connection conn, ArrayList<File> list) {
+		
+		PreparedStatement pstmt = null;
+		int result = 1;
+		String sql = prop.getProperty("updateFile");
+		try {
+			for(File f : list) {
+				pstmt = conn.prepareStatement(sql);
+				System.out.println(f.getOriginName() + "이게 왜 누락된 등호?");
+				System.out.println(f.getChangeName() + "이게 왜 누락된 등호?");
+				System.out.println(f.getFilePath() + "이게 왜 누락된 등호?");
+				System.out.println(f.getFileNo() + "이게 왜 누락된 등호?");
 
+				pstmt.setString(1, f.getOriginName());
+				pstmt.setString(2, f.getChangeName());
+				pstmt.setString(3, f.getFilePath());
+				pstmt.setString(4, f.getFileNo());
+				result = pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
 	
+	public File selectFile(Connection conn, String fileNo) {
+		
+		PreparedStatement pstmt = null;
+		File f = new File();
+		String sql = prop.getProperty("selectFile");
+		ResultSet rset = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, fileNo);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				f.setOriginName(rset.getString("ORIGIN_NAME"));
+				f.setChangeName(rset.getString("CHANGE_NAME"));
+				f.setFilePath(rset.getString("FILE_PATH"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		return f;
+		
+		
+		
+	}
 	
+	public int insertFile2(Connection conn, ArrayList<File> list, String boardNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertFile2");
+		
+		try {
+			for(File f:list) {
+				System.out.println(f+"제발제발제발");
+			
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, f.getOriginName());
+				pstmt.setString(2, f.getChangeName());
+				pstmt.setString(3, f.getFilePath());
+				pstmt.setString(4, boardNo);
+				result = pstmt.executeUpdate();
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	
+	}
 	
 	
 	

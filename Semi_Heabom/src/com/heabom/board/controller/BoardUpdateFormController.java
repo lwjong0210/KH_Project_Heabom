@@ -43,6 +43,7 @@ public class BoardUpdateFormController extends HttpServlet {
 		System.out.println("업데이트에서 b출력 : " + b);
 		
 		ArrayList<File> list = bservice.selectAttachmentList(boardNo);
+		System.out.println("업뎃전 리스트"+list);
 		Gson gson = new Gson();
 		String gsonList = gson.toJson(list);
 		
