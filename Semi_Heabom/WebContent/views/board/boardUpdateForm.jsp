@@ -521,27 +521,26 @@
                     	$(function(){
                     		jsonList = '<%= gsonList%>'
                     		arrList = JSON.parse(jsonList)
-             	
+             				console.log(arrList)
                     		console.log(arrList.length)
                     		console.log("띠용")
                     		let a = arrList
                
-                			$("#gsonList").val(arrList[0].fileNo)
-                			console.log(arrList[1].fileNo)
-                			console.log("??")
-                			let lsHtml = "";
-                			for(let i = 0; i < arrList.length; i++){
-                				$("#hidden" + (i+1)).val("flag")
+                		//	let lsHtml = "";
+                		//	for(let i = 0; i < arrList.length; i++){
+                			//	$("#hidden" + (i+1)).val("flag")
+                				
            //     				lsHtml +=
             //    						"<input type='text' name='fileNo' value="+ arrList[i].fileNo +">"+
              //   					    "<input type='text' name='filePath' value="+ arrList[i].filePath +">"+
               //  					    "<input type='text' name='originName' value="+ arrList[i].originName + ">"+
                // 					    "<input type='text' name='changeName' value="+ arrList[i].changeName +">"
-                				console.log($("#hidden" + (i+1)).val() + "뜨냐?")
-                			}
+                			//	console.log($("#hidden" + (i+1)).val() + "뜨냐?")
+                			//}
             //    		$("#hidden-area").html(lsHtml);
                 			
                     		if(arrList.length != 0){
+                    			console.log("오냐?")
                     			for(let i = 0; i < arrList.length; i++){
                     				$("#hidden" + (i+1)).val(arrList[i].fileNo)
                     				console.log($("#hidden" + (i+1)).val())

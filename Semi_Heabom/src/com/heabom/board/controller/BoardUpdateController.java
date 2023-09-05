@@ -4,6 +4,7 @@ import java.awt.print.Book;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.heabom.board.model.dao.BoardDao;
 import com.heabom.board.model.service.BoardService;
 import com.heabom.board.model.vo.Board;
 import com.heabom.common.MyFileRenamePolicy;
@@ -99,42 +101,118 @@ public class BoardUpdateController extends HttpServlet {
 			
 //			ArrayList<File> updateflist = new ArrayList<File>();
 //			ArrayList<File> insertflist = new ArrayList<File>();
-//			ArrayList<File> updateList = new ArrayList<File>();
+			ArrayList<File> updateInsertList = new ArrayList<File>();
+			
+			
 			
 			for(int i = 1; i <= 5; i++) {
 				String key = "file" + i;
 				
+				System.out.println(multiRequest.getOriginalFileName(key));
 				if(multiRequest.getOriginalFileName(key) != null) {	// 새롭게 추가된 파일이라면
 					
 					// 첫번째 파일이 그대로 두번째 삽입
 						System.out.println(key);
 						File f = new File();
 						
+			
 						// 보드넘버 세팅
+						if(i < originFileList.size()) {
+							f.setFileNo(originFileList.get(i-1).getFileNo());							
+							}
+						else {
+							f.setFileNo("");							
+						}
 						f.setOriginName(multiRequest.getOriginalFileName(key));
 						f.setChangeName(multiRequest.getFilesystemName(key));
 						f.setFilePath("resource/img/board");
 						System.out.println(f);
+						updateInsertList.add(f);
 				}else {
 					File f = new File();
-					String flag = (String)multiRequest.getParameter("hidden" + i);
-
-
-					f.setFileNo(flag);
+//					String fNo = (String)multiRequest.getParameter("hidden" + i);
+					String fNo ="";
+					if(i <= originFileList.size()) {
+						fNo = originFileList.get(i-1).getFileNo();
+						
+					}else {
+						fNo = "";
+					}
+					
+				
+					f.setFileNo(fNo);
 					System.out.println("여긴 esle 임 : " + key);
 					System.out.println("else 에서의 f : " + f);
 //					File f = new File();
 					// 보드넘버 세팅
 //					f.setOriginName((String)multiRequest.getParameter("hidden" + i + i));
 					
-					System.out.println(flag);
+					System.out.println(fNo);
 					// 길이만큼 돌려 만약 거기에 벨류가 없다면 또한 originname 도 없다면 그값의 status 를 n으로
 					// 근데 벨류가 없는데 originname 가 이썽? 그럼 그값에 업데이틓라ㅏㅈ
 					
+					updateInsertList.add(f);
 					
 				}
+				
+				
 			}
 			
+			int result1 =1;
+			int result2 =1;
+			
+			for(int i = 0; i < updateInsertList.size(); i++) {
+				String fNo = "";
+				if(i < originFileList.size()) {
+					fNo = originFileList.get(i).getFileNo();
+				}else {
+					fNo ="";
+				}
+				
+				System.out.println(updateInsertList.get(i));
+				
+//				if(!fNo.isEmpty() && updateInsertList.get(i).getFileNo()!=null) { //
+				if(!fNo.isEmpty()) { 
+					System.out.println("2번 들어와야지");
+					System.out.println(i+"ㅋㅋ");
+					System.out.println("찍어보자 "+ i + (String)multiRequest.getParameter("hidden" + (i+1)));
+					
+					String s = (String)multiRequest.getParameter("hidden" + (i+1));
+					
+					if(updateInsertList.get(i).getOriginName()==null&&(s.isEmpty()|| s==null)&& updateInsertList.get(i).getFileNo()!=null) {
+						// 기존파일날린 경우
+						result1 = new BoardService().updateFileStatus(originFileList.get(i));
+						System.out.println("기존파일 삭제:"+i);
+					}else {
+						// 기존파일을 수정한경우
+						if(updateInsertList.get(i).getOriginName()!=null) {
+							System.out.println("기존파일 수정:"+i);
+							result1 = new BoardService().updateFile(updateInsertList.get(i));
+							
+						}
+						
+					}
+					System.out.println(i);
+					
+				}else if(updateInsertList.get(i).getOriginName()!=null) {
+					result2 = new BoardService().insertFile2(updateInsertList.get(i),boardNo);	
+					// 새로운 파일을 추가한경우
+				}
+				// 그냥 비어있는 경우
+				System.out.println("비어있는 i" + i);
+			}
+			System.out.println("result1 : " + result1);
+			System.out.println("result2 : " + result2);
+			if(result1 > 0 && result2 > 0) {
+				response.sendRedirect(request.getContextPath()+"/detail.bo?bno="+boardNo.substring(1));
+				
+			}else {
+				request.setAttribute("errorMsg", "게시물 수정에 실패했습니다.");
+				RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+				view.forward(request, response);
+				
+			}
+
 
 		}
 	}

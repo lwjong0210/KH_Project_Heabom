@@ -169,6 +169,7 @@ SELECT *
 			FROM TB_FILE
 			WHERE REF_NO = ?
 			AND STATUS = 'Y'
+			ORDER BY CAST(FILE_NO AS NUMBER)
 	</entry>
 	
 	<entry key='selectQuestion'>
@@ -369,14 +370,24 @@ UPDATE
 UPDATE
        TB_FILE
    SET 
-       ORIGIN_NAME = ?
+       FILE_NO = ?
+     , ORIGIN_NAME = ?
      , CHANGE_NAME = ?
      , FILE_PATH = ?
      , UPLOAD_DATE = SYSDATE 
  WHERE
        FILE_NO = ?
 </entry>
-	<entry key='selectFile'>
+<entry key='updateFileStatus'>
+UPDATE
+       TB_FILE
+   SET 
+       STATUS = ?
+     , UPLOAD_DATE = SYSDATE 
+ WHERE
+       FILE_NO = ?
+</entry>
+<!--<entry key='selectFile'>
 		SELECT
 			FILE_NO
 			, ORIGIN_NAME
@@ -385,7 +396,7 @@ UPDATE
 			FROM TB_FILE
 			WHERE FILE_NO = ?
 			AND STATUS = 'Y'
-	</entry>
+	</entry>  -->	
 	
 	<entry key='insertFile2'>
 		INSERT
