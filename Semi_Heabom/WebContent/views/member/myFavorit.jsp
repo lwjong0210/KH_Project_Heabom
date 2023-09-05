@@ -72,13 +72,13 @@
             <table border="0" class="detail_tb">
                 <tr>
                     <td rowspan="4" width="300" height="130">
-                        <img src="<%=fContextPath %><%=p.getTitleImg()%>" alt="">
+                        <a href="<%=fContextPath%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>"><img src="<%=fContextPath %><%=p.getTitleImg()%>" alt=""></a>
                     </td>
                     <td rowspan="4" width="10"></td>
-                    <td height="40" width="350" colspan="4"><div class="text_limit"><strong><%=p.getPlaceTitle() %></strong></div></td>
+                    <td height="40" width="350" colspan="4"><a href="<%=fContextPath%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>" style="font-size: large; color: black; text-decoration: none; text-align: left;"><div class="text_limit"><strong><%=p.getPlaceTitle() %></strong></div></a></td>
                 </tr>
                 <tr>
-                    <td height="30" width="350" colspan="4"><div class="text_limit"><%=p.getPlaceContent() %></div></td>
+                    <td height="30" width="350" colspan="4"><a href="<%=fContextPath%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>" style="font-size: medium; color: black; text-decoration: none; text-align: left;"><div class="text_limit"><%=p.getPlaceContent() %></div></a></td>
                 </tr>
                 <tr>
                     <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="">지역 : <%=p.getLocationName() %></a></div></td>

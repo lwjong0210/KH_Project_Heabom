@@ -505,7 +505,8 @@ public class PlaceDao {
 			pstmt.setString(1, memNo);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				fList.add(new Place(rset.getString("WRITER"),
+				fList.add(new Place(rset.getString("PLACE_NO"),
+									rset.getString("WRITER"),
 									rset.getString("PLACE_TITLE"),
 						            rset.getInt("LOCATION_NO"),
 						            rset.getString("MAKE_DATE"),

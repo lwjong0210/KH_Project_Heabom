@@ -59,10 +59,11 @@ public class Place {
 
 	
 
-	public Place(String writer,String placeTitle ,int locationNo, String strMakeDate, String status, String phone, String address,
+	public Place(String placeNo,String writer,String placeTitle ,int locationNo, String strMakeDate, String status, String phone, String address,
 			String placeContent, int startTime, int endTime, int starPoint, String placeUrl, int useTime, int usePrice,
 			String bestStatus, int likeCount, String titleImg, String locationName) {
 		super();
+		this.placeNo = placeNo;
 		this.writer = writer;
 		this.placeTitle = placeTitle;
 		this.locationNo = locationNo;
