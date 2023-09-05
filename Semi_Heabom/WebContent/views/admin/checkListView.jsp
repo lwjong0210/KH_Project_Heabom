@@ -391,21 +391,23 @@
                             <tbody class="listInner">
                             <input type="hidden" name="listSize" value="<%=list.size()%>">
                                 <% for (int i = 0; i<list.size(); i++) { %>
+                                    <form action="update.ck">
                                     <tr>
                                         <td><%= list.get(i).getMemNo() %></td>
                                         <td><%= list.get(i).getMemId() %></td>
                                         <td><%= list.get(i).getMemName() %></td>
                                         <td><%= list.get(i).getNickname() %></td>
                                         <td><%= list.get(i).getGrade() %></td>
-                                        <td><input type="hidden" name="memId<%=i%>" value="<%= list.get(i).getMemId() %>"></td>
-                                        <td><input type="text" name="memPoint<%=i%>" style="width: 50%;" ></td>
+                                        <td><input type="hidden" name="memId" value="<%= list.get(i).getMemId() %>"></td>
+                                        <td><input type="number" name="memPoint" style="width: 50%;" ></td>
                                         <td><%= list.get(i).getMemVisit() %></td>
                                         <td><%= list.get(i).getEmail() %></td>
                                         <td>
-                                            <input type="submit" id="commentbtn<%=i%>" value="변경" onclick="clkBtn()">
+                                            <input type="submit" id="commentbtn<%=i%>" value="변경" onclick="ClkBtn();">
                                         </td>
                                     </tr>
-                                   <% } %>
+                                    </form>
+                                  <% } %>
                             </tbody>
                         </table>
                     </form>
@@ -451,12 +453,8 @@
 
     <!-- 회원 등급 수정 -->
     <script>
-        function clkBtn() {
-            $('input[name="memPoint"]').each(function(idx, item) {
-                var arr = $(item).val();
-                console.log(arr);
-            });
-        }
+    
+        
     </script>
     <%@include file = "../common/footer.jsp" %>
 </body>

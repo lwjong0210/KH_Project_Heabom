@@ -1,23 +1,28 @@
-package com.heabom.admin.controller;
+package com.heabom.course.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.heabom.course.model.service.CourseService;
+import com.heabom.place.model.vo.Place;
+
 /**
- * Servlet implementation class LogoListController
+ * Servlet implementation class loadCourseController
  */
-@WebServlet("/logo.ad")
-public class LogoListController extends HttpServlet {
+@WebServlet("/load.cs")
+public class loadCourseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoListController() {
+    public loadCourseController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +31,17 @@ public class LogoListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cNo  = request.getParameter("cNo");
+		ArrayList<Place> list = new CourseService().loadCourse(cNo);
+		//courseview 는 list 조회기 때문에 이대로만 주면 됨
+		if(list.isEmpty()) {
+			System.out.println("이런시발");
+		}else {
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("views/course/courseView2.jsp").forward(request, response);
+		}
+	
 		
-		
-		request.getRequestDispatcher("views/admin/logoListView.jsp").forward(request, response);
 	}
 
 	/**

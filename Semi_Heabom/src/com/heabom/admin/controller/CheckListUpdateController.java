@@ -32,32 +32,48 @@ public class CheckListUpdateController extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   
       request.setCharacterEncoding("UTF-8");
+      
+      
+      String userId = request.getParameter("memId");
+      int point = Integer.parseInt(request.getParameter("memPoint"));
+      
+      System.out.println(userId +" "+ point);
+      
+      /*
       int listSize = Integer.parseInt(request.getParameter("listSize")); 
+      
       System.out.println("컨트롤러 1번 : " + listSize);
+      
       String memId = "";
+      
       int memPoint = 0;
+      
       for(int i = 0; i<listSize; i++) {
     	  if(i < 0) {
     		  System.out.println(i);
     	  }else {
     		  memId = request.getParameter("memId"+i);
     		  memPoint = Integer.parseInt(request.getParameter("memPoint"+i));
+    		  System.out.println(request.getParameter("memPoint"+i));
     		  System.out.println("여기는 controller"+i);
     	  }
       }
-         Member m = new Member(memId, memPoint);
+      */
+      
+      
+         Member m = new Member(userId, point);
          Member updateMem = new MemberService().updateMember(m);
          
-         System.out.println("asd"+memId);
-         System.out.println("++++++="+memPoint);
+         System.out.println("asd"+ userId);
+         System.out.println("++++++="+ point);
         	 
       
       
       if(updateMem != null) {
          
-         HttpSession session = request.getSession();
-         
+         HttpSession session = request.getSession();         
          session.setAttribute("memId", updateMem);
          session.setAttribute("alertMsg", "성공");
          
