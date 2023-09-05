@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import static com.heabom.common.JDBCTemplate.*;
 
+import com.heabom.board.model.dao.BoardDao;
+import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.File;
 import com.heabom.member.model.vo.MemberAttachment;
 import com.heabom.place.model.dao.PlaceDao;
@@ -193,6 +195,13 @@ import com.heabom.place.model.vo.Review;
 			Place p = new PlaceDao().selectMyPlace(conn, pNo);
 			close(conn);
 			return p;
+		}
+		
+		public ArrayList<Place> myFavorSelect(String memNo){
+			Connection conn = getConnection();
+			ArrayList<Place> fList = new PlaceDao().myFavorSelect(conn, memNo);
+			close(conn);
+			return fList;
 		}
 
 }
