@@ -841,7 +841,7 @@ public class BoardDao {
 	
 	}
 	
-	public int replyLikeUp(Connection conn,String rpno) {
+	public int replyLikeUp(Connection conn,String rpno,String writer) {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -849,7 +849,8 @@ public class BoardDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, rpno);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, rpno);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -860,7 +861,7 @@ public class BoardDao {
 		return result;
 		
 	}
-	public int replyLikeDown(Connection conn,String rpno) {
+	public int replyLikeDown(Connection conn,String rpno,String writer) {
 		
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -868,7 +869,8 @@ public class BoardDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, rpno);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, rpno);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -903,6 +905,27 @@ public class BoardDao {
 		}
 		return replyLikeCount;
 	}
+	
+	public int updateReplyCount(Connection conn, String rpno) {
+		PreparedStatement pstmt = null;
+		int replyLikeCount = 0;
+		String sql = prop.getProperty("updateReplyCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rpno);
+			pstmt.setString(2, rpno);
+			
+			replyLikeCount = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return replyLikeCount;
+	}
 //	public int replyLikeCount(Connection conn, String rpno) {	// tb_like에서 가져오기
 //		PreparedStatement pstmt = null;
 //		int replyLikeCount = 0;
@@ -927,48 +950,48 @@ public class BoardDao {
 //		return replyLikeCount;
 //	}
 	
-	public int updateLike(Connection conn, String loginMem, String rpno) {
-		
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String sql = prop.getProperty("updateLike");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, loginMem);
-			pstmt.setString(2, rpno);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		return result;
-		
-	
-	}
-	public int deleteLike(Connection conn, String loginMem, String rpno) {
-		
-		PreparedStatement pstmt = null;
-		int result = 0;
-		String sql = prop.getProperty("deleteLike");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, loginMem);
-			pstmt.setString(2, rpno);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		return result;
-		
-		
-	}
+//	public int updateLike(Connection conn, String loginMem, String rpno) {
+//		
+//		PreparedStatement pstmt = null;
+//		int result = 0;
+//		String sql = prop.getProperty("updateLike");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, loginMem);
+//			pstmt.setString(2, rpno);
+//			result = pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			close(pstmt);
+//		}
+//		return result;
+//		
+//	
+//	}
+//	public int deleteLike(Connection conn, String loginMem, String rpno) {
+//		
+//		PreparedStatement pstmt = null;
+//		int result = 0;
+//		String sql = prop.getProperty("deleteLike");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, loginMem);
+//			pstmt.setString(2, rpno);
+//			result = pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			close(pstmt);
+//		}
+//		return result;
+//		
+//		
+//	}
 	
 	public ArrayList selectLikeList(Connection conn, String mno) {
 		PreparedStatement pstmt = null;

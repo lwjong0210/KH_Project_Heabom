@@ -918,7 +918,6 @@ tfoot>tr {
 					console.log($(element).next().val())
 					console.log($(element).next().next().val())
 					console.log("여기는 likeDown")
-				    $(element).attr('src',"<%=contextPath%>/resource/img/board/likeN.png")
 					$.ajax({
 					 url : "likedown.bo",
 	                    data : {
@@ -945,7 +944,6 @@ tfoot>tr {
 					console.log($(element).next().val())
 					console.log($(element).next().next().val())
 					console.log("여기와")
-					    $(element).attr('src',"<%=contextPath%>/resource/img/board/likeY.png")
 					$.ajax({
 					 url : "likeup.bo",
 	                    data : {
