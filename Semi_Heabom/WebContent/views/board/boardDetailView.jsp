@@ -22,6 +22,7 @@ int boardCount = b.getBoardCount();
 String createDate = b.getCreateDate();
 String hashTag = b.getHashTagName();
 
+String contextPath1 = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -627,6 +628,10 @@ tfoot>tr {
 	border-color: #ccc;
 }
 
+.boardReport div{
+	margin: auto;
+}
+
 /* pagination 관련 끝 */
 </style>
 </head>
@@ -736,8 +741,12 @@ tfoot>tr {
 						<img src="resources/img/free-icon-siren-6043503.png" alt="">
 					</div>
 					<div>
-						<span>신고</span>
+						<p class="btn btn-sm btn-danger" data-toggle="modal" data-target="#reportModal">신고</p>
 					</div>
+
+
+
+
 
 				</div>
 			</div>
@@ -1236,5 +1245,98 @@ tfoot>tr {
 			}
 			
 	</script>
+
+<!-- 모달시작 -->
+<div class="modal" id = "reportModal" align="center">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">리뷰신고</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<form action="<%=contextPath1%>/insert2.rp" method="post">
+				<input type="hidden" name="userId" value="">
+				<b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
+					아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
+					<table class="reportForm" border="0">
+						<tr>
+							<th>신고대상:</th>
+							<td><input type="text" id="xUser" name="xUser" value="<%=writer%>" readonly style="background-color: lightgray;"></td>
+						</tr>
+						<tr>
+							<th>
+								신고글:
+							</th>
+							<td>
+								<textarea name="xContent" id="xContent" cols="30" rows="5" readonly style="background-color:lightgray; resize: none;"><%=boardContent%></textarea>
+							</td>
+						</tr>
+						<input type="hidden" name="reNo" value="<%=boardNo%>">
+						<input type="hidden" name="reporter" value="<%=loginMember.getMemNo()%>">
+						<input type="hidden" name="reported" value="<%=b.getReportWriter()%>">
+						<tr>
+							<th>신고종류 : </th>
+							<td>
+								<input name="reprotTypeSelect" type="hidden" onclick="getReportType(event)" value="">
+								<select name="reportType" id="reportType">
+									<option value="비방">비방</option>
+									<option value="불법광고">불법광고</option>
+									<option value="허위게시글">허위게시글</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>신고내용 : </th>
+							<td>
+								<textarea name="reportContent" id="reportContent" cols="30" rows="5" style="resize: none;" minlength="1" required placeholder="신고내용은 신고종류에 맞게 작성해주세요. 부적절한 신고 내용은 신고자가 재제의 대상이 됩니다."></textarea>
+							</td>
+						</tr>
+						<tr>
+							<th colspan="2">
+								<p style="color: red; margin: 0; text-align: center;">무고한 신고는 신고자 계정이 재제 당할 수 있습니다.<input id="userReportCheck" type="checkbox" onclick="reportCheck();"></p>
+							</th>
+						</tr>
+					</table>
+					<br>
+					<button type="button" id="thorwReport" class="btn btn-sm btn-danger" onclick="insertReport()" disabled>신고하기</button>
+					<button type="submit" id="thorwReporter" style="display: none;"></button>
+					<button type="reset" class="btn btn-sm btn-info">초기화</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+
+<script>
+    function reportCheck() {
+        var checkbox = document.getElementById("userReportCheck");
+        var reportButton = document.getElementById("thorwReport");
+
+        if (checkbox.checked) {
+            reportButton.removeAttribute("disabled");
+        } else {
+            reportButton.setAttribute("disabled", "disabled");
+        }
+    }
+    
+    function getReportType(event) {
+        event.preventDefault();
+        let reportSelect = $("#reportType option:selected").val();
+        $("#reprotTypeSelect").val(reportSelect);
+    }
+
+    function insertReport(){
+        $("#reprotTypeSelect").click();
+        $("#thorwReporter").click();
+    }
+</script>
+
 </body>
 </html>

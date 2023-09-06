@@ -367,6 +367,7 @@ public class BoardDao {
 				b.setCreateDate(rset.getString("create_date"));
 				b.setHashTagName(rset.getString("hashtag_name"));
 				b.setCountReply(rset.getInt("count"));
+				b.setReportWriter(rset.getString("WRITER"));
 				
 			}
 			System.out.println(b + "진짜어이가없네");

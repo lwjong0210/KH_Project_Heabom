@@ -12,6 +12,7 @@
 	</entry>
 	<entry key='selectKeyWordCount'>
 	SELECT 
+	
 	 COUNT(*) "COUNT"
 	  FROM TB_BOARD
 	 WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
@@ -154,6 +155,7 @@ SELECT *
 		     , TO_CHAR(CREATE_DATE,'YY/MM/DD HH24:MI') AS "CREATE_DATE"
 		     , HASHTAG_NAME
 		     , COUNT
+		     , WRITER
 		  FROM TB_BOARD
 		  JOIN TB_MEMBER ON(WRITER = MEM_NO)
           LEFT JOIN (SELECT RE_REF_NO, COUNT(*) "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS = 'N' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
@@ -507,5 +509,5 @@ INSERT
  WHERE MEM_NO = ?
 
 	</entry>
-
+	
 </properties>
