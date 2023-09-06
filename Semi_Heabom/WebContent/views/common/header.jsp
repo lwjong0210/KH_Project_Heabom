@@ -172,7 +172,7 @@
             </div>
                 <%}else{%>
                     <div style="line-height: 35px; text-align: center;">
-                    <p style="margin: 0; margin-top: 10px;">
+                    <p id="headerUser" style="margin: 0; margin-top: 10px;">
                     <%if(loginMember.getTitleImg().length() > 5) { %>
                     	<img src="<%=contextPath%><%=loginMember.getTitleImg()%>" id="viewTitleImg1" name="viewTitleImg1" style="width: 25px; height: 25px; border-radius: 50px;">
                     <% }else{ %>
