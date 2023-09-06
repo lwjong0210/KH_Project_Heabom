@@ -47,7 +47,7 @@ public class CheckListUpdateController extends HttpServlet {
       new MemberService().updateMember(m);
       Member updateMem = new MemberService().updateMember(m);
       
-      if(point != 0) {
+      if(point >= 0) {
     	  
     	  HttpSession session = request.getSession();         
     	  session.setAttribute("memId", updateMem);
@@ -56,7 +56,7 @@ public class CheckListUpdateController extends HttpServlet {
     	  response.sendRedirect(request.getContextPath() + "/check.ad?cpage=1");
     	  
       }else {
-    	  request.setAttribute("errorMsg", "회원 등급 변경에 실패했습니다.");
+    	  request.setAttribute("alertMsg", "올바른 값을 입력해주세요");
     	  RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
     	  view.forward(request, response);
       }
