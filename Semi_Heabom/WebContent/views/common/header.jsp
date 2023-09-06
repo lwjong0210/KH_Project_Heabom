@@ -51,7 +51,7 @@
 
         div{box-sizing: border-box; border: 0px solid red;}
         .header_outer{
-            width: 1900px;
+            width: auto;
             height: 90px;
             margin: auto;
             margin-top: 0px;

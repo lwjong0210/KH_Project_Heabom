@@ -14,6 +14,7 @@ ArrayList<Board> list = (ArrayList<Board>) request.getAttribute("list");
 ArrayList<Reply> rlist = (ArrayList<Reply>) request.getAttribute("rlist");
 PrevNextPage p = (PrevNextPage) request.getAttribute("p");
 
+
 String boardNo = b.getBoardNo();
 String boardTitle = b.getBoardTitle();
 String writer = b.getWriter();
@@ -1184,9 +1185,8 @@ tfoot>tr {
 				  $("#dataTableBody").html(charTitleHtml+chartHtml);
 					
 					$("#dataTableBody tr").click(function () {
-						console.log("크,ㄹ릭!!!")
-						console.log($(this).children().eq(0).text())
-						location.href='<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text()
+							location.href='<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text()
+							
 
 					})
 	}

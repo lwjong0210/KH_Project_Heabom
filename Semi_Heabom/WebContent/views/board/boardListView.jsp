@@ -32,6 +32,7 @@
 <style>
 .outer {
 	padding: 10px 10px 0 10px;
+	border-radius: 10px;
 	width: auto;
 	height: auto;
 	border: 1px solid black;
@@ -42,25 +43,6 @@
 div {
 	box-sizing: border-box;
 	/*border: 1px solid black;*/
-}
-
-.table-header>td button {
-	height: 35px;
-	width: 70px;
-	font-size: 14px;
-}
-
-.table-header>td div {
-	float: right;
-}
-
-.table-header>td div * {
-	width: auto;
-}
-
-.table-header a {
-	color: #000;
-	text-decoration: none;
 }
 
 .post-notice {
@@ -123,59 +105,45 @@ tbody>tr:hover {
 	<%@ include file="../common/header.jsp"%>
 	<div class="outer">
 		<br>
-		<h2 align="center">자유게시판</h2>
+		<h2 align="center" style="border-bottom: none; padding-bottom: 40px;">자유게시판</h2>
 		<br>
 		<br>
 		<table class="table table-hover">
 			<thead>
 				<% if(loginMember != null){ %>
-				<button onclick="location.href='<%=contextPath%>/enrollForm.bo'"
-					style="border-radius: 5px; margin-left: 89.5%;">
-					<img style="width: 20px;"
-						src="../../resource/img/board/free-icon-writing-3945501.png"
-						style="margin-left: 870px; border: 1px solid black; width: 80px; border-radius: 8px;">
-					글쓰기
-				</button>
+					<tr>
+						<td style="border-top: none;"></td>
+						<td style="border-top: none;"></td>
+						<td colspan="3" style="border-top: none; text-align: right;">
+							<button class="btn btn-outline-secondary" onclick="location.href='<%=contextPath%>/enrollForm.bo'" style="height: 45px; font-size: 14px; font-weight: 800; width: 25%; border-radius: 5px;">
+								<img style="height: 20px; margin-bottom: 5%;" src="<%= contextPath %>/resource/img/board/icon/writing.png">
+								글쓰기
+							</button>
+
+						</td>
+					</tr>
 
 				<% } %>
-				<tr class="table-header" style="bottom: 0px">
-					<td colspan="5"
-						style="border-bottom: 1px solid gray; border-top: 0px; text-align: left;">
-						<div style="width: 100%; height: 40px;">
-							<!-- <div style="font-size: 14px;"><a href="">최신순</a> |</div>
-                            <div style="font-size: 14px;"><a href="">조회순</a></div> -->
-							<!-- <div>
-                                <select name="display" class="listCountCtrl" >
-                                    <option value="10">10개씩보기</option>
-                                    <option value="15">15개씩보기</option>
-                                    <option value="20">20개씩보기</option>
-                                    <option value="25">25개씩보기</option>
-                                    <option value="30">30개씩보기</option>
-                                </select>
-                            </div> -->
-
-							<div>
-								<form action="<%= contextPath %>/search.bo?cpage=1&keyword"
-									id="search_form" style="width: 300px;" method="get">
-									<div style="width: 350px">
-										<input type="text" name="keyword"
-											style="border-radius: 7px; height: 35px; margin-left: 13%;"
-											placeholder="제목 입력"> <input type="hidden"
-											name="cpage" value="1">
-										<button class="btn btn-secondary" type="submit">검색</button>
-									</div>
-									<!-- <div>
-                                    </div> -->
-								</form>
-							</div>
-
-							<div
-								style="height: 100%; width: 100px; font-size: 14px; margin-right: 65.8%; padding-top: 15px;">
-								총
-								<%= pi.getListCount() %>개의 글
-							</div>
-						</div>
+				<tr class="table-header" style="border-bottom: 2px solid black; text-align: left;">
+					<td style="border-top: 1px solid black; line-height: 45px;" >
+							
+									<%= pi.getListCount() %>개의 글
 					</td>
+					<td style="border-top: 1px solid black"></td>
+
+					<td colspan="3" id="aa" style="border-top: 1px solid black; text-align: right;">
+
+							<form action="<%= contextPath %>/search.bo?cpage=1&keyword" id="search_form" style="width: 100%;" method="get">
+								<div style="width: 100%">
+									<input type="text" name="keyword" style="width: 75%; border-radius: 7px; height: 45px;" placeholder="제목 입력"> 
+									<input type="hidden" name="cpage" value="1">
+									<button class="btn search" type="submit" style="font-size: 14px; font-weight: 800; width: 25%; height: 45px; border: 1px solid black;">검색
+										<img style="height: 20px;" src="<%=contextPath%>/resource/img/board/icon/search.gif">
+									</button>
+								</div>
+							</form>
+					</td>
+
 				</tr>
 				<tr>
 					<th style="width: 8%;">글번호</th>
@@ -183,6 +151,7 @@ tbody>tr:hover {
 					<th style="width: 10%;">작성자</th>
 					<th style="width: 10%;">조회수</th>
 					<th style="width: 15%;">작성일</th>
+
 				</tr>
 
 			</thead>
@@ -255,7 +224,12 @@ tbody>tr:hover {
 		$(function(){
 			$("#list-area>tr").click(function(){
 				console.log($(this).children().eq(0).text() + "리스트 클릭")
-				location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text()
+				<% if(loginMember != null){ %>
+					location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text()
+				<% }else{ %>
+					alert("로그인 후 이용해주세요")
+					console.log("어림없지")
+				<% } %>
 
 			})
 		})
