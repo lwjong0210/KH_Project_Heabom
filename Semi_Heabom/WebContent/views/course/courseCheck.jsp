@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Heabom</title>
 </head>
 <body>	
 <%@include file = "../common/header.jsp" %>

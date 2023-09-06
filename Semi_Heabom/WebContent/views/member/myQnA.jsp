@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Heabom</title>
 <style>
 .yj_myQnA_area {
 	border: 0px solid;

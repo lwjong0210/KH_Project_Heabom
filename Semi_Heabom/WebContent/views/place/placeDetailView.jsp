@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <title>Document</title>
+    <title>Heabom</title>
     <style>
         .wrap {
         font-family: Arial, sans-serif;

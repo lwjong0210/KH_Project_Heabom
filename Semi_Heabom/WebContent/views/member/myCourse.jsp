@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Heabom</title>
     <style>
     .yj_myVisit_area{
         border: 0px solid;
@@ -93,7 +93,7 @@
 	        <% } %>
         <% } else { %>
         <div class="thumbnail" align="center">
-        	<a href="<%=cContextPath%>/searchCourse.pl"><p style="color: black;">해봄에서는 나만의 코스를 만들수 있습니다.</p></a>
+        	<a href="<%=cContextPath%>/searchCourse.pl"><p style="color: black;" >해봄에서는 나만의 코스를 만들수 있습니다.</p></a>
         </div>
         <% } %>
     </div>
