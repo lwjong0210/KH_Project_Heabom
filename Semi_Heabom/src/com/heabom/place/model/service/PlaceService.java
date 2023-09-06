@@ -170,6 +170,7 @@ import com.heabom.place.model.vo.Review;
 			}else {
 				rollback(conn);
 			}
+			close(conn);
 			return result ;
 		}
 		
@@ -187,6 +188,7 @@ import com.heabom.place.model.vo.Review;
 			}else {
 				rollback(conn);
 			}
+			close(conn);
 			return result ;
 		}
 		
