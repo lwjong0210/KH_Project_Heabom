@@ -363,7 +363,7 @@
                     <form action="<%= contextPath %>/search.ck?cpage=1&keyword" id="search_form" method="get">
                         <div id="search_text">
                             <input type="text" id="keyword" name="keyword" placeholder="회원 이름 입력">
-                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="cpage" value="1">
                         </div>
                         <div id="search_btn">
                             <input type="submit" value="검색">

@@ -43,15 +43,14 @@ public class CheckListController extends HttpServlet {
       int endPage;
       
       listCount = new MemberService().selectMemberListCount();
-      currentPage = 1;
-      // currentPage = Integer.parseInt(request.getParameter("cpage"));
+      // currentPage = 1;
+      currentPage = Integer.parseInt(request.getParameter("cpage"));
       
       boardLimit= 10;
 
       pageLimit = 10;
       
       maxPage = (int)Math.ceil((double)listCount / boardLimit);
-      System.out.println();
       startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
       endPage = startPage + pageLimit - 1;
       
