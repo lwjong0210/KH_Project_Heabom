@@ -13,6 +13,7 @@ public class Board {
 	private int countReply;
 	private String category;
 	private String boardImg;
+	private String reportWriter;
 	
 	public Board() {}
 	
@@ -30,6 +31,30 @@ public class Board {
 		this.countReply = countReply;
 	}
 	
+	
+	
+	public String getReportWriter() {
+		return reportWriter;
+	}
+
+	public void setReportWriter(String reportWriter) {
+		this.reportWriter = reportWriter;
+	}
+
+	public Board(String boardNo, String boardTitle, String writer, String boardContent, int boardCount,
+			String createDate, String hashTagName, int countReply, String reportWriter) {
+		super();
+		this.boardNo = boardNo;
+		this.boardTitle = boardTitle;
+		this.writer = writer;
+		this.boardContent = boardContent;
+		this.boardCount = boardCount;
+		this.createDate = createDate;
+		this.hashTagName = hashTagName;
+		this.countReply = countReply;
+		this.reportWriter = reportWriter;
+	}
+
 	public Board(String boardNo, String boardTitle, String boardContent, String createDate, int boardCount,
 			String boardImg, String hashTagName) {
 		super();

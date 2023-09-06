@@ -13,14 +13,14 @@ import com.heabom.admin.model.vo.Report;
 /**
  * Servlet implementation class UserReportController
  */
-@WebServlet("/insert1.rp")
-public class UserReportController extends HttpServlet {
+@WebServlet("/insert2.rp")
+public class BoardReportController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserReportController() {
+    public BoardReportController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,6 +31,7 @@ public class UserReportController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
+		
 		String reNo = request.getParameter("reNo");
 		String reporter = request.getParameter("reporter");
 		String reported = request.getParameter("reported");
@@ -48,7 +49,7 @@ public class UserReportController extends HttpServlet {
 		
 		if(result > 0) {
 			request.setAttribute("alertMsg", "리뷰 신고에 실패하였습니다.");
-			response.sendRedirect(request.getContextPath()+"/search.pl");
+			response.sendRedirect(request.getContextPath()+"/list.bo?cpage=1");
 		}else {
 			request.setAttribute("alertMsg", "리뷰 신고에 실패하였습니다.");
 		}

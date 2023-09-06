@@ -91,4 +91,27 @@ SELECT
    )
 </entry>
 
+	<entry key="boardInReport">
+		INSERT INTO TB_REPORT
+		(
+		REPORT_NO
+		,REPORTER
+		,REPORTED
+		,REPORT_CATEGORY
+		,REPORT_CONTENT
+		,REPORT_DATE
+		,POST_NO
+		)
+		VALUES 
+		(
+		SEQ_RENO.NEXTVAL
+		,?
+		,?
+		,?
+		,?
+		,SYSDATE
+		,?
+		)
+	</entry>
+
 </properties>

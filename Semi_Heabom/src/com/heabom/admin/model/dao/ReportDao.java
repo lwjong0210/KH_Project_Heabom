@@ -170,6 +170,7 @@ private Properties prop = new Properties();
 		}
 	   
 	   public int boardInReport(Connection conn,Report re) {
+		   
 		   int result = 0;
 		   PreparedStatement pstmt = null;
 		   String sql = prop.getProperty("boardInReport");
