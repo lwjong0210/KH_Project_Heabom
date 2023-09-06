@@ -7,7 +7,6 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
-	System.out.println(pi+"흠냐흠냐흠냐");
 	
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
@@ -96,9 +95,10 @@ tbody>tr:hover {
 	margin: 0;
 }
 
-.btn-secondary {
-	
+tfoot td button{
+	cursor: pointer;
 }
+
 </style>
 </head>
 <body>
@@ -196,18 +196,15 @@ tbody>tr:hover {
 					<td colspan="5" style="border-top: 1px solid gray;">
 						<ul class="pagination justify-content-center" style="margin: 0;">
 							<% if(pi.getCurrentPage() != 1){ %>
-							<li class="page-item"><button class="page-link"
-									onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage -1 %>'">Previous</button></li>
+								<li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage -1 %>'">Previous</button></li>
 							<% } %>
 							<% for(int i = startPage; i <= endPage; i++ ){ %>
-							<% if(i == currentPage){ %>
-							<li class="page-item"><button class="page-link btn active"
-									disabled><%= i %></button></li>
-							<% }else{ %>
-							<li class="page-item"><button class="page-link"
-									onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= i %>'"><%= i %></button></li>
+								<% if(i == currentPage){ %>
+									<li class="page-item"><button class="page-link btn active" disabled><%= i %></button></li>
+								<% }else{ %>
+									<li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= i %>'"><%= i %></button></li>
 
-							<% } %>
+								<% } %>
 							<% } %>
 
 							<% if(currentPage != maxPage){ %>
@@ -223,12 +220,10 @@ tbody>tr:hover {
 	<script>
 		$(function(){
 			$("#list-area>tr").click(function(){
-				console.log($(this).children().eq(0).text() + "리스트 클릭")
 				<% if(loginMember != null){ %>
 					location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text()
 				<% }else{ %>
 					alert("로그인 후 이용해주세요")
-					console.log("어림없지")
 				<% } %>
 
 			})
