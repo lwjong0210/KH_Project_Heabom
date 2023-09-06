@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Heabom</title>
 
     <style>
         /* 여기서부터 프로필 수정 */
