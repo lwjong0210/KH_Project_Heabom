@@ -1,4 +1,4 @@
-                   package com.heabom.board.model.service;
+package com.heabom.board.model.service;
 
 import static com.heabom.common.JDBCTemplate.close;
 import static com.heabom.common.JDBCTemplate.commit;
@@ -343,6 +343,19 @@ public class BoardService {
 		return result;
 	}
 	
+	public int replyLikeUp(String rpno) {
+		Connection conn = getConnection();
+		int result = new BoardDao().replyLikeUp(conn,rpno);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
 //	public File selectFile(String fileNo) {
 //		Connection conn = getConnection();
 //		File f = new BoardDao().selectFile(conn, fileNo);
@@ -350,6 +363,29 @@ public class BoardService {
 //		close(conn);
 //		return f;
 //	}
+	
+	
+	public int replyLikeCount(String rpno) {
+		Connection conn = getConnection();
+		int replyCount = new BoardDao().replyLikeCount(conn, rpno);
+		
+		close(conn);
+		return replyCount;
+	}
+	
+	public int updateLike(String loginMem,String rpno) {
+		Connection conn = getConnection();
+		int result = new BoardDao().updateLike(conn,loginMem,rpno);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	}
 	
 
 	

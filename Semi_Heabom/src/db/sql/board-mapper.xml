@@ -34,7 +34,7 @@ SELECT *
              , NVL(COUNT,0) "COUNT"
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
-             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
+             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='N' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
              WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
                 OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
@@ -58,7 +58,7 @@ SELECT *
              , NVL(COUNT,0) "COUNT"
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
-             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
+             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='N' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
              WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
                 OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
@@ -156,7 +156,7 @@ SELECT *
 		     , COUNT
 		  FROM TB_BOARD
 		  JOIN TB_MEMBER ON(WRITER = MEM_NO)
-          LEFT JOIN (SELECT RE_REF_NO, COUNT(*) "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS = 'Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
+          LEFT JOIN (SELECT RE_REF_NO, COUNT(*) "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS = 'N' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
 		  LEFT JOIN TB_HASHTAG ON(PLACE_NO = BOARD_NO)
 		 WHERE SUBSTR(BOARD_NO,2) = ?
 	</entry>
@@ -199,8 +199,8 @@ SELECT *
 	, RE_DATE
 	, RE_STATUS
 	  FROM TB_REVIEW_REPLY
-	 WHERE SUBSTR(RE_REF_NO,2) = ?
-	   AND RE_STATUS = 'Y'
+	 WHERE RE_REF_NO = ?
+	   AND RE_STATUS = 'N'
 
 </entry>
 <entry key='insertReply'>
@@ -289,7 +289,7 @@ SELECT A.*
              , NVL(COUNT,0) "COUNT"
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
-             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='Y' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
+             LEFT JOIN (SELECT RE_REF_NO, COUNT(RE_NO) AS "COUNT" FROM TB_REVIEW_REPLY WHERE RE_STATUS='N' GROUP BY RE_REF_NO) ON(BOARD_NO = RE_REF_NO)
              WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
                 OR (SUBSTR(BOARD_NO,1,1) ='N' AND BOARD_UP = 'Y'))
                AND BOARD_STATUS = 'Y'
@@ -418,6 +418,40 @@ UPDATE
 		, SYSDATE
 		, ?
 		)
+	</entry>
+		<entry key='replyLikeUp'>
+UPDATE 
+       TB_REVIEW_REPLY 
+   SET 
+       RE_LIKE_STAR = RE_LIKE_STAR + 1
+ WHERE RE_NO = ?
+	</entry>
+<!-- 		<entry key='replyLikeCount'>
+SELECT
+       COUNT(BOARD_NO) count
+  FROM 
+       TB_LIKE
+ WHERE BOARD_NO = ?
+	</entry> -->
+		<entry key='replyLikeCount'>
+SELECT
+       RE_LIKE_STAR count
+  FROM TB_REVIEW_REPLY 
+ WHERE RE_NO = ?
+	</entry>
+	<entry key='updateLike'>
+
+INSERT 
+  INTO TB_LIKE
+       (
+         MEM_NO
+       , BOARD_NO
+       )
+       VALUES
+       (
+         ?
+       , ?
+       )
 	</entry>
 
 </properties>

@@ -707,7 +707,7 @@ public class BoardDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			close(conn);
+			close(pstmt);
 		}
 		return result;
 		
@@ -838,6 +838,95 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return result;
+	
+	}
+	
+	public int replyLikeUp(Connection conn,String rpno) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("replyLikeUp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rpno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	public int replyLikeCount(Connection conn, String rpno) {
+		PreparedStatement pstmt = null;
+		int replyLikeCount = 0;
+		ResultSet rset = null;
+		String sql = prop.getProperty("replyLikeCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rpno);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				replyLikeCount = Integer.parseInt(rset.getString("count"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return replyLikeCount;
+	}
+//	public int replyLikeCount(Connection conn, String rpno) {	// tb_like에서 가져오기
+//		PreparedStatement pstmt = null;
+//		int replyLikeCount = 0;
+//		ResultSet rset = null;
+//		String sql = prop.getProperty("replyLikeCount");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, rpno);
+//			rset = pstmt.executeQuery();
+//			
+//			if(rset.next()) {
+//				replyLikeCount = Integer.parseInt(rset.getString("count"));
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		return replyLikeCount;
+//	}
+	
+	public int updateLike(Connection conn, String loginMem, String rpno) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("updateLike");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, loginMem);
+			pstmt.setString(2, rpno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
 	
 	}
 	

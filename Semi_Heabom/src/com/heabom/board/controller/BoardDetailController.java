@@ -41,6 +41,7 @@ public class BoardDetailController extends HttpServlet {
 		System.out.println(bno + "boardDetail 에서 bno");
 		
 		BoardService bService = new BoardService();
+		System.out.println(bno + "비엔오?");
 		ArrayList<Reply> rlist = new BoardService().selectReplyList(bno);
 		
 		
@@ -92,7 +93,7 @@ public class BoardDetailController extends HttpServlet {
 			request.setAttribute("pi", pi);
 			request.setAttribute("bno", bno);
 			request.setAttribute("cpage2", currentPage);
-		
+			request.setAttribute("rlist", rlist);
 			
 			
 			request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
