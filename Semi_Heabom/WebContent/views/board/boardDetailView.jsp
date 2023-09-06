@@ -841,9 +841,9 @@ tfoot>tr {
 						    			        </div>
 						    			    </div>
 
+						    			        // 보드 디테일에 들어오기전에 로그인한 회원이 이 글에서 좋아요한 댓글 목록을 가져온다. if문 includes
 						    			    <div class="comment_like">
 						    			        <div class="comment_like_img">
-						    			        // 보드 디테일에 들어오기전에 로그인한 회원이 이 글에서 좋아요한 댓글 목록을 가져온다. if문 includes
 						    			            <img src="<%=contextPath%>/resource/img/board/likeN.png" onclick="likeup(this);">
 						    			            <input type="hidden" class="rpw"  value="`+ result[i].replyWriter + `">
 						    			            <input type="hidden" class="rpno" value="`+ result[i].replyNo + `">

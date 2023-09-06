@@ -426,19 +426,21 @@ UPDATE
        RE_LIKE_STAR = RE_LIKE_STAR + 1
  WHERE RE_NO = ?
 	</entry>
-<!-- 		<entry key='replyLikeCount'>
+	
+		<entry key='replyLikeCount'>
 SELECT
        COUNT(BOARD_NO) count
   FROM 
        TB_LIKE
  WHERE BOARD_NO = ?
-	</entry> -->
-		<entry key='replyLikeCount'>
+	</entry>
+	
+	<!-- 	<entry key='replyLikeCount'>
 SELECT
        RE_LIKE_STAR count
   FROM TB_REVIEW_REPLY 
  WHERE RE_NO = ?
-	</entry>
+	</entry> -->
 	<entry key='updateLike'>
 
 INSERT 
