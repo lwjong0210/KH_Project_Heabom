@@ -353,7 +353,7 @@
             <div id="header">
                 <div id="header_1"></div>
                 <div id="header_2">
-                
+                	<p id="p1">검색 된 회원 수 : <%= (keyWord != null && !keyWord.isEmpty()) ? list.size() : pi.getListCount() %>명</p>
                 </div>
                 <div id="header_3"></div>
                 <div id="header_4">
@@ -417,30 +417,29 @@
                 <div id="content_5"></div>
                 <div id="content_6">
                     <tr>
-               <td colspan="5" style="border-top: 1px solid gray;">
-                  <ul class="pagination justify-content-center" style="margin: 0;">
-                     <% if(pi.getCurrentPage() != 1){ %>
-                     <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= currentPage -1 %>'">&lt;</button></li>
-                     <% } %>
-                     <% for(int i = startPage; i <= endPage; i++ ){ %>
-                     <% if(i == currentPage){ %>
-                     <li class="page-item"><button class="page-link btn active"
-                           disabled><%= i %></button></li>
-                     <% }else{ %>
-                     <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= i %>'"><%= i %></button></li>
-
-                     <% } %>
-                     <% } %>
-
-                     <% if(currentPage != maxPage){ %>
-                     <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= currentPage +1 %>'">&gt;</button></li>
-                     <% } %>
-                  </ul>
-               </td>
-            </tr>
+					    <td colspan="5" style="border-top: 1px solid gray;">
+					        <ul class="pagination justify-content-center" style="margin: 0;">
+					        
+					        <% if (list.isEmpty() || list.size() < 10) { %>
+					            <li class="page-item"><button class="page-link btn active" disabled>1</button></li>
+					        <% } else { %>
+					            <% if (pi.getCurrentPage() != 1) { %>
+					                <li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= currentPage - 1 %>'">&lt;</button></li>
+					            <% } %>
+					            <% for (int i = startPage; i <= endPage; i++) { %>
+					                <% if (i == currentPage) { %>
+					                    <li class="page-item"><button class="page-link btn active" disabled><%= i %></button></li>
+					                <% } else { %>
+					                    <li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= i %>'"><%= i %></button></li>
+					                <% } %>
+					            <% } %>
+					            <% if (currentPage != maxPage) { %>
+					                <li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/search.ck?keyword=<%= keyWord %>&cpage=<%= currentPage + 1 %>'">&gt;</button></li>
+					            <% } %>
+					        <% } %>
+					        </ul>
+					    </td>
+					</tr>
                 </div>
                 <div id="content_7"></div>
                 <div id="content_8"></div>

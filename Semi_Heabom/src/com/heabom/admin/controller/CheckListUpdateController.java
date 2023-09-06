@@ -53,7 +53,7 @@ public class CheckListUpdateController extends HttpServlet {
     	  session.setAttribute("memId", updateMem);
     	  session.setAttribute("alertMsg", "회원 등급이 변경되었습니다.");
     	  
-    	  response.sendRedirect(request.getContextPath() + "/check.ad");
+    	  response.sendRedirect(request.getContextPath() + "/check.ad?cpage=1");
     	  
       }else {
     	  request.setAttribute("errorMsg", "회원 등급 변경에 실패했습니다.");
