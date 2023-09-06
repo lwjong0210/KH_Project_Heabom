@@ -38,7 +38,8 @@ String hashTag = b.getHashTagName();
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 div {
 	/*border: 1px solid red;*/
@@ -782,71 +783,121 @@ tfoot>tr {
 
 			</div>
 
+
 			<div id="post_comment_list">
-				<%
-				System.out.println("진짜 이게 안됨?" + rlist);
-				%>
-				<%
-				if (rlist.isEmpty()) {
-				%>
-				<div
-					style="border: none; background-color: white; font-size: large; height: 100px;">
-					아직 등록된 댓글이 없습니다.</div>
-				<%
-				} else {
-				%>
-				<%
-				for (Reply r : rlist) {
-				%>
-
-				<div class="post_comment">
-					<div class="post_comment_profile_img">
-						<img src="resources/img/free-icon-login-310869.png" alt="">
-					</div>
-					<div class="post_comment_box">
-						<div class="comment_user_info">
-							<div class="comment_userid">
-								<%=r.getReplyWriter()%>
-							</div>
-							<div class="comment_usergrade">
-								<img src="resources/img/free-icon-benefit-6000574.png" alt="">
-							</div>
-							<a href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=<%= r.getReplyNo() %>" style="color: red; text-decoration: none; margin-left: 90%;">삭제</a>
-						</div>
-
-
-						
-						<div class="comment_text">
-							<%=r.getReplyContent()%>
-		
-
-						</div>
-						<div class="comment_info">
-							<div class="comment_date">
-								<%=r.getReplyDate()%>
-							</div>
-							<div class="comment_report">
-								<img src="resources/img/free-icon-siren-6043503.png" alt="">
-							</div>
-						</div>
-					</div>
-					<div class="comment_like">
-						<div class="comment_like_img">
-							<img src="resources/img/thumbs-up-regular.svg" alt="">
-						</div>
-						<div class="comment_like_count">
-							<%=r.getReplyLike()%>
-						</div>
-					</div>
-				</div>
-				<%
-				}
-				%>
-				<%
-				}
-				%>
-
+				<!-- 여기 댓글 창 -->
 			</div>
+			<script>
+				$(function(){
+					selectReplyList();
+					
+	
+				})
+			
+				function selectReplyList(){
+					 $.ajax({
+					    	url:"rlist.bo",
+					    	type:"post",
+					    	data:{
+					    		bno:"<%= b.getBoardNo() %>"
+					    	},success:function(result){
+					    		console.log("에이작스 연결 성공")
+					    		
+					    		let html ="";
+					    		$("#post_comment_list").html("");
+								if(result.length == 0){
+									console.log(" 댓글없어요")
+					    			html += '<div style="border: none; background-color: white; font-size: large; height: 100px;">'
+									+ '아직 등록된 댓글이 없습니다.</div>';
+									
+								}else{
+						    		for(let i=0; i<result.length; i++){
+										
+						    			html += `
+						    				<div class="post_comment">
+						    			    <div class="post_comment_profile_img">
+						    			        <img src="resources/img/free-icon-login-310869.png" alt="">
+						    			    </div>
+						    			    <div class="post_comment_box">
+						    			        <div class="comment_user_info">
+						    			            <div class="comment_userid">
+						    			                ` + result[i].replyWriter + `
+						    			            </div>
+						    			            <div class="comment_usergrade">
+						    			                <img src="resources/img/free-icon-benefit-6000574.png" alt="">
+						    			            </div>
+						    			            <a href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=` + result[i].replyNo + `" style="color: red; text-decoration: none; margin-left: 90%;">삭제</a>
+						    			        </div>
+						    			        <div class="comment_text">` +
+						    			            result[i].replyContent + `
+						    			        </div>
+						    			        <div class="comment_info">
+						    			            <div class="comment_date">` +
+						    			                result[i].replyDate + `
+						    			            </div>
+						    			            <div class="comment_report">
+						    			                <img class="likeUp" src="resources/img/free-icon-siren-6043503.png" alt="">
+						    			            </div>
+						    			        </div>
+						    			    </div>
+
+						    			    <div class="comment_like">
+						    			        <div class="comment_like_img">
+						    			        // 보드 디테일에 들어오기전에 로그인한 회원이 이 글에서 좋아요한 댓글 목록을 가져온다. if문 includes
+						    			            <img src="<%=contextPath%>/resource/img/board/likeN.png" onclick="likeup(this);">
+						    			            <input type="hidden" class="rpw"  value="`+ result[i].replyWriter + `">
+						    			            <input type="hidden" class="rpno" value="`+ result[i].replyNo + `">
+						    			        </div>
+						    			        <div class="comment_like_count">`+
+						    			            result[i].replyLike+ `
+						    			        </div>
+						    			    </div>
+						    			</div>`
+									
+						    		}
+									
+								}
+					    			
+								
+
+								
+					    		
+
+					    	$("#post_comment_list").html(html)
+					    	}
+				})
+}
+			</script>
+
+			<script>
+				function likeup(element){
+					console.log($(element).next().val())
+					console.log($(element).next().next().val())
+					console.log("여기와")
+					    $(element).attr('src',"<%=contextPath%>/resource/img/board/likeY.png")
+					$.ajax({
+					 url : "likeup.bo",
+	                    data : {
+	                    		writer : $(element).next().val() 
+	                    	  , rpno: $(element).next().next().val()
+	                    	  , loginMem : "<%=loginMember.getMemNo()%>"
+	                    	 }, //데이터 넘길때에는 무조건 중괄호 열어라
+	                    //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
+
+	                    type : "get", // 요청방식 지정
+	                    success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
+							console.log("킥킥")
+							$(element).next().val(result);
+							selectReplyList();
+	                    
+						},
+	                    error : function(){
+	                        console.log("ajax통신 실패!")
+	                    }
+					})
+			    }
+			</script>
+
 			<form action="insert.rp" id="write_comment_form" method="post">
 				<input type="hidden" name="boardNo" value="<%=boardNo%>">
 				<%
@@ -907,15 +958,20 @@ tfoot>tr {
             </script>
 		</div>
 		<div align="right" id="delete-update-area" style="width: auto;">
-			<% if(loginMember != null && loginMember.getMemId().equals(b.getWriter())) { %>
-				<a href="<%= contextPath %>/updateForm.bo?bno=<%= boardNo %>" class="btn btn-sm btn-warning">수정하기</a>
-				<a onclick="deleteConfirm();" class="btn btn-sm btn-danger">삭제하기</a>
-				
-				<% } %>
-				<script>
+			<%
+			if (loginMember != null && loginMember.getMemId().equals(b.getWriter())) {
+			%>
+			<a href="<%=contextPath%>/updateForm.bo?bno=<%=boardNo%>"
+				class="btn btn-sm btn-warning">수정하기</a> <a
+				onclick="deleteConfirm();" class="btn btn-sm btn-danger">삭제하기</a>
+
+			<%
+			}
+			%>
+			<script>
 					function deleteConfirm(){
 						if(confirm("정말로 이 게시글을 삭제하시겠습니까?")){
-							location.href= href="<%= contextPath %>/deleteForm.bo?bno=<%= b.getBoardNo() %>"
+							location.href= href="<%=contextPath%>/deleteForm.bo?bno=<%=b.getBoardNo()%>"
 						}
 					}
 				</script>
@@ -930,13 +986,13 @@ tfoot>tr {
 		</div>
 		<div class="post_list" style="width: auto;">
 
-						<input type="hidden" id="cpage3" value="1">
+			<input type="hidden" id="cpage3" value="1">
 
-                        
+
 
 			<!-- 여기에 들어감 -->
 
-            <table id="dataTableBody" style="width: 100%">
+			<table id="dataTableBody" style="width: 100%">
 
 			</table>
 			<br>
@@ -1052,7 +1108,7 @@ tfoot>tr {
 					$("#dataTableBody tr").click(function () {
 						console.log("크,ㄹ릭!!!")
 						console.log($(this).children().eq(0).text())
-						location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).text()
+						location.href='<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text()
 
 					})
 	}
