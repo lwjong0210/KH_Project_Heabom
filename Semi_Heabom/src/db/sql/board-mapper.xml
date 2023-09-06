@@ -12,7 +12,6 @@
 	</entry>
 	<entry key='selectKeyWordCount'>
 	SELECT 
-	
 	 COUNT(*) "COUNT"
 	  FROM TB_BOARD
 	 WHERE ((SUBSTR(BOARD_NO,1,1) = 'F')
@@ -509,5 +508,4 @@ INSERT
  WHERE MEM_NO = ?
 
 	</entry>
-	
 </properties>
