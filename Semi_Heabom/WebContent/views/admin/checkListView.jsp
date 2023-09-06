@@ -424,7 +424,7 @@
                   <ul class="pagination justify-content-center" style="margin: 0;">
                      <% if(pi.getCurrentPage() != 1){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?page=<%= currentPage -1 %>'">&lt;</button></li>
+                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage -1 %>'">&lt;</button></li>
                      <% } %>
                      <% for(int i = startPage; i <= endPage; i++ ){ %>
                      <% if(i == currentPage){ %>
@@ -432,14 +432,14 @@
                            disabled><%= i %></button></li>
                      <% }else{ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?page=<%= i %>'"><%= i %></button></li>
+                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= i %>'"><%= i %></button></li>
 
                      <% } %>
                      <% } %>
 
                      <% if(currentPage != maxPage){ %>
                      <li class="page-item"><button class="page-link"
-                           onclick="location.href='<%= contextPath %>/check.ad?page=<%= currentPage +1 %>'">&gt;</button></li>
+                           onclick="location.href='<%= contextPath %>/check.ad?cpage=<%= currentPage +1 %>'">&gt;</button></li>
                      <% } %>
                   </ul>
                </td>
