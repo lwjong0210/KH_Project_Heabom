@@ -860,6 +860,25 @@ public class BoardDao {
 		return result;
 		
 	}
+	public int replyLikeDown(Connection conn,String rpno) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("replyLikeDown");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rpno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
 	
 	public int replyLikeCount(Connection conn, String rpno) {
 		PreparedStatement pstmt = null;
@@ -928,6 +947,53 @@ public class BoardDao {
 		return result;
 		
 	
+	}
+	public int deleteLike(Connection conn, String loginMem, String rpno) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteLike");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, loginMem);
+			pstmt.setString(2, rpno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+		
+	}
+	
+	public ArrayList selectLikeList(Connection conn, String mno) {
+		PreparedStatement pstmt = null;
+		ArrayList lList = new ArrayList();
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectLikeList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mno);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				String s = rset.getString("likeno");
+				lList.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return lList;
 	}
 	
 

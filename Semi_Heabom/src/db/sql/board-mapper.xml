@@ -360,9 +360,9 @@ UPDATE
 UPDATE
        TB_REVIEW_REPLY
    SET 
-       RE_STATUS = 'N'
+       RE_STATUS = 'Y'
  WHERE
-       RE_NO = ?
+       SUBSTR(RE_NO,1) = ?
 
 </entry>
 
@@ -426,6 +426,13 @@ UPDATE
        RE_LIKE_STAR = RE_LIKE_STAR + 1
  WHERE RE_NO = ?
 	</entry>
+		<entry key='replyLikeDown'>
+UPDATE 
+       TB_REVIEW_REPLY 
+   SET 
+       RE_LIKE_STAR = RE_LIKE_STAR - 1
+ WHERE RE_NO = ?
+	</entry>
 	
 		<entry key='replyLikeCount'>
 SELECT
@@ -454,6 +461,13 @@ INSERT
          ?
        , ?
        )
+	</entry>
+	<entry key='selectLikeList'>
+		SELECT 
+       BOARD_NO likeno
+  FROM TB_LIKE
+ WHERE MEM_NO = ?
+
 	</entry>
 
 </properties>

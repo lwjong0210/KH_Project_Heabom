@@ -788,13 +788,49 @@ tfoot>tr {
 				<!-- 여기 댓글 창 -->
 			</div>
 			<script>
-				$(function(){
-					selectReplyList();
+			
+			$(function(){
+			seq();
+			})
+					let likeList ="";
+				async function seq(){
+						selectlikeList();	// 좋아요한 리스트 불러오기
+						
+						const result = await selectReplyList1();	// 좋아요한 리스트와 지금 댓글 좋아요 했는지 비교
+						
+						};
+				
+				function selectlikeList(){
 					
-	
-				})
+					$.ajax({
+						url:"likelist.bo",
+						type:"post",
+						data:{
+							mno:"<%= loginMember.getMemNo() %>"
+						},success:function(result){
+							
+							
+							console.log("좋아요한 리스트 불러오기 성공")
+							console.log(result)
+							console.log(likeList[1])
+
+							likeList = result
+						}
+					})
+				}
+				
+				function selectReplyList1(){
+					return new Promise((resolve)=>{
+						setTimeout(()=>{
+							selectReplyList();
+						},100);
+					})
+				};
+				
+				
 			
 				function selectReplyList(){
+					
 					 $.ajax({
 					    	url:"rlist.bo",
 					    	type:"post",
@@ -836,16 +872,22 @@ tfoot>tr {
 						    			                result[i].replyDate + `
 						    			            </div>
 						    			            <div class="comment_report">
-						    			                <img class="likeUp" src="resources/img/free-icon-siren-6043503.png" alt="">
+						    			                <img class="" src="resources/img/free-icon-siren-6043503.png" alt="">
 						    			            </div>
 						    			        </div>
 						    			    </div>
 
-						    			        // 보드 디테일에 들어오기전에 로그인한 회원이 이 글에서 좋아요한 댓글 목록을 가져온다. if문 includes
 						    			    <div class="comment_like">
-						    			        <div class="comment_like_img">
-						    			            <img src="<%=contextPath%>/resource/img/board/likeN.png" onclick="likeup(this);">
-						    			            <input type="hidden" class="rpw"  value="`+ result[i].replyWriter + `">
+						    			        <div class="comment_like_img">`
+						    			        
+						    			        if(likeList.includes(result[i].replyNo)){
+						    			        	console.log("같다요")
+						    			            html += `<img src="<%=contextPath%>/resource/img/board/likeY.png" onclick="likedown(this)">`
+						    			        }else{
+						    			        	console.log("다르다요")
+						    			            html += `<img src="<%=contextPath%>/resource/img/board/likeN.png" onclick="likeup(this);">`
+						    			        }
+						    			        html +=    `<input type="hidden" class="rpw"  value="`+ result[i].replyWriter + `">
 						    			            <input type="hidden" class="rpno" value="`+ result[i].replyNo + `">
 						    			        </div>
 						    			        <div class="comment_like_count">`+
@@ -865,11 +907,40 @@ tfoot>tr {
 
 					    	$("#post_comment_list").html(html)
 					    	}
+
+					    	
 				})
 }
 			</script>
 
 			<script>
+				function likedown(element){
+					console.log($(element).next().val())
+					console.log($(element).next().next().val())
+					console.log("여기는 likeDown")
+				    $(element).attr('src',"<%=contextPath%>/resource/img/board/likeN.png")
+					$.ajax({
+					 url : "likedown.bo",
+	                    data : {
+	                    		writer : $(element).next().val() 
+	                    	  , rpno: $(element).next().next().val()
+	                    	  , loginMem : "<%=loginMember.getMemNo()%>"
+	                    	 }, //데이터 넘길때에는 무조건 중괄호 열어라
+	                    //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
+
+	                    type : "get", // 요청방식 지정
+	                    success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
+							console.log("킥킥")
+							$(element).next().val(result);
+							seq();
+	                    
+						},
+	                    error : function(){
+	                        console.log("ajax통신 실패!")
+	                    }
+					})
+				}
+			
 				function likeup(element){
 					console.log($(element).next().val())
 					console.log($(element).next().next().val())
@@ -886,9 +957,9 @@ tfoot>tr {
 
 	                    type : "get", // 요청방식 지정
 	                    success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
-							console.log("킥킥")
+							console.log("킥킥") 
 							$(element).next().val(result);
-							selectReplyList();
+							seq();
 	                    
 						},
 	                    error : function(){

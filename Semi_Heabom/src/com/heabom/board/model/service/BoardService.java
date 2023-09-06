@@ -355,6 +355,19 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	public int replyLikeDown(String rpno) {
+		Connection conn = getConnection();
+		int result = new BoardDao().replyLikeDown(conn,rpno);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
 	
 //	public File selectFile(String fileNo) {
 //		Connection conn = getConnection();
@@ -386,6 +399,29 @@ public class BoardService {
 		return result;
 		
 	}
+	public int deleteLike(String loginMem,String rpno) {
+		Connection conn = getConnection();
+		int result = new BoardDao().deleteLike(conn,loginMem,rpno);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	}
+	
+	public ArrayList selectLikeList(String mno) {
+		Connection conn = getConnection();
+		ArrayList lList = new BoardDao().selectLikeList(conn, mno);
+		close(conn);
+		return lList;
+		
+	}
+	
+	
 	
 
 	
