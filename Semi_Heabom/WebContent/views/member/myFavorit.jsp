@@ -67,6 +67,7 @@
 </head>
 <body>
     <div class="yj_myFavorit_area" align="center">
+    <% if(flist.size() > 0) { %>
     <% for(Place p : flist) { %>
         <div class="yj_myFavorit_detail">
             <table border="0" class="detail_tb">
@@ -95,6 +96,11 @@
                 </tr>
             </table>
         </div>
+        <% } %>
+        <% } else { %>
+            <div class="yj_myFavorit_detail">
+                <a id="notMyFavorit" href="<%=fContextPath%>/search.pl" style="color: black;" >좋아요를 통해 나만의 리스트를 만들어보세요</a>
+            </div>
         <% } %>
     </div>
 </body>
