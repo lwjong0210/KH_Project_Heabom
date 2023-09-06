@@ -343,9 +343,9 @@ public class BoardService {
 		return result;
 	}
 	
-	public int replyLikeUp(String rpno) {
+	public int replyLikeUp(String rpno,String writer) {
 		Connection conn = getConnection();
-		int result = new BoardDao().replyLikeUp(conn,rpno);
+		int result = new BoardDao().replyLikeUp(conn,rpno,writer);
 		
 		if(result > 0) {
 			commit(conn);
@@ -355,9 +355,9 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
-	public int replyLikeDown(String rpno) {
+	public int replyLikeDown(String rpno,String writer) {
 		Connection conn = getConnection();
-		int result = new BoardDao().replyLikeDown(conn,rpno);
+		int result = new BoardDao().replyLikeDown(conn,rpno,writer);
 		
 		if(result > 0) {
 			commit(conn);
@@ -382,36 +382,38 @@ public class BoardService {
 		Connection conn = getConnection();
 		int replyCount = new BoardDao().replyLikeCount(conn, rpno);
 		
+		int updateReplyCount =  new BoardDao().updateReplyCount(conn, rpno);
+		
 		close(conn);
 		return replyCount;
 	}
 	
-	public int updateLike(String loginMem,String rpno) {
-		Connection conn = getConnection();
-		int result = new BoardDao().updateLike(conn,loginMem,rpno);
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		close(conn);
-		return result;
-		
-	}
-	public int deleteLike(String loginMem,String rpno) {
-		Connection conn = getConnection();
-		int result = new BoardDao().deleteLike(conn,loginMem,rpno);
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		close(conn);
-		return result;
-		
-	}
+//	public int updateLike(String loginMem,String rpno) {
+//		Connection conn = getConnection();
+//		int result = new BoardDao().updateLike(conn,loginMem,rpno);
+//		
+//		if(result > 0) {
+//			commit(conn);
+//		}else {
+//			rollback(conn);
+//		}
+//		close(conn);
+//		return result;
+//		
+//	}
+//	public int deleteLike(String loginMem,String rpno) {
+//		Connection conn = getConnection();
+//		int result = new BoardDao().deleteLike(conn,loginMem,rpno);
+//		
+//		if(result > 0) {
+//			commit(conn);
+//		}else {
+//			rollback(conn);
+//		}
+//		close(conn);
+//		return result;
+//		
+//	}
 	
 	public ArrayList selectLikeList(String mno) {
 		Connection conn = getConnection();

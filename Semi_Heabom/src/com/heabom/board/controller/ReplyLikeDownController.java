@@ -39,13 +39,13 @@ public class ReplyLikeDownController extends HttpServlet {
 		BoardService bservice = new BoardService();
 		
 		// 먼저 댓글번호를 가지고 가서 리뷰 리플라이 테이블 like 를 증가시킨다
-		bservice.replyLikeDown(rpno);
+		bservice.replyLikeDown(rpno,writer);
 		
 		// 좋아요 몇개인지 가져온다
 		int replyLikeCount = new BoardService().replyLikeCount(rpno);
 		
 		// tb_like로가서 로그인멤버와 댓글 번호 업데이트
-		bservice.deleteLike(loginMem, rpno);
+//		bservice.deleteLike(loginMem, rpno);
 		
 		// 등급업데이트
 		if(!writer.equals("M1")) {
