@@ -283,13 +283,13 @@
                             <% if(loginMember.getGrade().equals("무궁화")){ %>
                                 <option value="N">공지사항</option>
                                 <% } %>
-                                <option value="Q&A">Q & A</option>
-                                <option value="...">...</option>
+                                <!-- <option value="Q&A">Q & A</option> -->
+                                <!-- <option value="...">...</option> -->
                             </select>
                         </div>
                     </div>
                     
-                    <textarea name="content" id="write-post" style="width: 100%; height: 500px; resize: none;" required></textarea>
+                    <textarea name="content" id="write-post" style="width: 100%; height: 500px; resize: none;" placeholder="내용을 입력하세요" required></textarea>
                     
                     
                 <div id="input-tag" style="margin-top: 10px;">
@@ -321,7 +321,7 @@
                 </div>
                 <div id="write-poster-footer" style="margin-top: 10px;">
                     <div id="writer-poster-submit">
-                        <input type="button" value="등록" onclick="postSubmit();">
+                        <input type="button" class="btn btn-secondary" value="등록" onclick="postSubmit();">
                     </div>
                     <div id="admin-private" style="display: none;">
                         <input type="checkbox" id="notice-check" name="noticeUp" value="Y">
@@ -382,31 +382,22 @@
             	let hashlist = [];
             	for(i = 0 ; i < hashtag.length-1; i++){
             		
-            		console.log(hashtag[i].value)
 					hashlist.push(hashtag[i].value)
-					console.log(hashlist)
             	}
                 $("#hiddenTag").val(hashlist)
-                console.log($("#hiddenTag").val())
-                let formSelect = $("form").submit();
+
+                if($("#write-post-title").val()==""){
+                    alert("제목은 필수 입력사항 입니다.")
+                    $("#write-post-title").focus()
+                }else if($("#write-post").val()==""){
+                    alert("내용은 필수 입력사항 입니다.")
+                    $("#write-post").focus()
+                }else{
+                    console.log($("#write-post-title").val())
+                    let formSelect = $("form").submit();
+                }
             }
-            /*	$.ajax({
-            		url:"insert.bo",
-            		data:{boardTitle:$("#write-post-title").val(),
-            			  boardCategory:$("#select-category").val(),
-            			  boardContent:$("#write-post").val(),
-            			  hashList:$("#hiddenTag").val(),
-            			  type:"post",
-            			  success:function(){
-            				  console.log("성공");
-            			  },
-            			  error:function(){
-            				  console.log("실패");
-            			  }
-            			  }
-            	})
-            }*/
-    
+
             // select option에서 공지사항을 클릭했을때 상단게시체크박스가 나타나는 함수
             function clickNoticeOption(str){
 				if(str=='N'){

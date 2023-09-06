@@ -35,7 +35,7 @@
 	width: auto;
 	height: auto;
 	border: 1px solid black;
-	margin: 10%;
+	margin: 5% 10% 10% 10%;
 	background-color: white;
 }
 
@@ -58,10 +58,6 @@ div {
 
 tbody>tr:hover {
 	cursor: pointer;
-}
-
-.post-notice-area {
-	background-color: rgb(249, 238, 238);
 }
 
 .post-notice-title {
@@ -164,7 +160,7 @@ tfoot td button{
 
 				<% for(Board b : list){ %>
 				<% if(b.getBoardNo().substring(0, 1).equals("N")){ %>
-				<tr class="post-notice-area"></tr>
+				<tr class="post-notice-area" style="background-color: rgb(249, 238, 238);">
 				
 					<td hidden><%= b.getBoardNo().substring(1) %></td>
 					<td><div class="post-notice">공지</div></td>
@@ -173,7 +169,7 @@ tfoot td button{
 						<b style="color: red"> [<%= b.getCountReply() %>]
 					</b> <% }else{ %> <% } %></td>
 					<% }else{ %>
-				
+				</tr>
 				<tr>
 					<td><%= b.getBoardNo().substring(1) %></td>
 					<td><%= b.getBoardTitle()%> <% if( b.getCountReply() != 0){ %> <b

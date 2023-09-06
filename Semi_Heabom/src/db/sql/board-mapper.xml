@@ -30,7 +30,7 @@ SELECT *
              , BOARD_TITLE
              , MEM_ID
              , BOARD_COUNT
-             , TO_CHAR(CREATE_DATE,'YYYY/MM/DD HH24:MI') "CREATE_DATE"
+             , TO_CHAR(CREATE_DATE,'YY/MM/DD HH24:MI') "CREATE_DATE"
              , NVL(COUNT,0) "COUNT"
              FROM TB_BOARD
              JOIN TB_MEMBER ON(WRITER = MEM_NO)
