@@ -105,7 +105,7 @@
                 </tr>
                 <tr>
                     <td height="30" width="350" colspan="4">
-                        <a href="<%=contextPath2%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>"><div class="text_limit"><%=p.getPlaceContent() %></div></a>
+                        <a href="<%=contextPath2%>/myplaceView.mp?pNo=<%=p.getPlaceNo()%>" style="color: black; text-decoration: none;"><div class="text_limit"><%=p.getPlaceContent() %></div></a>
                     </td>
                 </tr>
                 <tr>

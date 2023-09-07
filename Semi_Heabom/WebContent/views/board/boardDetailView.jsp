@@ -269,8 +269,9 @@ String contextPath1 = request.getContextPath();
 										html += '<div style="border: none; background-color: white; font-size: large; height: 100px;">'
 											+ '아직 등록된 댓글이 없습니다. 댓글을 작성해주세요.</div>';
 				
-									} else {
-										for (let i = 0; i < result.length; i++) {
+										} else {
+											for (let i = 0; i < result.length; i++) {
+											console.log(result)
 				
 											html += `
 													<div class="post_comment">
@@ -279,7 +280,7 @@ String contextPath1 = request.getContextPath();
 															<div class="comment_user_info">
 																<div class="comment_userid">
 																	<img style="height:30px" src="<%= contextPath%>/resource/img/board/icon/profileImg.png" alt="">
-																	` + result[i].replyWriter + `
+																	` + result[i].nickname + `
 																	<img style="height:20px" src="<%= contextPath%>/resource/img/board/icon/mugunghwa.png" alt="">
 																</div>
 															</div>
@@ -337,12 +338,10 @@ String contextPath1 = request.getContextPath();
 									writer: $(element).next().val()
 									, rpno: $(element).next().next().val()
 									, loginMem: "<%=loginMember.getMemNo()%>"
-								}, //데이터 넘길때에는 무조건 중괄호 열어라
-								//키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
+								}, 
 				
 								type: "get", // 요청방식 지정
-								success: function (result) { //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
-									console.log("킥킥")
+								success: function (result) { 
 									$(element).next().val(result);
 									seq();
 				
@@ -356,7 +355,6 @@ String contextPath1 = request.getContextPath();
 						function likeup(element) {
 							console.log($(element).next().val())
 							console.log($(element).next().next().val())
-							console.log("여기와")
 							$.ajax({
 								url: "likeup.bo",
 								data: {
@@ -368,7 +366,6 @@ String contextPath1 = request.getContextPath();
 				
 								type: "get", // 요청방식 지정
 								success: function (result) { //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
-									console.log("킥킥")
 									$(element).next().val(result);
 									seq();
 				
@@ -389,7 +386,7 @@ String contextPath1 = request.getContextPath();
 								<div id="write_comment_userid">
 									<!-- <a href="#"> -->
 									<div id="comment_userid">
-										<%=loginMember.getMemId()%>
+										<%=loginMember.getNickname()%>
 									</div> 
 									<div id="count_char">
 										0/500
@@ -441,7 +438,7 @@ String contextPath1 = request.getContextPath();
 		</div>
 	</div>
 	
-	
+	<br>
 	<div id="post_etc" style="border: 0;">
 		<a type="button" class="btn btn-light prev"
 			href="<%=contextPath%>/detail.bo?bno=<%=p.getPrevPage()%>">∧ 이전글</a>
