@@ -40,7 +40,6 @@ public class SelectCourseFormController extends HttpServlet {
 		
 		
 		if(request.getParameter("pNo") != null) {//한번이상 다녀온거임
-			System.out.println("이게되네");
 			int count = (int)session.getAttribute("count");
 			
 			
@@ -82,28 +81,16 @@ public class SelectCourseFormController extends HttpServlet {
 				}
 			}
 			else {
-				System.out.println("끝");
-				
 				ArrayList<Place> coursePlaceList = new CourseService().selectCoursePlaceList(courseList);
-//					for (int i = 0 ; i <coursePlaceList.size() ; i ++) {
-//						System.out.println(coursePlaceList.get(i));
-//					}
 				request.setAttribute("coursePlaceList", coursePlaceList);
 				request.getRequestDispatcher("views/course/courseView.jsp").forward(request, response);
 				
-//				for (int j = 0 ; j < courseList.size() ; j++) {
-//					System.out.println(courseList.get(j));
-//				}
-				
 			}
 			
-			
-			
 		}else {//처음온거여
-			System.out.println("처음왔니");
 			
 			ArrayList<String> courseList = new ArrayList<String>(); //코스 담을 어레이리스트
-			session.setAttribute("courseList", courseList);//ㅋㅋ 시발 
+			session.setAttribute("courseList", courseList); 
 			
 			
 			String arr [] =  request.getParameterValues("check").clone(); //뭐가 왔는지 좀 보자
@@ -122,8 +109,6 @@ public class SelectCourseFormController extends HttpServlet {
 			int count = checkArr.length ; 
 			session.setAttribute("searchKey", searchKey);
 			session.setAttribute("count", count);
-			
-			
 			
 			int cNo = checkArr[0]; //카페야 음식점이야?
 			session.setAttribute("i",0);

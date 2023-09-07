@@ -387,8 +387,8 @@
                     <div class="modal-body" align="center">
                       <form action="delete.re" method="post">
                           <b>회원 추방 시 계정 및 정보가 영구 삭제 됩니다.</b> <br><br>
-                          <input type="hidden" name="userId" value="<%= userId %>">
-                          <input type="text" name="memId">
+                          <input type="hidden" name="userId" value="<%= userId %>" placeholder="신고할 아이디를 입력해주세요.">
+                          <input type="text" name="memId" placeholder="신고할 아이디를 입력해주세요.">
                           <button type="submit" class="btn btn-sm btn-danger">추방</button>
                           
                       </form>

@@ -45,7 +45,6 @@
 	 	int a = 0 ; 
 	 	
        	while(list2.size()>0){
-       		System.out.println("zzz");
 			for(int i = 0; i < list2.size(); i++){
        			if(list2.get(i).getCategoryNo() == 3){
        				newlist.add(list2.get(i));

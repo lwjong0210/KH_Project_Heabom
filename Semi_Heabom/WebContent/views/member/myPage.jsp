@@ -142,8 +142,22 @@ table, div {
 									<td height="65" style="font-size: xx-large;"><strong><%=loginMember.getMemName()%>님</strong></td>
 								</tr>
 								<tr>
-									<td height="50" style="font-size: medium;"><strong><%=loginMember.getGrade()%>
-											등급</strong><img src="" alt=""></td>
+									<td height="50" style="font-size: medium;">
+										<strong><%=loginMember.getGrade()%>등급</strong>
+										<% if(loginMember.getGrade().equals("씨앗")) { %>
+											<img style="height: 35px;" src="<%=contextPath%>/resource/img/grade/씨앗.gif" alt="">
+										<% }else if(loginMember.getGrade().equals("새싹")){ %>
+											<img style="height: 35px;" src="<%=contextPath%>/resource/img/grade/새싹.gif" alt="">
+										<% }else if(loginMember.getGrade().equals("잔디")){ %>
+											<img style="height: 35px;" src="<%=contextPath%>/resource/img/grade/잔디.gif" alt="">
+										<% }else if(loginMember.getGrade().equals("벚꽃")){ %>
+											<img style="height: 35px;" src="<%=contextPath%>/resource/img/grade/벚꽃.gif" alt="">
+										<% }else if(loginMember.getGrade().equals("지구")){ %>
+											<img style="height: 35px;" src="<%=contextPath%>/resource/img/grade/지구.gif" alt="">
+										<% }else if(loginMember.getGrade().equals("태양")){ %>
+											<img style="height: 45px;" src="<%=contextPath%>/resource/img/grade/태양.gif" alt="">
+										<% } %>
+									</td>
 								</tr>
 								<tr>
 									<td height="40" style="font-size: medium;"><div class="myprofile" onclick="myDetail();">개인정보(프로필사진)설정</div></td>
