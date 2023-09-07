@@ -10,12 +10,8 @@
 <title>Heabom</title>
 <style>
     form {
-        box-sizing: border-box;
-        border: 1px solid red;
-
         width: auto;
         height: auto;
-        
     }
 </style>
 </head>
