@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    String contextPath = request.getContextPath();
+    //String contextPath = request.getContextPath();
     %>
     <!DOCTYPE html>
     <html lang="en">
@@ -158,12 +158,8 @@
         </style>
     </head>
     <body>
+    <%@include file="../common/header.jsp"%>
         <div id="wrap">
-    
-            <div id="header">
-                <div id="header_1"><img src="02_CSS3/resources/image/KakaoTalk_20230804_183210092.png" alt=""></div>
-                <div id="header_2"></div>
-            </div>
     
     
             <div id="content">
