@@ -69,11 +69,11 @@
 }
 .catagory-button:hover {
   color: #000000;
-  border-bottom: 2px solid #DDDDDD;
+  border-bottom: 0px solid #DDDDDD;
 }
 #active-catagory-button{
   color: #000000;
-  border-bottom: 2px solid #000000;
+  border-bottom: 0px solid #000000;
 }
 #active-catagory-button .active-img {
   display: inline-block;
@@ -85,7 +85,7 @@
 .wrap {
   width: 1900px;
   text-align: center;
-  border: 1px solid black;
+  border: 0px solid black;
   margin: auto;
 }
 
@@ -106,7 +106,7 @@ main {
 
 .item {
     cursor: pointer;
-    border: 1px solid black;
+    border: 0px solid black;
     text-align: center;
     
 }
@@ -144,6 +144,7 @@ main {
   font-size: 15px;
   color: rgb(34, 34, 34);
   border: 1px solid black;
+  border-radius: 20px;
 }
 
 .description>.description_title {
@@ -164,7 +165,7 @@ main {
 <body>
 	
     <%@include file = "../common/header.jsp" %>
-    <h1 align="center">코스조회</h1>
+    
     <%if (loginMember != null){ %>
     <h1  align="center"><button onclick="location.href ='<%=contextPath%>/saveCourse.pl?str1=<%=str1%>&str2=<%=str2%>&str3=<%=str3%>&money=<%=totalMoney %>&time=<%=totalTime %>'">코스 저장</button></h1>
     <%}else{ %>
@@ -177,9 +178,9 @@ main {
     
        <section>
               코스 정보 조회
-              <ul >
-                <li>총 예상 소요 시간 : <%=totalTime %></li>
-                <li>총 예상 비용 :<%=totalMoney %> </li>
+              <ul style=" list-style-type: none;">
+                <li>총 예상 소요 시간 : <%=totalTime %>시간</li>
+                <li>총 예상 비용 :<%=totalMoney %>원</li>
               </ul>
             </section>
           <%for (int i = 0 ; i <list.size() ; i ++ ) {%>
@@ -190,13 +191,10 @@ main {
 	          }else{
 	        	  category = "음식점";
 	          }  %>
-            
-         
-	          	
-	        
-            <section>
-                <div class="item">
-                    <div class="img" >
+
+            <section >
+                <div class="item" style="width: 300px; height: 300px; float: left; margin-top: 50px;  margin-bottom: 50px; margin-left: 100px;">
+                    <div class="img">
                         <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
                     </div>
                     <div class="description">

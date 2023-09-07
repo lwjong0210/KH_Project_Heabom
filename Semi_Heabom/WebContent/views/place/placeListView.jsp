@@ -124,11 +124,11 @@
 }
 .catagory-button:hover {
   color: #000000;
-  border-bottom: 2px solid #DDDDDD;
+  border-bottom: 0px solid #DDDDDD;
 }
 #active-catagory-button{
   color: #000000;
-  border-bottom: 2px solid #000000;
+  border-bottom: 0px solid #000000;
 }
 #active-catagory-button .active-img {
   display: inline-block;
@@ -140,7 +140,7 @@
 .wrap {
   width: 1900px;
   text-align: center;
-  border: 1px solid black;
+  border: 0px solid black;
   margin: auto;
 }
 
@@ -161,7 +161,7 @@ main {
 
 .item {
     cursor: pointer;
-    border: 1px solid black;
+    border: 0px solid black;
     text-align: center;
 }
 
@@ -171,7 +171,7 @@ main {
   height: 293px;
   overflow: hidden;
   border-radius: 23px;
-  border: 1px solid black;
+  border: 0px solid black;
   margin: auto;
   
   
@@ -191,13 +191,14 @@ main {
 }
 
 .description {
-  margin-top: 13px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 3px;
   font-size: 15px;
   color: rgb(34, 34, 34);
   border: 1px solid black;
+  border-radius: 10px;
 }
 
 .description>.description_title {
@@ -209,8 +210,9 @@ main {
 	
     <%@include file = "../common/header.jsp" %>
     <h1 align="center"><%=location%></h1>
-    <div class="wrap">
-          <%for (int i = 0 ; i <list.size() ; i ++ ) {%>
+
+    <div class="wrap" >
+		<%for (int i = 0 ; i <list.size() ; i ++ ) {%>
 	          <%if (list.get(i).getCategoryNo() == 1){ 
 	          		category = "주점";
 	          }else if(list.get(i).getCategoryNo() == 2) {
@@ -220,9 +222,9 @@ main {
 	          }  %>
 	          	
 	        
-            <section>
-                <div class="item">
-                    <div class="img" >
+            <div align = "center" >
+                <div class="item" style="width: 300px; height: 300px; margin-top: 50px; float: left; margin-left: 50px; margin-bottom: 50px;"  >
+                    <div class="img" style=" box-shadow: 2px 2px 2px 2px gray;" >
                         <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
                     </div>
                     <div class="description">
@@ -230,10 +232,12 @@ main {
                         <div class="description_sub1">분류 : <%=category %></div>
                         <div class="description_sub2">좋아요 <%=list.get(i).getLikeCount() %></div>
                     </div>
+					
                 </div>
-            </section>
-        <%} %>
+            </div>
+			<%} %>
     </div>
+	
 
 </body>
 </html>

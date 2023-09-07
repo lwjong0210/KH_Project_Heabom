@@ -61,25 +61,50 @@
             background-color: transparent;
             
         }
+
         .header_outer>div{
             float: left;
         }
+
         .header_logo{
             height: 100%;
             width: 15%;
+
+            /*
+            box-sizing: border-box;
+            border: 1px solid red;
+            */
+
+            margin-top: 0.5%;
             
         }
+
         .header_loginSession{
             height: 100%;
             width: 12%;
 
-            margin-top: 0.3%;
+            /*
+            box-sizing: border-box;
+            border: 1px solid red;
+            */
+
+            margin-top: 0.5%;
+            padding-top: 0.5%;
         }
+
         .header_navi{
             height: 100%;
-            width: 70%;
+            width: 50%;
 
-            margin-top: 1%;
+            /*
+            box-sizing: border-box;
+            border: 1px solid red;
+            */
+
+            margin-top: 0.5%;
+            padding-top: 1%;
+
+            /*background-color: lightpink;*/
         }
         .header_left_empty{
             height: 100%;
@@ -104,7 +129,7 @@
         .navi_detail a:after {
         display:block;
         content: '';
-        border-bottom: solid 3px rgb(223, 188, 223);  
+        border-bottom: solid 3px rgb(255, 113, 113);  
         transform: scaleX(0);  
         transition: transform 250ms ease-in-out;
         }
@@ -198,8 +223,8 @@
                     <strong><%=loginMember.getNickname()%>님</strong> 반갑습니다.
                     </p>
                     </div>
-                    <a class="btn btn-sm btn-info" href="<%=contextPath%>/myPage.me">나의정보</a>
-                    <button  class="btn btn-sm btn-danger" onclick="location.href = '<%=contextPath%>/logout.me'">로그아웃</button>
+                    <a class="btn btn-sm btn-info" href="<%=contextPath%>/myPage.me" style="background-color: pink; border: none;">나의정보</a>
+                    <button  class="btn btn-sm btn-danger" onclick="location.href = '<%=contextPath%>/logout.me'" style="border: none;">로그아웃</button>
                 <%}%>
     </div>
         </div>

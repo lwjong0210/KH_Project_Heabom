@@ -20,7 +20,7 @@ table, div {
 	height: auto;
 	background-color: #fdeeee;
 	margin: auto;
-	/* margin-top: 50px; */
+	margin-top: 1.5%;
 }
 
 .mypage-left {
