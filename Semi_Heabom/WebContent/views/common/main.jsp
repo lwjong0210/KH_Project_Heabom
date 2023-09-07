@@ -193,7 +193,7 @@
         top: 90%;
         left: 10%;
 
-        font-weight: 900;
+        font-weight: 500;
         color: rgb(77, 81, 89);
       }
 
