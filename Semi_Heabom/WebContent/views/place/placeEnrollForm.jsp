@@ -15,6 +15,8 @@
     background-color: #fdeeee;
     margin: auto;
     /* margin-top: 50px; */
+
+    margin-top: 1.5%;
     }
 
     .insertBox tr, .insertBox tr{
