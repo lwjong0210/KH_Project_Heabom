@@ -140,11 +140,11 @@
 }
 .catagory-button:hover {
   color: #000000;
-  border-bottom: 2px solid #DDDDDD;
+  border-bottom: 0px solid #DDDDDD;
 }
 #active-catagory-button{
   color: #000000;
-  border-bottom: 2px solid #000000;
+  border-bottom: 0px solid #000000;
 }
 #active-catagory-button .active-img {
   display: inline-block;
@@ -156,7 +156,7 @@
 .wrap {
   width: 1900px;
   text-align: center;
-  border: 1px solid black;
+  border: 0px solid black;
   margin: auto;
 }
 
@@ -177,7 +177,7 @@ main {
 
 .item {
     cursor: pointer;
-    border: 1px solid black;
+    border: 0px solid black;
     text-align: center;
 }
 
@@ -187,7 +187,7 @@ main {
   height: 293px;
   overflow: hidden;
   border-radius: 23px;
-  border: 1px solid black;
+  border: 0px solid black;
   margin: auto;
   
   
@@ -214,6 +214,7 @@ main {
   font-size: 15px;
   color: rgb(34, 34, 34);
   border: 1px solid black;
+  border-radius: 20px;
 }
 
 .description>.description_title {
@@ -245,9 +246,9 @@ main {
 	          	
 	        
             <section>
-                <div class="item">
+                <div class="item" style="width: 300px; height: 300px; margin-top: 50px; float: left; margin-left: 50px; margin-bottom: 50px;">
                     <div class="img" >
-                        <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
+                        <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img  src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
                     </div>
                     <div class="description">
                     	<div class="description_no" ><%=list.get(i).getPlaceNo() %></div>
