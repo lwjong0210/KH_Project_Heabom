@@ -41,6 +41,7 @@ public class PlaceInsertController extends HttpServlet {
 			
 		request.setCharacterEncoding("UTF-8");
 		if(ServletFileUpload.isMultipartContent(request)) {
+			System.out.println("앙기모띠");
 			
 			int maxSize = 10 *1024 * 1024;
 			//저장시킬 폴더의 물리적인 경로
