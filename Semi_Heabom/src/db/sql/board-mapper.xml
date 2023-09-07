@@ -136,6 +136,15 @@ SELECT *
 	           , ?
 	           )
 	</entry>
+		<entry key='updateHash'>
+		UPDATE
+	  	       TB_HASHTAG 
+	       SET   
+	           HASHTAG_NAME = ?
+	     WHERE
+	           PLACE_NO = ?
+	</entry>
+	
 	<entry key="increaseCount">
 		UPDATE 
 		       TB_BOARD

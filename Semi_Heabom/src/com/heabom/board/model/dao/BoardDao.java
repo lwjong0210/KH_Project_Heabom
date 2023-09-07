@@ -321,6 +321,28 @@ public class BoardDao {
 		return result;
 		
 	}
+	public int updateHash(Connection conn, HashTag ht) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("updateHash");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ht.getHashTagName());
+			pstmt.setString(2, ht.getCategoryNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
 	
 	public int increaseCount(Connection conn, String bno) {
 		
