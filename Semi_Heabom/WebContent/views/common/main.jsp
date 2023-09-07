@@ -103,7 +103,7 @@
             box-sizing: border-box;
             border: 1px solid red;
             */
-            background-color: rgb(255, 235, 244);
+            background-color: rgba(255, 201, 201, 0.5);
             
         }
         #content_2{

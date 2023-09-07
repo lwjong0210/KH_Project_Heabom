@@ -67,14 +67,19 @@
         .header_logo{
             height: 100%;
             width: 15%;
+            
         }
         .header_loginSession{
             height: 100%;
             width: 12%;
+
+            margin-top: 0.3%;
         }
         .header_navi{
             height: 100%;
             width: 70%;
+
+            margin-top: 1%;
         }
         .header_left_empty{
             height: 100%;
@@ -140,7 +145,7 @@
     <div class="header_outer" align="center">
         <div class="header_left_empty"></div>
         <div class="header_logo">
-            <a href="<%=contextPath%>"><img src="<%=contextPath%>/resource/img/mainLogo/1번로고.png" alt=""></a>
+            <a href="<%=contextPath%>"><img src="<%=contextPath%>/resource/img/mainLogo/9번로고.png" alt=""></a>
         </div>
         <div class="header_loginSession">
                 <!-- 로그인 및 버튼 -->
