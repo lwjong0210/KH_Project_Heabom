@@ -75,7 +75,6 @@
             border: 0px solid black;
             box-sizing: border-box;
             */
-            margin: auto;
             margin-top: 1.5%;
 
             background-color: rgb(255, 235, 244);
@@ -97,23 +96,27 @@
         }
         #content_1{
             float: left;
-            height: 500px;
-            width: 20%;
+            height: 600px;
+            width: 100%;
             /*
             box-sizing: border-box;
             border: 1px solid red;
             */
             background-color: rgba(255, 201, 201, 0.5);
+
+            position: relative;
             
         }
+        /*
         #content_2{
             float: left;
-            height: 100%;
+            height: 10%;
             width: 70%;
             box-sizing: border-box;
             
           
         }
+        */
         
         #div1{
     
@@ -158,10 +161,22 @@
  
 
         img {
-        height: 100%;
-        width: 80%;
+        width: 59%;
+        height: 75%;
+        
         cursor: pointer;
+
       }
+
+      .img {
+        position: absolute;
+
+        top: 25%;
+        left: 40%;
+
+        border-radius: 1%;
+      }
+
       #main {
         width: 1500px;
         height: 720px;
@@ -172,6 +187,14 @@
       .text{
         color: black;
         font-size: xx-large;
+
+        position: absolute;
+
+        top: 90%;
+        left: 10%;
+
+        font-weight: 900;
+        color: rgb(77, 81, 89);
       }
 
 
@@ -208,9 +231,9 @@
             
             
             let bests = [
-            " <h1 class = 'text'>HOT 게시물1</h1>",
-            " <h1 class = 'text'>HOT 게시물2</h1>",
-            " <h1 class = 'text'>HOT 게시물3</h1>",
+            " <h1 class = 'text'>오늘의 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
+            " <h1 class = 'text'>오늘의 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
+            " <h1 class = 'text'>오늘의 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
 
             ]
 
@@ -238,17 +261,17 @@
     	if (<%=nullCheck%>== 0){
  
              arr = [
-              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src=''>게시글없음</a>",
-              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src=''>게시글없음</a>",
-              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src=''>게시글없음</a>",
+              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src='' class='img'>게시글없음</a>",
+              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src='' class='img'>게시글없음</a>",
+              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src='' class='img'>게시글없음</a>",
 
             ];
     	}else{
 
 	        arr = [
-	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src='<%=titleImg1%>'></a>",
-	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src='<%=titleImg2%>'></a>",
-	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src='<%=titleImg3%>'></a>",
+	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src='<%=titleImg1%>' class='img'></a>",
+	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src='<%=titleImg2%>' class='img'></a>",
+	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src='<%=titleImg3%>' class='img'></a>",
 	
 	        ];
     	}

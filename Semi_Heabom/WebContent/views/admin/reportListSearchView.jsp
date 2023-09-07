@@ -48,7 +48,7 @@
             box-sizing: border-box;
             margin: auto;
 
-            background-color: #FDEEEE;
+            background-color: white;
 
             padding-top: 1%;
             padding-bottom: 1%;

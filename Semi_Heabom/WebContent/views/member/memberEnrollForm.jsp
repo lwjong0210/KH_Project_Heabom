@@ -69,7 +69,7 @@
             #content{
                 float: none;
                 height: 90%;
-                background-color: rgb(252, 252, 252);
+                /* background-color: rgb(252, 252, 252); */
             }
             #div1{
                 width: 30%;

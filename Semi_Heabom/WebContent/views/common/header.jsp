@@ -94,7 +94,7 @@
 
         .header_navi{
             height: 100%;
-            width: 50%;
+            width: 60%;
 
             /*
             box-sizing: border-box;
@@ -116,22 +116,22 @@
         }
 
         .navi_detail a { 
-        color: rgb(77, 81, 89);
-        display:inline-block; 
-        margin:0;
-        text-transform:uppercase; 
-        height: 1px;
-        text-decoration: none;
-        font-weight: 900;
-        font-size: 30px;
+            color: rgb(77, 81, 89);
+            display:inline-block; 
+            margin:0;
+            text-transform:uppercase; 
+            height: 1px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 30px;
         }
 
         .navi_detail a:after {
-        display:block;
-        content: '';
-        border-bottom: solid 3px rgb(255, 113, 113);  
-        transform: scaleX(0);  
-        transition: transform 250ms ease-in-out;
+            display:block;
+            content: '';
+            border-bottom: solid 3px rgb(255, 113, 113);  
+            transform: scaleX(0);  
+            transition: transform 250ms ease-in-out;
         }
 
         .navi_detail a:hover:after {transform:scaleX(1);}
