@@ -67,8 +67,6 @@
         .header_logo{
             height: 100%;
             width: 15%;
-
-            margin-top: 0.3%;
             
         }
         .header_loginSession{
