@@ -73,7 +73,6 @@ public class SelectCourseFormController extends HttpServlet {
 				
 			ArrayList<Place> list = new CourseService().selectCourse(lNo,cNo); //지역과 카페인지 음식점인지 골라야함
 			
-			
 			if(!(list.isEmpty())) {
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("views/course/selectCourse.jsp").forward(request, response);
