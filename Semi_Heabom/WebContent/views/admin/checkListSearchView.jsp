@@ -54,6 +54,8 @@
 
             padding-top: 1%;
             padding-bottom: 1%;
+
+            margin-top: 30px;
         }
 
         .background {
