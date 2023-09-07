@@ -32,17 +32,12 @@ String contextPath1 = request.getContextPath();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="<%= contextPath1 %>/views/board/css/boardDetailView.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="<%= contextPath1 %>/views/board/css/boardDetailView.css" type="text/css">
 </head>
 <body>
 	<%@ include file="../common/header.jsp"%>
@@ -127,6 +122,7 @@ String contextPath1 = request.getContextPath();
 					%>
 				</div>
 				<hr style="border: 1px solid lightgrey; width: 98%; margin-bottom: 0;">
+				<a style="font-size: 22px; font-weight: 800; padding-left: 10px;">해시태그 #</a>
 				<div id="post_hashtag" style="height: auto;">
 					<%
 					if (hashTag != null) {
@@ -184,8 +180,9 @@ String contextPath1 = request.getContextPath();
 						<span>신고</span>
 					</div>
 				</div>
-				<div id="post_comment_area">
-				<!-- <div id="post_comment_area" style="display: none;"> -->
+				
+				<!-- <div id="post_comment_area"> -->
+				<div id="post_comment_area" style="display: none;">
 
 					<!-- <div id="post_comment_header">
 		
@@ -267,52 +264,52 @@ String contextPath1 = request.getContextPath();
 				
 											html += `
 													<div class="post_comment">
-														<div class="post_comment_profile_img">
-															<img src="<%= contextPath%>/resource/img/board/icon/profileImg.png" alt="">
-														</div>
+								
 														<div class="post_comment_box">
 															<div class="comment_user_info">
 																<div class="comment_userid">
+																	<img style="height:30px" src="<%= contextPath%>/resource/img/board/icon/profileImg.png" alt="">
 																	` + result[i].replyWriter + `
+																	<img style="height:20px" src="<%= contextPath%>/resource/img/board/icon/mugunghwa.png" alt="">
 																</div>
-																<div class="comment_usergrade">
-																	<img src="resources/img/free-icon-benefit-6000574.png" alt="">
-																</div>
-																<a href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=` + result[i].replyNo + `" style="color: red; text-decoration: none; margin-left: 90%;">삭제</a>
 															</div>
 															<div class="comment_text">` +
 																result[i].replyContent + `
 															</div>
 															<div class="comment_info">
 																<div class="comment_date">`
-																+result[i].replyDate + `
-																</div>
-																<div class="comment_report">
-																	<img class="" src="resources/img/free-icon-siren-6043503.png" alt="">
+																	+result[i].replyDate + `
 																</div>
 															</div>
 														</div>
-				
-														<div class="comment_like">
-															<div class="comment_like_img">`
-				
-														if (likeList.includes(result[i].replyNo)) {
-															console.log("같다요")
-															html += `<img src="<%=contextPath%>/resource/img/board/likeY.png" onclick="likedown(this)">`
-														} else {
-															console.log("다르다요")
-															html += `<img src="<%=contextPath%>/resource/img/board/likeN.png" onclick="likeup(this);">`
-														}
-														html += `<input type="hidden" class="rpw"  value="` + result[i].replyWriter + `">
-																<input type="hidden" class="rpno" value="`+ result[i].replyNo + `">
-															</div>
-															<div class="comment_like_count">`+
-																result[i].replyLike + `
+														<div id="post_comment_etc">
+															<a id="delete-area" href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=` + result[i].replyNo + `" style="color: red; text-decoration: none;">
+																삭제
+															</a>
+					
+															<div class="comment_like">
+																<div class="comment_like_img">`
+					
+																	if (likeList.includes(result[i].replyNo)) {
+																		console.log("같다요")
+																		html += `<img src="<%=contextPath%>/resource/img/board/icon/likeY.png" onclick="likedown(this)">`
+																	} else {
+																		console.log("다르다요")
+																		html += `<img src="<%=contextPath%>/resource/img/board/icon/likeN.png" onclick="likeup(this);">`
+																	}
+																	html += `<input type="hidden" class="rpw"  value="` + result[i].replyWriter + `">
+																			<input type="hidden" class="rpno" value="`+ result[i].replyNo + `">
+																		</div>
+																		<div class="comment_like_count">`+
+																			result[i].replyLike + `
+																		</div>
+																</div>
 															</div>
 														</div>
-													</div>`
-										}
-									}
+														<hr style="border: 1px solid lightgrey; width: 98%; margin-top:5px;">`
+													
+												}
+											}
 									$("#post_comment_list").html(html)
 								}
 							})
@@ -380,9 +377,13 @@ String contextPath1 = request.getContextPath();
 							<div id="write_comment_box" style="width: 100%;">
 				
 								<div id="write_comment_userid">
-									<a href="#">
+									<!-- <a href="#"> -->
+									<div id="comment_userid">
 										<%=loginMember.getMemId()%>
-									</a> <span id="count_char">0/500</span>
+									</div> 
+									<div id="count_char">
+										0/500
+									</div>
 								</div>
 				
 								<div id="write_comment_main">
@@ -391,15 +392,12 @@ String contextPath1 = request.getContextPath();
 								</div>
 				
 								<div id="write_comment_footer">
-									<div id="comment_upload_img">
+									<!-- <div id="comment_upload_img">
 										<input type="file" name="rfile" id="rfile"> <img src="resources/img/free-icon-camera-685655.png"
 											alt="">
-									</div>
-									<div id="comment_submit">
-										<input class="btn btn-light btn-sm" type="submit" value="등록">
-									</div>
+									</div> -->
+										<input style="text-align: right;" class="btn btn-light btn-sm right" type="submit" value="등록">
 								</div>
-							</div>
 							<% } %>
 					</form>
 					<script>
@@ -429,293 +427,298 @@ String contextPath1 = request.getContextPath();
 					</script>
 					
 				</div>
-				<hr style="border: 1px solid gray; width: 98%; margin-top: 0; margin-bottom: 5px;">
 			</div>
-
-
-		<div align="right" id="delete-update-area" style="width: auto;">
-			<%
-			if (loginMember != null && loginMember.getMemId().equals(b.getWriter())) {
-			%>
-			<a href="<%=contextPath%>/updateForm.bo?bno=<%=boardNo%>"
-				class="btn btn-sm btn-warning">수정하기</a> <a
-				onclick="deleteConfirm();" class="btn btn-sm btn-danger">삭제하기</a>
-
-			<%
-			}
-			%>
-			<script>
-					function deleteConfirm(){
-						if(confirm("정말로 이 게시글을 삭제하시겠습니까?")){
-							location.href= href="<%=contextPath%>/deleteForm.bo?bno=<%=b.getBoardNo()%>"
-						}
-					}
-				</script>
-		</div>
-		<div id="post_etc">
-			<a type="button" class="btn btn-light prev"
-				href="<%=contextPath%>/detail.bo?bno=<%=p.getPrevPage()%>">∧ 이전글</a>
-			<a type="button" class="btn btn-light next"
-				href="<%=contextPath%>/detail.bo?bno=<%=p.getNextPage()%>">∨ 다음글</a>
-			<a type="button" class="btn btn-light list"
-				href="<%=contextPath%>/list.bo?cpage=1">목록</a>
-		</div>
-		<div class="post_list" style="width: auto;">
-
-			<input type="hidden" id="cpage3" value="1">
-
-
-
-			<!-- 여기에 들어감 -->
-
-			<table id="dataTableBody" style="width: 100%">
-
-			</table>
-			<br>
-			<ul class="page-item"></ul>
-
 		</div>
 	</div>
+	
+	
+	<div id="post_etc" style="border: 0;">
+		<a type="button" class="btn btn-light prev"
+			href="<%=contextPath%>/detail.bo?bno=<%=p.getPrevPage()%>">∧ 이전글</a>
+		<a type="button" class="btn btn-light next"
+			href="<%=contextPath%>/detail.bo?bno=<%=p.getNextPage()%>">∨ 다음글</a>
+		<a type="button" class="btn btn-light list"
+			href="<%=contextPath%>/list.bo?cpage=1">목록</a>
+	</div>
+	<div align="right" id="delete-update-area" style="width: auto; border: none; margin-top: 10px;">
+		<%
+		if (loginMember != null && loginMember.getMemId().equals(b.getWriter())) {
+		%>
+		<a href="<%=contextPath%>/updateForm.bo?bno=<%=boardNo%>"
+			class="btn btn-sm btn-warning">수정</a> <a
+			onclick="deleteConfirm();" class="btn btn-sm btn-danger">삭제</a>
+	
+		<%
+		}
+		%>
+		<script>
+				function deleteConfirm(){
+					if(confirm("정말로 이 게시글을 삭제하시겠습니까?")){
+						location.href= href="<%=contextPath%>/deleteForm.bo?bno=<%=b.getBoardNo()%>"
+					}
+				}
+			</script>
+	</div>
+	<br><br>
+	<div class="post_list" style="width: auto; border: none;">
+		<h3 style="margin: 0; padding: 0;">전체글보기</h3>
+		<br>
+	
+		<input type="hidden" id="cpage3" value="1">
+	
+	
+	
+		<!-- 여기에 들어감 -->
+	
+		<table id="dataTableBody" style="width: 100%">
+	
+		</table>
 
-
-
-
-
-
-
-
-
-
+		<br>
+		<ul class="pagination pagination-sm justify-content-center"></ul>
+	
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<script>
-	let listCount; // 현재 총 게시글 개수
+	let listCount; // 현재 총 게시글 
 	let currentPage = 1; //현재 페이지
 	let pageLimit= 10; //  하단에 보여지는 페이징바의 최대개수	
-	let boardLimit = 10; // 한 페이지내에 보여질 게시글 최대개수
+	let boardLimit = 5; // 한 페이지내에 보여질 게시글 최대개수
 	
 	let maxPage ; // 가장마지막 페이지
 	let startPage; // 페이징바의 시작수
 	let endPage; // 페이징바의 끝 수
 	
 	let boardList; //표시하려하는 데이터 리스트
-
-		$(function(){
-			
 	
-			 
-			 $.ajax({ 
-				url: "pageNation.bo",
-				success: function (plist) {
-			        boardList= JSON.parse(plist);
-				   	listCount = boardList.length;
-			           console.log(listCount + "!!!!");
-                       	maxPage = Math.ceil(listCount / boardLimit);
-                       	startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
-                		endPage = startPage + pageLimit - 1;
-
-                        boardListView(1, boardLimit);
-                		if(endPage > maxPage) {
-                			endPage = maxPage;
-                		};
-                        
-                        pagingBar(listCount, boardLimit, pageLimit, 1);
-				}
-			 });
-			 
-			})
-			function boardListView(currentPage, boardLimit) {
-			console.log(currentPage+ "aaaa" + boardLimit)
-			  let chartHtml = "";
-
-			currentPage = Number(currentPage);
-			boardLimit = Number(boardLimit);
-			let charTitleHtml = 
-			"<tr><th style='width: 8%;'>글번호</th>"+
-	    	"<th style='width: 57%;'>제목</th>"+
-	    	"<th style='width: 10%;'>작성자</th>"+
-	    	"<th style='width: 10%;'>조회수</th>"+
-	    	"<th style='width: 15%;'>작성일</th></tr>"
-            ;
-			// 총게시글 78개, 1페이지 인덱스 0 ~ 9 , 2페이지 인덱스 10 ~ 19, ..., 8페이지 인덱스 70 ~ 77
-			if(currentPage == maxPage){
-				  for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + (listCount % boardLimit) ;
-				    i++
-				  ) {
-					  
+	$(function(){
 		
-					  console.log(boardList[i]);
-					    chartHtml +=
-					      "<tr class='boardTr'><td>" +
-					      boardList[i].boardNo.substr(1) +
-					      "</td><td>" +
-					      boardList[i].boardTitle +
-					      "</td><td>" +
-					      boardList[i].writer +
-					      "</td><td>" +
-					      boardList[i].boardCount +
-					      "</td><td>" +
-					      boardList[i].createDate +
-					      "</td></tr>";
-				  }
-			}else{
 	
-			  for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + boardLimit;
-			    i++
+		 
+		 $.ajax({ 
+			url: "pageNation.bo",
+			success: function (plist) {
+				boardList= JSON.parse(plist);
+				   listCount = boardList.length;
+				   console.log(listCount + "!!!!");
+					   maxPage = Math.ceil(listCount / boardLimit);
+					   startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+					endPage = startPage + pageLimit - 1;
+	
+					boardListView(1, boardLimit);
+					if(endPage > maxPage) {
+						endPage = maxPage;
+					};
+					
+					pagingBar(listCount, boardLimit, pageLimit, 1);
+			}
+		 });
+		 
+		})
+		function boardListView(currentPage, boardLimit) {
+		console.log(currentPage+ "aaaa" + boardLimit)
+		  let chartHtml = "";
+	
+		currentPage = Number(currentPage);
+		boardLimit = Number(boardLimit);
+		let charTitleHtml = 
+		`<thead><tr style="text-align: center;">
+			<th style='width: 8%;'>글번호</th>
+			<th style='width: 57%;' >제목</th>
+			<th style='width: 10%;'>작성자</th>
+			<th style='width: 10%;'>조회수</th>
+			<th style='width: 15%;'>작성일</th>
+		</tr></thead>`
+		;
+		// 총게시글 78개, 1페이지 인덱스 0 ~ 9 , 2페이지 인덱스 10 ~ 19, ..., 8페이지 인덱스 70 ~ 77
+		if(currentPage == maxPage){
+			  for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + (listCount % boardLimit) ;
+				i++
 			  ) {
 				  
 	
 				  console.log(boardList[i]);
-				    chartHtml +=           
-
-				      "<tr class='boardTr'><td>" +
-				      boardList[i].boardNo.substr(1) +
-				      "</td><td>" +
-				      boardList[i].boardTitle +
-				      "</td><td>" +
-				      boardList[i].writer +
-				      "</td><td>" +
-				      boardList[i].boardCount +
-				      "</td><td>" +
-				      boardList[i].createDate +
-				      "</td></tr>";
+					chartHtml +=
+					  "<tr class='boardTr'><td>" +
+					  boardList[i].boardNo.substr(1) +
+					  "</td><td>" +
+					  boardList[i].boardTitle +
+					  "</td><td>" +
+					  boardList[i].writer +
+					  "</td><td>" +
+					  boardList[i].boardCount +
+					  "</td><td>" +
+					  boardList[i].createDate +
+					  "</td></tr>";
 			  }
-			  }
-				  $("#dataTableBody").html(charTitleHtml+chartHtml);
-					
-					$("#dataTableBody tr").click(function () {
-							location.href='<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text()
-							
-
-					})
+		}else{
+	
+		  for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + boardLimit;
+			i++
+		  ) {
+			  
+	
+			  console.log(boardList[i]);
+				chartHtml +=           
+	
+				  "<tr class='boardTr'><td>" +
+				  boardList[i].boardNo.substr(1) +
+				  "</td><td>" +
+				  boardList[i].boardTitle +
+				  "</td><td>" +
+				  boardList[i].writer +
+				  "</td><td>" +
+				  boardList[i].boardCount +
+				  "</td><td>" +
+				  boardList[i].createDate +
+				  "</td></tr>";
+		  }
+		  }
+			  $("#dataTableBody").html(charTitleHtml+'<tbody style="text-align:center;">'+chartHtml+'</tbody>');
+				
+				$("#dataTableBody tr").click(function () {
+						location.href='<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text()
+						
+	
+				})
 	}
-			 
-			
+		 
 		
-		function pagingBar(listCount, boardLimit, pageLimit, currentPage) {
-			console.log("pageLimit"+pageLimit)
-			  console.log("currentPage : " + currentPage);
-
-
-			  let pageGroup = Math.ceil(currentPage / pageLimit); // 페이지 그룹
-
-			  let pageHtml = "";
-
-			  if (currentPage > 1) {
-			    pageHtml += "<li><a href='#' id='prev'> 이전 </a></li>";
-			  }
-
-			 //페이징 번호 표시 
-			  for (var i = startPage; i <= endPage; i++) {
-				  console.log(endPage + "ep");
-				  console.log(startPage + "sp");
-			    if (currentPage == i) {
-			      pageHtml +=
-			        "<li class='on' style='background-color: black'><a href='#' id='" + i + "'>" + i + "</a></li>";
-			    } else {
-			      pageHtml += "<li><a href='#' id='" + i + "'>" + i + "</a></li>";
-			    }
-			  }
-
-			  if (currentPage != maxPage) {
-			    pageHtml += "<li><a href='#' id='next'> 다음 </a></li>";
-			  }
-
-			  $(".page-item").html(pageHtml);
-
-
-			  //페이징 번호 클릭 이벤트 
-			  $(".page-item li a").click(function () {
-			    let $id = $(this).attr("id");
-			    selectedPage = $(this).text();
-
-			    if ($id == "next") {
-			    	selectedPage = currentPage + 1;
-			    }
-			    if ($id == "prev") {
-			    	selectedPage = currentPage - 1;
-			    }
-			    
-			    currentPage = selectedPage;
-			    console.log(currentPage)
-			    pagingBar(listCount, boardLimit, pageLimit, selectedPage);
-			    boardListView(selectedPage, boardLimit);
-			  });
+	
+	function pagingBar(listCount, boardLimit, pageLimit, currentPage) {
+		console.log("pageLimit"+pageLimit)
+		  console.log("currentPage : " + currentPage);
+	
+	
+		  let pageGroup = Math.ceil(currentPage / pageLimit); // 페이지 그룹
+	
+		  let pageHtml = "";
+	
+		  if (currentPage > 1) {
+			pageHtml += "<li class='page-item'><a class='page-link' href='#' id='prev'> 이전 </a></li>";
+		  }
+	
+		 //페이징 번호 표시 
+		  for (var i = startPage; i <= endPage; i++) {
+			  console.log(endPage + "ep");
+			  console.log(startPage + "sp");
+			if (currentPage == i) {
+			  pageHtml +=
+				"<li class='page-item active' style='background-color: black'><a class='page-link' href='#' id='" + i + "'>" + i + "</a></li>";
+			} else {
+			  pageHtml += "<li class='page-item'><a class='page-link'  href='#' id='" + i + "'>" + i + "</a></li>";
+			}
+		  }
+	
+		  if (currentPage != maxPage) {
+			pageHtml += "<li class='page-item'><a class='page-link btn btn-info'  href='#' id='next'> 다음 </a></li>";
+		  }
+	
+		  $(".pagination").html(pageHtml);
+	
+	
+		  //페이징 번호 클릭 이벤트 
+		  $(".pagination li a").click(function () {
+			let $id = $(this).attr("id");
+			selectedPage = $(this).text();
+	
+			if ($id == "next") {
+				selectedPage = currentPage + 1;
+			}
+			if ($id == "prev") {
+				selectedPage = currentPage - 1;
 			}
 			
+			currentPage = selectedPage;
+			console.log(currentPage)
+			pagingBar(listCount, boardLimit, pageLimit, selectedPage);
+			boardListView(selectedPage, boardLimit);
+		  });
+		}
+		
 	</script>
-
-<!-- 모달시작 -->
-<div class="modal" id = "reportModal" align="center">
-	<div class="modal-dialog">
-		<div class="modal-content">
-
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<h4 class="modal-title">리뷰신고</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	
+	<!-- 모달시작 -->
+	<div class="modal" id = "reportModal" align="center">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">리뷰신고</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+		
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form action="<%=contextPath1%>/insert2.rp" method="post">
+						<input type="hidden" name="userId" value="">
+						<b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
+							아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
+							<table class="reportForm" border="0">
+								<tr>
+									<th>신고대상:</th>
+									<td><input type="text" id="xUser" name="xUser" value="<%=writer%>" readonly style="background-color: lightgray;"></td>
+								</tr>
+								<tr>
+									<th>
+										신고글:
+									</th>
+									<td>
+										<textarea name="xContent" id="xContent" cols="30" rows="5" readonly style="background-color:lightgray; resize: none;"><%=boardContent%></textarea>
+									</td>
+								</tr>
+								<input type="hidden" name="reNo" value="<%=boardNo%>">
+								<input type="hidden" name="reporter" value="<%=loginMember.getMemNo()%>">
+								<input type="hidden" name="reported" value="<%=b.getReportWriter()%>">
+								<tr>
+									<th>신고종류 : </th>
+									<td>
+										<input name="reprotTypeSelect" type="hidden" onclick="getReportType(event)" value="">
+										<select name="reportType" id="reportType">
+											<option value="비방">비방</option>
+											<option value="불법광고">불법광고</option>
+											<option value="허위게시글">허위게시글</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th>신고내용 : </th>
+									<td>
+										<textarea name="reportContent" id="reportContent" cols="30" rows="5" style="resize: none;" minlength="1" required placeholder="신고내용은 신고종류에 맞게 작성해주세요. 부적절한 신고 내용은 신고자가 재제의 대상이 됩니다."></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th colspan="2">
+										<p style="color: red; margin: 0; text-align: center;">무고한 신고는 신고자 계정이 재제 당할 수 있습니다.<input id="userReportCheck" type="checkbox" onclick="reportCheck();"></p>
+									</th>
+								</tr>
+							</table>
+							<br>
+							<button type="button" id="thorwReport" class="btn btn-sm btn-danger" onclick="insertReport()" disabled>신고하기</button>
+							<button type="submit" id="thorwReporter" style="display: none;"></button>
+							<button type="reset" class="btn btn-sm btn-info">초기화</button>
+					</form>
+				</div>
 			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body">
-				<form action="<%=contextPath1%>/insert2.rp" method="post">
-				<input type="hidden" name="userId" value="">
-				<b>부적절한 댓글 및 사용자에 대해서 신고를 할 수 있습니다.<br>
-					아래의 신고 내용을 참고 해서 작성해 주세요<br><br> </b>
-					<table class="reportForm" border="0">
-						<tr>
-							<th>신고대상:</th>
-							<td><input type="text" id="xUser" name="xUser" value="<%=writer%>" readonly style="background-color: lightgray;"></td>
-						</tr>
-						<tr>
-							<th>
-								신고글:
-							</th>
-							<td>
-								<textarea name="xContent" id="xContent" cols="30" rows="5" readonly style="background-color:lightgray; resize: none;"><%=boardContent%></textarea>
-							</td>
-						</tr>
-						<input type="hidden" name="reNo" value="<%=boardNo%>">
-						<input type="hidden" name="reporter" value="<%=loginMember.getMemNo()%>">
-						<input type="hidden" name="reported" value="<%=b.getReportWriter()%>">
-						<tr>
-							<th>신고종류 : </th>
-							<td>
-								<input name="reprotTypeSelect" type="hidden" onclick="getReportType(event)" value="">
-								<select name="reportType" id="reportType">
-									<option value="비방">비방</option>
-									<option value="불법광고">불법광고</option>
-									<option value="허위게시글">허위게시글</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th>신고내용 : </th>
-							<td>
-								<textarea name="reportContent" id="reportContent" cols="30" rows="5" style="resize: none;" minlength="1" required placeholder="신고내용은 신고종류에 맞게 작성해주세요. 부적절한 신고 내용은 신고자가 재제의 대상이 됩니다."></textarea>
-							</td>
-						</tr>
-						<tr>
-							<th colspan="2">
-								<p style="color: red; margin: 0; text-align: center;">무고한 신고는 신고자 계정이 재제 당할 수 있습니다.<input id="userReportCheck" type="checkbox" onclick="reportCheck();"></p>
-							</th>
-						</tr>
-					</table>
-					<br>
-					<button type="button" id="thorwReport" class="btn btn-sm btn-danger" onclick="insertReport()" disabled>신고하기</button>
-					<button type="submit" id="thorwReporter" style="display: none;"></button>
-					<button type="reset" class="btn btn-sm btn-info">초기화</button>
-				</form>
-			</div>
-
 		</div>
 	</div>
 </div>
-</div>
 
 <script>
-    function reportCheck() {
-        var checkbox = document.getElementById("userReportCheck");
+	function reportCheck() {
+		var checkbox = document.getElementById("userReportCheck");
         var reportButton = document.getElementById("thorwReport");
-
+		
         if (checkbox.checked) {
             reportButton.removeAttribute("disabled");
         } else {
