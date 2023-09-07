@@ -25,18 +25,11 @@
             box-sizing: border-box; */
         }
 
-        p {
-            box-sizing: border-box;
-            float: left;
-            /*border: 1px solid black;*/
-
+        #p1 {
+            margin-top: 20%;
             margin-left: 5%;
             font-size: 20px;
             font-weight: 900;
-        }
-
-        #p1 {
-            margin-top: 20%;
 
             color: orange;
         }
