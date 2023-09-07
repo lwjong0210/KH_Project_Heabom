@@ -15,7 +15,7 @@
         background-color: #fdeeee;
         margin: auto;
 
-        margin-top: 30px;
+        margin-top: 1.5%;
     }
     .adminpage-left{
         background-color: gray;

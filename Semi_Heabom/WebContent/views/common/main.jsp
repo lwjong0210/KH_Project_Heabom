@@ -76,7 +76,7 @@
             box-sizing: border-box;
             */
             margin: auto;
-            margin-top: 30px;
+            margin-top: 1.5%;
 
             background-color: rgb(255, 235, 244);
            
