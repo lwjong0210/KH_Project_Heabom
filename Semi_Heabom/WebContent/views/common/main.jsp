@@ -172,7 +172,7 @@
         position: absolute;
 
         top: 12.8%;
-        left: 40%;
+        left: 41%;
 
         border-top-left-radius: 0%;
         border-bottom-left-radius: 0%;
