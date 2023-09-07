@@ -76,6 +76,8 @@
         .header_navi{
             height: 100%;
             width: 70%;
+
+            margin-top: 1%;
         }
         .header_left_empty{
             height: 100%;
