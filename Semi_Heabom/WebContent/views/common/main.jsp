@@ -14,6 +14,8 @@
    	//	System.out.println(bannerList.get(i));
 	//}
 	String contextPath2 = request.getContextPath();
+	
+	
 	String pNo1 = null;
 	String pNo2 = null;
 	String pNo3 = null;
@@ -23,17 +25,28 @@
 	
 	
 	if(!bannerList.isEmpty()){
-	pNo1 = bannerList.get(0).getPlaceNo();
-	pNo2 = bannerList.get(1).getPlaceNo();
-	pNo3 = bannerList.get(2).getPlaceNo();
-	titleImg1 = bannerList.get(0).getTitleImg();
-	titleImg2 = bannerList.get(1).getTitleImg();
-	titleImg3 = bannerList.get(2).getTitleImg();
+	
+	if (bannerList.size() == 1){
+		pNo1 = bannerList.get(0).getPlaceNo();
+		titleImg1 = bannerList.get(0).getTitleImg();
+	}
+	else if (bannerList.size() == 2){
+		pNo1 = bannerList.get(0).getPlaceNo();
+		pNo2 = bannerList.get(1).getPlaceNo();
+		titleImg1 = bannerList.get(0).getTitleImg();
+		titleImg2 = bannerList.get(1).getTitleImg();
+	}else if (bannerList.size() == 3){
+		pNo1 = bannerList.get(0).getPlaceNo();
+		pNo2 = bannerList.get(1).getPlaceNo();
+		pNo3 = bannerList.get(2).getPlaceNo();
+		titleImg1 = bannerList.get(0).getTitleImg();
+		titleImg2 = bannerList.get(1).getTitleImg();
+		titleImg3 = bannerList.get(2).getTitleImg();
+	}
 	nullCheck = 1 ;
 	System.out.println(titleImg1);
 	}
-	
-	
+
     %>
     
 	
