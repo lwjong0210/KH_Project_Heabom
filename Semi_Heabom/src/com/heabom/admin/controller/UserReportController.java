@@ -44,6 +44,12 @@ public class UserReportController extends HttpServlet {
 		re.setReCategory(reportType);
 		re.setReContent(reportContent);
 		
+		System.out.println("asdf "+reNo);
+		System.out.println("asdf "+reporter);
+		System.out.println("asdf "+reported);
+		System.out.println("asdf "+reportType);
+		System.out.println("asdf "+reportContent);
+		
 		int result = new ReportService().boardInReport(re);
 		
 		if(result > 0) {

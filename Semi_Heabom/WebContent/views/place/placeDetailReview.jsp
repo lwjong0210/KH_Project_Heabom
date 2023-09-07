@@ -207,7 +207,7 @@ function selectReplyList(){
 				                                    </tr>
 				                                    <input type="hidden" name="reNo" value="\${list[i].reNo}">
 				                                    <input type="hidden" name="reporter" value="<%=loginMember1.getMemNo()%>">
-				                                    <input type="hidden" name="reported" value="">
+				                                    <input type="hidden" name="reported" value="\${list[i].reWriter}">
 				                                    <tr>
 				                                        <th>신고종류 : </th>
 				                                        <td>
