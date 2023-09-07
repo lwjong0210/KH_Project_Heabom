@@ -77,7 +77,7 @@
             */
             margin-top: 1.5%;
 
-            background-color: rgb(255, 235, 244);
+            background-color: rgb(253, 238, 238);
            
         } 
        
