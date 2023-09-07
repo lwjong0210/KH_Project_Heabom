@@ -48,12 +48,16 @@
     
             }
 
+            /*
             div{
                 border: 0px solid black;
                 float: left;
                 height: 100%;
                 box-sizing: border-box;
             }
+            */
+            
+            /*
 
             #header{
                 float: none;
@@ -69,11 +73,17 @@
                 height: 100%;
                 width: 92%;
             }
+
+            */
+            /*
             #content{
                 float: none;
                 height: 90%;
-                /* background-color: rgb(252, 252, 252); */
+                background-color: rgb(252, 252, 252);
             }
+
+            
+
             #div1{
                 width: 30%;
                 
@@ -98,7 +108,8 @@
                 background-color: rgb(255, 232, 236);
             }
     
-    
+            */
+
     
             #div2>div{
                 
@@ -117,6 +128,7 @@
      
     
             #div2-2{
+
                 height: 70%;
                 box-sizing: border-box;
             }
@@ -158,7 +170,8 @@
             
          }
 
-         table {
+         #memberEnrollFormTable {
+            text-align: center;
          }
     
         </style>

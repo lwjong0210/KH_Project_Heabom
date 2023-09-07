@@ -23,7 +23,6 @@
             grid-row-gap: 30px;
             padding: 5%;
 
-
         }
 
         #box {
@@ -99,7 +98,7 @@
 <%@include file = "../common/header.jsp" %>
 <%if (loginMember != null){ %>
 <div id = "enrollBtn" align ="center">
-<button   class="btn btn-primary" onclick="location.href ='<%=contextPath%>/enrollForm.pl'">장소 등록하기</button>
+<button id="place-button" class="btn btn-primary" style="background-color: pink; border: none;" onclick="location.href ='<%=contextPath%>/enrollForm.pl'">장소 등록하기</button>
 </div>
 <%}else{ %>
 <div id = "plzLogin" align ="center" >
