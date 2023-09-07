@@ -95,9 +95,9 @@
             <td class="detail_title">이메일&nbsp</td>
             <td><input type="email" placeholder="ex)해봄@SunSpring.com" maxlength="30" name="userEamil" value="<%=userEmail%>"></td>
             <td class="" rowspan="2" style="text-align: center; font-size: smaller;">
-                <p style="color: blue;"><strong>사진은 최대 10Mbyte를</strong></p>
+                <p style="color: blue;"><strong>사진은 최대 10Mbyte</strong></p>
                 <p style="margin-bottom: 5px;">넘을수 없습니다.</p>
-                <p style="color: blue;"><strong>사진 규격은 120*120를</strong></p>
+                <p style="color: blue;"><strong>사진 규격은 120*120</strong></p>
                 <p>권장합니다.</p>
             </td>
         </tr>
