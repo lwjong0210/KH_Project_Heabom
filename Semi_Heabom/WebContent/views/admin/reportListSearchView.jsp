@@ -37,6 +37,8 @@
             border-radius: 15px;
             width: 200px;
             text-align: center;
+
+            
         }
 
         .wrap {
@@ -50,6 +52,8 @@
 
             padding-top: 1%;
             padding-bottom: 1%;
+
+            margin-top: 30px;
         }
 
         .background {

@@ -14,6 +14,8 @@
         height: 800px;
         background-color: #fdeeee;
         margin: auto;
+
+        margin-top: 30px;
     }
     .adminpage-left{
         background-color: gray;
