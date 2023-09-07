@@ -85,9 +85,9 @@
                     <td height="20" width="350" colspan="4"><div class="text_limit" ><a href="">지역 : <%=p.getLocationName() %></a></div></td>
                 </tr>
                 <tr>
-                    <td width="120" style="text-align: center; font-size: smaller;">작성일: <%=p.getStrMakeDate() %></td>
-                    <td width="80" style="text-align: center; font-size: smaller;">좋아요: <%=p.getLikeCount() %></td>
-                    <td width="150" style="text-align: center; font-size: smaller;">
+                    <td width="100" style="text-align: center; font-size: smaller;"><%=p.getStrMakeDate() %></td>
+                    <td width="80" style="text-align: center; font-size: smaller;">좋아요:<%=p.getLikeCount() %></td>
+                    <td width="160" style="text-align: center; font-size: smaller;">
                     별점: 
                     <% for(int i = 0; i<p.getStarPoint(); i++) { %>
                     ⭐
