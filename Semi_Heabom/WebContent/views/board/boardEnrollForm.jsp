@@ -20,9 +20,6 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
     <style>
         div {
             box-sizing: border-box;
@@ -280,11 +277,9 @@
                     <div id="select-category-area">
                         <select name="category" id="select-category" onchange="clickNoticeOption(this.value);">
                             <option value="F">자유게시판</option>
-                            <% if(loginMember.getGrade().equals("무궁화")){ %>
+                            <% if(loginMember.getGrade().equals("태양")){ %>
                                 <option value="N">공지사항</option>
                                 <% } %>
-                                <!-- <option value="Q&A">Q & A</option> -->
-                                <!-- <option value="...">...</option> -->
                             </select>
                         </div>
                     </div>

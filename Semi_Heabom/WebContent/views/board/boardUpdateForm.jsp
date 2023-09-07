@@ -286,13 +286,11 @@
                     </div>
                     <div id="select-category-area">
                         <select name="category" id="select-category" onchange="clickNoticeOption(this.value);">
-                            
+                           
                            	<option value="F">자유게시판</option>
-                            <% if(loginMember.getGrade().equals("무궁화")){ %>
+                            <% if(loginMember.getGrade().equals("태양")){ %>
                                 <option value="N">공지사항</option>
                                 <% } %>
-                                <option value="Q&A">Q & A</option>
-                                <option value="...">...</option>
                             </select>
                             <script>
                             	$(function(){
@@ -382,7 +380,7 @@
                 </div>
                 <div id="write-poster-footer" style="margin-top: 10px;">
                     <div id="writer-poster-submit">
-                        <input type="button" value="수정하기" onclick="postSubmit();">
+                        <input type="button" class="btn btn-secondary" value="수정하기" onclick="postSubmit();">
                     </div>
                     <div id="admin-private" style="display: none;">
                         <input type="checkbox" id="notice-check" name="noticeUp" value="Y">
@@ -401,7 +399,17 @@
         <script>
             /* 해시태그 스크립트 */
             $(function () { 
-                
+    			
+              
+               	if($("#select-category").val()=='N'){
+               		document.getElementById("admin-private").style.display='';
+               		if("<%= b.getBoardup() %>" == 'Y'){
+               	
+						$("#notice-check").attr("checked","checked")
+               			
+               		}
+               	}
+               
                 $(document).on('keydown', '.tag-input', function () {
                     $(this).css('width', 20);
                     let value = $(this).val();
@@ -457,7 +465,9 @@
                 console.log($("#hiddenTag").val())
                 let formSelect = $("form").submit();
             }
-
+            
+            
+            
             // select option에서 공지사항을 클릭했을때 상단게시체크박스가 나타나는 함수
             function clickNoticeOption(str){
 				if(str=='N'){

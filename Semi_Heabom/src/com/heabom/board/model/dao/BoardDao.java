@@ -371,7 +371,6 @@ public class BoardDao {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		System.out.println(bno+"Zzzzzzzzzzzzzzzzzzzzzz");
 		String sql = prop.getProperty("selectBoard");
 		
 		Board b = new Board();
@@ -390,6 +389,7 @@ public class BoardDao {
 				b.setHashTagName(rset.getString("hashtag_name"));
 				b.setCountReply(rset.getInt("count"));
 				b.setReportWriter(rset.getString("WRITER"));
+				b.setBoardup(rset.getString("board_up"));
 				
 			}
 			System.out.println(b + "진짜어이가없네");
