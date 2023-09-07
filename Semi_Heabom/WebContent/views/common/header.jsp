@@ -86,7 +86,7 @@
         }
 
         .navi_detail a { 
-        color: #000;
+        color: rgb(77, 81, 89);
         display:inline-block; 
         margin:0;
         text-transform:uppercase; 
