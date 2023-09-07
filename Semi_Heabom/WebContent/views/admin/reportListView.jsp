@@ -30,7 +30,7 @@
             font-size: 25px;
             font-weight: 500;
 
-            margin-top: 20%;
+            margin-top: 25%;
 
             background-color: lightpink;
             border-radius: 15px;
@@ -289,7 +289,7 @@
             <div id="header">
                 <div id="header_1"></div>
                 <div id="header_2">
-                    <p id="p1">신고 수 : <%= pi.getListCount() %></p>
+                    <p id="p1">총 신고 수 : <%= pi.getListCount() %></p>
                 </div>
                 <div id="header_3"></div>
                 <div id="header_4">

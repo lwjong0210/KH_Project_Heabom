@@ -140,7 +140,7 @@
     <div class="header_outer" align="center">
         <div class="header_left_empty"></div>
         <div class="header_logo">
-            <a href="<%=contextPath%>"><img src="<%=contextPath%>/resource/img/mainLogo/1번로고.png" alt=""></a>
+            <a href="<%=contextPath%>"><img src="<%=contextPath%>/resource/img/mainLogo/7번로고.png" alt=""></a>
         </div>
         <div class="header_loginSession">
                 <!-- 로그인 및 버튼 -->
