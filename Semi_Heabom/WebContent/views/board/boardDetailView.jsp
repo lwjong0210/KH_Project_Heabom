@@ -48,400 +48,391 @@ String contextPath1 = request.getContextPath();
 	<%@ include file="../common/header.jsp"%>
 
 	<div class="wrap">
-		<div id="post_header">
+		<div id="main-area">
 			<div id="post_header">
-				<div id="notice_category">
-
-					<%
-					if (boardNo.substring(0, 1).equals("F")) {
-					%>
-					<div>
-						<a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
+				<div id="post_header">
+					<div id="notice_category">
+	
+						<%
+						if (boardNo.substring(0, 1).equals("F")) {
+						%>
+						<div>
+							<a href="<%=contextPath%>/list.bo?cpage=1">자유게시판</a>
+						</div>
+						<%
+						} else {
+						%>
+						<div>
+							<img style="padding-bottom: 4px; margin-left: 4px; width: 20px;" src="<%=contextPath%>/resource/img/board/icon/notice.png">
+							<a href="#" style="padding-right: 4px; font-size: 14px;">공지사항</a>
+						</div>
+						<%
+						}
+						%>
 					</div>
+					<div id="post_title">
+						<span><%=b.getBoardTitle()%></span>
+					</div>
+					<div id="user_info">
+						<div id="user_profile_img">
+							<img src="" alt="">
+						</div>
+						<div id="user_id" style="font-size: 18px; font-weight: 800;">
+							<span><%=b.getWriter()%></span>
+						</div>
+						<div id="user_grade">
+							<img src="resources/img/free-icon-benefit-6000574.png" alt="">
+						</div>
+					</div>
+					<div id="post_header_footer">
+						<div id="post_date">
+							<span><%=b.getCreateDate()%></span>
+						</div>
+						<div style="text-align: right;" class="post_comment">
+							<img style="width: 20px;" src="<%= contextPath%>/resource/img/board/icon/reply.png"alt="">
+							<span>댓글 <%=b.getCountReply()%></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr style="border: 1px solid gray; width: 98%; margin-top: 0;">
+			<div id="post_content">
+				<div id="post_main">
+					<div>
+						<%=b.getBoardContent()%>
+					</div>
+				</div>
+				<hr style="border: 1px solid lightgrey; width: 98%; margin-bottom: 0;">
+				<div id="contentImg" style="height: auto">
+					<span style="font-size: 18px; font-weight: 800;">첨부파일</span>
+					<img style="height: 20px;" src="<%= contextPath%>/resource/img/board/icon/attachment.png" alt="">
+					<br>
+					<br>
+					<%
+					if (flist.isEmpty()) {
+					%>
+					사진없다잉
 					<%
 					} else {
 					%>
-					<div>
-						<img style="padding-bottom: 4px; margin-left: 4px; width: 20px;" src="<%=contextPath%>/resource/img/board/icon/notice.png">
-						<a href="#" style="padding-right: 4px; font-size: 14px;">공지사항</a>
-					</div>
+					<%
+					for (int i = 0; i < flist.size(); i++) {
+					%>
+					<img src="<%=contextPath%>/<%=flist.get(i).getFilePath()%>/<%=flist.get(i).getChangeName()%>" width="auto" height="150">
+					<%
+					}
+					%>
 					<%
 					}
 					%>
 				</div>
-				<div id="post_title">
-					<span><%=b.getBoardTitle()%></span>
-				</div>
-				<div id="user_info">
-					<div id="user_profile_img">
-						<img src="" alt="">
-					</div>
-					<div id="user_id">
-						<span><%=b.getWriter()%></span>
-					</div>
-					<div id="user_grade">
-						<img src="resources/img/free-icon-benefit-6000574.png" alt="">
-					</div>
-				</div>
-				<div id="post_header_footer">
-					<div id="post_date">
-						<span><%=b.getCreateDate()%></span>
-					</div>
-					<div style="text-align: right;" class="post_comment">
-						<img style="width: 20px;" src="<%= contextPath%>/resource/img/board/icon/reply.png"alt="">
-						<span>댓글 <%=b.getCountReply()%></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="post_content">
-			<div id="post_main">
-				<div>
-					<%=b.getBoardContent()%>
-				</div>
-			</div>
-			<div id="post_hashtag">
-				<%
-				if (hashTag != null) {
-				%>
-				<%
-				String[] tagList = hashTag.split(",");
-				%>
-				<%
-				for (String s : tagList) {
-				%>
-				<a href="#">#<%=s%></a>&nbsp;&nbsp;
-
-				<%
-				}
-				%>
-
-				<%
-				}
-				%>
-			</div>
-			<div id="post_content_footer">
-				<div id="post_wish">
-					<div id="post_wish_img">
-						<img src="resources/img/free-icon-star-5708819.png" alt="">
-					</div>
-					<div style="width: auto;" onclick="Like('<%= boardNo %>')">
-						<span>찜하기</span>
-					</div>
-				</div>
-				<script>
-					function Like(refNo){
-						location.href ='like.co?refNo=' + refNo
+				<hr style="border: 1px solid lightgrey; width: 98%; margin-bottom: 0;">
+				<div id="post_hashtag" style="height: auto;">
+					<%
+					if (hashTag != null) {
+					%>
+					<%
+					String[] tagList = hashTag.split(",");
+					%>
+					<%
+					for (String s : tagList) {
+					%>
+					<a href="#">#<%=s%></a>&nbsp;&nbsp;
+	
+					<%
 					}
-				</script>
-				<div id="post_comment2">
-					<div id="post_comment_img2">
-						<img src="resources/img/free-icon-add-comment-button-60782.png"
-							alt="">
+					%>
+	
+					<%
+					}
+					%>
+				</div>
+				<hr style="border: 1px solid gray; width: 98%; margin-bottom: 5px;">
+
+				<div id="post_content_footer">
+					<!-- <div id="post_wish">
+						<div id="post_wish_img">
+							<img src="resources/img/free-icon-star-5708819.png">
+						</div>
+						<div style="width: auto;" onclick="Like('<%= boardNo %>')">
+							<span>찜하기</span>
+						</div>
+					</div> -->
+					<script>
+						function Like(refNo){
+							location.href ='like.co?refNo=' + refNo
+						}
+					</script>
+					<div id="post_comment2">
+						<img src="<%= contextPath%>/resource/img/board/icon/reply.png" alt="">
+						<span id="slideComment">댓글보기 [<%=b.getCountReply()%>]</span>
 					</div>
-					<div id="post_comment_text2" style="width: 720px;">
-						<span>댓글 <%=b.getCountReply()%></span>
+					<script>
+						$(function(){
+							$("#slideComment").click(function(){
+								if($("#post_comment_area").css("display") == "none"){
+									$("#post_comment_area").slideUp();
+									$("#post_comment_area").slideDown();
+								}else{
+									$("#post_comment_area").slideUp();
+								}
+							})
+						})
+					</script>
+					<div id="post_report" data-toggle="modal" data-target="#reportModal" style="text-align: right; padding-right: 10px;">
+						<img src="<%= contextPath%>/resource/img/board/icon/report.png">
+						<span>신고</span>
 					</div>
 				</div>
-				<div id="post_report">
-					<div id="post_report_img">
-						<img src="resources/img/free-icon-siren-6043503.png" alt="">
+				<div id="post_comment_area">
+				<!-- <div id="post_comment_area" style="display: none;"> -->
+
+					<!-- <div id="post_comment_header">
+		
+						<div>
+							<div id="comment_filter_img">
+								<img src="resources/img/filter-solid.svg" alt="">
+							</div>
+							<div id="comment_filter_text">
+								<a href="#">최신순</a> | <a href="#">추천순</a>
+							</div>
+						</div>
+				
+					</div> -->
+				
+				
+					<div id="post_comment_list">
+						<!-- 여기 댓글 창 -->
 					</div>
-					<div>
-						<p class="btn btn-sm btn-danger" data-toggle="modal" data-target="#reportModal">신고</p>
-					</div>
-
-
-
-
-
-				</div>
-			</div>
-		</div>
-		<div style="height: auto">
-			<%
-			if (flist.isEmpty()) {
-			%>
-			사진없다잉
-			<%
-			} else {
-			%>
-			<%
-			System.out.println("됨?ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
-			%>
-			<%
-			for (int i = 0; i < flist.size(); i++) {
-			%>
-			<img
-				src="<%=contextPath%>/<%=flist.get(i).getFilePath()%>/<%=flist.get(i).getChangeName()%>"
-				width="auto" height="150">
-			<%
-			}
-			%>
-			<%
-			}
-			%>
-		</div>
-		<div id="post_comment_area">
-			<div id="post_comment_header">
-				<div
-					style="width: 80px; line-height: 40px; font-weight: 600; font-size: 25px;">
-					<span>댓글</span>
-				</div>
-				<div>
-					<div id="comment_filter_img">
-						<img src="resources/img/filter-solid.svg" alt="">
-					</div>
-					<div id="comment_filter_text">
-						<a href="#">최신순</a> | <a href="#">추천순</a>
-					</div>
-				</div>
-
-			</div>
-
-
-			<div id="post_comment_list">
-				<!-- 여기 댓글 창 -->
-			</div>
-			<script>
-			
-			$(function(){
-			seq();
-			})
-					let likeList ="";
-				async function seq(){
-						selectlikeList();	// 좋아요한 리스트 불러오기
-						
-						const result = await selectReplyList1();	// 좋아요한 리스트와 지금 댓글 좋아요 했는지 비교
-						
+					<script>
+				
+						$(function () {
+							seq();
+						})
+						let likeList = "";
+						async function seq() {
+							selectlikeList();	// 좋아요한 리스트 불러오기
+				
+							const result = await selectReplyList1();	// 좋아요한 리스트와 지금 댓글 좋아요 했는지 비교
+				
 						};
 				
-				function selectlikeList(){
-					
-					$.ajax({
-						url:"likelist.bo",
-						type:"post",
-						data:{
-							mno:"<%= loginMember.getMemNo() %>"
-						},success:function(result){
-							
-							
-							console.log("좋아요한 리스트 불러오기 성공")
-							console.log(result)
-							console.log(likeList[1])
-
-							likeList = result
-						}
-					})
-				}
+						function selectlikeList() {
 				
-				function selectReplyList1(){
-					return new Promise((resolve)=>{
-						setTimeout(()=>{
-							selectReplyList();
-						},100);
-					})
-				};
+							$.ajax({
+								url: "likelist.bo",
+								type: "post",
+								data: {
+									mno: "<%= loginMember.getMemNo() %>"
+								}, success: function (result) {
 				
 				
-			
-				function selectReplyList(){
-					
-					 $.ajax({
-					    	url:"rlist.bo",
-					    	type:"post",
-					    	data:{
-					    		bno:"<%= b.getBoardNo() %>"
-					    	},success:function(result){
-					    		console.log("에이작스 연결 성공")
-					    		
-					    		let html ="";
-					    		$("#post_comment_list").html("");
-								if(result.length == 0){
-									console.log(" 댓글없어요")
-					    			html += '<div style="border: none; background-color: white; font-size: large; height: 100px;">'
-									+ '아직 등록된 댓글이 없습니다.</div>';
-									
-								}else{
-						    		for(let i=0; i<result.length; i++){
-										
-						    			html += `
-						    				<div class="post_comment">
-						    			    <div class="post_comment_profile_img">
-						    			        <img src="resources/img/free-icon-login-310869.png" alt="">
-						    			    </div>
-						    			    <div class="post_comment_box">
-						    			        <div class="comment_user_info">
-						    			            <div class="comment_userid">
-						    			                ` + result[i].replyWriter + `
-						    			            </div>
-						    			            <div class="comment_usergrade">
-						    			                <img src="resources/img/free-icon-benefit-6000574.png" alt="">
-						    			            </div>
-						    			            <a href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=` + result[i].replyNo + `" style="color: red; text-decoration: none; margin-left: 90%;">삭제</a>
-						    			        </div>
-						    			        <div class="comment_text">` +
-						    			            result[i].replyContent + `
-						    			        </div>
-						    			        <div class="comment_info">
-						    			            <div class="comment_date">` +
-						    			                result[i].replyDate + `
-						    			            </div>
-						    			            <div class="comment_report">
-						    			                <img class="" src="resources/img/free-icon-siren-6043503.png" alt="">
-						    			            </div>
-						    			        </div>
-						    			    </div>
-
-						    			    <div class="comment_like">
-						    			        <div class="comment_like_img">`
-						    			        
-						    			        if(likeList.includes(result[i].replyNo)){
-						    			        	console.log("같다요")
-						    			            html += `<img src="<%=contextPath%>/resource/img/board/likeY.png" onclick="likedown(this)">`
-						    			        }else{
-						    			        	console.log("다르다요")
-						    			            html += `<img src="<%=contextPath%>/resource/img/board/likeN.png" onclick="likeup(this);">`
-						    			        }
-						    			        html +=    `<input type="hidden" class="rpw"  value="`+ result[i].replyWriter + `">
-						    			            <input type="hidden" class="rpno" value="`+ result[i].replyNo + `">
-						    			        </div>
-						    			        <div class="comment_like_count">`+
-						    			            result[i].replyLike+ `
-						    			        </div>
-						    			    </div>
-						    			</div>`
-									
-						    		}
-									
+									console.log("좋아요한 리스트 불러오기 성공")
+									console.log(result)
+									console.log(likeList[1])
+				
+									likeList = result
 								}
-					    			
-								
-
-								
-					    		
-
-					    	$("#post_comment_list").html(html)
-					    	}
-
-					    	
-				})
-}
-			</script>
-
-			<script>
-				function likedown(element){
-					console.log($(element).next().val())
-					console.log($(element).next().next().val())
-					console.log("여기는 likeDown")
-					$.ajax({
-					 url : "likedown.bo",
-	                    data : {
-	                    		writer : $(element).next().val() 
-	                    	  , rpno: $(element).next().next().val()
-	                    	  , loginMem : "<%=loginMember.getMemNo()%>"
-	                    	 }, //데이터 넘길때에는 무조건 중괄호 열어라
-	                    //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
-
-	                    type : "get", // 요청방식 지정
-	                    success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
-							console.log("킥킥")
-							$(element).next().val(result);
-							seq();
-	                    
-						},
-	                    error : function(){
-	                        console.log("ajax통신 실패!")
-	                    }
-					})
-				}
-			
-				function likeup(element){
-					console.log($(element).next().val())
-					console.log($(element).next().next().val())
-					console.log("여기와")
-					$.ajax({
-					 url : "likeup.bo",
-	                    data : {
-	                    		writer : $(element).next().val() 
-	                    	  , rpno: $(element).next().next().val()
-	                    	  , loginMem : "<%=loginMember.getMemNo()%>"
-	                    	 }, //데이터 넘길때에는 무조건 중괄호 열어라
-	                    //키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
-
-	                    type : "get", // 요청방식 지정
-	                    success : function(result){ //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
-							console.log("킥킥") 
-							$(element).next().val(result);
-							seq();
-	                    
-						},
-	                    error : function(){
-	                        console.log("ajax통신 실패!")
-	                    }
-					})
-			    }
-			</script>
-
-			<form action="insert.rp" id="write_comment_form" method="post">
-				<input type="hidden" name="boardNo" value="<%=boardNo%>">
-				<%
-				if (loginMember != null) {
-				%>
-				<input type="hidden" name="userNo"
-					value="<%=loginMember.getMemNo()%>">
-				<div id="write_comment_box" style="width: 100%;">
-
-					<div id="write_comment_userid">
-						<a href="#"><%=loginMember.getMemId()%></a> <span id="count_char">0/500</span>
-					</div>
-
-					<div id="write_comment_main">
-						<!-- textarea는 이미지를 넣을수가 없음 어떻게 해결? 그리고 스크롤생김 -->
-						<textarea name="reply-content" id="write_comment" cols="30"
-							rows="2"></textarea>
-					</div>
-
-					<div id="write_comment_footer">
-						<div id="comment_upload_img">
-							<input type="file" name="rfile" id="rfile"> <img
-								src="resources/img/free-icon-camera-685655.png" alt="">
-						</div>
-						<div id="comment_submit">
-							<input class="btn btn-light btn-sm" type="submit" value="등록">
-						</div>
-					</div>
+							})
+						}
+				
+						function selectReplyList1() {
+							return new Promise((resolve) => {
+								setTimeout(() => {
+									selectReplyList();
+								}, 100);
+							})
+						};
+				
+				
+				
+						function selectReplyList() {
+				
+							$.ajax({
+								url: "rlist.bo",
+								type: "post",
+								data: {
+									bno: "<%= b.getBoardNo() %>"
+								}, success: function (result) {
+									console.log("에이작스 연결 성공")
+				
+									let html = "";
+									$("#post_comment_list").html("");
+									if (result.length == 0) {
+										html += '<div style="border: none; background-color: white; font-size: large; height: 100px;">'
+											+ '아직 등록된 댓글이 없습니다. 댓글을 작성해주세요.</div>';
+				
+									} else {
+										for (let i = 0; i < result.length; i++) {
+				
+											html += `
+													<div class="post_comment">
+														<div class="post_comment_profile_img">
+															<img src="<%= contextPath%>/resource/img/board/icon/profileImg.png" alt="">
+														</div>
+														<div class="post_comment_box">
+															<div class="comment_user_info">
+																<div class="comment_userid">
+																	` + result[i].replyWriter + `
+																</div>
+																<div class="comment_usergrade">
+																	<img src="resources/img/free-icon-benefit-6000574.png" alt="">
+																</div>
+																<a href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=` + result[i].replyNo + `" style="color: red; text-decoration: none; margin-left: 90%;">삭제</a>
+															</div>
+															<div class="comment_text">` +
+																result[i].replyContent + `
+															</div>
+															<div class="comment_info">
+																<div class="comment_date">`
+																+result[i].replyDate + `
+																</div>
+																<div class="comment_report">
+																	<img class="" src="resources/img/free-icon-siren-6043503.png" alt="">
+																</div>
+															</div>
+														</div>
+				
+														<div class="comment_like">
+															<div class="comment_like_img">`
+				
+														if (likeList.includes(result[i].replyNo)) {
+															console.log("같다요")
+															html += `<img src="<%=contextPath%>/resource/img/board/likeY.png" onclick="likedown(this)">`
+														} else {
+															console.log("다르다요")
+															html += `<img src="<%=contextPath%>/resource/img/board/likeN.png" onclick="likeup(this);">`
+														}
+														html += `<input type="hidden" class="rpw"  value="` + result[i].replyWriter + `">
+																<input type="hidden" class="rpno" value="`+ result[i].replyNo + `">
+															</div>
+															<div class="comment_like_count">`+
+																result[i].replyLike + `
+															</div>
+														</div>
+													</div>`
+										}
+									}
+									$("#post_comment_list").html(html)
+								}
+							})
+						}
+					</script>
+				
+					<script>
+						function likedown(element) {
+							console.log($(element).next().val())
+							console.log($(element).next().next().val())
+							console.log("여기는 likeDown")
+							$.ajax({
+								url: "likedown.bo",
+								data: {
+									writer: $(element).next().val()
+									, rpno: $(element).next().next().val()
+									, loginMem: "<%=loginMember.getMemNo()%>"
+								}, //데이터 넘길때에는 무조건 중괄호 열어라
+								//키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
+				
+								type: "get", // 요청방식 지정
+								success: function (result) { //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
+									console.log("킥킥")
+									$(element).next().val(result);
+									seq();
+				
+								},
+								error: function () {
+									console.log("ajax통신 실패!")
+								}
+							})
+						}
+				
+						function likeup(element) {
+							console.log($(element).next().val())
+							console.log($(element).next().next().val())
+							console.log("여기와")
+							$.ajax({
+								url: "likeup.bo",
+								data: {
+									writer: $(element).next().val()
+									, rpno: $(element).next().next().val()
+									, loginMem: "<%=loginMember.getMemNo()%>"
+								}, //데이터 넘길때에는 무조건 중괄호 열어라
+								//키 벨류 세트로 보내야한다 데이터는 긍까 객체 안에 객체네..
+				
+								type: "get", // 요청방식 지정
+								success: function (result) { //성공시 응답 데이터가 자동으로 매개변수로 넘어온다
+									console.log("킥킥")
+									$(element).next().val(result);
+									seq();
+				
+								},
+								error: function () {
+									console.log("ajax통신 실패!")
+								}
+							})
+						}
+					</script>
+				
+					<form action="insert.rp" id="write_comment_form" method="post">
+						<input type="hidden" name="boardNo" value="<%=boardNo%>">
+						<% if (loginMember !=null) { %>
+							<input type="hidden" name="userNo" value="<%=loginMember.getMemNo()%>">
+							<div id="write_comment_box" style="width: 100%;">
+				
+								<div id="write_comment_userid">
+									<a href="#">
+										<%=loginMember.getMemId()%>
+									</a> <span id="count_char">0/500</span>
+								</div>
+				
+								<div id="write_comment_main">
+									<!-- textarea는 이미지를 넣을수가 없음 어떻게 해결? 그리고 스크롤생김 -->
+									<textarea name="reply-content" id="write_comment" cols="30" rows="2"></textarea>
+								</div>
+				
+								<div id="write_comment_footer">
+									<div id="comment_upload_img">
+										<input type="file" name="rfile" id="rfile"> <img src="resources/img/free-icon-camera-685655.png"
+											alt="">
+									</div>
+									<div id="comment_submit">
+										<input class="btn btn-light btn-sm" type="submit" value="등록">
+									</div>
+								</div>
+							</div>
+							<% } %>
+					</form>
+					<script>
+						$(function () {
+							function comment_ctrl() {
+								$(this).css('height', 'auto');
+								$(this).css('height', this.scrollHeight);
+								console.log(this.scrollHeight)
+				
+								const count_char = $(this).val().length;
+								console.log(count_char)
+								$("#count_char").text(count_char + "/500");
+				
+								if (count_char >= 501) {    // 근데 마우스로 붙여넣으면?
+									$(this).val($(this).val().substring(0, 500));
+									alert("500자 이상 입력할 수 없습니다.")
+								}
+							}
+							$("#write_comment").keyup(comment_ctrl);
+							$("#write_comment").keydown(comment_ctrl);
+							$("#write_comment").click(function () {
+								$(this).css('outline', 'none')
+							})
+						})
+				
+				
+					</script>
+					
 				</div>
-				<%
-				}
-				%>
-			</form>
-			<script>
-                $(function(){
-                    function comment_ctrl(){
-                        $(this).css('height', 'auto');
-                        $(this).css('height',this.scrollHeight);
-                        console.log(this.scrollHeight)
-    
-                        const count_char = $(this).val().length;
-                        console.log(count_char)
-                        $("#count_char").text(count_char+"/500");
-                        
-                        if(count_char>=501){    // 근데 마우스로 붙여넣으면?
-                            $(this).val($(this).val().substring(0,500));
-                            alert("500자 이상 입력할 수 없습니다.")
-                        }
-                    }
-                    $("#write_comment").keyup(comment_ctrl);
-                    $("#write_comment").keydown(comment_ctrl);
-                    $("#write_comment").click(function(){
-                        $(this).css('outline','none')
-                    })
-                })
-                
+				<hr style="border: 1px solid gray; width: 98%; margin-top: 0; margin-bottom: 5px;">
+			</div>
 
-            </script>
-		</div>
+
 		<div align="right" id="delete-update-area" style="width: auto;">
 			<%
 			if (loginMember != null && loginMember.getMemId().equals(b.getWriter())) {

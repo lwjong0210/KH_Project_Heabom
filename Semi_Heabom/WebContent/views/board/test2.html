@@ -1,4 +1,13 @@
-@charset "utf-8";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+    @charset "utf-8";
 div {
 	/*border: 1px solid red;*/
 	box-sizing: border-box;
@@ -209,6 +218,7 @@ div {
 	height: auto;
 	width: auto;
 	/*border: 1px solid purple;*/
+	border-radius: 10px 10px 10px 10px;
 	background-color: white;
 }
 
@@ -589,3 +599,39 @@ tfoot>tr {
 }
 
 /* pagination 관련 끝 */
+</style>
+<body>
+    
+
+
+<div class="post_comment">
+    <div class="post_comment_profile_img">
+        <img src="resources/img/free-icon-login-310869.png" alt="">
+    </div>
+    <div class="post_comment_box">
+        <div class="comment_user_info">
+            <div class="comment_userid">
+              
+            </div>
+            <div class="comment_usergrade">
+                <img src="resources/img/free-icon-benefit-6000574.png" alt="">
+            </div>
+            <a href="<%=contextPath %>/delete.rp?bno=<%= b.getBoardNo() %>&rpno=` + result[i].replyNo + `" style="color: red; text-decoration: none; margin-left: 90%;">삭제</a>
+        </div>
+        <div class="comment_text">
+result[i].replyContent
+        </div>
+        <div class="comment_info">
+            <div class="comment_date">
+result[i].replyDate 
+            </div>
+            <div class="comment_report">
+                <img class="" src="resources/img/free-icon-siren-6043503.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="comment_like">
+        <div class="comment_like_img">
+</body>
+</html>
