@@ -231,9 +231,9 @@
             
             
             let bests = [
-            " <h1 class = 'text'>오늘의 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
-            " <h1 class = 'text'>오늘의 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
-            " <h1 class = 'text'>오늘의 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
+            " <h1 class = 'text'>오늘의 첫번째 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
+            " <h1 class = 'text'>오늘의 두번째 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
+            " <h1 class = 'text'>오늘의 세번째 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
 
             ]
 
