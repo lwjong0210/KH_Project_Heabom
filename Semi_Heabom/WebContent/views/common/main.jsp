@@ -76,7 +76,7 @@
             box-sizing: border-box;
             */
             margin: auto;
-            /*margin-top: 30px;*/
+            margin-top: 30px;
 
             background-color: rgb(255, 235, 244);
            
@@ -159,7 +159,7 @@
 
         img {
         height: 100%;
-        width: 100%;
+        width: 80%;
         cursor: pointer;
       }
       #main {
