@@ -129,7 +129,7 @@
         .navi_detail a:after {
         display:block;
         content: '';
-        border-bottom: solid 3px rgb(223, 188, 223);  
+        border-bottom: solid 3px rgb(255, 113, 113);  
         transform: scaleX(0);  
         transition: transform 250ms ease-in-out;
         }
