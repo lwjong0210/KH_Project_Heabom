@@ -33,6 +33,7 @@ public class ReplyDeleteController extends HttpServlet {
 
 		String rpNo = request.getParameter("rpno");
 		String bno = request.getParameter("bno");
+		System.out.println("rpno");
 		int result = new BoardService().deleteReply(rpNo);
 		
 		if(result > 0) {

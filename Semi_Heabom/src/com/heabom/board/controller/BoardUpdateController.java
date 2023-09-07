@@ -23,6 +23,7 @@ import com.heabom.board.model.service.BoardService;
 import com.heabom.board.model.vo.Board;
 import com.heabom.common.MyFileRenamePolicy;
 import com.heabom.common.model.vo.File;
+import com.heabom.common.model.vo.HashTag;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -203,6 +204,16 @@ public class BoardUpdateController extends HttpServlet {
 			}
 			System.out.println("result1 : " + result1);
 			System.out.println("result2 : " + result2);
+			
+			String hashList = multiRequest.getParameter("tag");
+			if(!hashList.isEmpty()) {
+				HashTag ht = new HashTag();
+				ht.setCategoryNo(boardNo);
+				ht.setHashTagName(hashList);
+				result2 = new BoardService().updateHash(ht);
+
+			}
+			
 			if(result1 > 0 && result2 > 0) {
 				response.sendRedirect(request.getContextPath()+"/detail.bo?bno="+boardNo.substring(1));
 				

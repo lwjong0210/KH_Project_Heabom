@@ -11,7 +11,7 @@
     } 
     .outer_yj{
         width: 1900px;
-        height: 800px;
+        height: 660px;
         background-color: #fdeeee;
         margin: auto;
 
