@@ -490,15 +490,8 @@
                 $("#file" + i).click(); 
             	$("#hidden" + i).val("");
            
-            	console.log($("#hidden" + i).val());
-                console.log($("#file1").files + "ㅋㅋㅋㅋㅋ")
-                console.log("클릭발생")
             }
             function loadImg(inputFile,i){
-                console.log("체인지발생")
-            	console.log(inputFile.files.length)
-            	console.log(inputFile.files + "ㅋㅋ")
-            	console.log("gdgdgd")
             	if(inputFile.files.length == 1){
             		const reader = new FileReader();
 
@@ -540,7 +533,6 @@
             //    		$("#hidden-area").html(lsHtml);
                 			
                     		if(arrList.length != 0){
-                    			console.log("오냐?")
                     			for(let i = 0; i < arrList.length; i++){
                     				$("#hidden" + (i+1)).val(arrList[i].fileNo)
                     				console.log($("#hidden" + (i+1)).val())

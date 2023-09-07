@@ -208,10 +208,11 @@ SELECT *
 	, RE_LIKE_STAR
 	, RE_DATE
 	, RE_STATUS
+	, NICKNAME
 	  FROM TB_REVIEW_REPLY
+	  LEFT JOIN TB_MEMBER ON (RE_WRITER = MEM_NO)
 	 WHERE RE_REF_NO = ?
 	   AND RE_STATUS = 'N'
-
 </entry>
 <entry key='insertReply'>
 	INSERT 

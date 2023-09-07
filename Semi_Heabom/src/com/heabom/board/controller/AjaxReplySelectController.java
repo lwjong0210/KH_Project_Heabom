@@ -40,6 +40,7 @@ public class AjaxReplySelectController extends HttpServlet {
 		System.out.println(bno);
 		System.out.println("댓글 조회 에이작스 컨트롤러");
 		response.setContentType("application/json; charset=UTF-8");
+		System.out.println(rlist);
 		new Gson().toJson(rlist, response.getWriter());
 		
 	}
