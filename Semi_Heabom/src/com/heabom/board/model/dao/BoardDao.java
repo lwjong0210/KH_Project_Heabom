@@ -456,7 +456,9 @@ public class BoardDao {
 								  , rset.getString("RE_CONTENT")
 								  , rset.getInt("RE_LIKE_STAR")
 								  , rset.getString("RE_DATE")
-								  , rset.getString("RE_STATUS")));
+								  , rset.getString("RE_STATUS")
+								  , rset.getString("NICKNAME")
+								  ));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

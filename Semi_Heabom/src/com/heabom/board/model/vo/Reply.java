@@ -9,6 +9,7 @@ public class Reply {
 	private int replyLike;
 	private String replyDate;
 	private String replyStatus;
+	private String nickname;
 
 	public Reply() {}
 
@@ -22,6 +23,28 @@ public class Reply {
 		this.replyLike = replyLike;
 		this.replyDate = replyDate;
 		this.replyStatus = replyStatus;
+	}
+
+	public Reply(String replyNo, String replyWriter, String boardNo, String replyContent, int replyLike,
+			String replyDate, String replyStatus, String nicname) {
+		super();
+		this.replyNo = replyNo;
+		this.replyWriter = replyWriter;
+		this.boardNo = boardNo;
+		this.replyContent = replyContent;
+		this.replyLike = replyLike;
+		this.replyDate = replyDate;
+		this.replyStatus = replyStatus;
+		this.nickname = nicname;
+	}
+	
+
+	public String getNicname() {
+		return nickname;
+	}
+
+	public void setNicname(String nicname) {
+		this.nickname = nicname;
 	}
 
 	public String getReplyNo() {
