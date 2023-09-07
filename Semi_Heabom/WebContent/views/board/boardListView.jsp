@@ -121,11 +121,10 @@ tfoot td button{
 
 				<% } %>
 				<tr class="table-header" style="border-bottom: 2px solid black; text-align: left;">
-					<td style="border-top: 1px solid black; line-height: 45px;" >
+					<td colspan="2" style="border-top: 1px solid black; line-height: 45px;" >
 							
 									<%= pi.getListCount() %>개의 글
 					</td>
-					<td style="border-top: 1px solid black"></td>
 
 					<td colspan="3" id="aa" style="border-top: 1px solid black; text-align: right;">
 
