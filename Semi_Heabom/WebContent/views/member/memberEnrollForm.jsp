@@ -22,6 +22,7 @@
                 cursor: pointer;
                  /*이거 중요*/
             }
+
             p{
                 
                 border: 0px solid lightgray;
@@ -46,12 +47,14 @@
                 margin-top: 30px;
     
             }
+
             div{
                 border: 0px solid black;
                 float: left;
                 height: 100%;
                 box-sizing: border-box;
             }
+
             #header{
                 float: none;
                 height: 10%;
@@ -154,6 +157,9 @@
             border-radius: 30px;
             
          }
+
+         table {
+         }
     
         </style>
     </head>
@@ -209,7 +215,7 @@
                         <form id = "enroll-form" action="<%=contextPath%>/insert.me" method="post"  enctype="multipart/form-data">
             
            <!-- enctype="multipart/form-data" -->  
-                            <table border="1">
+                            <table border="1" id="memberEnrollFormTable">
                                 <tr>
                                     
                                     <td>아이디<input type="text" id ="userId" name="userId" maxlength="12" placeholder="첫글자 영문자로 영문자 숫자 조합하여 총 4~12자"  size = 40   required ></td>
