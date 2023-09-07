@@ -53,7 +53,7 @@
             padding-top: 1%;
             padding-bottom: 1%;
 
-            margin-top: 30px;
+            margin-top: 1.5%;
         }
 
         .background {
