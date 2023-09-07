@@ -5,11 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Heabom</title>
+<style>
+    form {
+        box-sizing: border-box;
+        border: 1px solid red;
+
+        width: auto;
+        height: auto;
+        
+    }
+</style>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
 	<h2>장소 추가화면</h2>
-    <form action="<%=contextPath%>/insert.pl" method="post" enctype="multipart/form-data">
+    <form action="<%=contextPath%>/insert.pl" method="post" enctype="multipart/form-data" align="center">
         이름<input type="text" name = "placeTitle"><br>
         <select name="category" id="">
             <option value="호프">술집</option>
@@ -91,7 +101,7 @@
 
 
 
-        <table align="" border="1">
+        <table align="center" border="1">
             <tr>
                 <th>대표이미지</th>
                 <td colspan="3" align="center">
