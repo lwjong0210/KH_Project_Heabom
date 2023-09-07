@@ -162,7 +162,7 @@
 
         img {
         width: 59%;
-        height: 75%;
+        height: 77.2%;
         
         cursor: pointer;
 
@@ -171,10 +171,11 @@
       .img {
         position: absolute;
 
-        top: 25%;
+        top: 12.8%;
         left: 40%;
 
-        border-radius: 1%;
+        border-top-left-radius: 0%;
+        border-bottom-left-radius: 0%;
       }
 
       #main {
@@ -190,11 +191,11 @@
 
         position: absolute;
 
-        top: 90%;
+        top: 110%;
         left: 10%;
 
-        font-weight: 500;
-        color: rgb(77, 81, 89);
+        font-weight: 700;
+        color: black;
       }
 
 

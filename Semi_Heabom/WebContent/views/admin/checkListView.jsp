@@ -64,7 +64,7 @@
             margin-top: 4%;
             margin-bottom: 4%;
             
-            background-color: #fff1f1;
+            background-color: #F2F2F2;
             /*border: 1px solid black;*/
             border-radius: 30px 30px 30px 30px;
 
