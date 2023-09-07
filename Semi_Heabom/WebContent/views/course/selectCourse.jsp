@@ -253,8 +253,8 @@ main {
                     	<div class="description_no" ><%=list.get(i).getPlaceNo() %></div>
                         <div class="description_title">제목 : <%=list.get(i).getPlaceTitle() %></div>
                         <div class="description_sub1">분류 : <%=category %></div>
-                        <div class="description_sub2">좋아요 <%=list.get(i).getLikeCount() %></div>
 						<div class="btnClass"><button onclick="location.href ='<%=contextPath%>/courseSelect.pl?pNo=<%=list.get(i).getPlaceNo()%>'">코스담기</button></div>
+						<div class="description_sub2">좋아요 <%=list.get(i).getLikeCount() %></div>
                     </div>
 
                 </div>

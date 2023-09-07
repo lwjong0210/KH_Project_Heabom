@@ -40,6 +40,7 @@ public class CourseSaveController extends HttpServlet {
 		Member m = (Member)session.getAttribute("loginMember");
 		String writer = m.getMemNo();
 		
+		
 		int result = 0 ; 
 		if(pl2 == null) {
 			 result = new CourseService().saveCourse1(writer,pl1,time,money);
@@ -48,7 +49,7 @@ public class CourseSaveController extends HttpServlet {
 		}else {
 			 result = new CourseService().saveCourse3(writer,pl1,pl2,pl3,time,money);
 		}
-		
+		System.out.println("왜 안됨 ?" + result);
 		if(result>0) {
 			session.setAttribute("alertMsg", "저장성공");
 			response.sendRedirect(request.getContextPath());
