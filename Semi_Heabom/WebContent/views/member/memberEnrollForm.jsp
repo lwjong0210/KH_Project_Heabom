@@ -177,11 +177,36 @@
                     
                     <div id ="div2-1">
                          <div id = "yak">회원가입 약관읽기</div>
-                            <p>약관 어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
-                                어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
-                                어쩌구저쩌구어쩌구저쩌구<br><br>
-                                
-                                <input type="checkbox" id = "check">동의합니다</p>
+                            <p id = "yak2">제 1 장 총칙
+                                <br><br>
+                                ① 이 약관은 서비스 화면이나 기타의 방법으로 이용고객에게 공지함으로써 효력을 발생합니다.
+② 사이트는 이 약관의 내용을 변경할 수 있으며, 변경된 약관은 제1항과 같은 방법으로 공지 또는 통지함으로써 효력을 발생합니다.
+<br><br>
+ 
+
+제 3 조 (용어의 정의)
+이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
+① 회원 : 사이트와 서비스 이용계약을 체결하거나 이용자 아이디(ID)를 부여받은 개인 또는 단체를 말합니다.
+② 신청자 : 회원가입을 신청하는 개인 또는 단체를 말합니다.
+③ 아이디(ID) : 회원의 식별과 서비스 이용을 위하여 회원이 정하고 사이트가 승인하는 문자와 숫자의 조합을 말합니다.
+④ 비밀번호 : 회원이 부여 받은 아이디(ID)와 일치된 회원임을 확인하고, 회원 자신의 비밀을 보호하기 위하여 회원이 정한 문자와 숫자의 조합을 말합니다.
+⑤ 해지 : 사이트 또는 회원이 서비스 이용계약을 취소하는 것을 말합니다.
+<br><br>
+ 
+
+제 2 장 서비스 이용계약
+<br><br>
+ 
+
+제 4 조 (이용계약의 성립)
+① 이용약관 하단의 동의 버튼을 누르면 이 약관에 동의하는 것으로 간주됩니다.
+② 이용계약은 서비스 이용희망자의 이용약관 동의 후 이용 신청에 대하여 사이트가 승낙함으로써 성립합니다.
+
+<br><br>
+ 
+
+                            <input type="checkbox" id = "check">동의합니다
+                            </p>
                     </div>
                   
                     <div id ="div2-2">
@@ -191,22 +216,22 @@
                             <table border="1">
                                 <tr>
                                     
-                                    <td><input type="text" name="userId" maxlength="12" placeholder="아이디"  size = 40  required ></td>
+                                    <td><input type="text" id ="userId" name="userId" maxlength="12" placeholder="첫글자 영문자로 영문자 숫자 조합하여 총 4~12자"  size = 40   required ></td>
                                     <!-- <td><button type="button" onclick="idCheck();">중복확인</button></td> -->
                                 </tr>
                                 <tr>
                                     
-                                    <td><input type="password" name="userPwd"  placeholder="비번" size = 40  maxlength="15" required></td>
+                                    <td><input type="password" id="userPwd" name="userPwd"  placeholder="영문자 (대소문자) , 숫자 , 특수문자 (!@#$%^&*) 로 총 8~15글자로 이루어져야함" size = 40  maxlength="15" required></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     
-                                    <td><input type="password" placeholder="비번확인" size = 40  maxlength="15" required></td>
+                                    <td><input type="password"  id="checkPwd" placeholder="비번확인" size = 40  maxlength="15" required></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     
-                                    <td><input type="text" name="userName" placeholder="이름" size = 40  maxlength="6" required></td>
+                                    <td><input type="text" id = "userName" name="userName" placeholder="이름" size = 40  maxlength="6" required></td>
                                     <td></td>
                                 </tr>
                                 <tr>
@@ -235,7 +260,7 @@
                             </tr>
                             
                                 <tr>
-                                    <th> <button id="hi" type="submit" disabled>회원가입</button><button type="reset" >초기화</button></th>
+                                    <th> <button id="hi" type="submit" disabled onclick=" return validate();">회원가입</button><button type="reset" >초기화</button></th>
                                    
                                 </tr>
             
@@ -245,20 +270,16 @@
                         </form>
                     </div>
     
-                </div> 
-    
-                <div id = "div3"></div>
-            </div>
-           
-        </div>
     
     
         <script>
+
+            const userId = document.getElementById("userId"); //아이디 값 가져오기 
+            const userPwd = document.getElementById("userPwd"); //아이디 값 가져오기 
+            const checkPwd = document.getElementById("checkPwd"); //아이디 값 가져오기 
+            const userName = document.getElementById("userName"); //아이디 값 가져오기 
             $(function(){
-               
-    
-                
-    
+
                 $("#enroll-form").css('display','none');
                 $("#yak").click(function(){
                     //클릭한 요소의 바로 뒤 요소 기억나지? 동위!
@@ -286,6 +307,8 @@
             })
     
             $("#check").click(function(){
+                    $("#yak").css('display','none');
+                    $("#yak2").css('display','none');
                     $("#enroll-form").css('display','block');
     
                     if ( $("#check").is(':checked')){
@@ -297,7 +320,43 @@
     
                     
                 })
-    
+                
+        
+                function validate(){
+                    
+                    //1)아이디 검사
+                    let regExp = /^[a-z][a-z\d]{3,11}$/;
+                    if(!regExp.test(userId.value)){
+                        alert("아이디 가 이상해");
+                        userId.select();
+                        return false ; 
+                    }
+                    regExp = /^[a-z\d!@#$%^&*]{8,15}$/i;
+                    if(!regExp.test(userPwd.value)){
+                        alert("비밀번호가 유효하지 않음");
+                        userPwd.value = null; 
+                        userPwd.focus();
+                        return false ;
+                   }
+
+                //3)비밀번호가 같나요?
+                    if(userPwd.value != checkPwd.value){
+                        alert("비밀번호가 동일하지 않습니다.")
+                        checkPwd.value = "";
+                        checkPwd.focus();
+                        return false;
+                    }
+                    //4)이름이 제대로 되었나요? 한글이어야 하고 2글자 이상
+                    regExp = /^[가-힣]{2,}$/;
+                    if (!regExp.test(userName.value)){
+                        alert("이름이 제대로 되지 않았습니다");
+                        userName.value = "똑바로 입력해";
+                        userName.focus();
+                        
+                        return false ; 
+                    }
+
+                }  
          
         </script>
     </body>
