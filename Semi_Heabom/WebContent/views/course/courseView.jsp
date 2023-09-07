@@ -22,6 +22,9 @@
 	 	}
 	 	System.out.println("시발진짜"+ number);
 	 	
+	 	
+	 	
+	 	
 	 	if(list.size() > 1){
 	 	if (number == 6){
 	 		msg = "음식점 - 카페 - 술집 순으로 나열해드렸어요!";
@@ -33,9 +36,9 @@
 	 		msg = "카페 - 술집 순으로 나열했어요!" ;  
 	 	}
 	 	flag =true ; 
-	 	System.out.println(msg);
+	 
 	 	}
-	 	
+		System.out.println(msg);
 	 	
 	 	
 	 	
@@ -240,9 +243,13 @@ main {
     
     <script>
       $(function(){
+        if (<%=flag%> == true){
         swal("<%=msg%>");
-      }
+        }
+      })
     </script>
+
+
     <%if (loginMember != null){ %>
     <h1  align="center"><button onclick="location.href ='<%=contextPath%>/saveCourse.pl?str1=<%=str1%>&str2=<%=str2%>&str3=<%=str3%>&money=<%=totalMoney %>&time=<%=totalTime %>'">코스 저장</button></h1>
     <%}else{ %>
