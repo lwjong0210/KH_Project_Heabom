@@ -290,5 +290,10 @@ AND MEM_STATUS != 'N'
       AND MEM_PWD = ?
 </entry>
 
+<entry key="idCheck">
+SELECT MEM_NO
+FROM TB_MEMBER
+WHERE MEM_ID = ?
+</entry>
 
 </properties>

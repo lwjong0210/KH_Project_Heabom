@@ -211,4 +211,18 @@ public class MemberService {
       
    }
    
+	   /**
+	    * 아이디 중복검사
+	 * @param idCheck
+	 * @return
+	 */
+   public int idCheck(String idCheck) {
+	   Connection conn = getConnection();
+	   int result = new MemberDao().idCheck(conn , idCheck);
+	   close(conn);
+	   return result; 
+   }
+   
+   
+   
 }

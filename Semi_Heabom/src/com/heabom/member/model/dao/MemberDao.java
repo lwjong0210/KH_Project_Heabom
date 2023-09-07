@@ -512,6 +512,35 @@ public class MemberDao {
       return result;
    }
    
+	/**
+	 * 아이디 중복검사
+	 * @param conn
+	 * @param idCheck
+	 * @return
+	 */
+	public int idCheck(Connection conn , String idCheck) {
+		ResultSet rset = null ;
+		int result = 0 ; 
+		PreparedStatement pstmt = null ;
+		String sql = prop.getProperty("idCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idCheck);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				result = 1 ; 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result ;
+		
+	}
+   
 }
 
 

@@ -216,51 +216,52 @@
                             <table border="1">
                                 <tr>
                                     
-                                    <td><input type="text" id ="userId" name="userId" maxlength="12" placeholder="첫글자 영문자로 영문자 숫자 조합하여 총 4~12자"  size = 40   required ></td>
+                                    <td>아이디<input type="text" id ="userId" name="userId" maxlength="12" placeholder="첫글자 영문자로 영문자 숫자 조합하여 총 4~12자"  size = 40   required ></td>
+                                    <td><button type="button" onclick="idCheck();">중복확인</button></td>
                                     <!-- <td><button type="button" onclick="idCheck();">중복확인</button></td> -->
                                 </tr>
                                 <tr>
                                     
-                                    <td><input type="password" id="userPwd" name="userPwd"  placeholder="영문자 (대소문자) , 숫자 , 특수문자 (!@#$%^&*) 로 총 8~15글자로 이루어져야함" size = 40  maxlength="15" required></td>
-                                    <td></td>
+                                    <td>비번<input type="password" id="userPwd" name="userPwd"  placeholder="영문자 (대소문자) , 숫자 , 특수문자 (!@#$%^&*) 로 총 8~15글자로 이루어져야함" size = 40  maxlength="15" required></td>
+                                    
                                 </tr>
                                 <tr>
                                     
                                     <td><input type="password"  id="checkPwd" placeholder="비번확인" size = 40  maxlength="15" required></td>
-                                    <td></td>
+                                    
                                 </tr>
                                 <tr>
                                     
                                     <td><input type="text" id = "userName" name="userName" placeholder="이름" size = 40  maxlength="6" required></td>
-                                    <td></td>
+                                    
                                 </tr>
                                 <tr>
                                     
                                     <td><input type="text" name="phone" size = 40  placeholder=" 전화번호- 포함해서 입력"></td>
-                                    <td></td>
+                                    
                                 </tr>
                                 <tr>
                                     
                                     <td><input type="email" size = 40  placeholder="이메일" name="email"></td>
-                                    <td></td>
+                                   
                                 </tr>
                                 <tr>
                                     
                                     <td><input type="text" size = 40  placeholder="mbti" name="mbti"></td>
-                                    <td></td>
+                                    
                                 </tr>
                             </tr>
                             <tr>
                                 
                                 <td><input type="text" size = 40  placeholder="닉네임" name="nickName"></td>
-                                <td></td>
+                               
                             </tr>
                             <tr>
                                 <td><input type="file" name = "upfile">프사</td>
                             </tr>
                             
                                 <tr>
-                                    <th> <button id="hi" type="submit" disabled onclick=" return validate();">회원가입</button><button type="reset" >초기화</button></th>
+                                    <th> <button id="hi" type="submit" onclick=" return validate();" style="display: none;">회원가입</button><button type="reset" >초기화</button></th>
                                    
                                 </tr>
             
@@ -357,6 +358,44 @@
                     }
 
                 }  
+
+            function idCheck(){
+            //중복확인 버튼을 클릭을 하면 사용자가 입력한 아이디를 넘겨서 조회요청을 할꺼여
+            //실습 시켜주십쇼
+            //1) 메세지로 너 이거 못쓴다 다시 입력할수 있도록 유도하겠다
+            //2) 진짜 사용하겠냐고 물어볼꺼고
+            //3) 사용하겠다 라고 하면 더이상 아이디 수정 못하게끔 수정불가로 만들고
+            //4) 회원가입 버튼 누르게 할꺼임
+            //5) 사용안한다고 하면 다시 입력하게 유도한다.
+            //const $idInput = $("#userId");
+      
+            $.ajax({
+                url : "idCheck.me",
+                data : {checkId : $("#userId").val()},
+                success : function(result){
+                    
+                    if(result == 'NNNNN'){
+                    	//사용불가능
+                    	alert("이미 존재하거나 탈퇴한 회원의 아이디 일수 있음");
+                    	$idInput.focus();
+                    }else{
+                    	//사용가능
+                    	if(confirm("사용가능한 아이디 입니다. 사용하시겠습니까?")){
+                    		$("#hi").css("display","block");
+                    		$("#userId").attr("readonly","true");
+                    	}else{
+                    		$idInput.focus();
+                    	}
+                    }
+                    
+                    
+                },
+                error : function(){
+                    console.log("아이디 중복체크용 ajax통신 실패..ㅠ")
+                }
+                
+            })
+        }
          
         </script>
     </body>
