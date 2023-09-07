@@ -457,24 +457,7 @@
                 console.log($("#hiddenTag").val())
                 let formSelect = $("form").submit();
             }
-            /*	$.ajax({
-            		url:"insert.bo",
-            		data:{boardTitle:$("#write-post-title").val(),
-            			  boardCategory:$("#select-category").val(),
-            			  boardContent:$("#write-post").val(),
-            			  hashList:$("#hiddenTag").val(),
-            			  type:"post",
-            			  success:function(){
-            				  console.log("성공");
-            			  },
-            			  error:function(){
-            				  console.log("실패");
-            			  }
-            			  }
-            	})
 
-            }*/
-    
             // select option에서 공지사항을 클릭했을때 상단게시체크박스가 나타나는 함수
             function clickNoticeOption(str){
 				if(str=='N'){
@@ -496,9 +479,7 @@
             		const reader = new FileReader();
 
                     reader.readAsDataURL(inputFile.files[0]);
-
                     reader.onload = function(e){
-
                         switch(i){
                             case 1: $("#contentImg1").attr("src", e.target.result); break;
                             case 2: $("#contentImg2").attr("src", e.target.result); break;
@@ -507,54 +488,25 @@
                             case 5: $("#contentImg5").attr("src", e.target.result); break;
                         }
                     }
-
                 }
             }
-
                     	$(function(){
                     		jsonList = '<%= gsonList%>'
                     		arrList = JSON.parse(jsonList)
-             				console.log(arrList)
-                    		console.log(arrList.length)
-                    		console.log("띠용")
                     		let a = arrList
-               
-                		//	let lsHtml = "";
-                		//	for(let i = 0; i < arrList.length; i++){
-                			//	$("#hidden" + (i+1)).val("flag")
-                				
-           //     				lsHtml +=
-            //    						"<input type='text' name='fileNo' value="+ arrList[i].fileNo +">"+
-             //   					    "<input type='text' name='filePath' value="+ arrList[i].filePath +">"+
-              //  					    "<input type='text' name='originName' value="+ arrList[i].originName + ">"+
-               // 					    "<input type='text' name='changeName' value="+ arrList[i].changeName +">"
-                			//	console.log($("#hidden" + (i+1)).val() + "뜨냐?")
-                			//}
-            //    		$("#hidden-area").html(lsHtml);
                 			
                     		if(arrList.length != 0){
                     			for(let i = 0; i < arrList.length; i++){
                     				$("#hidden" + (i+1)).val(arrList[i].fileNo)
-                    				console.log($("#hidden" + (i+1)).val())
-                    				
                     				let imgUrl ='<%=contextPath %>'+ '/' + arrList[i].filePath + '/' +arrList[i].changeName
-
-                    				console.log(imgUrl)
-                    				console.log(arrList[i] + "ㅋㅋ?ㅋㅋ?ㅋㅋ?")
-                    				// 원래없던거라 체인지가 ㅇ벗다.
-                    				//$("#file" + (i+1)).attr("src",imgUrl)
-                    				// 원래 사진이 있던 곳에는 value에 값이 boardNo로 들어간다.
                     				$("#hidden" + (i+1)).val(arrList[i].fileNo)
                     				$("#hidden" + (i+1) + (i+1)).val(arrList[i])
                     				$("#contentImg" + (i+1)).attr("src", imgUrl)
                     				
                     			}
                     		}
-                    		
                     	})
-                    
                     </script>
-
     </div>
 
 </body>

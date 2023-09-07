@@ -41,8 +41,6 @@ public class BoardDetailController extends HttpServlet {
 		System.out.println(bno + "boardDetail 에서 bno");
 		
 		BoardService bService = new BoardService();
-		System.out.println(bno + "비엔오?");
-		ArrayList<Reply> rlist = new BoardService().selectReplyList(bno);
 		
 		
 		int result = bService.increaseCount(bno);
@@ -53,10 +51,8 @@ public class BoardDetailController extends HttpServlet {
 			Board b = bService.selectBoard(bno);
 			ArrayList<File> flist = bService.selectFileList(b.getBoardNo());
 			PrevNextPage p = new BoardService().prevNextBo(Integer.parseInt(bno));
-			System.out.println("ㅋㅋㅋㅋㅋㅋㅋㅋㅋ배고파" + b);
 			request.setAttribute("b", b);
 			request.setAttribute("flist", flist);
-			request.setAttribute("rlist", rlist);
 			request.setAttribute("p", p);
 			
 			System.out.println(p+"Zzzzzzzzzzzzzzzzzzzzzz");
@@ -93,8 +89,6 @@ public class BoardDetailController extends HttpServlet {
 			request.setAttribute("pi", pi);
 			request.setAttribute("bno", bno);
 			request.setAttribute("cpage2", currentPage);
-			request.setAttribute("rlist", rlist);
-			
 			
 			request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
 		}

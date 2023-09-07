@@ -348,17 +348,12 @@
                 $(document).on('click', '.delete-tag', function () {
                     let tagLength = $('.tag-input').length;
                     let ti = $('.tag-input').get()  
-                    console.log($(this).prev().val())
-                    console.log(ti[tagLength-1].value)
-                    console.log($("button").index(this))
-                    console.log(tagLength-1)
                     if(($(".delete-tag").index(this)==tagLength-1) && (ti[tagLength-1]).value==''){    // 지금누른 버튼이 마지막 인덱스의 버튼일떄
                         $(this).prev().val('');
                     }else{
                         $(this).parent().parent().remove();
                     }
-                })
-                
+                })      
                 $(document).on('change', '.tag-input', function () {
                         
                         let tagLength = $('.tag-input').length;

@@ -38,7 +38,6 @@ public class BoardService {
 	
 	public ArrayList<Board> selectList(PageInfo pi){
 		
-		System.out.println(pi.getBoardLimit());
 		Connection conn = getConnection();
 		
 		ArrayList<Board> list = new BoardDao().selectList(conn, pi);
@@ -48,7 +47,6 @@ public class BoardService {
 	}
 	public ArrayList<Board> selectList(PageInfo pi,String keyWord){
 		
-		System.out.println(pi.getBoardLimit());
 		Connection conn = getConnection();
 		
 		ArrayList<Board> list = new BoardDao().selectList(conn, pi, keyWord);
@@ -56,47 +54,6 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
-	
-//	public int countReply(String boardNo) {
-//		Connection conn = getConnection();
-//		
-//		int countReply = new BoardDao().countReply(conn, boardNo);
-//		close(conn);
-//		return countReply;
-//		
-//	}
-	
-//	public int insertBoard(Board b) {
-//		
-//		Connection conn = getConnection();
-//		
-//		int result1 = new BoardDao().insertBoard(conn, b);
-//		
-//	
-//		
-//		if(result > 0) {
-//			commit(conn);
-//		}else {
-//			rollback(conn);
-//		}
-//		close(conn);
-//		return result;
-//	}
-//	public int insertBoard(Board b, ArrayList<File> list) {
-//		
-//		Connection conn = getConnection();
-//		
-//		int result1 = new BoardDao().insertBoard(conn, b);
-//		int result2 = new BoardDao().insertAttachment(conn, list);
-//		
-//		if(result1 > 0 && result2>0) {
-//			commit(conn);
-//		}else {
-//			rollback(conn);
-//		}
-//		close(conn);
-//		return result1 * result2;
-//	}
 	public int insertBoard(Board b, ArrayList<File> list) {
 		Connection conn = getConnection();
 		int result1 = new BoardDao().insertBoard(conn, b);
@@ -214,23 +171,6 @@ public class BoardService {
 		return result;
 	}
 	
-//	public int minBo() {
-//		Connection conn = getConnection();
-//		
-//		int minBo = new BoardDao().minBo(conn);
-//		
-//		close(conn);
-//		return minBo;
-//	}
-//	
-//	public int maxBo() {
-//		Connection conn = getConnection();
-//		
-//		int maxBo = new BoardDao().maxBo(conn);
-//		close(conn);
-//		return maxBo;
-//	}
-	
 	public PrevNextPage prevNextBo(int bno) {
 		
 		Connection conn = getConnection();
@@ -285,23 +225,18 @@ public class BoardService {
 		
 	}
 	
-	public int updateBoard(Board b, ArrayList<File> list) {
+	public int updateBoard(Board b) {
 		Connection conn = getConnection();
-		int result1 = new BoardDao().updateBoard(conn, b);
-		int result2 = 1;
-		
-		if(!list.isEmpty()) {
-			result2 = new BoardDao().insertFile(conn, list, b);
-		}
-		
-		if(result1*result2 >0) {
+		int result = new BoardDao().updateBoard(conn, b);
+
+		if(result>0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		
 		close(conn);
-		return result1 * result2;
+		return result;
 		
 	}
 	
@@ -331,6 +266,7 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
 	public int updateFileStatus(File f) {
 		Connection conn = getConnection();
 		int result = new BoardDao().updateFileStatus(conn,f);
@@ -357,21 +293,9 @@ public class BoardService {
 		return result;
 	}
 	
-	public int replyLikeUp(String rpno,String writer) {
+	public int replyLikeUp(String rpno,String loginMem) {
 		Connection conn = getConnection();
-		int result = new BoardDao().replyLikeUp(conn,rpno,writer);
-		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		close(conn);
-		return result;
-	}
-	public int replyLikeDown(String rpno,String writer) {
-		Connection conn = getConnection();
-		int result = new BoardDao().replyLikeDown(conn,rpno,writer);
+		int result = new BoardDao().replyLikeUp(conn,rpno,loginMem);
 		
 		if(result > 0) {
 			commit(conn);
@@ -382,52 +306,38 @@ public class BoardService {
 		return result;
 	}
 	
-	
-//	public File selectFile(String fileNo) {
-//		Connection conn = getConnection();
-//		File f = new BoardDao().selectFile(conn, fileNo);
-//		
-//		close(conn);
-//		return f;
-//	}
-	
+	public int replyLikeDown(String rpno,String loginMem) {
+		Connection conn = getConnection();
+		int result = new BoardDao().replyLikeDown(conn,rpno,loginMem);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}	
 	
 	public int replyLikeCount(String rpno) {
 		Connection conn = getConnection();
 		int replyCount = new BoardDao().replyLikeCount(conn, rpno);
 		
-		int updateReplyCount =  new BoardDao().updateReplyCount(conn, rpno);
-		
 		close(conn);
 		return replyCount;
 	}
 	
-//	public int updateLike(String loginMem,String rpno) {
-//		Connection conn = getConnection();
-//		int result = new BoardDao().updateLike(conn,loginMem,rpno);
-//		
-//		if(result > 0) {
-//			commit(conn);
-//		}else {
-//			rollback(conn);
-//		}
-//		close(conn);
-//		return result;
-//		
-//	}
-//	public int deleteLike(String loginMem,String rpno) {
-//		Connection conn = getConnection();
-//		int result = new BoardDao().deleteLike(conn,loginMem,rpno);
-//		
-//		if(result > 0) {
-//			commit(conn);
-//		}else {
-//			rollback(conn);
-//		}
-//		close(conn);
-//		return result;
-//		
-//	}
+	public int updateReplyCount(String rpno) {
+		Connection conn = getConnection();
+		int result =  new BoardDao().updateReplyCount(conn, rpno);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result;
+	}
 	
 	public ArrayList selectLikeList(String mno) {
 		Connection conn = getConnection();
@@ -436,9 +346,5 @@ public class BoardService {
 		return lList;
 		
 	}
-	
-	
-	
-
 	
 }
