@@ -69,11 +69,11 @@
 }
 .catagory-button:hover {
   color: #000000;
-  border-bottom: 2px solid #DDDDDD;
+  border-bottom: 0px solid #DDDDDD;
 }
 #active-catagory-button{
   color: #000000;
-  border-bottom: 2px solid #000000;
+  border-bottom: 0px solid #000000;
 }
 #active-catagory-button .active-img {
   display: inline-block;
@@ -85,7 +85,7 @@
 .wrap {
   width: 1900px;
   text-align: center;
-  border: 1px solid black;
+  border: 0px solid black;
   margin: auto;
 }
 
@@ -106,7 +106,7 @@ main {
 
 .item {
     cursor: pointer;
-    border: 1px solid black;
+    border: 0px solid black;
     text-align: center;
     
 }
