@@ -176,7 +176,7 @@ main {
     
        <section>
               코스 정보 조회
-              <ul >
+              <ul style="list-style-type: none;">
                 <li>총 예상 소요 시간 : <%=totalTime %></li>
                 <li>총 예상 비용 :<%=totalMoney %> </li>
               </ul>
@@ -194,7 +194,7 @@ main {
 	          	
 	        
             <section>
-                <div class="item">
+                <div class="item" style="width: 300px; height: 300px; float: left; margin-top: 50px;  margin-bottom: 50px; margin-left: 100px;">
                     <div class="img" >
                         <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
                     </div>
