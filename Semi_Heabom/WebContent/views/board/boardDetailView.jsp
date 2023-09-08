@@ -84,7 +84,19 @@ String contextPath1 = request.getContextPath();
 							<span><%=b.getWriter()%></span>
 						</div>
 						<div id="user_grade">
-							<img src="resources/img/free-icon-benefit-6000574.png" alt="">
+							<% if(loginMember.getGrade().equals("씨앗")) { %>
+								<img style="height: 20px;" src="<%=contextPath%>/resource/img/grade/씨앗.gif" alt="">
+							<% }else if(loginMember.getGrade().equals("새싹")){ %>
+								<img style="height: 20px;" src="<%=contextPath%>/resource/img/grade/새싹.gif" alt="">
+							<% }else if(loginMember.getGrade().equals("잔디")){ %>
+								<img style="height: 20px;" src="<%=contextPath%>/resource/img/grade/잔디.gif" alt="">
+							<% }else if(loginMember.getGrade().equals("벚꽃")){ %>
+								<img style="height: 20px;" src="<%=contextPath%>/resource/img/grade/벚꽃.gif" alt="">
+							<% }else if(loginMember.getGrade().equals("지구")){ %>
+								<img style="height: 20px;" src="<%=contextPath%>/resource/img/grade/지구.gif" alt="">
+							<% }else if(loginMember.getGrade().equals("태양")){ %>
+								<img style="height: 20px; width: auto;" src="<%=contextPath%>/resource/img/grade/태양.gif" alt="">
+							<% } %>
 						</div>
 					</div>
 					<div id="post_header_footer">
