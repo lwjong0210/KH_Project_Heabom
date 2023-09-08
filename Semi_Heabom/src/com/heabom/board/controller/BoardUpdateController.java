@@ -152,18 +152,27 @@ public class BoardUpdateController extends HttpServlet {
 						}
 					}
 				}else if(updateInsertList.get(i).getOriginName()!=null) {
-					result2 = new BoardService().insertFile2(updateInsertList.get(i),boardNo);	
+					result1 = new BoardService().insertFile2(updateInsertList.get(i),boardNo);	
 					// 새로운 파일을 추가한경우
 				}
 				// 그냥 비어있는 경우
 			}
+			int check = new BoardService().checkHash(boardNo);
+			
+			int checkyn  = 0;
 			
 			String hashList = multiRequest.getParameter("tag");
 			if(!hashList.isEmpty()) {
 				HashTag ht = new HashTag();
 				ht.setCategoryNo(boardNo);
 				ht.setHashTagName(hashList);
-				result2 = new BoardService().updateHash(ht);
+				System.out.println(ht + "해시태그임");
+				if(check == 0) {
+					checkyn = new BoardService().insertHash(ht); 
+				}else {
+					
+					result2 = new BoardService().updateHash(ht);
+				}
 
 			}
 			System.out.println(result);

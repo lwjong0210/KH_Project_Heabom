@@ -56,6 +56,32 @@ public class BoardDao {
 		return listCount;
 		
 	}
+	public int checkHash(Connection conn,String boardNo) {
+		
+		int checkyn = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("checkyn");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				checkyn = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return checkyn;
+		
+	}
 	public int selectKeyWordCount(Connection conn, String keyWord) {
 		
 		int listCount = 0;
@@ -332,7 +358,7 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, ht.getHashTagName());
 			pstmt.setString(2, ht.getCategoryNo());
-			
+			System.out.println("여기까지오냐"+ ht.getHashTagName()+ ht.getCategoryNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
