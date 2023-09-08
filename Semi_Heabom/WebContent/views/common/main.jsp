@@ -171,7 +171,7 @@
       .img {
         position: absolute;
 
-        top: 12.8%;
+        top: 12%;
         left: 41%;
 
         border-top-left-radius: 0%;
