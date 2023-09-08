@@ -175,11 +175,10 @@
 						<td colspan="5">아직 게시글이 존재하지 않습니다.</td>
 	                </tr>
                 <% }else{ %>
-                
                 	<% for(Board b : list){ %>
                 		<% if(b.getBoardNo().substring(0, 1).equals("N")){ %>
-                	<% System.out.println("하이룽" + pi.getBoardLimit()); %>
 					         <tr class="post-notice-area">        
+					             <input type="hidden" value="<%= b.getBoardNo().substring(1) %>">
 					             <td><div class="post-notice">공지</div></td>
 					             <td class="post-notice-title"><%= b.getBoardTitle() %>
 					             <% if(b.getCountReply() != 0){ %>
@@ -188,7 +187,8 @@
 					             <% } %>
 					             </td>
                 		<% }else{ %>
-			                <tr>        
+			                <tr class="post-notice-area">        
+					             <input type="hidden" value="<%= b.getBoardNo().substring(1) %>">
 			                    <td><%= b.getBoardNo() %></td>
 			                    <td><%= b.getBoardTitle()%>
 								<% if( b.getCountReply() != 0){ %>
@@ -234,5 +234,21 @@
             </tfoot>
         </table>
     </div>
+    	<script>
+		$(function(){
+			$(".post-notice-area").click(function(){
+				<% if(loginMember != null){ %>
+					location.href='<%= contextPath %>/detail.bo?bno=' + $(this).children().eq(0).val()
+				<% }else{ %>
+					alert("로그인 후 이용해주세요")
+				<% } %>
+
+			})
+		})
+
+	</script>
+		<%@ include file="../common/footer.jsp"%>	
+	
+	
 </body>
 </html>

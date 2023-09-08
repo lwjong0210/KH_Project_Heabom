@@ -54,6 +54,15 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
+	public int checkHash(String boardNo){
+		
+		Connection conn = getConnection();
+		
+		int checkyn = new BoardDao().checkHash(conn, boardNo);
+		
+		close(conn);
+		return checkyn;
+	}
 	public int insertBoard(Board b, ArrayList<File> list) {
 		Connection conn = getConnection();
 		int result1 = new BoardDao().insertBoard(conn, b);

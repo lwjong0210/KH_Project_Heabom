@@ -69,11 +69,11 @@
 }
 .catagory-button:hover {
   color: #000000;
-  border-bottom: 2px solid #DDDDDD;
+  border-bottom: 0px solid #DDDDDD;
 }
 #active-catagory-button{
   color: #000000;
-  border-bottom: 2px solid #000000;
+  border-bottom: 0px solid #000000;
 }
 #active-catagory-button .active-img {
   display: inline-block;
@@ -85,7 +85,7 @@
 .wrap {
   width: 1900px;
   text-align: center;
-  border: 1px solid black;
+  border: 0px solid black;
   margin: auto;
 }
 
@@ -106,7 +106,7 @@ main {
 
 .item {
     cursor: pointer;
-    border: 1px solid black;
+    border: 0px solid black;
     text-align: center;
     
 }
@@ -176,7 +176,7 @@ main {
     
        <section>
               코스 정보 조회
-              <ul >
+              <ul style="list-style-type: none;">
                 <li>총 예상 소요 시간 : <%=totalTime %></li>
                 <li>총 예상 비용 :<%=totalMoney %> </li>
               </ul>
@@ -194,7 +194,7 @@ main {
 	          	
 	        
             <section>
-                <div class="item">
+                <div class="item" style="width: 300px; height: 300px; float: left; margin-top: 50px;  margin-bottom: 50px; margin-left: 100px;">
                     <div class="img" >
                         <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
                     </div>

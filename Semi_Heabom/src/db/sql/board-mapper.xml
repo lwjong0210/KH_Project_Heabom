@@ -144,6 +144,9 @@ SELECT *
 	     WHERE
 	           PLACE_NO = ?
 	</entry>
+		<entry key='checkyn'>
+		SELECT COUNT(*) count FROM TB_HASHTAG WHERE PLACE_NO = ?
+	</entry>
 	
 	<entry key="increaseCount">
 		UPDATE 
