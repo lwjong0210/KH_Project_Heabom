@@ -1,4 +1,0 @@
-driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@oracledb_high?TNS_ADMIN=C:/Users/USER/Desktop/Wallet_ORACLEDB
-username=HEABOM
-password=Hkh12345

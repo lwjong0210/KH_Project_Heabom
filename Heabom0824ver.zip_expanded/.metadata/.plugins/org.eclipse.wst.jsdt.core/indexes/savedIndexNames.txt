@@ -1,9 +1,0 @@
-INDEX VERSION 1.4+C:\KH_Project_Heabom\Heabom0824ver.zip_expanded\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3530541348.index
-2132211657.index
-2032533686.index
-1574122864.index
-3895023581.index
-2287301719.index
-3953381345.index
-2861310783.index
