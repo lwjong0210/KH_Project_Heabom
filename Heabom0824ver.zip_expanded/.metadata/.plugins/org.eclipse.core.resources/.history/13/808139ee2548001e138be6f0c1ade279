@@ -1,0 +1,5 @@
+package com.heabom.place.model.vo;
+
+public class Review {
+
+}

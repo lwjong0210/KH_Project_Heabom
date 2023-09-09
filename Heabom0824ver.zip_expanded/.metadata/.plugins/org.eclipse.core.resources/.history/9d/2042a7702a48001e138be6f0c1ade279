@@ -1,0 +1,64 @@
+package com.heabom.place.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.heabom.common.MyFileRenamePolicy;
+import com.heabom.member.model.vo.MemberAttachment;
+import com.oreilly.servlet.MultipartRequest;
+
+/**
+ * Servlet implementation class PlaceReviewDetailController
+ */
+@WebServlet("/review.pl")
+public class PlaceReviewDetailController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PlaceReviewDetailController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(ServletFileUpload.isMultipartContent(request)) {
+			int maxSize = 10*1024*1024;
+			String savePath = request.getSession().getServletContext().getRealPath("/resource/img/place_upfiles/");
+		
+			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",new MyFileRenamePolicy());		
+			
+			String content = multiRequest.getParameter("content");
+			String star = multiRequest.getParameter("star");
+			String refNo = multiRequest.getParameter("refNo");
+			String writer = multiRequest.getParameter("writer");
+			
+			MemberAttachment at = null ; //넘어온 첨부 파일이 있다면 생성
+			if(multiRequest.getOriginalFileName("upfile") != null) {//넘어온게 있어.
+				at = new MemberAttachment();
+				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+				at.setFilePath("resource/img/profile");
+			}
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
