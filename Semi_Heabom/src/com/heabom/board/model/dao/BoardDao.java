@@ -16,6 +16,7 @@ import com.heabom.board.model.vo.PrevNextPage;
 import com.heabom.board.model.vo.Reply;
 import com.heabom.common.model.vo.File;
 import com.heabom.common.model.vo.HashTag;
+import com.heabom.common.model.vo.Like;
 import com.heabom.common.model.vo.PageInfo;
 
 public class BoardDao {
@@ -460,9 +461,9 @@ public class BoardDao {
 		return list;
 	}
 	
-	public ArrayList<Reply> selectReplyList(Connection conn, String boardNo){
+	public ArrayList<Reply> selectReplyList(Connection conn, String bno){
 		
-		ArrayList<Reply> rlist = new ArrayList<Reply>();
+		ArrayList<Reply> replylist = new ArrayList<Reply>();
 		PreparedStatement pstmt = null;
 		
 		ResultSet rset = null;
@@ -470,20 +471,24 @@ public class BoardDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, boardNo);
+			pstmt.setString(1, bno);
 			rset=pstmt.executeQuery();
 			
 			
 			while(rset.next()) {
-				rlist.add(new Reply(
+				replylist.add(new Reply(
 									rset.getString("RE_NO")
 								  , rset.getString("RE_WRITER")
 								  , rset.getString("RE_REF_NO")
 								  , rset.getString("RE_CONTENT")
-								  , rset.getInt("RE_LIKE_STAR")
 								  , rset.getString("RE_DATE")
 								  , rset.getString("RE_STATUS")
 								  , rset.getString("NICKNAME")
+								  , rset.getString("FILE_PATH")
+								  , rset.getString("CHANGE_NAME")
+								  , rset.getString("GRADE")
+								  , rset.getString("MEDAL"), false
+								  , rset.getInt("COUNT_LIKE")
 								  ));
 			}
 		} catch (SQLException e) {
@@ -493,7 +498,39 @@ public class BoardDao {
 			close(rset);
 			close(pstmt);
 		}
-		return rlist;
+		return replylist;
+		
+	}
+	
+	public ArrayList<Like> selectLikeList(Connection conn, String bno, String mno) {
+		
+		PreparedStatement pstmt = null;
+		ArrayList<Like> likeList = new ArrayList<Like>();
+
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectLikeList");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bno);
+			pstmt.setString(2, mno);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				likeList.add(new Like(
+						rset.getString("MEM_NO")
+					  , rset.getString("BOARD_NO")
+					  ));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return likeList;
 		
 	}
 	
@@ -918,6 +955,9 @@ public class BoardDao {
 		int result = 0;
 		String sql = prop.getProperty("replyLikeDown");
 		
+		System.out.println(rpno);
+		System.out.println(loginMem);
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, loginMem);
@@ -1045,31 +1085,6 @@ public class BoardDao {
 //		
 //	}
 	
-	public ArrayList selectLikeList(Connection conn, String mno) {
-		PreparedStatement pstmt = null;
-		ArrayList lList = new ArrayList();
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectLikeList");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, mno);
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				String s = rset.getString("likeno");
-				lList.add(s);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		return lList;
-	}
 	
 
 	

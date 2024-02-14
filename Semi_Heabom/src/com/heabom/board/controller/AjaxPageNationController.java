@@ -34,7 +34,6 @@ public class AjaxPageNationController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("dkdkd앙아아아앙아ㅏ앙아아아아ㅓ아아암");
 ////		String bno = request.getParameter("bno");
 //		
 //		int listCount; // 현재 총 게시글 개수

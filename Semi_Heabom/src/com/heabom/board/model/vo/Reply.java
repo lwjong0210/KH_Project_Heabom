@@ -6,46 +6,38 @@ public class Reply {
 	private String replyWriter;
 	private String boardNo;
 	private String replyContent;
-	private int replyLike;
 	private String replyDate;
 	private String replyStatus;
 	private String nickname;
-
-	public Reply() {}
-
-	public Reply(String replyNo, String replyWriter, String boardNo, String replyContent, int replyLike,
-			String replyDate, String replyStatus) {
-		super();
-		this.replyNo = replyNo;
-		this.replyWriter = replyWriter;
-		this.boardNo = boardNo;
-		this.replyContent = replyContent;
-		this.replyLike = replyLike;
-		this.replyDate = replyDate;
-		this.replyStatus = replyStatus;
-	}
-
-	public Reply(String replyNo, String replyWriter, String boardNo, String replyContent, int replyLike,
-			String replyDate, String replyStatus, String nicname) {
-		super();
-		this.replyNo = replyNo;
-		this.replyWriter = replyWriter;
-		this.boardNo = boardNo;
-		this.replyContent = replyContent;
-		this.replyLike = replyLike;
-		this.replyDate = replyDate;
-		this.replyStatus = replyStatus;
-		this.nickname = nicname;
-	}
+	private String filePath;
+	private String changeName;
+	private String grade;
+	private String medal;
+	private boolean isLiked;
+	private int countLike;
 	
-
-	public String getNicname() {
-		return nickname;
+	public Reply() {}
+	
+	public Reply(String replyNo, String replyWriter, String boardNo, String replyContent, String replyDate,
+			String replyStatus, String nickname, String filePath, String changeName, String grade, String medal,
+			boolean isLiked, int countLike) {
+		super();
+		this.replyNo = replyNo;
+		this.replyWriter = replyWriter;
+		this.boardNo = boardNo;
+		this.replyContent = replyContent;
+		this.replyDate = replyDate;
+		this.replyStatus = replyStatus;
+		this.nickname = nickname;
+		this.filePath = filePath;
+		this.changeName = changeName;
+		this.grade = grade;
+		this.medal = medal;
+		this.isLiked = isLiked;
+		this.countLike = countLike;
 	}
 
-	public void setNicname(String nicname) {
-		this.nickname = nicname;
-	}
+
 
 	public String getReplyNo() {
 		return replyNo;
@@ -79,14 +71,6 @@ public class Reply {
 		this.replyContent = replyContent;
 	}
 
-	public int getReplyLike() {
-		return replyLike;
-	}
-
-	public void setReplyLike(int replyLike) {
-		this.replyLike = replyLike;
-	}
-
 	public String getReplyDate() {
 		return replyDate;
 	}
@@ -103,10 +87,69 @@ public class Reply {
 		this.replyStatus = replyStatus;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getChangeName() {
+		return changeName;
+	}
+
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public String getMedal() {
+		return medal;
+	}
+
+	public void setMedal(String medal) {
+		this.medal = medal;
+	}
+
+	public boolean isLiked() {
+		return isLiked;
+	}
+
+	public void setLiked(boolean isLiked) {
+		this.isLiked = isLiked;
+	}
+
+	public int getCountLike() {
+		return countLike;
+	}
+
+	public void setCountLike(int countLike) {
+		this.countLike = countLike;
+	}
+
 	@Override
 	public String toString() {
 		return "Reply [replyNo=" + replyNo + ", replyWriter=" + replyWriter + ", boardNo=" + boardNo + ", replyContent="
-				+ replyContent + ", replyLike=" + replyLike + ", replyDate=" + replyDate + ", replyStatus="
-				+ replyStatus + "]";
-	};
+				+ replyContent + ", replyDate=" + replyDate + ", replyStatus=" + replyStatus + ", nickname=" + nickname
+				+ ", filePath=" + filePath + ", changeName=" + changeName + ", grade=" + grade + ", medal=" + medal
+				+ ", isLiked=" + isLiked + ", countLike=" + countLike + "]";
+	}
+
+	
 }

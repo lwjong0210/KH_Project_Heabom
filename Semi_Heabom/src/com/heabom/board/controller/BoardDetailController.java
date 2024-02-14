@@ -55,8 +55,6 @@ public class BoardDetailController extends HttpServlet {
 			request.setAttribute("flist", flist);
 			request.setAttribute("p", p);
 			
-			System.out.println(p+"Zzzzzzzzzzzzzzzzzzzzzz");
-			
 			int listCount; // 현재 총 게시글 개수
 			int currentPage; // 현재 페이지
 			int pageLimit; //  하단에 보여지는 페이징바의 최대개수

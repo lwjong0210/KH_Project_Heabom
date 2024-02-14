@@ -204,7 +204,7 @@ SELECT *
 	</entry>
 
 <entry key='selectReplyList'>
-	SELECT
+SELECT
 	  RE_NO
 	, RE_WRITER
 	, RE_REF_NO
@@ -213,12 +213,46 @@ SELECT *
 	, RE_DATE
 	, RE_STATUS
 	, NICKNAME
+    , FILE_PATH
+    , CHANGE_NAME
+    , GRADE
+    , MEDAL
+    , COUNT(L.MEM_NO) AS COUNT_LIKE
 	  FROM TB_REVIEW_REPLY
 	  LEFT JOIN TB_MEMBER ON (RE_WRITER = MEM_NO)
+      LEFT JOIN TB_FILE ON (MEM_NO = REF_NO)
+      LEFT JOIN TB_GRADE USING(GRADE)
+      LEFT JOIN TB_LIKE L ON(RE_NO = BOARD_NO)
 	 WHERE RE_REF_NO = ?
 	   AND RE_STATUS = 'N'
+     GROUP BY RE_NO
+            , RE_WRITER
+            , RE_REF_NO
+            , RE_CONTENT
+            , RE_LIKE_STAR
+            , RE_DATE
+            , RE_STATUS
+            , NICKNAME
+            , FILE_PATH
+            , CHANGE_NAME
+            , GRADE
+            , MEDAL
      ORDER BY CAST(SUBSTR(RE_NO,3) AS NUMBER)
+     
+     
 </entry>
+
+<entry key='selectLikeList'>
+ SELECT RE_WRITER MEM_NO, RE_NO BOARD_NO
+   FROM TB_REVIEW_REPLY R
+  WHERE RE_REF_NO = ?
+    AND RE_NO IN(
+                    SELECT BOARD_NO
+                      FROM TB_LIKE
+                     WHERE MEM_NO = ?
+                     )
+</entry>
+
 <entry key='insertReply'>
 	INSERT 
 	  INTO TB_REVIEW_REPLY
@@ -466,7 +500,7 @@ INSERT
 			       TB_LIKE
 			 WHERE BOARD_NO = ?
 	</entry>
-	<entry key='updateReplyCount'>
+<!-- 	<entry key='updateReplyCount'>
 UPDATE
        TB_REVIEW_REPLY
    SET 
@@ -479,7 +513,7 @@ UPDATE
                             BOARD_NO = ?
                       )
 WHERE RE_NO = ?
-	</entry>
+	</entry> -->
 	
 <!--  <entry key='replyLikeCount'>
     SELECT
@@ -516,11 +550,5 @@ INSERT
 	</entry>
 	 
 	  -->
-	<entry key='selectLikeList'>
-		SELECT 
-       BOARD_NO likeno
-  FROM TB_LIKE
- WHERE MEM_NO = ?
 
-	</entry>
 </properties>

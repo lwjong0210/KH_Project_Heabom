@@ -209,7 +209,7 @@ main {
 <body>
 	
     <%@include file = "../common/header.jsp" %>
-    <h1 align="center"><%=location%></h1>
+    <h1><%=location%></h1>
 
     <div class="wrap" >
 		<%for (int i = 0 ; i <list.size() ; i ++ ) {%>

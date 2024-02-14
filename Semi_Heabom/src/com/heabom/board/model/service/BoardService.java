@@ -7,6 +7,8 @@ import static com.heabom.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import com.heabom.board.model.dao.BoardDao;
 import com.heabom.board.model.vo.Board;
@@ -14,6 +16,7 @@ import com.heabom.board.model.vo.PrevNextPage;
 import com.heabom.board.model.vo.Reply;
 import com.heabom.common.model.vo.File;
 import com.heabom.common.model.vo.HashTag;
+import com.heabom.common.model.vo.Like;
 import com.heabom.common.model.vo.PageInfo;
 
 public class BoardService {
@@ -154,15 +157,30 @@ public class BoardService {
 		
 	}
 	
-	public ArrayList<Reply> selectReplyList(String boardNo){
+	public ArrayList<Reply> selectReplyList(String bno, String mno){
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Reply> rlist = new BoardDao().selectReplyList(conn, boardNo);
+		// 전체 갯글
+		ArrayList<Reply> replylist = new BoardDao().selectReplyList(conn, bno);
+		
+		// 내가 좋아요한 댓글
+		ArrayList<Like> likeList = new BoardDao().selectLikeList(conn, bno, mno);
+		
+		for(Reply r: replylist) {
+			
+			for(Like l : likeList) {
+				if(r.getReplyNo().equals(l.getBoardNo())) {
+					r.setLiked(true);
+				}
+				
+			}
+			
+		}
 		
 		close(conn);
 		
-		return rlist;
+		return replylist;
 	}
 	
 	public int insertReply(Reply r) {
@@ -348,12 +366,12 @@ public class BoardService {
 		return result;
 	}
 	
-	public ArrayList selectLikeList(String mno) {
-		Connection conn = getConnection();
-		ArrayList lList = new BoardDao().selectLikeList(conn, mno);
-		close(conn);
-		return lList;
-		
-	}
+//	public ArrayList selectLikeList(String mno) {
+//		Connection conn = getConnection();
+//		ArrayList lList = new BoardDao().selectLikeList(conn, mno);
+//		close(conn);
+//		return lList;
+//		
+//	}
 	
 }

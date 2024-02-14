@@ -32,14 +32,15 @@ public class ReplyLikeDownController extends HttpServlet {
 		String writer = request.getParameter("writer");
 		String rpno = request.getParameter("rpno");
 		String loginMem = request.getParameter("loginMem");
-		System.out.println(writer);	// 글쓴이
-		System.out.println(rpno);	// 댓글 번호
-		System.out.println(loginMem); // 로그인한 회원
+		
+		System.out.println("댓글 작성자 : " + writer);	// 글쓴이
+		System.out.println("댓글 번호 : " + rpno);	// 댓글 번호
+		System.out.println("좋아요 누른 회원 : " + loginMem); // 로그인한 회원
 		
 		BoardService bservice = new BoardService();
 		
 		// 먼저 댓글번호를 가지고 가서 리뷰 리플라이 테이블 like 를 증가시킨다
-		bservice.replyLikeDown(rpno,writer);
+		bservice.replyLikeDown(rpno,loginMem);
 		
 		// 좋아요 몇개인지 가져온다
 		int replyLikeCount = new BoardService().replyLikeCount(rpno);
@@ -52,7 +53,7 @@ public class ReplyLikeDownController extends HttpServlet {
 			new PlaceService().upGrade(writer);			
 		}
 		
-		System.out.println("댓글수는 ? :" + replyLikeCount);
+		System.out.println("댓글수 :" + replyLikeCount);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().print(replyLikeCount);

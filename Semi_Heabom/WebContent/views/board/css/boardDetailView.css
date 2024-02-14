@@ -200,7 +200,7 @@ div {
 	border-radius: 10px 10px 10px 10px;
 }
 #contentImg{
-	padding: 10px;
+	padding: 10px 30px;
 }
 /* 사진영역 끝*/
 
@@ -325,11 +325,10 @@ div {
 #delete-area{
 	cursor: pointer;
 	text-align: center;
-	font-size: 10px;
 }
 
 .comment_like {
-	padding-top: 30%;
+	padding-top: 10px;
 	width: 100%;
 	text-align: center;
 }
@@ -339,15 +338,24 @@ div {
 }
 
 .comment_like_img {
+	text-align: center;
+	display: flex;
 	height: 60%;
 }
+
+.comment_like_img div{
+	width: 100%;
+}
+
 .comment_like_img *{
 	cursor: pointer;
-	height: 20px;
+	height: 30px;
+	width: 30px;
 	text-align: center;
 }
 
 .comment_like_count {
+	font-size: large;
 	text-align: center;
 	height: 40%;
 	width: 100%;

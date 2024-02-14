@@ -1,7 +1,6 @@
 package com.heabom.common;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,8 +30,6 @@ public class JDBCTemplate {
 		
 		try {
 			prop.load(new FileInputStream(filepath)); // prop 에 경로 값 주기 
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -46,6 +43,8 @@ public class JDBCTemplate {
 				conn = DriverManager.getConnection(prop.getProperty("url"),
 						prop.getProperty("username"),
 						prop.getProperty("password")); // "이건 걍 외워;",계정명, 비밀번호
+				
+				conn.setAutoCommit(false);
 				
 				//oracle클래스를 쓰는거기때문에 web-inf 안에 ojdbc6 을 꼭 넣어주도록 하자
 			} catch (ClassNotFoundException e) {
