@@ -29,79 +29,79 @@
     	String location = null ; 
     	switch (locationNo){
     	case 1 : 
-    		location = "강남에서 볼만한곳";
+    		location = "강남구";
     		break;
     	case 2 : 
-    		location = "서초에서 볼만한곳";
+    		location = "서초구";
     		break;
     	case 3 : 
-    		location = "동작에서 볼만한곳";
+    		location = "동작구";
     		break;
     	case 4 : 
-    		location = "강서에서 볼만한곳";
+    		location = "강서구";
     		break;
     	case 5 : 
-    		location = "양천에서 볼만한곳";
+    		location = "양천구";
     		break;
     	case 6 : 
-    		location = "구로에서 볼만한곳";
+    		location = "구로구";
     		break;
     	case 7 : 
-    		location = "금천에서 볼만한곳";
+    		location = "금천구";
     		break;
     	case 8 : 
-    		location = "관악에서 볼만한곳";
+    		location = "관악구";
     		break;
     	case 9 : 
-    		location = "영등포에서 볼만한곳";
+    		location = "영등포구";
     		break;
     	case 10 : 
-    		location = "송파에서 볼만한곳";
+    		location = "송파구";
     		break;
     	case 11 : 
-    		location = "강동에서 볼만한곳";
+    		location = "강동구";
     		break;
     	case 12 : 
-    		location = "광진에서 볼만한곳";
+    		location = "광진구";
     		break;
     	case 13 : 
-    		location = "성동에서 볼만한곳";
+    		location = "성동구";
     		break;
     	case 14 : 
-    		location = "용산에서 볼만한곳";
+    		location = "용산구";
     		break;
     	case 15 : 
-    		location = "마포에서 볼만한곳";
+    		location = "마포구";
     		break;
     	case 16 : 
-    		location = "서대문에서 볼만한곳";
+    		location = "서대문구";
     		break;
     	case 17 : 
-    		location = "중구에서 볼만한곳";
+    		location = "중구구";
     		break;
     	case 18 : 
-    		location = "동대문에서 볼만한곳";
+    		location = "동대문구";
     		break;
     	case 19 : 
-    		location = "중랑에서 볼만한곳";
+    		location = "중랑구";
     		break;
     	case 20 : 
-    		location = "종로에서 볼만한곳";
+    		location = "종로구";
     		break;
     	case 21 : 
-    		location = "성북에서 볼만한곳";
+    		location = "성북ㅍ";
     		break;
     	case 22 : 
-    		location = "은평에서 볼만한곳";
+    		location = "은평구";
     		break;
     	case 23 : 
-    		location = "강북에서 볼만한곳";
+    		location = "강북구";
     		break;
     	case 24 : 
-    		location = "도봉에서 볼만한곳";
+    		location = "도봉구";
     		break;
     	case 25 : 
-    		location = "노원에서 볼만한곳";
+    		location = "노원구";
     		break;
     		
     	}
@@ -233,7 +233,7 @@ main {
     
     
     
-    <h1 align="center"><%=location%></h1>
+    <h1 align="center" style="font-weight: 700" class="mt-5"><%=location%></h1>
     <div class="wrap">
           <%for (int i = 0 ; i <list.size() ; i ++ ) {%>
 	          <%if (list.get(i).getCategoryNo() == 1){ 
