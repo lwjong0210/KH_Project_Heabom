@@ -3,8 +3,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.heabom.admin.controller.BannerListController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%
+	pageEncoding="UTF-8"%>
+<%
 	ArrayList<Place> bannerList = new ArrayList<Place> ();
     
 	bannerList = new MainService().selectPlaceList();//메인 배너에 띄울 장소들 가져왔어용
@@ -48,66 +48,61 @@
 	}
 
     %>
-    
-	
 
-    
-    
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heabom</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <style>
-        *{
-            /*
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heabom</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<style>
+* {
+	/*
             box-sizing: border-box;
             border: 1px solid red;
             */
-        }
+	
+}
 
-         #wrap{
-            width: 1900px;
-            height: auto;
-            /*
+#wrap {
+	width: 1900px;
+	height: auto;
+	/*
             border: 0px solid black;
             box-sizing: border-box;
             */
-            margin-top: 1.5%;
+	margin-top: 1.5%;
+	background-color: rgb(253, 238, 238);
+}
 
-            background-color: rgb(253, 238, 238);
-           
-        } 
-       
-        div{
-            /*
+div {
+	/*
             box-sizing: border-box;
             border: 0px solid black;
             */
-        }
-  
-        #content{
-            width: 100%;
-            height: 90%;
-            box-sizing: border-box;
+	
+}
 
-        }
-        #content_1{
-            float: left;
-            height: 600px;
-            width: 100%;
-            /*
+#content {
+	box-sizing: border-box;
+}
+
+#content_1 {
+	float: left;
+	height: 600px;
+	/*
             box-sizing: border-box;
             border: 1px solid red;
             */
-            background-color: rgba(255, 201, 201, 0.5);
-
-            position: relative;
-            
-        }
-        /*
+	background-color: rgba(255, 201, 201, 0.5);
+}
+/*
         #content_2{
             float: left;
             height: 10%;
@@ -117,132 +112,123 @@
           
         }
         */
-        
-        #div1{
-    
-            width: 100%;
-            height: 25%;
-            box-sizing: border-box;
-            
-        }
-        #div2{
-            border: 0px solid black;
-            height: 25%;
-            text-decoration: none;
-            color: black;
-            font-weight: 900;
-            font-size: xx-large;
-            text-align: center;
-   
-           
-        }
-        #div3{
-            border: 0px solid black;
-            height: 25%;
-            border-radius: 10px;
-            text-align: center;
-        }
-        #div4{
-            border: 0px solid black;
-            height: 25%;
-            
-            text-align: center;
-         
-            
-        }
-        #best{
-            text-decoration: none;
-            color: black;
-            font-weight: 900;
-            width: 500px;
-            height: 500px;
-            
-        }
- 
+#best {
+	text-decoration: none;
+	color: black;
+	font-weight: 900;
+	width: 500px;
+	height: 500px;
+}
 
-        img {
-        width: 59%;
-        height: 77.2%;
-        
-        cursor: pointer;
+#main .img {
+	border-radius: 0.325rem;
+	height: 100%;
+	width: 100%;
+}
 
-      }
-
-      .img {
-        position: absolute;
-
-        top: 12.8%;
-        left: 41%;
-
-        border-top-left-radius: 0%;
-        border-bottom-left-radius: 0%;
-      }
-
-      #main {
-        width: 1500px;
-        height: 720px;
-        box-sizing: border-box;
-      
-      }
-
-      .text{
-        color: black;
-        font-size: xx-large;
-
-        position: absolute;
-
-        top: 110%;
-        left: 10%;
-
-        font-weight: 700;
-        color: black;
-      }
-
-
-
-
-
-
-    </style>
+/* #main {
+	width: 1500px;
+	height: 720px;
+	box-sizing: border-box;
+}
+ */
+.text {
+	margin: 0px;
+	color: black;
+	font-size: xx-large;
+	font-weight: 700;
+	color: black;
+}
+</style>
 </head>
 <body>
 
-    <div id="wrap">
+	<div class="container-fluid mt-5">
 
-        <div id="content">
-            <div id="content_1" >
-                    <div id="div1" ></div>
-                    <div id="div2" ></div>
-                    <div id="div3"  ></div>
-                    <div id="div4" ></div>
-                
-            </div>
-            <div id="content_2">
-                <div id="main"></div>
-            </div>
-        </div>
-    </div>
+		<div class="row" style="height: 65vh;">
+
+			<div class="col-md-5" id="content_1"
+				style="height: 100%">
+				<div style="height: 60%; align-items: center;" class="d-flex">
+					<div style="text-align: center;">
+						<span id="placeTitle" style="font-size: xx-large;"
+							class="badge badge-dark"></span>
+						<p class="mt-4 mb-0" style="font-size: x-large;" id="placeContent"></p>
+					</div>
+				</div>
+				<div class="d-flex"
+					style="height: 30%; align-items: center; text-align: center;">
+					<div style="width: 50%; font-size: large;">
+						🚩 <span id="placeAddress"> </span>
+					</div>
+					<div style="width: 50%; font-size: large;">
+						☎️ <span id="placePhone"></span>
+					</div>
+				</div>
+				<div id="div3" style="height: 10%"></div>
+			</div>
+
+			<div class="col-md-7 p-4" id="content_2"
+				style="height: 100%; background-color: #f0f0f0">
+				<div id="main" style="height: 100%; width: 100%;">
+					<a href='<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'> </a>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 
 
-    <script>
+	<script>
         $(function(){
+        	
             let i = 1 ; 
             
+            let placeTitles = [
+            	"<%=bannerList.get(0).getPlaceTitle() %>",
+            	"<%=bannerList.get(1).getPlaceTitle() %>",
+            	"<%=bannerList.get(2).getPlaceTitle() %>"
+            ];
             
+            let placeContents = [
+            	"<%=bannerList.get(0).getPlaceContent()%>",
+            	"<%=bannerList.get(1).getPlaceContent()%>",
+            	"<%=bannerList.get(2).getPlaceContent()%>"
+            ];
+            
+           	let placeAddress = [
+           		"<%=bannerList.get(0).getAddress()%>",
+           		"<%=bannerList.get(1).getAddress()%>",
+           		"<%=bannerList.get(2).getAddress()%>"
+           	];
+           	
+           	let placePhone = [
+           		"<%=bannerList.get(0).getPhone()%>",
+           		"<%=bannerList.get(1).getPhone()%>",
+           		"<%=bannerList.get(2).getPhone()%>"
+           	]
             
             let bests = [
-            " <h1 class = 'text'>오늘의 첫번째 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
-            " <h1 class = 'text'>오늘의 두번째 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
-            " <h1 class = 'text'>오늘의 세번째 HEABOM 추천 장소는?&nbsp;&nbsp;>></h1>",
+            " <p class = 'text'>오늘의 첫번째 HEABOM 추천 장소는?&nbsp;&nbsp;&gt;&gt;</p>",
+            " <p class = 'text'>오늘의 두번째 HEABOM 추천 장소는?&nbsp;&nbsp;&gt;&gt;</p>",
+            " <p class = 'text'>오늘의 세번째 HEABOM 추천 장소는?&nbsp;&nbsp;&gt;&gt;</p>",
 
             ]
 
-            $("#div2").html(bests[0]);
+            $("#div3").html(bests[0]);
+            $("#placeTitle").html(placeTitles[0]);
+            $("#placeContent").html(placeContents[0]);
+            $("#placeAddress").html(placeAddress[0]);
+            $("#placePhone").html(placePhone[0]);
 
 
                 setInterval (function(){
-                    $("#div2").html(bests[i]);
+                    $("#div3").html(bests[i]);
+                    $("#placeTitle").html(placeTitles[i]);
+                    $("#placeContent").html(placeContents[i]);
+                    $("#placeAddress").html(placeAddress[i]);
+                    $("#placePhone").html(placePhone[i]);
                     i++ ; 
                     if(i == 3){
                         i = 0 ; 
@@ -264,36 +250,32 @@
              arr = [
               "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src='' class='img'>게시글없음</a>",
               "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src='' class='img'>게시글없음</a>",
-              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src='' class='img'>게시글없음</a>",
+              "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src='' class='img'>게시글없음</a>"
 
             ];
     	}else{
 
 	        arr = [
-	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo1%>'><img  src='<%=titleImg1%>' class='img'></a>",
-	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo2%>'><img  src='<%=titleImg2%>' class='img'></a>",
-	          "<a href = '<%=contextPath2%>/movebest.mi?pNo=<%=pNo3%>'><img  src='<%=titleImg3%>' class='img'></a>",
-	
-	        ];
-    	}
-    	
-    	 let j = 1;
-        
-        $("#main").html(arr[0]);
-        setInterval(function () {
-          $("#main").html(arr[j]);
-          j++;
-          if (j == arr.length) {
-            j = 0;
-          }
-        }, 3000);
+	          "<a href = '<%=contextPath2%>/placeDetailView.pl?pno=<%= pNo1.substring(2) %>'><img src='<%=contextPath2%><%=titleImg1%>' class='img'></a>",
+	          "<a href = '<%=contextPath2%>/placeDetailView.pl?pno=<%= pNo2.substring(2) %>'><img src='<%=contextPath2%><%=titleImg2%>' class='img'></a>",
+	          "<a href = '<%=contextPath2%>/placeDetailView.pl?pno=<%= pNo3.substring(2) %>'><img src='<%=contextPath2%><%=titleImg3%>' class='img'></a>"
 
-    })
+				];
+			}
 
-    
+			let j = 1;
 
-    </script>
-    	<%@ include file="footer.jsp" %>
+			$("#main").html(arr[0]);
+			setInterval(function() {
+				$("#main").html(arr[j]);
+				j++;
+				if (j == arr.length) {
+					j = 0;
+				}
+			}, 3000);
 
+		})
+	</script>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

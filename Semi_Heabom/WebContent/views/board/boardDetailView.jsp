@@ -457,7 +457,7 @@ String contextPath1 = request.getContextPath();
 				if(currentPage == maxPage){
 					for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + (listCount % boardLimit) ;i++) {
 						chartHtml +=
-						"<tr class='boardTr'><td>" +
+						"<tr class='boardTr'><td id='boardNo'>" +
 						boardList[i].boardNo.substr(1) +
 						"</td><td>" +
 						boardList[i].boardTitle +
@@ -472,7 +472,7 @@ String contextPath1 = request.getContextPath();
 				}else{
 					for (var i = (currentPage - 1) * boardLimit; i < (currentPage - 1) * boardLimit + boardLimit; i++) {
 						chartHtml +=           
-						"<tr class='boardTr'><td>" +
+						"<tr class='boardTr'><td id='boardNo'>" +
 						boardList[i].boardNo.substr(1) +
 						"</td><td>" +
 						boardList[i].boardTitle +
@@ -491,6 +491,12 @@ String contextPath1 = request.getContextPath();
 			$("#dataTableBody tr").click(function () {
 				location.href='<%=contextPath%>/detail.bo?bno=' + $(this).children().eq(0).text()
 			})
+			
+			$(document).on("click", ".boardTr",function(){
+				location.href = "<%= contextPath%>/detail.bo?bno=" + $(this).children().first().text()
+				console.log($(this).children().first().text())
+			})
+			
 			function pagingBar(listCount, boardLimit, pageLimit, currentPage) {
 
 

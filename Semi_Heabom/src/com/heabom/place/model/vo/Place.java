@@ -26,6 +26,33 @@ public class Place {
 	private String imgpath;
 	private String locationName;
 	private String strMakeDate;
+	private String titleImg;
+	
+	
+	
+	public Place(String placeNo, String placeTitle, String writer, int locationNo, String phone, String address,
+			String placeContent, int startTime, int endTime, int starPoint, String placeUrl, int useTime, int usePrice,
+			int likeCount, String titleImg) {
+		super();
+		this.placeNo = placeNo;
+		this.placeTitle = placeTitle;
+		this.writer = writer;
+		this.locationNo = locationNo;
+		this.phone = phone;
+		this.address = address;
+		this.placeContent = placeContent;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.starPoint = starPoint;
+		this.placeUrl = placeUrl;
+		this.useTime = useTime;
+		this.usePrice = usePrice;
+		this.likeCount = likeCount;
+		this.titleImg = titleImg;
+	}
+
+
+
 	public String getStrMakeDate() {
 		return strMakeDate;
 	}
@@ -57,7 +84,7 @@ public class Place {
 	}
 
 
-	
+	public Place() {}
 
 	public Place(String placeNo,String writer,String placeTitle ,int locationNo, String strMakeDate, String status, String phone, String address,
 			String placeContent, int startTime, int endTime, int starPoint, String placeUrl, int useTime, int usePrice,
@@ -92,7 +119,6 @@ public class Place {
 
 
 
-	private String titleImg ;
 	
 	
 	public String getTitleImg() {
@@ -118,7 +144,7 @@ public class Place {
 
 
 
-	public Place() {}
+
 
 	
 	

@@ -1,5 +1,7 @@
 package com.heabom.place.model.dao;
 
+import static com.heabom.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,9 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import static com.heabom.common.JDBCTemplate.*;
-
-import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.File;
 import com.heabom.member.model.vo.MemberAttachment;
 import com.heabom.place.model.vo.Place;
@@ -29,6 +28,48 @@ public class PlaceDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public Place selectPlaceDetail(Connection conn, String pno) {
+		Place p = new Place();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				p.setPlaceNo(rset.getString("PLACE_NO"));
+				p.setWriter(rset.getString("WRITER"));
+				p.setPlaceTitle(rset.getString("PLACE_TITLE"));
+				p.setLocationNo(rset.getInt("LOCATION_NO"));
+				p.setPhone(rset.getString("PHONE"));
+				p.setAddress(rset.getString("ADDRESS"));
+				p.setPlaceContent(rset.getString("PLACE_CONTENT"));
+				p.setStartTime(rset.getInt("START_TIME"));
+				p.setEndTime(rset.getInt("END_TIME"));
+				p.setStarPoint(rset.getInt("STAR_POINT"));
+				p.setPlaceUrl(rset.getString("PLACE_URL"));
+				p.setUseTime(rset.getInt("USE_TIME"));
+				p.setUsePrice(rset.getInt("USE_PRICE"));
+				p.setLikeCount(rset.getInt("LIKECOUNT"));
+			}
+				
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return p;
+	}
+	
 	public ArrayList<Place> selectPlace(Connection conn,String memNo){
 		ArrayList<Place> plist = new ArrayList<Place>();
 		PreparedStatement pstmt = null;

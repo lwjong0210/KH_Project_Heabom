@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-     	Place place = (Place)request.getAttribute("placeInfo");
+     	Place place = (Place)request.getAttribute("p");
     	System.out.println("여기는 placeDetailView : "+place.getPlaceNo());
     	ArrayList<File> fileList = (ArrayList<File>)request.getAttribute("fileList");
     	System.out.println(place.getPlaceNo()); 
@@ -163,7 +163,7 @@
 </head>
 <body>
     <%@ include file="../common/header.jsp" %>
-    <h1 align="center"><%=place.getPlaceTitle()%></h1>
+    <h1 align="center" class="mt-5"><%=place.getPlaceTitle()%></h1>
     <div class="wrap">
         <div class="place-img" style="border: 0px solid black;">
 
@@ -174,20 +174,20 @@
                   <!-- Indicators -->
                   <ul class="carousel-indicators">
                     <li class="item1 active"></li>
-                    <% for (int i = 0 ; i <fileList.size() ; i ++ ) { %>
+                    <% for (int i = 0 ; i <fileList.size()-1 ; i ++ ) { %>
                     <li class="item<%=i%>"></li>
                     <% } %>
                   </ul>
                   
                   <!-- The slideshow -->
                   <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="<%=place.getTitleImg()%>"  width="100%" height="100%">
-                    </div>
+                     <div class="carousel-item active">
+                      <img src="<%=contextPath%><%=fileList.get(0).getFilePath()%>"  width="100%" height="100%">
+                    </div> 
 
-                    <% for (int i = 0 ; i <fileList.size() ; i ++ ) { %>
+                    <% for (int i = 1 ; i <fileList.size() ; i ++ ) { %>
                     <div class="carousel-item">
-                      <img src="<%=fileList.get(i).getFilePath()%>"  width="100%" height="100%">
+                      <img src="<%=contextPath%><%=fileList.get(i).getFilePath()%>"  width="100%" height="100%">
                     </div>
                     <% } %>
 
@@ -209,8 +209,8 @@
         <div class="place-description">
             <table>
                 <tr>
-                    <th width = "150" >글번호</th>
-                    <td id ="plNo"><%=place.getPlaceNo()%></td>
+                    <th width = "150" >상호명</th>
+                    <td id ="plNo"><%=place.getPlaceTitle() %></td>
                 </tr>
                 <tr>
                     <th>번호</th>
@@ -246,15 +246,15 @@
                 </tr>
                 <tr>
                     <th>예상소요시간</th>
-                    <td><%=place.getUseTime() %></td>
+                    <td><%=place.getUseTime()%></td>
                 </tr>
                 <tr>
                     <th>예상소요비용</th>
-                    <td><%=place.getUsePrice() %></td>
+                    <td><%=place.getUsePrice()%></td>
                 </tr>
                 <tr>
                     <th>좋아요</th>
-                    <td id = "likeCount"><%=place.getLikeCount()%> 
+                    <td id = "likeCount"><%=place.getLikeCount()%>
                     
                     <%if(loginMember != null){ %>
                     <button onclick="likeup();">좋아요</button>

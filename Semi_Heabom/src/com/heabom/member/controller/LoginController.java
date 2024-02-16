@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
 		if(loginMember != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);
-			session.setAttribute("alertMsg", "어서오십시오");
+			session.setAttribute("alertMsg", loginMember.getMemName() + "님 환영합니다.");
 			response.sendRedirect(request.getContextPath());
 		}else {
 			HttpSession session = request.getSession();

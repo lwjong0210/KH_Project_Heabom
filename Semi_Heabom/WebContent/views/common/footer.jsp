@@ -13,9 +13,8 @@
             /* background-color: rgb(240, 240, 240); */
             /* background-color: #ffebeb; */
             /* background-color: rgb(248, 238, 226); */
-            width: 100%;
-            height: auto;
-            margin: auto;
+            width: 100vw;
+            height: 10vh;
         }
 
         .footer_detail {

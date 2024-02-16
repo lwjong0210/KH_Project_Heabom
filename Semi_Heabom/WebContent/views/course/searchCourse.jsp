@@ -201,12 +201,6 @@ color: red;
         </div>
     <%@include file = "../common/footer.jsp" %>
 
-    <script>
-        $(function(){
-            swal("어디로 가실껀가요?");
-            swal("해봄이 도와드릴게요!");
-        })
-    </script>
 
 </body>
 </html>

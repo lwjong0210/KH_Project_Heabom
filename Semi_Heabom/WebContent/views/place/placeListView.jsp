@@ -13,79 +13,79 @@
     	String location = null ; 
     	switch (locationNo){
     	case 1 : 
-    		location = "강남에서 볼만한곳";
+    		location = "강남구 데이트 장소";
     		break;
     	case 2 : 
-    		location = "서초에서 볼만한곳";
+    		location = "서초구 데이트 장소";
     		break;
     	case 3 : 
-    		location = "동작에서 볼만한곳";
+    		location = "동작구 데이트 장소";
     		break;
     	case 4 : 
-    		location = "강서에서 볼만한곳";
+    		location = "강서구 데이트 장소";
     		break;
     	case 5 : 
-    		location = "양천에서 볼만한곳";
+    		location = "양천구 데이트 장소";
     		break;
     	case 6 : 
-    		location = "구로에서 볼만한곳";
+    		location = "구로구 데이트 장소";
     		break;
     	case 7 : 
-    		location = "금천에서 볼만한곳";
+    		location = "금천구 데이트 장소";
     		break;
     	case 8 : 
-    		location = "관악에서 볼만한곳";
+    		location = "관악구 데이트 장소";
     		break;
     	case 9 : 
-    		location = "영등포에서 볼만한곳";
+    		location = "영등포구 데이트 장소";
     		break;
     	case 10 : 
-    		location = "송파에서 볼만한곳";
+    		location = "송파구 데이트 장소";
     		break;
     	case 11 : 
-    		location = "강동에서 볼만한곳";
+    		location = "강동구 데이트 장소";
     		break;
     	case 12 : 
-    		location = "광진에서 볼만한곳";
+    		location = "광진구 데이트 장소";
     		break;
     	case 13 : 
-    		location = "성동에서 볼만한곳";
+    		location = "성동구 데이트 장소";
     		break;
     	case 14 : 
-    		location = "용산에서 볼만한곳";
+    		location = "용산구 데이트 장소";
     		break;
     	case 15 : 
-    		location = "마포에서 볼만한곳";
+    		location = "마포구 데이트 장소";
     		break;
     	case 16 : 
-    		location = "서대문에서 볼만한곳";
+    		location = "서대문구 데이트 장소";
     		break;
     	case 17 : 
-    		location = "중구에서 볼만한곳";
+    		location = "중구 데이트 장소";
     		break;
     	case 18 : 
-    		location = "동대문에서 볼만한곳";
+    		location = "동대문구 데이트 장소";
     		break;
     	case 19 : 
-    		location = "중랑에서 볼만한곳";
+    		location = "중랑구 데이트 장소";
     		break;
     	case 20 : 
-    		location = "종로에서 볼만한곳";
+    		location = "종로구 데이트 장소";
     		break;
     	case 21 : 
-    		location = "성북에서 볼만한곳";
+    		location = "성북구 데이트 장소";
     		break;
     	case 22 : 
-    		location = "은평에서 볼만한곳";
+    		location = "은평구 데이트 장소";
     		break;
     	case 23 : 
-    		location = "강북에서 볼만한곳";
+    		location = "강북구 데이트 장소";
     		break;
     	case 24 : 
-    		location = "도봉에서 볼만한곳";
+    		location = "도봉구 데이트 장소";
     		break;
     	case 25 : 
-    		location = "노원에서 볼만한곳";
+    		location = "노원구 데이트 장소";
     		break;
     		
     	}
@@ -209,7 +209,7 @@ main {
 <body>
 	
     <%@include file = "../common/header.jsp" %>
-    <h1><%=location%></h1>
+    <p style="font-size:3rem; font-weight:800; margin-top:60px; text-align:center;"><%=location%></p>
 
     <div class="wrap" >
 		<%for (int i = 0 ; i <list.size() ; i ++ ) {%>
@@ -225,10 +225,11 @@ main {
             <div align = "center" >
                 <div class="item" style="width: 300px; height: 300px; margin-top: 50px; float: left; margin-left: 50px; margin-bottom: 50px;"  >
                     <div class="img" style=" box-shadow: 2px 2px 2px 2px gray;" >
-                        <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
+                        <img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>">
+                        <input type="hidden" value="<%=list.get(i).getPlaceNo().substring(2)%>">
                     </div>
                     <div class="description">
-                        <div class="description_title">제목 : <%=list.get(i).getPlaceTitle() %></div>
+                        <div class="description_title">제목 : <%=list.get(i).getPlaceTitle()%></div>
                         <div class="description_sub1">분류 : <%=category %></div>
                         <div class="description_sub2">좋아요 <%=list.get(i).getLikeCount() %></div>
                     </div>
@@ -237,7 +238,14 @@ main {
             </div>
 			<%} %>
     </div>
-	
+    
+    <script>
+	$(function(){
+		$(".wrap .item .img img").click(function(){
+				location.href='<%= contextPath %>/placeDetailView.pl?pno=' + $(this).next().val()
+		})
+	})
+    </script>
 
 </body>
 </html>

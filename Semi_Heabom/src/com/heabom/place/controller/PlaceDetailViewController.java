@@ -34,19 +34,31 @@ public class PlaceDetailViewController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		HttpSession session = request.getSession();
-		ArrayList<Place> list = (ArrayList<Place>)session.getAttribute("placeSearchList");
-		int index = Integer.parseInt(request.getParameter("index"));
+		String pno = "PL" + (String)request.getParameter("pno");
+		System.out.println(pno);
+		
+//		ArrayList<Place> list = (ArrayList<Place>)session.getAttribute("placeSearchList");
+//		int index = Integer.parseInt(request.getParameter("index"));
 		//System.out.println(list.get(0));
 		//System.out.println(inde;x)
-		Place p = list.get(index);
-		String pNo = list.get(index).getPlaceNo();
-		ArrayList<File> fileList = new PlaceService().selectFileList(pNo);
+//		Place p = list.get(index);
+//		String pNo = list.get(index).getPlaceNo();
+
+		
+		
+		ArrayList<File> fileList = new PlaceService().selectFileList(pno);
+		
+		System.out.println(fileList);
+		
+		Place p = new PlaceService().selectPlaceDetail(pno);
 		//session.removeAttribute("placeSearchList");
 		
+		System.out.println(p);
+		
 		if(!(fileList.isEmpty())) {
+			request.setCharacterEncoding("UTF-8");
 			request.setAttribute("fileList", fileList);
-			request.setAttribute("placeInfo", p);
+			request.setAttribute("p", p);
 			request.getRequestDispatcher("views/place/placeDetailView.jsp").forward(request, response);
 		}else {
 			System.out.println("실패!");

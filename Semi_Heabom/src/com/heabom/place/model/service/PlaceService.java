@@ -1,13 +1,13 @@
 package com.heabom.place.model.service;
 
-import java.lang.reflect.Array;
+import static com.heabom.common.JDBCTemplate.close;
+import static com.heabom.common.JDBCTemplate.commit;
+import static com.heabom.common.JDBCTemplate.getConnection;
+import static com.heabom.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import static com.heabom.common.JDBCTemplate.*;
-
-import com.heabom.board.model.dao.BoardDao;
-import com.heabom.board.model.vo.Board;
 import com.heabom.common.model.vo.File;
 import com.heabom.member.model.vo.MemberAttachment;
 import com.heabom.place.model.dao.PlaceDao;
@@ -15,6 +15,13 @@ import com.heabom.place.model.vo.Place;
 import com.heabom.place.model.vo.Review;
 
 	public class PlaceService {
+		
+		public Place selectPlaceDetail(String pno) {
+			Connection conn = getConnection();
+			Place p = new PlaceDao().selectPlaceDetail(conn, pno);
+			close(conn);
+			return p;
+		}
 		
 		
 		public ArrayList<Place> selectPlace(String memNo){

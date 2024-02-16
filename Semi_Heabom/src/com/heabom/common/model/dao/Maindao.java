@@ -45,8 +45,11 @@ private Properties prop = new Properties();
 			while (rset.next()) {
 				Place p = new Place();
 				p.setPlaceNo(rset.getString("PLACE_NO"));
+				p.setPlaceContent(rset.getString("PLACE_CONTENT"));
 				p.setPlaceTitle(rset.getString("PLACE_TITLE"));
 				p.setTitleImg(rset.getString("TITLE_IMG"));
+				p.setAddress(rset.getString("ADDRESS"));
+				p.setPhone(rset.getString("PHONE"));
 				p.setLikeCount(rset.getInt("LIKECOUNT"));
 				list.add(p);
 			}
