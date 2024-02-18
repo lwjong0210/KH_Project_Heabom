@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 <style>
     .place_Insert_Outer {
-    width: 1900px;
     height: auto;
     background-color: #fdeeee;
     margin: auto;
