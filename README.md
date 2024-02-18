@@ -60,8 +60,9 @@
 
 
 # ⭐장소 검색⭐
- - 상품 찜목록에 담김 알림 및 마이페이지에서 확인<br><br>
-![찜하기](https://github.com/YongJinPark91/So1omon/blob/main/readme/%EC%B0%9C%ED%95%98%EA%B8%B0%20%EC%95%8C%EB%9E%8C%20%EB%B0%8F%20%EC%82%AD%EC%A0%9C.gif?raw=true)
+ - 등록된 장소 검색<br><br>
+![장소검색](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/309635d4-06b7-411c-8177-d30590751a39)
+
 
 # ⭐코스 등록⭐
  - 카카오로 연동하여 로그인<br><br>
