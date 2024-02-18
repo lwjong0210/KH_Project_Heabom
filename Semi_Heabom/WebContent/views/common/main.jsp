@@ -70,16 +70,6 @@
 	
 }
 
-#wrap {
-	width: 1900px;
-	height: auto;
-	/*
-            border: 0px solid black;
-            box-sizing: border-box;
-            */
-	margin-top: 1.5%;
-	background-color: rgb(253, 238, 238);
-}
 
 div {
 	/*
