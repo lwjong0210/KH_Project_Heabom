@@ -100,6 +100,7 @@
 <details>
 <summary>접기/펼치기</summary>
 <pre>
+ 
 ![ERD](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/811fda2e-7ae3-4127-8673-d2824318ed98)
 </pre> 
 </details>
