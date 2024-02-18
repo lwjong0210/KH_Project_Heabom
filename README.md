@@ -79,9 +79,10 @@
  - 댓글 등록 및 삭제, 좋아요<br><br>
 ![게시판 댓글 등록 좋아요 삭제](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/50adde46-7eca-42b2-9b7b-b6074b285de7)
 
-# ⭐관리자페이지지⭐
- - 1인가구를 위한 국가사업 조회<br><br>
-![1인가구 공공데이터](https://github.com/YongJinPark91/So1omon/blob/main/readme/1%EC%9D%B8%EA%B0%80%EA%B5%AC%20%EA%B4%80%EB%A0%A8%20%EA%B3%B5%EA%B3%B5%EB%8D%B0%EC%9D%B4%ED%84%B0api.gif?raw=true)
+# ⭐관리자페이지⭐
+ - 신고관리, 회원관리<br><br>
+![관리자페이지](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/567ee924-cdf9-41dc-b162-4ce4b3ac38ee)
+
 
 ### 기타-1. 최종보고서
 <details>
@@ -95,8 +96,18 @@
 </pre> 
 </details>
 
+### 기타-2. DB설계(ERD
+<details>
+<summary>접기/펼치기</summary>
+<pre>
 
-### 기타-2. Data-Base Detail Script
+![ERD](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/1c06a6eb-8ffc-4682-aa7e-ae42221b3c68)
+</pre> 
+</details>
+
+
+
+### 기타-3. Data-Base Detail Script
 <details>
 <summary>접기/펼치기</summary>
 <pre>
