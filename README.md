@@ -1,7 +1,7 @@
 
 
 # 프로젝트명 Haebom
-![logo](https://github.com/YongJinPark91/So1omon/blob/main/readme/solomon%20%EB%A1%9C%EA%B3%A0.gif?raw=true)
+![9번로고](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/29d7ef48-3890-4eef-ae77-a8fabf4e2c65)
 <br><br><br>
 'Haebom'은 한글로 '~을 해보다.'라는 것을 은유적으로 표현하여 '해봄?'이라는 의미로 다양한 장소들을 경험할 수 있게 하기 위해서 만든 프로젝트입니다.
 <br><br>
