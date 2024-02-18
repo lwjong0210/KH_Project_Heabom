@@ -22,7 +22,7 @@
         width: 532px;
         margin: auto;
         margin-top: 10px;
-        margin-left: 817px;
+        margin-left: 627px;
         background-color: white;
         padding: 20px;
         border-radius: 20px;

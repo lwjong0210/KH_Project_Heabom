@@ -89,8 +89,8 @@ table, div {
 
 .mypage-nameTag {
 	position: absolute;
-	top: 85px;
-	left: 850px;
+	top: 80px;
+	left: 650px;
 	background-color: rgb(87, 86, 86);
 	color: white;
 	border-radius: 10px;

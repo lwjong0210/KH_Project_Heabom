@@ -154,7 +154,7 @@
 }  
 
 .wrap {
-  width: 1900px;
+  width: 1500px;
   text-align: center;
   border: 0px solid black;
   margin: auto;
@@ -246,9 +246,11 @@ main {
 	          	
 	        
             <section>
-                <div class="item" style="width: 300px; height: 300px; margin-top: 50px; float: left; margin-left: 50px; margin-bottom: 50px;">
+                <div class="item" style="width: 300px; height: 300px; margin-top: 20px; float: left; margin-left: 50px; margin-bottom: 150px;">
                     <div class="img" >
-                        <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>"><img  src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"></a>
+                        <a href="<%=contextPath%>/placeDetailView.pl?index=<%=i%>">
+							<img  src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>">
+						</a>
                     </div>
                     <div class="description">
                     	<div class="description_no" ><%=list.get(i).getPlaceNo() %></div>
