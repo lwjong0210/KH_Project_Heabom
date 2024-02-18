@@ -77,7 +77,7 @@
 ![게시판 글쓰기](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/216afc7e-4a8e-45c7-91d3-9a7443253345)
 
  - 댓글 등록 및 삭제, 좋아요<br><br>
-![게시판 댓글 등록 좋아요 삭제](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/50adde46-7eca-42b2-9b7b-b6074b285de7)
+![댓글 수정삭제 좋아요 찐막](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/f3fe912f-dee9-4fde-9983-ca79fb114137)
 
 # ⭐관리자페이지⭐
  - 신고관리, 회원관리<br><br>
