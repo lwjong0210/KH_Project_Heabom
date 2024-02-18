@@ -58,7 +58,7 @@ public class PlaceInsertController extends HttpServlet {
 					File at = new File();
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key)); //이게뭐지?
-					at.setFilePath("resource/img/place_upfiles");
+					at.setFilePath("/resource/img/place_upfiles/");
 					if (i == 1 ) {//대표 이미지 일경우 
 						at.setFileLevel(1);
 					}else {

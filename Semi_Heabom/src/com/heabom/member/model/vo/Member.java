@@ -14,7 +14,6 @@ public class Member {
    private String memPhone;
    private Date enrollDate;
    private String memStatus;
-   private Date memVisit;
    private String memBirthday;
    private int memPoint;
    
@@ -24,7 +23,7 @@ public class Member {
    public Member () {}
 
    public Member(String memNo, String grade, String memId, String memPwd, String memName, String nickname,
-         String email, String mbit, String memPhone, Date enrollDate, String memStatus, Date memVisit,
+         String email, String mbit, String memPhone, Date enrollDate, String memStatus,
          String memBirthday, int memPoint, String titleImg, int fileLevel) {
       super();
       this.memNo = memNo;
@@ -38,14 +37,13 @@ public class Member {
       this.memPhone = memPhone;
       this.enrollDate = enrollDate;
       this.memStatus = memStatus;
-      this.memVisit = memVisit;
       this.memBirthday = memBirthday;
       this.memPoint = memPoint;
       this.titleImg = titleImg;
       this.fileLevel = fileLevel;
    }
 
-   public Member(String memNo, String memId, String memName, String nickname, String grade, int memPoint, Date memVisit, String email) {
+   public Member(String memNo, String memId, String memName, String nickname, String grade, int memPoint, String email) {
       super();
       this.memNo = memNo;
       this.memId = memId;
@@ -53,7 +51,6 @@ public class Member {
       this.nickname = nickname;
       this.grade = grade;
       this.memPoint = memPoint;
-      this.memVisit = memVisit;
       this.email = email;
       
    }
@@ -62,7 +59,7 @@ public class Member {
    
 
    public Member(String memNo, String grade, String memId, String memPwd, String memName, String nickname,
-         String email, String mbit, String memPhone, Date enrollDate, String memStatus, Date memVisit,
+         String email, String mbit, String memPhone, Date enrollDate, String memStatus,
          String memBirthday, int memPoint) {
       super();
       this.memNo = memNo;
@@ -76,7 +73,6 @@ public class Member {
       this.memPhone = memPhone;
       this.enrollDate = enrollDate;
       this.memStatus = memStatus;
-      this.memVisit = memVisit;
       this.memBirthday = memBirthday;
       this.memPoint = memPoint;
    }
@@ -202,14 +198,6 @@ public class Member {
       this.memStatus = memStatus;
    }
 
-   public Date getMemVisit() {
-      return memVisit;
-   }
-
-   public void setMemVisit(Date memVisit) {
-      this.memVisit = memVisit;
-   }
-
    public String getMemBirthday() {
       return memBirthday;
    }
@@ -230,7 +218,7 @@ public class Member {
    public String toString() {
       return "Member [memNo=" + memNo + ", grade=" + grade + ", memId=" + memId + ", memPwd=" + memPwd + ", memName="
             + memName + ", nickname=" + nickname + ", email=" + email + ", mbit=" + mbit + ", memPhone=" + memPhone
-            + ", enrollDate=" + enrollDate + ", memStatus=" + memStatus + ", memVisit=" + memVisit
+            + ", enrollDate=" + enrollDate + ", memStatus=" + memStatus
             + ", memBirthday=" + memBirthday + ", memPoint=" + memPoint + "]";
    }
 }

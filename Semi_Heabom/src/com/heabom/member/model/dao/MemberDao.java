@@ -82,7 +82,6 @@ public class MemberDao {
                     rset.getString("NICKNAME"),
                     rset.getString("GRADE"),
                     rset.getInt("MEM_POINT"),
-                    rset.getDate("MEM_VISIT"),
                     rset.getString("EMAIL")
                 ));
             }
@@ -152,7 +151,6 @@ public class MemberDao {
                        rset.getString("NICKNAME"),
                        rset.getString("GRADE"),
                        rset.getInt("MEM_POINT"),
-                       rset.getDate("MEM_VISIT"),
                        rset.getString("EMAIL")
                    ));
                }
@@ -306,7 +304,6 @@ public class MemberDao {
                     ,rset.getString("MEM_PHONE")
                     ,rset.getDate("ENROLL_DATE")
                     ,rset.getString("MEM_STATUS")
-                    ,rset.getDate("MEM_VISIT")
                     ,rset.getString("MEM_BIRTHDAY")
                     ,rset.getInt("MEM_POINT")
                      ,rset.getString("TITLEIMG")
@@ -422,7 +419,6 @@ public class MemberDao {
                     ,rset.getString("MEM_PHONE")
                     ,rset.getDate("ENROLL_DATE")
                     ,rset.getString("MEM_STATUS")
-                    ,rset.getDate("MEM_VISIT")
                     ,rset.getString("MEM_BIRTHDAY")
                     ,rset.getInt("MEM_POINT"));
          }
