@@ -214,53 +214,7 @@
 <body>
     <%@ include file ="../common/header.jsp" %>
     <% System.out.println(loginMember); %>
-    <div class="wrap">
-        
-        <div id="demo" class="carousel slide" data-ride="carousel" style="padding: 20px 10px ;">
-            
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-            
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="resource/img/1mj3112000b8kyfpd5FC3_Z_640_10000_R5.png_.webp" alt="Los Angeles">
-                    <div class="carousel-caption">
-                        <h3>워터밤</h3>
-                        <p>놀러와~~~~~</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="resource/img/285632_356327_475.jpg" alt="Chicago">
-                    <div class="carousel-caption">
-                        <h3>화로축제</h3>
-                        <p>흠냐링~</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="resource/img/5n90r48nlara9vx.png" alt="New York">
-                    <div class="carousel-caption">
-                        <h3>뮤직축제</h3>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-            
-        </div>
-        
-        
+    <div class="wrap mt-5">
         
         <div id="write-text" style="padding: 10px;">
             <div>
