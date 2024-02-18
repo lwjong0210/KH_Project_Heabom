@@ -45,7 +45,7 @@
 
 # ⭐메인화면⭐
  - 다양한 카테고리를 한 화면에서 조회<br><br>
-![메인화면](https://github.com/YongJinPark91/So1omon/blob/main/readme/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.gif?raw=true)
+![메인화면](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/7c88ff67-cf76-4ce6-8a99-c03c48e52b7d)
 
 # ⭐로그인 및 회원가입⭐
 - 판매상품, 자유게시글, 중고게시글을 키워드로 검색<br><br>
