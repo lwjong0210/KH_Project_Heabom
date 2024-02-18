@@ -67,8 +67,13 @@
 ![소셜로그인](https://github.com/YongJinPark91/So1omon/blob/main/readme/%EC%B9%B4%EC%B9%B4%EC%98%A4%20%EC%86%8C%EC%85%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif?raw=true)
 
 # ⭐자유게시판⭐
- - 내 게시글에 댓글 달렸을 시 알림<br><br>
-![댓글](https://github.com/YongJinPark91/So1omon/blob/main/readme/%EB%8C%93%EA%B8%80%20%EC%95%8C%EB%9E%8C%20%EB%B0%8F%20%ED%99%95%EC%9D%B8.gif?raw=true)
+ - 기본 현황<br><br>
+![게시글 확인](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/934bf7ae-0fa3-4afe-8413-85161b9f80c2)
+ - 글쓰기<br><br>
+![게시판 글쓰기](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/216afc7e-4a8e-45c7-91d3-9a7443253345)
+
+ - 댓글 등록 및 삭제, 좋아요<br><br>
+![게시판 댓글 등록 좋아요 삭제](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/50adde46-7eca-42b2-9b7b-b6074b285de7)
 
 # ⭐관리자페이지지⭐
  - 1인가구를 위한 국가사업 조회<br><br>
