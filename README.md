@@ -96,12 +96,11 @@
 </pre> 
 </details>
 
-### 기타-2. DB설계(ERD
+### 기타-2. DB설계(ERD)
 <details>
 <summary>접기/펼치기</summary>
 <pre>
-
-![ERD](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/1c06a6eb-8ffc-4682-aa7e-ae42221b3c68)
+![ERD](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/811fda2e-7ae3-4127-8673-d2824318ed98)
 </pre> 
 </details>
 
