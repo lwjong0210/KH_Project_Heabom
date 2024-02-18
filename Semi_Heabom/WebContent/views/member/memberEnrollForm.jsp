@@ -39,7 +39,6 @@
             }
     
               #wrap{
-                width: 1900px;
                 height: 800px;
                 border: 0px solid black;
                 box-sizing: border-box;
