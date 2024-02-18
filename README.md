@@ -59,9 +59,11 @@
 ![마이페이지](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/06b4554e-3809-462a-b250-8ab20bffa8f5)
 
 
-# ⭐장소 검색⭐
+# ⭐장소 검색 및 등록⭐
  - 등록된 장소 검색<br><br>
 ![장소검색](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/309635d4-06b7-411c-8177-d30590751a39)
+ - 등록된 장소 검색<br><br>
+![장소저장](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/513c0597-18fa-406c-8c4c-9aa979a2f082)
 
 
 # ⭐코스 등록⭐
