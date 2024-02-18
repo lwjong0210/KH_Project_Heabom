@@ -60,7 +60,8 @@ String contextPath1 = request.getContextPath();
 					<div id="notice_category">
 						<% if (boardNo.substring(0, 1).equals("F")) { %>
 						<div>
-							<a href="<%=contextPath%>/list.bo?cpage=1" style="font-size: 20px;">자유게시판</a>
+							<a href="<%=contextPath%>/list.bo?cpage=1"
+								style="font-size: 20px;">자유게시판</a>
 						</div>
 						<% } else { %>
 						<div>
@@ -395,11 +396,11 @@ String contextPath1 = request.getContextPath();
 			}
 		</script>
 		</div>
-		<br>
-		<br>
+		<br><br>
 		<div class="post_list" style="width: auto; border: none;">
 			<h3 style="margin: 0; padding: 0;">전체글보기</h3>
-			<br> <input type="hidden" id="cpage3" value="1">
+			<hr>
+			<input type="hidden" id="cpage3" value="1">
 			<table id="dataTableBody" style="width: 100%">
 				<!-- 여기에 들어감 -->
 			</table>
@@ -493,7 +494,7 @@ String contextPath1 = request.getContextPath();
 			})
 			
 			$(document).on("click", ".boardTr",function(){
-				location.href = "<%= contextPath%>/detail.bo?bno=" + $(this).children().first().text()
+				location.href = "<%=contextPath%>/detail.bo?bno=" + $(this).children().first().text()
 				console.log($(this).children().first().text())
 			})
 			
@@ -547,6 +548,7 @@ String contextPath1 = request.getContextPath();
 			}
 				
 		</script>
+		<hr>
 		</div>
 	</div>
 
@@ -568,7 +570,7 @@ String contextPath1 = request.getContextPath();
 					<form action="<%=contextPath1%>/insert2.rp" method="post">
 						<input type="hidden" name="userId" value=""> <b>부적절한
 							댓글 및 사용자에 대해서 신고를 할 수 있습니다. <br> 아래의 신고 내용을 참고 해서 작성해 주세요 <br>
-						<br>
+							<br>
 						</b>
 						<table class="reportForm" border="0">
 							<tr>

@@ -9,14 +9,14 @@ public class Report {
 	private String reported;
 	private String reCategory;
 	private String reContent;
-	private Date reDate;
+	private String reDate;
 	private Date reComplite;
 	private String reStatus;
 	private String postNo;
 	
 	public Report() {}
 
-	public Report(int reportNo, String reporter, String reported, String reCategory, String reContent, Date reDate,
+	public Report(int reportNo, String reporter, String reported, String reCategory, String reContent, String reDate,
 			Date reComplite, String reStatus, String postNo) {
 		super();
 		this.reportNo = reportNo;
@@ -31,7 +31,7 @@ public class Report {
 	}
 	
 
-	public Report(int reportNo, String reporter, String reported, String reCategory, Date reDate, Date reComplite,
+	public Report(int reportNo, String reporter, String reported, String reCategory, String reDate, Date reComplite,
 			String reStatus) {
 		super();
 		this.reportNo = reportNo;
@@ -85,11 +85,11 @@ public class Report {
 		this.reContent = reContent;
 	}
 
-	public Date getReDate() {
+	public String getReDate() {
 		return reDate;
 	}
 
-	public void setReDate(Date reDate) {
+	public void setReDate(String reDate) {
 		this.reDate = reDate;
 	}
 
