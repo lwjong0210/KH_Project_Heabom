@@ -48,7 +48,7 @@
 ![메인화면](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/7c88ff67-cf76-4ce6-8a99-c03c48e52b7d)
 
 # ⭐로그인 및 회원가입⭐
-- 판매상품, 자유게시글, 중고게시글을 키워드로 검색<br><br>
+- 단순한 메인페이지를 통해 관리자 추천 장소를 확인할 수 있다.<br><br>
 ![상품검색](https://github.com/YongJinPark91/So1omon/blob/main/readme/%EC%83%81%ED%92%88%EA%B2%80%EC%83%89%EC%9D%B4%EC%A7%80%EB%A7%8C%20%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80%EB%8A%94%20%EB%8B%A4%EB%A5%B8%20%EC%83%81%ED%92%88(%EB%B6%88%EB%9F%89).gif?raw=true)
 
 # ⭐마이페이지⭐
