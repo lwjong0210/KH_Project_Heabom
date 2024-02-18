@@ -31,7 +31,6 @@
         background-color: #f5f5f5;
         margin: 0;
         padding: 0;
-        width: 1900px;
         margin: 50px auto;
         background-color: #ffffff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
