@@ -55,8 +55,9 @@
 
 
 # ⭐마이페이지⭐
- - 마이페이지<br><br>
-![장바구니 등록 및 알람](https://github.com/YongJinPark91/So1omon/blob/main/readme/%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EB%93%B1%EB%A1%9D%EC%99%84%EB%A3%8C%20%EC%95%8C%EB%9E%8C.gif?raw=true)
+ - 마이페이지(개인정보, 코스, 좋아요, 리뷰/댓글, 게시물, 내글, Q&A)<br><br>
+![마이페이지](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/06b4554e-3809-462a-b250-8ab20bffa8f5)
+
 
 # ⭐장소 검색⭐
  - 상품 찜목록에 담김 알림 및 마이페이지에서 확인<br><br>
