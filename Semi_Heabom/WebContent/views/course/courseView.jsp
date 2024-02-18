@@ -155,7 +155,7 @@
 }  
 
 .wrap {
-  width: 1900px;
+  width: 1500px;
   text-align: center;
   border: 0px solid black;
   margin: auto;
