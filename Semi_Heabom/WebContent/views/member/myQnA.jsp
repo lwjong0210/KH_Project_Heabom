@@ -148,7 +148,7 @@
 				<% if(q.getAnswerContent() == null) { %>
 					<!-- 답변 전 -->
 					<div class="pull pk_unComplete">
-						<div class="text_limit"><strong>관리자가 성실한 답변 작성중에 있습니다. 빠른시일내에 답변 드리겠습니다.</strong></div>
+						<div class="text_limit"><strong>관리자가 성실한 답변 작성중에 있습니다.</strong></div>
 					</div>
 				<% } else { %>
 					<!-- 답변완료시 -->
