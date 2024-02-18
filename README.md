@@ -98,12 +98,13 @@
 ### 기타-1. 최종보고서
 <details>
 <summary>접기/펼치기</summary>
-<pre> 
+<pre>
+ 
 ![1](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/8ca13f40-0a8e-4e58-bbb6-463ec590c7dc)
 ![2](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/06259826-0754-4841-a400-7b198b91789f)
 ![3](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/54eb3778-1da7-4f9f-902b-68288ad41fd9)
 ![4](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/65227318-3bde-4fba-868b-9387305e017c)
- ![1](https://github.com/YongJinPark91/So1omon/assets/130638184/27243dcd-e6cf-4b03-b68f-976535ffbbc2)
+![1](https://github.com/YongJinPark91/So1omon/assets/130638184/27243dcd-e6cf-4b03-b68f-976535ffbbc2)
 </pre> 
 </details>
 
