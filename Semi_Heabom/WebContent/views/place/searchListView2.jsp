@@ -102,7 +102,7 @@
 </div>
 <%}else{ %>
 <div id = "plzLogin" align ="center" >
-	<h2 data-toggle="modal" data-target="#myModal">로그인 하시면 장소를 등록할수 있어용</h2>
+	<h2 data-toggle="modal" data-target="#myModal">로그인한 회원만 장소를 등록할 수 있습니다.</h2>
 </div>
 <%} %>
         <div class="wrap">
