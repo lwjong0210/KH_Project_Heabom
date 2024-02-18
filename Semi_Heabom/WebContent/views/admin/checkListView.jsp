@@ -35,7 +35,6 @@
         }
 
         .wrap {
-            width: 1900px;
             height: auto;
             /* border: 1px solid black; */
             box-sizing: border-box;

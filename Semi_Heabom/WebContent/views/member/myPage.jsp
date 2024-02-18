@@ -16,7 +16,6 @@ table, div {
 }
 
 .outer_yj {
-	width: 1900px;
 	height: auto;
 	background-color: #fdeeee;
 	margin: auto;
