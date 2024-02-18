@@ -96,8 +96,18 @@
 </pre> 
 </details>
 
+### 기타-2. DB설계(ERD
+<details>
+<summary>접기/펼치기</summary>
+<pre>
 
-### 기타-2. Data-Base Detail Script
+![ERD](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/1c06a6eb-8ffc-4682-aa7e-ae42221b3c68)
+</pre> 
+</details>
+
+
+
+### 기타-3. Data-Base Detail Script
 <details>
 <summary>접기/펼치기</summary>
 <pre>
