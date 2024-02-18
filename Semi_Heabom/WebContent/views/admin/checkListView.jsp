@@ -379,7 +379,6 @@
                                 <th width="120">등급</th>
                                 <th></th>
                                 <th width="120">포인트</th>
-                                <th width="160">최종 접속</th>
                                 <th width="120">이메일</th>
                                 <th width="160"><button type="button" style="width: 60px; height: 40px; font-size: 15px; background-color: rgb(148, 226, 165); border: none; border-radius: 5px;">변경</button>
                             </thead>
@@ -395,7 +394,6 @@
                                         <td><%= list.get(i).getGrade() %></td>
                                         <td><input type="hidden" name="memId" value="<%= list.get(i).getMemId() %>"></td>
                                         <td><input type="number" name="memPoint" style="width: 50%"></td>
-                                        <td><%= list.get(i).getMemVisit() %></td>
                                         <td><%= list.get(i).getEmail() %></td>
                                         <td>
                                             <input type="submit" id="commentbtn<%=i%>" value="변경">
