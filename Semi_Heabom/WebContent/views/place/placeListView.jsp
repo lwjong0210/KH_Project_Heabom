@@ -1,8 +1,8 @@
 <%@page import="com.heabom.place.model.vo.Place"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%
+	pageEncoding="UTF-8"%>
+<%
     	ArrayList<Place> list = (ArrayList<Place>)request.getAttribute("list");
        	session.setAttribute("placeSearchList", list);
  
@@ -97,57 +97,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heabom</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heabom</title>
+<style>
 #catagory-bar {
-  display: flex;
-  gap: 32px;
-  padding: 20px 40px 0;
-  overflow: auto;
+	display: flex;
+	gap: 32px;
+	padding: 20px 40px 0;
+	overflow: auto;
 }
+
 #catagory-bar::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
+
 .active-img {
-  display: none;
+	display: none;
 }
-.catagory-button{
-  color: #717171;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
+
+.catagory-button {
+	color: #717171;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
 }
+
 .catagory-button img {
-  width: 28px;
+	width: 28px;
 }
+
 .catagory-button:hover {
-  color: #000000;
-  border-bottom: 0px solid #DDDDDD;
+	color: #000000;
+	border-bottom: 0px solid #DDDDDD;
 }
-#active-catagory-button{
-  color: #000000;
-  border-bottom: 0px solid #000000;
+
+#active-catagory-button {
+	color: #000000;
+	border-bottom: 0px solid #000000;
 }
+
 #active-catagory-button .active-img {
-  display: inline-block;
+	display: inline-block;
 }
+
 #active-catagory-button .inactive-img {
-  display: none;
-}  
-
-.wrap {
-  width: 1900px;
-  text-align: center;
-  border: 0px solid black;
-  margin: auto;
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    padding: 20px 80px;
+	display: none;
 }
 
 /* section {
@@ -159,90 +154,78 @@ main {
     gap: 40px 24px;
 } */
 
-.item {
-    cursor: pointer;
-    border: 0px solid black;
-    text-align: center;
-}
-
-.img {
-
-  width: 308px;
-  height: 293px;
-  overflow: hidden;
-  border-radius: 23px;
-  border: 0px solid black;
-  margin: auto;
-  
-  
-}
-
 .img img {
-    width: 100%;
-    height: 100%;
-    transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-    
-    
+	width: 100%;
+	aspect-ratio: 1;
+	border-radius: 0.375rem;
+	box-shadow: 2px 2px 2px 2px gray;
 }
 
-.img img:hover {
-  box-shadow: 0 0.5em 0.5em -0.4em #6b6b6b;
-  transform: translateY(-0.2em);
+.place-item:hover {
+	transform: translateY(-0.2em);
+	cursor: pointer;
 }
 
 .description {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  font-size: 15px;
-  color: rgb(34, 34, 34);
-  border: 1px solid black;
-  border-radius: 10px;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	font-size: 15px;
+	color: rgb(34, 34, 34);
+	border: 1px solid black;
+	border-radius: 10px;
 }
 
 .description>.description_title {
-    font-weight: bold;
+	font-weight: bold;
 }
-    </style>
+</style>
 </head>
 <body>
-	
-    <%@include file = "../common/header.jsp" %>
-    <p style="font-size:3rem; font-weight:800; margin-top:60px; text-align:center;"><%=location%></p>
 
-    <div class="wrap" >
-		<%for (int i = 0 ; i <list.size() ; i ++ ) {%>
-	          <%if (list.get(i).getCategoryNo() == 1){ 
-	          		category = "주점";
-	          }else if(list.get(i).getCategoryNo() == 2) {
-	        	  	category = "카페";
-	          }else{
-	        	  category = "음식점";
-	          }  %>
-	          	
-	        
-            <div align = "center" >
-                <div class="item" style="width: 300px; height: 300px; margin-top: 50px; float: left; margin-left: 50px; margin-bottom: 50px;"  >
-                    <div class="img" style=" box-shadow: 2px 2px 2px 2px gray;" >
-                        <img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>">
-                        <input type="hidden" value="<%=list.get(i).getPlaceNo().substring(2)%>">
-                    </div>
-                    <div class="description">
-                        <div class="description_title">제목 : <%=list.get(i).getPlaceTitle()%></div>
-                        <div class="description_sub1">분류 : <%=category %></div>
-                        <div class="description_sub2">좋아요 <%=list.get(i).getLikeCount() %></div>
-                    </div>
-					
-                </div>
-            </div>
-			<%} %>
-    </div>
-    
-    <script>
+	<%@include file="../common/header.jsp"%>
+	<p
+		style="font-size: 3rem; font-weight: 800; margin-top: 60px; text-align: center;"><%=location%></p>
+
+	<div class="container">
+		<div class="row">
+			<%for (int i = 0 ; i <list.size() ; i ++ ) {%>
+				<%if (list.get(i).getCategoryNo() == 1){ 
+		          		category = "주점";
+		          }else if(list.get(i).getCategoryNo() == 2) {
+		        	  	category = "카페";
+		          }else{
+		        	  category = "음식점";
+		          }  %>
+
+
+			<div class="col-md-3 p-3 place-item">
+				<div class="img">
+					<img src="<%=contextPath%>/<%=list.get(i).getTitleImg()%>"> <input class="hidden-pno"
+						type="hidden" value="<%=list.get(i).getPlaceNo().substring(2)%>">
+				</div>
+				<div class="description p-2">
+					<div class="description_title">
+						제목 :
+						<%=list.get(i).getPlaceTitle()%></div>
+					<div class="description_sub1">
+						분류 :
+						<%=category %></div>
+					<div class="description_sub2">
+						좋아요
+						<%=list.get(i).getLikeCount() %></div>
+				</div>
+
+			</div>
+		<%} %>
+		</div>
+	</div>
+
+	<script>
 	$(function(){
-		$(".wrap .item .img img").click(function(){
-				location.href='<%= contextPath %>/placeDetailView.pl?pno=' + $(this).next().val()
+		$(".place-item .img").click(function(){
+			location.href='<%= contextPath %>/placeDetailView.pl?pno=' + $(this).find(".hidden-pno").val()
 		})
 	})
     </script>

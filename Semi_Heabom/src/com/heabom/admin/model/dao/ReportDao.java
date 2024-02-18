@@ -79,7 +79,7 @@ private Properties prop = new Properties();
                      rset.getString("REPORTER"),
                      rset.getString("REPORTED"),
                      rset.getString("REPORT_CATEGORY"),
-                     rset.getDate("REPORT_DATE"),
+                     rset.getString("REPORT_DATE"),
                      rset.getDate("REPORT_COMPLITE"),
                      rset.getString("REPORT_STATUS")
                  ));
@@ -153,7 +153,7 @@ private Properties prop = new Properties();
 		                     rset.getString("REPORTER"),
 		                     rset.getString("REPORTED"),
 		                     rset.getString("REPORT_CATEGORY"),
-		                     rset.getDate("REPORT_DATE"),
+		                     rset.getString("REPORT_DATE"),
 		                     rset.getDate("REPORT_COMPLITE"),
 		                     rset.getString("REPORT_STATUS")
 		             ));

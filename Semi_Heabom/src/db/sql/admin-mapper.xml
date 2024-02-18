@@ -17,7 +17,7 @@ SELECT
     ,   REPORTER
     ,   REPORTED
     ,   REPORT_CATEGORY
-    ,   REPORT_DATE
+    ,   to_char(REPORT_DATE, 'YYYY-MM-DD hh:mm:ss') as REPORT_DATE
     ,   REPORT_COMPLITE
     ,   REPORT_STATUS
   FROM  TB_REPORT

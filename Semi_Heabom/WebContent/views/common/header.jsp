@@ -155,6 +155,7 @@
         }
         .header_logo img:hover{
             opacity: 0.7;
+            
         }
 
     </style>

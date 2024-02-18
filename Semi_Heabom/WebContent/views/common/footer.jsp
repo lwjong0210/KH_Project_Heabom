@@ -13,7 +13,7 @@
             /* background-color: rgb(240, 240, 240); */
             /* background-color: #ffebeb; */
             /* background-color: rgb(248, 238, 226); */
-            width: 100vw;
+            width: 1500px;
             height: 10vh;
         }
 
