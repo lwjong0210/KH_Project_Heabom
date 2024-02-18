@@ -65,8 +65,8 @@
 
 
 # ⭐코스 등록⭐
- - 카카오로 연동하여 로그인<br><br>
-![소셜로그인](https://github.com/YongJinPark91/So1omon/blob/main/readme/%EC%B9%B4%EC%B9%B4%EC%98%A4%20%EC%86%8C%EC%85%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif?raw=true)
+ - 등록된 장소르 활용한 코스 만들기<br><br>
+![코스저장찐](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/bb902d00-cfd3-4fad-9caa-a02f446fec0f)
 
 # ⭐자유게시판⭐
  - 기본 현황<br><br>
