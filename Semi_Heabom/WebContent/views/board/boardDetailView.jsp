@@ -356,7 +356,7 @@ String contextPath1 = request.getContextPath();
 								}
 							}
 							$("#write_comment").keyup(comment_ctrl);
-							$("#write_comment").keydown(comment_ctrl);
+							/* $("#write_comment").keydown(comment_ctrl); */
 							$("#write_comment").click(function () {
 								$(this).css('outline', 'none')
 							})

@@ -231,7 +231,7 @@
                     <div id="select-category-area">
                         <select name="category" id="select-category" onchange="clickNoticeOption(this.value);">
                             <option value="F">자유게시판</option>
-                            <% if(loginMember.getGrade().equals("태양")){ %>
+                            <% if(loginMember.getGrade().equals("무궁화")){ %>
                                 <option value="N">공지사항</option>
                                 <% } %>
                             </select>

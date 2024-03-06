@@ -150,49 +150,52 @@ tfoot td button{
 				</tr>
 
 			</thead>
+			<!-- 게시글 리스트 영역 -->
 			<tbody id="list-area">
+				<!-- 만약 불러올 게시글이 없을 경우 -->
 				<% if(list.isEmpty()){ %>
 				<tr>
 					<td colspan="5">아직 게시글이 존재하지 않습니다.</td>
 				</tr>
+				<!-- 불러올 게시글이 있는 경우 -->
 				<% }else{ %>
-
+				<!-- 게시글 갯수만큼 반복 -->
 				<% for(Board b : list){ %>
+				<!-- 게시글 번호의 첫 문자가 N 일 경우(공지사항일 경우)  -->
+				<!-- ex) 공지사항 : N12, 자유게시판 : F13 -->
 				<% if(b.getBoardNo().substring(0, 1).equals("N")){ %>
 				<tr class="post-notice-area" style="background-color: rgb(249, 238, 238);">
-				
 					<td hidden><%= b.getBoardNo().substring(1) %></td>
 					<td><div class="post-notice">공지</div></td>
 					<td class="post-notice-title"><%= b.getBoardTitle() %> 
-					<% if(b.getCountReply() != 0){ %>
-						<b style="color: red"> [<%= b.getCountReply() %>]
-					</b> <% }else{ %> <% } %></td>
-					<% }else{ %>
-				</tr>
+				<!-- 게시글의 첫 문자가 N이 아닐 경우, 즉 자유게시글일 경우 -->
+				<% }else{ %>
 				<tr>
 					<td><%= b.getBoardNo().substring(1) %></td>
-					<td><%= b.getBoardTitle()%> <% if( b.getCountReply() != 0){ %> <b
-						style="color: red"> [<%= b.getCountReply() %>]
-					</b> <% }else{ %> <% } %></td>
-
-
-					<% } %>
+					<td><%= b.getBoardTitle()%> 
+				<% } %>
+						<!-- 댓글이 존재할 경우 제목 우측에 갯수 표시 -->
+						<% if( b.getCountReply() != 0){ %> 
+							<b style="color: red"> [<%= b.getCountReply() %>]</b>
+						<% } %>
+					</td>
 					<td><%= b.getWriter() %></td>
 					<td><%= b.getBoardCount() %></td>
 					<td><%= b.getCreateDate() %></td>
 				</tr>
 				<% } %>
-
 				<% } %>
-
 			</tbody>
+			<!-- 페이지네이션 영역 -->
 			<tfoot>
 				<tr>
 					<td colspan="5" style="border-top: 1px solid gray;">
 						<ul class="pagination justify-content-center" style="margin: 0;">
+							<!-- 현재페이지가 1이 아닐 경우, 이전 버튼 활성화 -->
 							<% if(pi.getCurrentPage() != 1){ %>
 								<li class="page-item"><button class="page-link" onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage -1 %>'">Previous</button></li>
 							<% } %>
+							<!-- 첫 페이지부터 마지막 페이지까지 반복문 -->
 							<% for(int i = startPage; i <= endPage; i++ ){ %>
 								<% if(i == currentPage){ %>
 									<li class="page-item"><button class="page-link btn active" disabled><%= i %></button></li>
@@ -201,7 +204,7 @@ tfoot td button{
 
 								<% } %>
 							<% } %>
-
+							<!-- 현재페이지가 마지막이 아닐 경우, 다음 버튼 활성화 -->
 							<% if(currentPage != maxPage){ %>
 							<li class="page-item"><button class="page-link"
 									onclick="location.href='<%= contextPath %>/list.bo?cpage=<%= currentPage +1 %>'">Next</button></li>

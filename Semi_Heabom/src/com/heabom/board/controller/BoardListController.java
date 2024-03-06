@@ -36,18 +36,15 @@ public class BoardListController extends HttpServlet {
 		int currentPage; // 현재 페이지
 		int pageLimit; //  하단에 보여지는 페이징바의 최대개수
 		int boardLimit; // 한 페이지내에 보여질 게시글 최대개수
-		
 		int maxPage; // 가장마지막 페이지
 		int startPage; // 페이징바의 시작수
 		int endPage; // 페이징바의 끝 수
 		
-	
 		listCount = new BoardService().selectListCount();
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 	
-		boardLimit= 20;
-
-		pageLimit = 10;
+		boardLimit= 5; // 한 페이지내에 보여질 게시글 최대개수
+		pageLimit = 10; // 하단에 보여지는 페이징바의 최대개수
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
@@ -61,8 +58,6 @@ public class BoardListController extends HttpServlet {
 		ArrayList<Board> list = new BoardService().selectList(pi);
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		
-		
 		request.getRequestDispatcher("views/board/boardListView.jsp").forward(request, response);
 	
 	}
