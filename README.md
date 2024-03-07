@@ -43,6 +43,13 @@
 </div> 
 <br>
 
+# 개발기간
+ <div style="display:flex; flex-direction:row;">
+
+2023.07.21 ~ 2023.09.08
+</div> 
+<br>
+
 # ⭐메인화면⭐
  - 다양한 카테고리를 한 화면에서 조회<br><br>
 ![메인화면](https://github.com/lwjong0210/KH_Project_Heabom/assets/130638184/7c88ff67-cf76-4ce6-8a99-c03c48e52b7d)
